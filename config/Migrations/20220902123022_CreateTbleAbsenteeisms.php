@@ -28,11 +28,7 @@ class CreateTbleAbsenteeisms extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
-        $table->addColumn('auditor_id', 'integer', [
-            'default' => null,
-            'limit' => 11,
-            'null' => false,
-        ]);
+     
         $table->addColumn('type', 'enum', [
             'default' => null,
             'null' => false,

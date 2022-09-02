@@ -23,6 +23,11 @@ class CreateTbleClients extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
+        $table->addColumn('auditor_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => false,
+        ]);
         $table->addColumn('first_name', 'string', [
             'default' => null,
             'limit' => 120,
@@ -92,6 +97,7 @@ class CreateTbleClients extends AbstractMigration
             'limit' => 255,
             'null' => true,
         ]);
+      
         $table->addColumn('observations', 'text', [
             'default' => null,
             'null' => true,
