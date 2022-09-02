@@ -1,0 +1,144 @@
+input.form-control {
+	border: 2px solid #0072bf;
+	border-radius: 12px;
+	font-family: 'montserratregular';
+}
+
+.input-group-text,
+.input-daterange input{
+	background: inherit;
+	border: 2px solid #0072bf;
+	border-radius: 12px;
+}
+
+.input-group>.input-group-prepend>.input-group-text {
+	border-right: 0;
+	font-size: 15px;
+}
+
+span.input-group-text {
+	border-right: 0;
+	padding: 0;
+	padding-left: 10px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.input-group>.form-control:not(:first-child) {
+	border-left: 0;
+}
+
+input.form-control-blue,
+textarea.form-control-blue,
+select.form-control-blue {
+	border: 2px solid #0072bf;
+	border-radius: 12px;
+	font-family: 'montserratregular';
+	margin-top: 10px;
+}
+
+textarea{
+	resize: none;
+}
+
+
+select[multiple].form-control-blue {
+	border-right: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.input-group>.form-control:not(:first-child) {
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+	background-color: #fff;
+	border: 2px solid #0072bf;
+	border-radius: 12px;
+	font-family: 'montserratregular';
+	min-height: 38px;
+	padding-top: 4px;
+}
+
+.select2-container--default .select2-selection--multiple {
+	padding-top: 0;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+	background: #0072bf;
+	color: #FFF;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+	color: #FFF;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	top: 5px;
+}
+
+button.btn {
+	font-family: 'montserratregular';
+}
+
+.big-checkbox input[type=checkbox]
+{
+	/* -ms-transform: scale(2);  *//* IE */
+	/* -moz-transform: scale(2); */ /* FF */
+	/* -webkit-transform: scale(2); */ /* Safari and Chrome */
+	/* -o-transform: scale(2); */ /* Opera */
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.big-checkbox label {
+	font-size: 1.2rem;
+}
+.custom-input-file{
+	position: relative;
+	display: inline-block;
+}
+.custom-input-file::before{
+	background-color:#0072bf;
+	width:630px;
+	height: 40px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3px;
+	content: 'Seleccionar un archivo excel'; /* texto por defecto */
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+}
+.custom-input-file input[type="file"]{
+	opacity: 0;
+	width: 600px;
+	height: 32px;
+	display: inline-block;
+}
+
+@media (max-width: 1400px) { 
+	.custom-input-file::before{
+		margin-top:10px;
+		margin-bottom:10px;
+		width:400px;
+	}
+	.custom-input-file input[type="file"]{
+		width: 400px;
+	}
+
+}
+@media (max-width: 1600px) { 
+	.custom-input-file::before{
+		width:500px;
+	}
+	.custom-input-file input[type="file"]{
+		width: 500px;
+	}
+}

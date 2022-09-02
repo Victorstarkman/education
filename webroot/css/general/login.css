@@ -1,0 +1,79 @@
+body {
+	background: #FFF;
+}
+
+h1 {
+	color: #0072bf;
+	font-family: 'montserratmedium';
+}
+
+.login .left-column {
+	background: rgb(47,4,107);
+	background: -moz-linear-gradient(39deg, rgba(47,4,107,1) 0%, rgba(17,220,202,1) 100%);
+	background: -webkit-linear-gradient(39deg, rgba(47,4,107,1) 0%, rgba(17,220,202,1) 100%);
+	background: linear-gradient(39deg, rgba(47,4,107,1) 0%, rgba(17,220,202,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2f046b",endColorstr="#11dcca",GradientType=1);
+}
+
+#alerta {
+	display: none;
+}
+
+footer {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+@media (max-width: 1078px) {
+	.login .left-column img {
+		max-width: 370px;
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.h-100 {
+		height: auto!important;
+	}
+}
+
+@media (max-width: 460px) {
+	.show-md img {
+		width: 100%;
+		max-width: 350px;
+	}
+
+	footer .text-muted {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 332px) {
+	.right-column button {
+		font-size: 12px;
+	}
+
+	footer .text-muted {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 310px) {
+	.right-column button {
+		font-size: 10px;
+	}
+
+	footer .text-muted {
+		font-size: 10px;
+	}
+}
+
+
+@media (max-height: 630px) {
+	footer {
+		position: relative!important;
+		bottom: 0;
+		right: 0;
+	}
+}

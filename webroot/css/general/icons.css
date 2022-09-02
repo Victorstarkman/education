@@ -1,0 +1,433 @@
+i.icon {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	vertical-align: bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+i.icon.icon-md {
+	background-size: contain;
+	width: 24px;
+	height: 24px;
+}
+
+i.icon-home-blue {
+	background-image: url("../../img/icons/blue/home-blue.png");
+}
+
+i.icon-star-blue {
+	background-image: url("../../img/icons/blue/star-blue.png");
+}
+
+i.icon-user-blue {
+	background-image: url("../../img/icons/blue/user-blue.png");
+}
+
+i.icon-user-circle-blue {
+	background-image: url("../../img/icons/blue/user-circle-blue.png");
+}
+
+i.icon-padlock-blue {
+	background-image: url("../../img/icons/blue/lockpad-blue.png");
+}
+
+i.icon-pencil-blue {
+	background-image: url("../../img/icons/blue/edit-blue.png");
+}
+
+i.icon-view-blue {
+	background-image: url("../../img/icons/blue/view-blue.png");
+}
+
+i.icon-folder-blue {
+	background-image: url("../../img/icons/blue/folder-blue.png");
+}
+
+i.icon-licence-blue {
+	background-image: url("../../img/icons/blue/licence-blue.png");
+}
+
+i.icon-edit-blue {
+	background-image: url("../../img/icons/blue/edit-blue.png");
+}
+
+i.icon-view-blue {
+	background-image: url("../../img/icons/blue/view-blue.png");
+}
+
+i.icon-ambulance-blue {
+	background-image: url("../../img/icons/blue/ambulance-blue.png");
+}
+
+i.icon-home-2-blue {
+	background-image: url("../../img/icons/blue/home-2-blue.png");
+}
+
+i.icon-dictamen-blue {
+	background-image: url("../../img/icons/blue/dictamen-blue.png");
+}
+
+i.icon-pdf-blue{
+	background-image: url("../../img/icons/blue/pdf-blue.png");
+}
+
+i.icon-cancel-blue {
+	background-image: url("../../img/icons/blue/cancel-blue.png");
+}
+
+i.icon-success-blue {
+	background-image: url("../../img/icons/blue/success-blue.png");
+}
+
+i.icon-add-blue {
+	background-image: url("../../img/icons/blue/add-blue.png");
+}
+
+i.icon-next-blue {
+	background-image: url("../../img/icons/blue/next-blue.png");
+}
+
+i.icon-ok-blue {
+	background-image: url("../../img/icons/blue/ok-blue.png");
+}
+
+i.icon-pending-blue {
+	background-image: url("../../img/icons/blue/pending-blue.png");
+}
+
+i.icon-search-blue {
+	background-image: url("../../img/icons/blue/search-blue.png");
+}
+
+i.icon-email-blue {
+	background-image: url("../../img/icons/blue/email-blue.png");
+}
+
+i.icon-download-blue {
+	background-image: url("../../img/icons/blue/download-blue.png");
+}
+
+i.icon-home-grey {
+	background-image: url("../../img/icons/grey/home-grey.png");
+}
+
+i.icon-star-grey {
+	background-image: url("../../img/icons/grey/star-grey.png");
+}
+
+i.icon-user-grey {
+	background-image: url("../../img/icons/grey/user-grey.png");
+}
+
+i.icon-user-circle-grey {
+	background-image: url("../../img/icons/grey/user-circle-grey.png");
+}
+
+i.icon-padlock-grey {
+	background-image: url("../../img/icons/grey/lockpad-grey.png");
+}
+
+i.icon-pencil-grey {
+	background-image: url("../../img/icons/grey/edit-grey.png");
+}
+
+i.icon-view-grey {
+	background-image: url("../../img/icons/grey/view-grey.png");
+}
+
+i.icon-folder-grey {
+	background-image: url("../../img/icons/grey/folder-grey.png");
+}
+
+i.icon-licence-grey {
+	background-image: url("../../img/icons/grey/licence-grey.png");
+}
+
+i.icon-edit-grey {
+	background-image: url("../../img/icons/grey/edit-grey.png");
+}
+
+i.icon-view-grey {
+	background-image: url("../../img/icons/grey/view-grey.png");
+}
+
+i.icon-ambulance-grey {
+	background-image: url("../../img/icons/grey/ambulance-grey.png");
+}
+
+i.icon-home-2-grey {
+	background-image: url("../../img/icons/grey/home-2-grey.png");
+}
+
+i.icon-dictamen-grey {
+	background-image: url("../../img/icons/grey/dictamen-grey.png");
+}
+
+i.icon-pdf-grey{
+	background-image: url("../../img/icons/grey/pdf-grey.png");
+}
+
+i.icon-cancel-grey {
+	background-image: url("../../img/icons/grey/cancel-grey.png");
+}
+
+i.icon-success-grey {
+	background-image: url("../../img/icons/grey/success-grey.png");
+}
+
+i.icon-add-grey {
+	background-image: url("../../img/icons/grey/add-grey.png");
+}
+
+i.icon-next-grey {
+	background-image: url("../../img/icons/grey/next-grey.png");
+}
+
+i.icon-ok-grey {
+	background-image: url("../../img/icons/grey/ok-grey.png");
+}
+
+i.icon-pending-grey {
+	background-image: url("../../img/icons/grey/pending-grey.png");
+}
+
+i.icon-search-grey {
+	background-image: url("../../img/icons/grey/search-grey.png");
+}
+
+i.icon-email-grey {
+	background-image: url("../../img/icons/grey/email-grey.png");
+}
+
+i.icon-download-grey {
+	background-image: url("../../img/icons/grey/download-grey.png");
+}
+
+i.icon-home-white {
+	background-image: url("../../img/icons/white/home-white.png");
+}
+
+i.icon-star-white {
+	background-image: url("../../img/icons/white/star-white.png");
+}
+
+i.icon-user-white {
+	background-image: url("../../img/icons/white/user-white.png");
+}
+
+i.icon-user-circle-white {
+	background-image: url("../../img/icons/white/user-circle-white.png");
+}
+
+i.icon-padlock-white {
+	background-image: url("../../img/icons/white/lockpad-white.png");
+}
+
+i.icon-pencil-white {
+	background-image: url("../../img/icons/white/edit-white.png");
+}
+
+i.icon-view-white {
+	background-image: url("../../img/icons/white/view-white.png");
+}
+
+i.icon-folder-white {
+	background-image: url("../../img/icons/white/folder-white.png");
+}
+
+i.icon-licence-white {
+	background-image: url("../../img/icons/white/licence-white.png");
+}
+
+i.icon-edit-white {
+	background-image: url("../../img/icons/white/edit-white.png");
+}
+
+i.icon-view-white {
+	background-image: url("../../img/icons/white/view-white.png");
+}
+
+i.icon-ambulance-white {
+	background-image: url("../../img/icons/white/ambulance-white.png");
+}
+
+i.icon-home-2-white {
+	background-image: url("../../img/icons/white/home-2-white.png");
+}
+
+i.icon-dictamen-white {
+	background-image: url("../../img/icons/white/dictamen-white.png");
+}
+
+i.icon-pdf-white{
+	background-image: url("../../img/icons/white/pdf-white.png");
+}
+
+i.icon-cancel-white {
+	background-image: url("../../img/icons/white/cancel-white.png");
+}
+
+i.icon-success-white {
+	background-image: url("../../img/icons/white/success-white.png");
+}
+
+i.icon-add-white {
+	background-image: url("../../img/icons/white/add-white.png");
+}
+
+i.icon-next-white {
+	background-image: url("../../img/icons/white/next-white.png");
+}
+
+i.icon-ok-white {
+	background-image: url("../../img/icons/white/ok-white.png");
+}
+
+i.icon-pending-white {
+	background-image: url("../../img/icons/white/pending-white.png");
+}
+
+i.icon-search-white {
+	background-image: url("../../img/icons/white/search-white.png");
+}
+
+i.icon-email-white {
+	background-image: url("../../img/icons/white/email-white.png");
+}
+
+i.icon-download-white {
+	background-image: url("../../img/icons/white/download-white.png");
+}
+
+i.icon-menu {
+	background-image: url("../../img/icons/menu.png");
+	width: 20px;
+	height: 20px;
+}
+
+button:hover i.icon-home-blue,
+button:hover i.icon-home-white {
+	background-image: url("../../img/icons/grey/home-grey.png");
+}
+
+button:hover i.icon-user-blue,
+button:hover i.icon-user-white {
+	background-image: url("../../img/icons/grey/user-grey.png");
+}
+
+button:hover i.icon-user-circle-blue,
+button:hover i.icon-user-circle-white {
+	background-image: url("../../img/icons/grey/user-circle-grey.png");
+}
+
+button:hover i.icon-padlock-blue,
+button:hover i.icon-padlock-white {
+	background-image: url("../../img/icons/grey/lockpad-grey.png");
+}
+
+button:hover i.icon-pencil-blue,
+button:hover i.icon-pencil-white {
+	background-image: url("../../img/icons/grey/edit-grey.png");
+}
+
+button:hover i.icon-view-blue,
+button:hover i.icon-view-white {
+	background-image: url("../../img/icons/grey/view-grey.png");
+}
+
+button:hover i.icon-folder-blue,
+button:hover i.icon-folder-white {
+	background-image: url("../../img/icons/grey/folder-grey.png");
+}
+
+button:hover i.icon-licence-blue,
+button:hover i.icon-licence-white {
+	background-image: url("../../img/icons/grey/licence-grey.png");
+}
+
+button:hover i.icon-edit-blue,
+button:hover i.icon-edit-white {
+	background-image: url("../../img/icons/grey/edit-grey.png");
+}
+
+button:hover i.icon-view-blue,
+button:hover i.icon-view-white {
+	background-image: url("../../img/icons/grey/view-grey.png");
+}
+
+button:hover i.icon-ambulance-blue,
+button:hover i.icon-ambulance-white {
+	background-image: url("../../img/icons/grey/ambulance-grey.png");
+}
+
+button:hover i.icon-home-2-blue,
+button:hover i.icon-home-2-white {
+	background-image: url("../../img/icons/grey/home-2-grey.png");
+}
+
+button:hover i.icon-dictamen-blue,
+button:hover i.icon-dictamen-white {
+	background-image: url("../../img/icons/grey/dictamen-grey.png");
+}
+
+button:hover i.icon-pdf-blue,
+button:hover i.icon-pdf-white {
+	background-image: url("../../img/icons/grey/pdf-grey.png");
+}
+
+button:hover i.icon-cancel-blue,
+button:hover i.icon-cancel-white {
+	background-image: url("../../img/icons/grey/cancel-grey.png");
+}
+
+button:hover i.icon-success-blue,
+button:hover i.icon-success-white {
+	background-image: url("../../img/icons/grey/success-grey.png");
+}
+
+button:hover i.icon-add-blue,
+button:hover i.icon-add-white {
+	background-image: url("../../img/icons/grey/add-grey.png");
+}
+
+button:hover i.icon-next-blue,
+button:hover i.icon-next-white {
+	background-image: url("../../img/icons/grey/next-grey.png");
+}
+
+button:hover i.icon-ok-blue,
+button:hover i.icon-ok-white {
+	background-image: url("../../img/icons/grey/ok-grey.png");
+}
+
+button:hover i.icon-pending-blue,
+button:hover i.icon-pending-white {
+	background-image: url("../../img/icons/grey/pending-grey.png");
+}
+
+button:hover i.icon-star-blue,
+button:hover i.icon-star-white {
+	background-image: url("../../img/icons/grey/star-grey.png");
+}
+
+button:hover i.icon-search-blue,
+button:hover i.icon-search-white {
+	background-image: url("../../img/icons/grey/search-grey.png");
+}
+
+button:hover i.icon-email-blue,
+button:hover i.icon-email-white {
+	background-image: url("../../img/icons/grey/email-grey.png");
+}
+
+button:hover i.icon-download-blue,
+button:hover i.icon-download-white {
+	background-image: url("../../img/icons/grey/download-grey.png");
+}
+
+.prepend-control-md i.icon {
+	width: 20px;
+	height: 20px;
+}
