@@ -130,11 +130,6 @@ class ReportsTable extends Table
             ->notEmptyDate('startPathology');
 
         $validator
-            ->scalar('comments')
-            ->requirePresence('comments', 'create')
-            ->notEmptyString('comments');
-
-        $validator
             ->integer('type')
             ->requirePresence('type', 'create')
             ->notEmptyString('type');

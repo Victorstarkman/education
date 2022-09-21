@@ -192,4 +192,21 @@ class UsersTable extends Table
             })
             ->toArray();
     }
+
+    public function signatureFromSVGtoPNG($imageToSave, $userID)
+    {
+        $imagePath = WWW_ROOT . 'signatures' . DS;
+        if (!file_exists($imagePath) && !is_dir($imagePath)) {
+            mkdir($imagePath);
+        }
+        $imagePath .= $userID . '_' . time() . '.png';
+        $image = new \Imagick();
+        $image->setBackgroundColor(new \ImagickPixel('transparent'));
+        $image->readImageBlob(file_get_contents('data:' . $imageToSave));
+        $image->setImageFormat('png64');
+        $image->resizeImage(200, 0, \Imagick::FILTER_LANCZOS, 1);
+        $image->writeImage($imagePath);
+
+        return $imagePath;
+    }
 }

@@ -52,7 +52,12 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('license', ['label'=> 'Matricula', 'class' => 'form-control form-control-blue m-0 col-12']); ?>
+			            <?= $this->Form->control('license', ['label'=> 'Matricula nacional', 'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                    </div>
+                </div>
+                <div class="pt-0 col-lg-6 col-sm-12">
+                    <div class="form-group">
+			            <?= $this->Form->control('licenseNational', ['label'=> 'Matricula provincial', 'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">

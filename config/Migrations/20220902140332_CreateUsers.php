@@ -69,6 +69,10 @@ class CreateUsers extends AbstractMigration
             'limit' => 225,
             'null' => true,
         ]);
+        $table->addColumn('signature', 'text', [
+            'default' => null,
+            'null' => true,
+        ]);
         $table->addColumn('group_id', 'integer', [
             'default' => null,
             'null' => false,

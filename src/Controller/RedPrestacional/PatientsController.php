@@ -92,12 +92,17 @@ class PatientsController extends AppController
                     $postData = $this->request->getData();
                     $postData['user_id'] = $this->Authentication->getIdentity()->id;
                     $patientEntity = $this->Patients->find('all')
-                        ->where(['document' => $postData['document']])
+                        ->where(['OR' => [
+                            ['document' => $postData['document']],
+                            ['email' => $postData['email']],
+                        ]])
                         ->contain(['Reports'])
                         ->first();
 
                     if (empty($patientEntity)) {
                         $patientEntity = $this->Patients->newEmptyEntity([]);
+                    } elseif ($postData['type'] == 'new') {
+                        throw new \Exception('Ya existe una persona con ese DNI o Email.');
                     }
                     $postData['reports'][0]['user_id'] = $this->Authentication->getIdentity()->id;
 
@@ -115,6 +120,7 @@ class PatientsController extends AppController
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
                     ];
+	                $this->Flash->success(__('Se genero el paciente exitosamente'));
                 } catch (\Exception $e) {
                     $data = [
                         'error' => true,
@@ -185,6 +191,10 @@ class PatientsController extends AppController
         $this->viewBuilder()->setLayout('ajax');
         $document = $this->request->getQuery('dni');
         $type = $this->request->getQuery('type');
+        if (empty($document)) {
+            $type = 'new';
+        }
+
         if ($type == 'new') {
             $patient = $this->Patients->newEmptyEntity();
         } else {
@@ -197,9 +207,18 @@ class PatientsController extends AppController
         $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies'));
     }
 
-    public function result()
+    public function result($id)
     {
-		debug('SE DESACARGA PDF');
-		exit;
+        $this->loadComponent('Htmltopdf');
+        $report = $this->Patients->Reports->get($id, [
+            'contain' => ['doctor', 'Patients' => ['Companies']],
+        ]);
+        if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
+            $this->Htmltopdf->createReport($report);
+        } else {
+            $this->Flash->error(__('El reporte no esta listo.'));
+
+            return $this->redirect(['action' => 'index']);
+        }
     }
 }

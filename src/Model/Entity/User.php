@@ -28,7 +28,6 @@ use Cake\ORM\Entity;
  */
 class User extends Entity
 {
-
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -52,6 +51,7 @@ class User extends Entity
         'modified' => true,
         'deleted' => true,
         'reports' => true,
+        'signature' => true,
     ];
 
     /**
@@ -63,14 +63,15 @@ class User extends Entity
         'password',
     ];
 
-	protected function _setPassword(string $password) : ?string
-	{
-		if (strlen($password) > 0) {
-			return (new DefaultPasswordHasher())->hash($password);
-		}
-	}
+    protected function _setPassword(string $password): ?string
+    {
+        if (strlen($password) > 0) {
+            return (new DefaultPasswordHasher())->hash($password);
+        }
+    }
 
-	public function groupName() {
-		return UsersTable::GROUPS[$this->group_id]['name'];
-	}
+    public function groupName()
+    {
+        return UsersTable::GROUPS[$this->group_id]['name'];
+    }
 }

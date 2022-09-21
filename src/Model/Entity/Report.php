@@ -60,6 +60,7 @@ class Report extends Entity
         'modified' => true,
         'patient' => true,
         'user' => true,
+        'relativeName' => true,
         'files' => true,
     ];
 
@@ -68,13 +69,28 @@ class Report extends Entity
         return ReportsTable::STATUSES[$this->status]['name'];
     }
 
-	public function getNameLicense()
+    public function getNameLicense()
     {
-        return ReportsTable::LICENSES[$this->type]['name'];
+        $name =  ReportsTable::LICENSES[$this->type]['name'];
+        if (ReportsTable::LICENSES[$this->type]['extra']) {
+            $name .= '\r Nombre: ' . $this->relativeName;
+        }
+
+        return $name;
     }
 
-	public function isWaitingResults()
+    public function isWaitingResults()
     {
         return $this->status == ReportsTable::ACTIVE;
+    }
+
+    public function textForPDF()
+    {
+        $value = 'X';
+        if (ReportsTable::LICENSES[$this->type]['extra']) {
+            $value =  $this->relativeName;
+        }
+
+        return $value;
     }
 }

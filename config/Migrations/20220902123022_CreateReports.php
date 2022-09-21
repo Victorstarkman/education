@@ -73,6 +73,11 @@ class CreateReports extends AbstractMigration
             'limit' => 120,
             'null' => true,
         ]);
+        $table->addColumn('relativeName', 'string', [
+            'default' => null,
+            'limit' => 120,
+            'null' => true,
+        ]);
         $table->addColumn('observations', 'text', [
             'default' => null,
             'limit' => 120,

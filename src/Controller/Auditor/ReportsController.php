@@ -58,7 +58,7 @@ class ReportsController extends AppController
     {
         try {
             $report = $this->Reports->get($id, [
-                'contain' => ['Patients'],
+	            'contain' => ['Patients' => 'Companies'],
             ]);
             if (empty($report)) {
                 throw new RecordNotFoundException('No se encontro el ID.');

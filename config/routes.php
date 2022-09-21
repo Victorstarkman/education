@@ -50,7 +50,7 @@ return static function (RouteBuilder $routes) {
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
-        $route->connect('/paciente/resultado/{id}', ['controller' => 'Patients', 'action' => 'result'])
+        $route->connect('/paciente/resultado/{id}/{paciente}', ['controller' => 'Patients', 'action' => 'result'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',

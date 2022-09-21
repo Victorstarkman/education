@@ -151,7 +151,7 @@
 		            <?php endif; ?>
                     <div class="pl-0 col-12">
                         <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] .
-                            '/paciente/resultado/' . $report->id, ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12">
+                            '/paciente/resultado/' . $report->id . '/auditoria-' . strtolower($patient->lastname . '-' . $patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
                             <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
                     </div>
                 <?php else : ?>
