@@ -21,36 +21,37 @@
     }
 </style>
 <div class="mx-auto mt-5 col-12">
-	<div class="col-12 title-section">
-		<h4>Alta de usuario</h4>
-	</div>
-	<div class="results">
-		<div class="container mx-auto row">
+    <div class="col-12 title-section">
+        <h4>Alta de usuario</h4>
+    </div>
+    <div class="results">
+        <div class="container mx-auto row">
 
-			<div class="col-12">
-				<p class="title-results">Formulario de firma<br/></p>
-			</div>
-			<?= $this->Flash->render() ?>
+            <div class="col-12">
+                <p class="title-results">Formulario de firma<br/></p>
+            </div>
+            <?= $this->Flash->render() ?>
             <div id="content">
                 <div id="signatureparent" style="width: 600px; margin: auto 0;">
                     <div id="signature"></div></div>
                 <div id="tools"></div>
             </div>
             <div id="scrollgrabber"></div>
-		</div>
-	</div>
+ni        </div>
+    </div>
 </div>
 
 
 <?php $this->start('scriptBottom'); ?>
-<script src="/js/signature/modernizr.js"></script>
+
+<?php $this->Html->script('signature/modernizr.js', ['block' => true]); ?>
 <script>
     /*  @preserve
-	jQuery pub/sub plugin by Peter Higgins (dante@dojotoolkit.org)
-	Loosely based on Dojo publish/subscribe API, limited in scope. Rewritten blindly.
-	Original is (c) Dojo Foundation 2004-2010. Released under either AFL or new BSD, see:
-	http://dojofoundation.org/license for more information.
-	*/
+    jQuery pub/sub plugin by Peter Higgins (dante@dojotoolkit.org)
+    Loosely based on Dojo publish/subscribe API, limited in scope. Rewritten blindly.
+    Original is (c) Dojo Foundation 2004-2010. Released under either AFL or new BSD, see:
+    http://dojofoundation.org/license for more information.
+    */
     (function($) {
         var topics = {};
         $.publish = function(topic, args) {
@@ -88,10 +89,10 @@
     })(jQuery);
 
 </script>
-<script src="/js/signature/jSignature.js"></script>
-<script src="/js/signature/plugins/jSignature.CompressorBase30.js"></script>
-<script src="/js/signature/plugins/jSignature.CompressorSVG.js"></script>
-<script src="/js/signature/plugins/signhere/jSignature.SignHere.js"></script>
+<?php $this->Html->script('signature/jSignature.js', ['block' => true]); ?>
+<?php $this->Html->script('signature/plugins/jSignature.CompressorBase30.js', ['block' => true]); ?>
+<?php $this->Html->script('signature/plugins/jSignature.CompressorSVG.js', ['block' => true]); ?>
+<?php $this->Html->script('signature/plugins/jSignature.SignHere.js', ['block' => true]); ?>
 <script>
     $(document).ready(function() {
 
