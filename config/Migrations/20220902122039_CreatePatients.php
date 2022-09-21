@@ -70,7 +70,7 @@ class CreatePatients extends AbstractMigration
             'null' => false,
         ]);
 
-        $table->addColumn('company_id', 'int', [
+        $table->addColumn('company_id', 'integer', [
             'default' => null,
             'limit' => 4,
             'null' => false,
