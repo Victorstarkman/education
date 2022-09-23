@@ -32,7 +32,8 @@
                     <th><?= __('Fecha de nacimiento')?></th>
                     <th><?= __('Edad') ?></th>
                     <th><?= __('Domicilio') ?></th>
-                    <th><?= __('Telefono') ?></th>
+                    <th><?= __('Localidad') ?></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -40,19 +41,21 @@
                     <td><?= h($report->patient->birthday) ?></td>
                     <td><?= h($report->patient->age) ?></td>
                     <td><?= h($report->patient->address) ?></td>
-                    <td><?= h($report->patient->phone) ?></td>
+                    <td><?= $report->patient->getLocation() ?></td>
                 </tr>
                 </tbody>
             </table>
             <table class="table table-bordered">
                 <thead>
                 <tr>
+                    <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
+                    <td><?= h($report->patient->phone) ?></td>
                     <td><?= h($report->patient->job) ?></td>
                     <td><?= h($report->patient->company->name) ?></td>
                 </tr>
@@ -83,12 +86,12 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th class="text-left"><?= __('Comentario'); ?></th>
+                        <th><?= __('Comentario'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td><?= h($report->comments) ?></td>
+                        <td class="text-left"><?= h($report->comments) ?></td>
                     </tr>
                     </tbody>
                 </table>
@@ -140,5 +143,11 @@
                     </tbody>
                 </table>
             <?php endif; ?>
+            <div class="pl-0 col-12">
+                <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] .
+			        '/paciente/resultado/' . $report->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
+                    <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
+            </div>
         </div>
+
     </div>

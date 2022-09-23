@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Controller\RedPrestacional;
 
 use App\Controller\AppController;
+use Cake\Datasource\Exception\RecordNotFoundException;
+use Cake\Http\Exception\UnauthorizedException;
 
 /**
  * Patients Controller
@@ -33,6 +35,71 @@ class PatientsController extends AppController
     }
 
     /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function listWithResults()
+    {
+        $search = $this->request->getQueryParams();
+        $this->paginate = [
+            'contain' => [
+                'Patients',
+            ],
+        ];
+        $reports = $this->Patients->Reports->find();
+        $searchByStatus = false;
+        if (!empty($search)) {
+            if (!empty($search['document'])) {
+                $coincide = preg_match('/@/', $search['document']);
+                $patients = $this->Patients->find();
+                if ($coincide > 0) {
+                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
+                } else {
+                    $patients->where(['document' => $search['document']]);
+                }
+
+                if ($patients->all()->isEmpty()) {
+                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                } else {
+                    $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
+                }
+            }
+
+            if (!empty($search['license_type'])) {
+                $reports->where(['type' => $search['license_type']]);
+            }
+
+            if (!empty($search['status'])) {
+                $searchByStatus = true;
+                $reports->where(['status' => $search['status']]);
+            }
+
+            if (!empty($search['start_date'])) {
+                $reports->where(['Reports.created >=' => $search['start_date']]);
+            }
+
+            if (!empty($search['end_date'])) {
+                $reports->where(['Reports.created <=' => $search['end_date']]);
+            }
+        }
+
+        if (!$searchByStatus) {
+            $reports->where(['status IN' => $this->Patients->Reports->getStatusesOfDiagnosis()]);
+        }
+
+        $settings = [
+            'order' => ['created' => 'desc'],
+            'limit' => 10,
+        ];
+
+        $reports = $this->paginate($reports, $settings);
+        $getLicenses = $this->Patients->Reports->getLicenses();
+        $getStatuses = $this->Patients->Reports->getStatusForDoctor();
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search'));
+    }
+
+    /**
      * View method
      *
      * @param string|null $id Patient id.
@@ -42,7 +109,7 @@ class PatientsController extends AppController
     public function view($id = null)
     {
         $patient = $this->Patients->get($id, [
-            'contain' => ['Reports' => ['doctor'], 'Companies'],
+            'contain' => ['Reports' => ['doctor'], 'Companies', 'Cities' => ['Counties' => 'States']],
         ]);
 
         $this->set(compact('patient'));
@@ -115,12 +182,13 @@ class PatientsController extends AppController
                     if (!$this->Patients->save($patientEntity)) {
                         throw new \Exception('Error al generar el paciente.');
                     }
-
+                    $this->loadComponent('Messenger');
+                    $this->Messenger->setToAuditor($patientEntity);
                     $data = [
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
                     ];
-	                $this->Flash->success(__('Se genero el paciente exitosamente'));
+                    $this->Flash->success(__('Se genero el paciente exitosamente'));
                 } catch (\Exception $e) {
                     $data = [
                         'error' => true,
@@ -211,7 +279,7 @@ class PatientsController extends AppController
     {
         $this->loadComponent('Htmltopdf');
         $report = $this->Patients->Reports->get($id, [
-            'contain' => ['doctor', 'Patients' => ['Companies']],
+            'contain' => ['doctor', 'Patients' => ['Companies', 'Cities']],
         ]);
         if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
             $this->Htmltopdf->createReport($report);
@@ -220,5 +288,30 @@ class PatientsController extends AppController
 
             return $this->redirect(['action' => 'index']);
         }
+    }
+
+    public function viewReport($id)
+    {
+        try {
+            $report = $this->Patients->Reports->get($id, [
+                'contain' => ['Patients' => ['Companies', 'Cities' => ['Counties' => 'States']]],
+            ]);
+            if (empty($report)) {
+                throw new RecordNotFoundException('No se encontro el ID.');
+            }
+
+            if (in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
+                throw new UnauthorizedException('El paciente no se encuentra diagnosticado');
+            }
+        } catch (\Exception $e) {
+            $this->Flash->error($e->getMessage(), ['escape' => false]);
+            if (stripos(get_class($e), 'RecordNotFoundException')) {
+                return $this->redirect(['action' => 'index']);
+            } elseif (stripos(get_class($e), 'UnauthorizedException')) {
+                return $this->redirect(['action' => 'edit', $id]);
+            }
+        }
+        $getStatuses = $this->Patients->Reports->getStatusForDoctor();
+        $this->set(compact('report', 'getStatuses'));
     }
 }

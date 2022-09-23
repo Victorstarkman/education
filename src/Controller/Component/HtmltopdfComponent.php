@@ -20,10 +20,6 @@ class HtmltopdfComponent extends Component
     public function createReport($dataToShow)
     {
 
-        file_put_contents(WWW_ROOT . 'img/test_2.svg', file_get_contents('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQ0IiBoZWlnaHQ9IjEzMiI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwMDAwIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTSAxIDU5IGMgMC4yMyAtMC4wNyA4Ljg5IC0yLjI5IDEzIC00IGMgMy43OSAtMS41OCA3LjEzIC00LjIzIDExIC02IGMgMTIuNDUgLTUuNzEgMzAuODQgLTE1LjY5IDM3IC0xNiBjIDIuMTkgLTAuMTEgMi4yNyA5LjM4IDMgMTQgYyAwLjI1IDEuNjEgMC4yNiAzLjQzIDAgNSBjIC0wLjM4IDIuMjkgLTAuOTcgNC44NCAtMiA3IGMgLTkuODUgMjAuNiAtMjAuOTEgNDIuNyAtMzEgNjIgYyAtMC42MiAxLjE4IC0yLjIyIDEuODkgLTMgMyBjIC0xLjQ4IDIuMTIgLTIuNDIgNS45OSAtNCA3IGMgLTEuMzggMC44OCAtNi4xOSAxLjAyIC03IDAgYyAtMS4xNyAtMS40NiAtMS4zNCAtNy4wNyAtMSAtMTAgYyAwLjI2IC0yLjIyIDEuNjQgLTQuOTMgMyAtNyBjIDQuODUgLTcuNCA5Ljc5IC0xNS42OSAxNiAtMjIgYyAxMi43NyAtMTIuOTkgMjcuNDMgLTI2LjMzIDQyIC0zNyBjIDguNSAtNi4yMyAxOC45NCAtMTAuNTUgMjkgLTE1IGMgMTAuNTMgLTQuNjYgMjAuODcgLTguNTUgMzIgLTEyIGMgMjcuNDIgLTguNDkgNTUuMDQgLTE2LjA2IDgxIC0yMyBjIDEuNTQgLTAuNDEgMy40IDAuMjggNSAwIGwgMTggLTQiLz48L3N2Zz4='));
-        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]";
-        $urlToImg =  $url;
-
         try {
             ob_start();
             include 'reportTemplates/reportToCompanies.php';
@@ -38,7 +34,5 @@ class HtmltopdfComponent extends Component
         }
     }
 
-    public function createImage()
-    {
-    }
+
 }

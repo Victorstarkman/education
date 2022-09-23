@@ -74,6 +74,7 @@
                             'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
+                <?= $this->element('partForm/addCity', ['city' => $patient->city_id]); ?>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('company_id', ['label' => 'Empresa',

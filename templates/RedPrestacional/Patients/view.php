@@ -32,7 +32,8 @@
                     <th><?= __('Fecha de nacimiento')?></th>
                     <th><?= __('Edad') ?></th>
                     <th><?= __('Domicilio') ?></th>
-                    <th><?= __('Telefono') ?></th>
+                    <th><?= __('Localidad') ?></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -40,19 +41,22 @@
                     <td><?= h($patient->birthday) ?></td>
                     <td><?= h($patient->age) ?></td>
                     <td><?= h($patient->address) ?></td>
-                    <td><?= h($patient->phone) ?></td>
+                    <td><?= $patient->getLocation() ?></td>
+
                 </tr>
                 </tbody>
             </table>
             <table class="table table-bordered">
                 <thead>
                 <tr>
+                    <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
+                    <td><?= h($patient->phone) ?></td>
                     <td><?= h($patient->job) ?></td>
                     <td><?= h($patient->company->name) ?></td>
                 </tr>
@@ -95,7 +99,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><?= h($report->comments) ?></td>
+                            <td class="text-left"><?= h($report->comments) ?></td>
                         </tr>
                         </tbody>
                     </table>
@@ -130,7 +134,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td><?= h($report->cie10) ?></td>
+                                <td class="text-left"><?= h($report->cie10) ?></td>
                             </tr>
                             </tbody>
                         </table>
@@ -144,7 +148,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td><?= h($report->observations) ?></td>
+                                <td class="text-left"><?= h($report->observations) ?></td>
                             </tr>
                             </tbody>
                         </table>

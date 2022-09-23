@@ -1,3 +1,6 @@
+<?php
+declare(strict_types=1);
+?>
 <style>
     .all {
         position: absolute;
@@ -78,7 +81,7 @@
 <head><title>Export</title></head>
 <body>
 <div>
-    <img src="http://local.ausentismo.com:8886/img/dienst-form.jpg" style="max-width: 792px"/>
+    <img src="<?= WWW_ROOT;?>img/dienst-form.jpg" style="max-width: 792px"/>
     <!-- PERSON -->
     <div style="width: 200px;margin-left: 200px;" class="personFirstLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->name . ' ' . $dataToShow->patient->lastname; ?></p>
@@ -111,7 +114,7 @@
         <p style="word-break: break-word;"><?= $dataToShow->patient->address;  ?></p>
     </div>
     <div style="width: 256px;margin-left: 481px;" class="personFourthLine all">
-        <p style="word-break: break-word;"><?= 'LOCALIDAD'; ?></p>
+        <p style="word-break: break-word;"><?= $dataToShow->patient->city->name;  ?></p>
     </div>
     <!-- END PERSON -->
     <!-- LICENSE TYPE -->
@@ -134,9 +137,16 @@
     </div>
     <div class="resultThirdLine all">
         <p style="word-break: break-word;">
+            <?php
+            if (!is_null($dataToShow->startLicense)) : ?>
+                <span style="margin-left: 660px;">-</span>
+                <span style="margin-left: 15px;">-</span>
+                <span style="margin-left: 12px;">-</span>
+            <?php else : ?>
             <span style="margin-left: 650px;"><?= $dataToShow->startLicense->day;?></span>
             <span style="margin-left: 15px;"><?= $dataToShow->startLicense->month;?></span>
             <span style="margin-left: 12px;"><?= $dataToShow->startLicense->year;?></span>
+            <?php endif; ?>
         </p>
     </div>
     <div class="resultFourthLine all">
@@ -145,11 +155,22 @@
     <!-- END RESULT -->
     <!-- SIGNATURE -->
     <div class="signature all">
+        <?php if (!is_null($dataToShow->doctor->signature)) : ?>
         <img src="<?= $dataToShow->doctor->signature; ?>" style="position: absolute;top: 80px;left: 230px;">
+        <?php endif; ?>
         <div style="position: absolute;top: 100px; margin: 0;left: 350px;font-size: 11px;text-align: center;">
             <p style="margin: 0;"><?= strtoupper($dataToShow->doctor->name . ' ' . $dataToShow->doctor->lastname);?> </p>
             <p style="margin: 0;">MÉDICO</p>
-            <p style="margin: 0;">M.P: <?= $dataToShow->doctor->license; ?>  - M.N. <?= $dataToShow->doctor->licenseNational; ?></p>
+            <p style="margin: 0;">
+                <?php if (!is_null($dataToShow->doctor->license)) : ?>
+                M.P: <?= $dataToShow->doctor->license; ?>
+                <?php endif; ?>
+                <?php if (!is_null($dataToShow->doctor->license) && !is_null($dataToShow->doctor->licenseNational)) : ?>
+                -
+                <?php endif; ?>
+                <?php if (!is_null($dataToShow->doctor->licenseNational)) : ?>
+                M.N. <?= $dataToShow->doctor->licenseNational; ?></p>
+                <?php endif; ?>
         </div>
     </div>
     <!-- END SIGNATURE -->

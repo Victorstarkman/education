@@ -11,7 +11,10 @@
         <div class="card-body">
             <ul class="sub-menu">
                 <li>
-                    <a href="<?= $this->Url->build($redirect . '/listado', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Listado</a>
+                    <a href="<?= $this->Url->build($redirect . '/listado-resultados', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Ausentes con resultados</a>
+                </li>
+                <li>
+                    <a href="<?= $this->Url->build($redirect . '/listado', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Listado personas</a>
                 </li>
                 <li>
                     <a href="<?= $this->Url->build($redirect . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Nuevo ausente</a>
