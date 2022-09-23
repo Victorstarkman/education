@@ -51,6 +51,7 @@ class User extends Entity
         'modified' => true,
         'deleted' => true,
         'reports' => true,
+        'city_id' => true,
         'signature' => true,
     ];
 

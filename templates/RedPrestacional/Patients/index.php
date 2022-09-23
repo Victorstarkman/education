@@ -17,7 +17,6 @@
                 <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
             </div>
         </div>
-		<?= $this->Form->end()?>
         <p class="title-results">Pacientes</p>
 
 		<?= $this->Flash->render() ?>

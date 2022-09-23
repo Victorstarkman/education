@@ -6,23 +6,20 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Patient Entity
+ * County Entity
  *
  * @property int $id
+ * @property int $state_id
  * @property string $name
- * @property string $lastname
- * @property string $address
- * @property string $birthday
- * @property string|null $email
- * @property int $age
- * @property string $document
- * @property string $job
+ * @property string|null $fullName
+ * @property string $oldID
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\Report[] $reports
+ * @property \App\Model\Entity\State $state
+ * @property \App\Model\Entity\City[] $cities
  */
-class Patient extends Entity
+class County extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -34,23 +31,13 @@ class Patient extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
+        'state_id' => true,
         'name' => true,
-        'lastname' => true,
-        'address' => true,
-        'birthday' => true,
-        'email' => true,
-        'age' => true,
-        'document' => true,
-        'job' => true,
+        'fullName' => true,
+        'oldID' => true,
         'created' => true,
         'modified' => true,
-        'reports' => true,
-        'phone' => true,
-        'city_id' => true,
-        'company_id' => true,
+        'state' => true,
+        'cities' => true,
     ];
-
-	public function getLocation() {
-		return $this->city->name . ', ' . $this->city->county->name . ', ' . $this->city->county->state->name ;
-	}
 }

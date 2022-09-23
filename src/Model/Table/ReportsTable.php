@@ -189,4 +189,13 @@ class ReportsTable extends Table
 
         return $statusArray;
     }
+
+    public function getStatusesOfDiagnosis()
+    {
+        return [
+            self::NRLL,
+            self::DENIED,
+            self::GRANTED,
+        ];
+    }
 }

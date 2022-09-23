@@ -7,7 +7,6 @@ return static function (RouteBuilder $routes) {
 
     $routes->setRouteClass(DashedRoute::class);
 
-
     $routes->prefix('Admin', function (RouteBuilder $route) {
         $route->connect('/manual/*', ['controller' => 'Pages', 'action' => 'manual', 'prefix' => null]);
         $route->connect('/', ['controller' => 'users', 'action' => 'index']);
@@ -36,8 +35,9 @@ return static function (RouteBuilder $routes) {
 
     $routes->prefix('redPrestacional', function (RouteBuilder $route) {
         $route->connect('/manual/*', ['controller' => 'Pages', 'action' => 'manual', 'prefix' => null]);
-        $route->connect('/', ['controller' => 'Patients', 'action' => 'index']);
+        $route->connect('/', ['controller' => 'Patients', 'action' => 'listWithResults']);
         $route->connect('/listado', ['controller' => 'Patients', 'action' => 'index']);
+        $route->connect('/listado-resultados', ['controller' => 'Patients', 'action' => 'listWithResults']);
         $route->connect('/nuevo-ausente', ['controller' => 'Patients', 'action' => 'addWithReport']);
         $route->connect('/nuevo-paciente', ['controller' => 'Patients', 'action' => 'add']);
         $route->connect('/paciente/ver/{id}', ['controller' => 'Patients', 'action' => 'view'])
@@ -55,6 +55,12 @@ return static function (RouteBuilder $routes) {
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
+
+        $route->connect('/licencias/ver/{id}', ['controller' => 'Patients', 'action' => 'viewReport'])
+            ->setPass(['id'])
+            ->setPatterns([
+                'id' => '[0-9]+',
+            ]);
         $route->connect('/empresas', ['controller' => 'Companies', 'action' => 'index']);
         $route->connect('/empresas/crear', ['controller' => 'Companies', 'action' => 'add']);
         $route->fallbacks();
@@ -68,6 +74,11 @@ return static function (RouteBuilder $routes) {
          */
         $builder->connect('/', ['controller' => 'Users', 'action' => 'login']);
         $builder->connect('/salir', ['controller' => 'Users', 'action' => 'logout']);
+        $builder->connect('/buscar/provincias', ['controller' => 'search', 'action' => 'states']);
+        $builder->connect('/buscar/municipios', ['controller' => 'search', 'action' => 'counties']);
+        $builder->connect('/buscar/ciudades', ['controller' => 'search', 'action' => 'cities']);
+        $builder->connect('/buscar/ciudades-por-id', ['controller' => 'search', 'action' => 'citiesById']);
+
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */

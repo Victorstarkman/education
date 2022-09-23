@@ -56,6 +56,11 @@ class PatientsTable extends Table
             'foreignKey' => 'company_id',
             'joinType' => 'INNER',
         ]);
+
+        $this->belongsTo('Cities', [
+            'foreignKey' => 'city_id',
+            'joinType' => 'INNER',
+        ]);
     }
 
     /**

@@ -88,7 +88,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><?= h($report->comments) ?></td>
+                            <td class="text-left"><?= h($report->comments) ?></td>
                         </tr>
                         </tbody>
                     </table>
