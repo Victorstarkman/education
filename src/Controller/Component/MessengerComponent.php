@@ -59,14 +59,14 @@ class MessengerComponent extends Component
 
     public function setToAuditor($report)
     {
+        if (isset($report->reports[0]->doctor_id)) {
+            $users = $this->getController()->getTableLocator()->get('Users');
+            $doctor = $users->get($report->reports[0]->doctor_id);
+            $to = $doctor['email'];
+            $subject = 'Nuevo ausente cargado para revisar.';
+            $template = 'newReport';
 
-        $users = $this->getController()->getTableLocator()->get('Users');
-        $doctor = $users->get($report->doctor_id);
-        $to = $doctor['email'];
-        $subject = 'Nuevo ausente cargado para revisar.';
-        $template = 'newReport';
-
-        $this->sendEmail($to, $subject, $template, []);
+            $this->sendEmail($to, $subject, $template, []);
+        }
     }
-
 }
