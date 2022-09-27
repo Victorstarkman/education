@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
-use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -12,7 +11,6 @@ use Cake\Validation\Validator;
  * Files Model
  *
  * @property \App\Model\Table\ReportsTable&\Cake\ORM\Association\BelongsTo $Reports
- *
  * @method \App\Model\Entity\File newEmptyEntity()
  * @method \App\Model\Entity\File newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\File[] newEntities(array $data, array $options = [])
@@ -88,5 +86,18 @@ class FilesTable extends Table
         $rules->add($rules->existsIn('report_id', 'Reports'), ['errorField' => 'report_id']);
 
         return $rules;
+    }
+
+    public function checkDocument($filename, $reportID, $extraParams = [])
+    {
+
+        $countOfFiles = $this->find()->where(['name' => $filename, 'report_id' => $reportID]);
+        if (!empty($extraParams['exclude_id'])) {
+            $countOfFiles->where(['id NOT IN' => $extraParams['exclude_id']]);
+        }
+
+        $countOfFiles = $countOfFiles->all()->count();
+
+        return $countOfFiles > 0;
     }
 }

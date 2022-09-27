@@ -11,23 +11,33 @@
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
             </div>
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
             </div>
         </div>
         <p class="title-results">Ausentes</p>
 
         <?= $this->Flash->render() ?>
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
-        <div class="pt-0 col-lg-4 col-sm-12">
+        <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control('document', [
                         'label' => 'Buscar',
                     'placeholder' => 'Buscar por DNI o Email',
                     'class' => 'form-control form-control-blue m-0 col-12',
                     'value' => $search['document'] ?? '']); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-2 col-sm-12">
+            <div class="form-group">
+                <?= $this->Form->control('doctor_id', [
+                        'label' => 'Auditor',
+                    'options' => $getAuditors,
+	                'empty' => 'Auditor',
+                    'class' => 'form-control form-control-blue m-0 col-12',
+                    'value' => $search['doctor_id'] ?? '']); ?>
             </div>
         </div>
         <div class="pt-0 col-lg-2 col-sm-12">

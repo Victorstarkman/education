@@ -19,7 +19,7 @@
 
 
 <script>
-    let city = <?= (!is_null($city)) ? $city : 0; ?>,
+    let city = <?= (isset($city) && !is_null($city)) ? $city : 0; ?>,
         dataState;
     searching('states');
     if (city > 0) {

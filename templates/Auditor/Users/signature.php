@@ -37,7 +37,7 @@
                 <div id="tools"></div>
             </div>
             <div id="scrollgrabber"></div>
-ni        </div>
+        </div>
     </div>
 </div>
 

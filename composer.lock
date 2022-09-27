@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4340528dab88d1f675894d9c50f6a078",
+    "content-hash": "06a71a5617137d32562424e7a0d51de6",
     "packages": [
         {
             "name": "cakephp/authentication",
@@ -1166,16 +1166,16 @@
         },
         {
             "name": "mirko-pagliai/cakephp-thumber",
-            "version": "1.10.1",
+            "version": "1.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mirko-pagliai/cakephp-thumber.git",
-                "reference": "e310aa8e54516431ddd54da41300dfc277e85fe7"
+                "reference": "5fd611398545a84744a72684496a7545bec5b1a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mirko-pagliai/cakephp-thumber/zipball/e310aa8e54516431ddd54da41300dfc277e85fe7",
-                "reference": "e310aa8e54516431ddd54da41300dfc277e85fe7",
+                "url": "https://api.github.com/repos/mirko-pagliai/cakephp-thumber/zipball/5fd611398545a84744a72684496a7545bec5b1a2",
+                "reference": "5fd611398545a84744a72684496a7545bec5b1a2",
                 "shasum": ""
             },
             "require": {
@@ -1187,7 +1187,9 @@
             },
             "require-dev": {
                 "cakephp/cakephp-codesniffer": "^4.0",
-                "phpunit/phpunit": "^9.1|^9.5"
+                "phpstan/phpstan": "^1.7",
+                "phpunit/phpunit": "^9.1|^9.5",
+                "psalm/phar": "^4.24"
             },
             "type": "cakephp-plugin",
             "autoload": {
@@ -1209,9 +1211,9 @@
             "homepage": "https://github.com/mirko-pagliai/cakephp-thumber",
             "support": {
                 "issues": "https://github.com/mirko-pagliai/cakephp-thumber/issues",
-                "source": "https://github.com/mirko-pagliai/cakephp-thumber/tree/1.10.1"
+                "source": "https://github.com/mirko-pagliai/cakephp-thumber/tree/1.10.2"
             },
-            "time": "2022-06-21T15:26:31+00:00"
+            "time": "2022-09-22T14:15:25+00:00"
         },
         {
             "name": "mirko-pagliai/me-tools",
@@ -7388,7 +7390,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.3.0"

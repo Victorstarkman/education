@@ -221,3 +221,28 @@ TypeFactory::map('time', StringType::class);
 //Inflector::rules('plural', ['/^(inflect)or$/i' => '\1ables']);
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
+
+
+Configure::write('Thumber.driver', 'imagick');
+Configure::write('Thumber.target', TMP . 'thumbs');
+
+$hostName = !empty($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'WWW_ROOT';
+$environmnet = 'prod';
+try {
+    if (
+        strpos($hostName, 'local.') !== false || strpos($hostName, 'local-') !== false
+        || strpos($hostName, 'localhost') !== false
+    ) {
+        // IS LOCAL
+        $environmnet = 'local';
+    } elseif (strpos($hostName, 'dev.') !== false || strpos($hostName, 'dev-') !== false) {
+        // IS DEV
+        $environmnet = 'dev';
+    } elseif (strpos($hostName, 'stage.') !== false || strpos($hostName, 'stage-') !== false) {
+        // IS STAGE
+        $environmnet = 'stage';
+    }
+} catch (\Exception $e) {
+    exit($e->getMessage() . "\n");
+}
+Configure::write('environment', $environmnet);

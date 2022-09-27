@@ -18,7 +18,6 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
-use Cake\Http\Exception\UnauthorizedException;
 
 /**
  * Application Controller
@@ -79,7 +78,8 @@ class AppController extends Controller
                     !is_null($actualPrefix)
                     && $actualPrefix != $group['prefix']
                 ) {
-                    throw new UnauthorizedException('No tenes permisos suficientes');
+                    $this->Flash->error(__('No tenes permisos suficientes'));
+                    $this->redirect($redirectPrefix);
                 }
             }
 

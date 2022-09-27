@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use App\Model\Table\ReportsTable;
+use App\Model\Table\UsersTable;
 use Cake\ORM\Entity;
 
 /**
@@ -93,4 +94,23 @@ class Report extends Entity
 
         return $value;
     }
+
+    public function getDoctorName()
+    {
+        if (isset($this->doctor)) {
+            $name = $this->doctor->name . ' ' . $this->doctor->lastname;
+        } elseif (!empty($this->doctor_id)) {
+            $userTable = new UsersTable();
+            $doctor = $userTable->get($this->doctor_id);
+            $name = $doctor->name . ' ' . $doctor->lastname;
+        } else {
+            $name = 'Sin definir';
+        }
+
+        return $name;
+    }
+
+	public function isOwner($onlineUserID = null) {
+		return $this->doctor_id == $onlineUserID;
+	}
 }

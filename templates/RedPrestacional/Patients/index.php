@@ -11,15 +11,15 @@
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
             </div>
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
             </div>
         </div>
         <p class="title-results">Pacientes</p>
 
-		<?= $this->Flash->render() ?>
+        <?= $this->Flash->render() ?>
         <table class="table table-bordered" id="tabla_actualizaciones">
             <thead>
             <tr>
@@ -35,7 +35,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($patients as $patient): ?>
+            <?php foreach ($patients as $patient) : ?>
                 <tr>
                     <td><?= $this->Number->format($patient->id) ?></td>
                     <td><?= h($patient->name) ?></td>
@@ -46,9 +46,24 @@
                     <td><?= count($patient->reports) ?></td>
                     <td><?= count($patient->reports_without_check) ?></td>
                     <td class="actions">
-	                    <?= $this->Html->link('Ver',   $redirectPrefix . '/paciente/ver/' . $patient->id, ['fullBase' => true]); ?>
+                        <?= $this->Html->link(
+                            'Ver',
+                            $redirectPrefix . '/paciente/ver/' . $patient->id,
+                            ['fullBase' => true]
+                        ); ?>
                         |
-	                    <?= $this->Html->link('Editar',   $redirectPrefix . '/paciente/editar/' . $patient->id, ['fullBase' => true]); ?>
+                        <?= $this->Html->link(
+                            'Editar',
+                            $redirectPrefix . '/paciente/editar/' . $patient->id,
+                            ['fullBase' => true]
+                        ); ?>
+                        |
+                        <?= $this->Html->link(
+                            'Ausente',
+                            $redirectPrefix . '/nuevo-ausente?dni=' . $patient->document,
+                            ['fullBase' => true]
+                        ); ?>
+
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -57,7 +72,7 @@
         <div class="pt-0 col-lg-12 col-sm-12">
             <div class="row">
                 <div class="pt-0 col-lg-8 col-sm-12">
-					<?= $this->element('paginator'); ?>
+                    <?= $this->element('paginator'); ?>
                 </div>
             </div>
         </div>

@@ -6,6 +6,7 @@
 /tmp/*
 /vendor/*
 /webroot/signatures/*
+/webroot/files/*
 # OS generated files #
 ######################
 .DS_Store

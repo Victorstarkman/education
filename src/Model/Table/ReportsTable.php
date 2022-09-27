@@ -180,9 +180,18 @@ class ReportsTable extends Table
 
     public function getStatusForDoctor()
     {
+        return $this->getAllStatuses(true);
+    }
+
+    public function getAllStatuses($onlyActive = false)
+    {
         $statusArray = [];
         foreach (self::STATUSES as $key => $status) {
-            if (!in_array($key, $this->getActiveStatuses())) {
+            if ($onlyActive) {
+                if (!in_array($key, $this->getActiveStatuses())) {
+                    $statusArray[$key] = $status['name'];
+                }
+            } else {
                 $statusArray[$key] = $status['name'];
             }
         }
