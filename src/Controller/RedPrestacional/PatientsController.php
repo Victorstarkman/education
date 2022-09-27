@@ -105,6 +105,69 @@ class PatientsController extends AppController
     }
 
     /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+
+    public function listWithoutResults()
+    {
+        $search = $this->request->getQueryParams();
+        $this->paginate = [
+            'contain' => [
+                'Patients',
+            ],
+        ];
+        $reports = $this->Patients->Reports->find();
+        $searchByStatus = false;
+        if (!empty($search)) {
+            if (!empty($search['document'])) {
+                $coincide = preg_match('/@/', $search['document']);
+                $patients = $this->Patients->find();
+                if ($coincide > 0) {
+                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
+                } else {
+                    $patients->where(['document' => $search['document']]);
+                }
+
+                if ($patients->all()->isEmpty()) {
+                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                } else {
+                    $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
+                }
+            }
+
+            if (!empty($search['license_type'])) {
+                $reports->where(['type' => $search['license_type']]);
+            }
+
+            if (!empty($search['start_date'])) {
+                $reports->where(['Reports.created >=' => $search['start_date']]);
+            }
+
+            if (!empty($search['end_date'])) {
+                $reports->where(['Reports.created <=' => $search['end_date']]);
+            }
+
+            if (!empty($search['doctor_id'])) {
+                $reports->where(['Reports.doctor_id' => $search['doctor_id']]);
+            }
+        }
+
+        $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()]);
+
+        $settings = [
+            'order' => ['created' => 'desc'],
+            'limit' => 10,
+        ];
+
+        $reports = $this->paginate($reports, $settings);
+        $getLicenses = $this->Patients->Reports->getLicenses();
+        $getAuditors = $this->Patients->Reports->Users->getDoctors();
+        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors'));
+    }
+
+    /**
      * View method
      *
      * @param string|null $id Patient id.
@@ -115,7 +178,7 @@ class PatientsController extends AppController
     {
         $patient = $this->Patients->get($id, [
             'contain' => [
-                'Reports' => ['doctor', 'Files'],
+                'Reports' => ['doctor', 'Files', 'FilesAuditor'],
                 'Companies',
                 'Cities' => ['Counties' => 'States']],
         ]);
@@ -386,7 +449,7 @@ class PatientsController extends AppController
     {
         try {
             $report = $this->Patients->Reports->get($id, [
-                'contain' => ['Files', 'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']]],
+                'contain' => ['Files', 'FilesAuditor', 'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']]],
             ]);
             if (empty($report)) {
                 throw new RecordNotFoundException('No se encontro el ID.');

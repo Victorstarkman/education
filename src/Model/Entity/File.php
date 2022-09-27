@@ -32,6 +32,7 @@ class File extends Entity
         'type' => true,
         'report_id' => true,
         'report' => true,
+        'reportType' => true,
     ];
 
     public function getUrl()
@@ -41,8 +42,9 @@ class File extends Entity
         $output_full_path = WWW_ROOT . $output_dir;
         $details = [];
         if (str_contains($this->type, 'image') !== false) {
-            $details['path'] = $url . $output_dir . $this->report_id . DS . $this->name;
-            $details['absolutePath'] = $output_full_path  . $this->report_id . DS . $this->name;
+            $nameFile = $this->reportType == 1 ? $this->report_id : $this->report_id . DS . 'auditor';
+            $details['path'] = $url . $output_dir . $nameFile . DS . $this->name;
+            $details['absolutePath'] = $output_full_path  . $nameFile . DS . $this->name;
         } else {
             $details['path'] = $url . $output_dir . pathinfo($this->name, PATHINFO_EXTENSION) . '.jpg';
             $details['absolutePath'] = $output_full_path  .  pathinfo($this->name, PATHINFO_EXTENSION) . '.jpg';
@@ -53,5 +55,12 @@ class File extends Entity
         }
 
         return $details['path'];
+    }
+
+    public function getLink()
+    {
+        $nameFile = $this->reportType == 1 ? $this->report_id : $this->report_id . DS . 'auditor' .  DS . $this->name;
+
+        return DS . 'files' . DS . $nameFile;
     }
 }

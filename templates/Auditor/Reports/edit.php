@@ -4,7 +4,7 @@
     </div>
     <div class="results">
         <div class="container mx-auto row">
-	        <?= $this->Flash->render() ?>
+            <?= $this->Flash->render() ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
                 <div class="message error">Datos de paciente</div>
             </div>
@@ -129,6 +129,8 @@
                 <?= $this->Form->create($report, ['class' => 'col-lg-12 col-md-12 row']) ?>
                     <div class="pt-0 col-lg-12 col-sm-12">
                         <div class="form-group">
+                            <?= $this->Form->control('id', ['label' => 'Resultado',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden']); ?>
                             <?= $this->Form->control('status', ['label' => 'Resultado',
                                 'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione',
                                 'options' => $getStatuses]); ?>
@@ -158,7 +160,11 @@
                                 'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
                         </div>
                     </div>
-                    <div class="mx-auto form-group row col-lg-12 col-md-12">
+                    <div class="col-12">
+                        <p class="title-results">Archivos e imagenes (Máx. 10 Archivos hasta 10MB cada uno)</p>
+                    </div>
+                    <div id="fileuploader" class="col-12">Cargar</div>
+                    <div class="mx-auto form-group row col-lg-12 col-md-12 mt-3">
                         <div class="pl-0 col-12">
                             <button type="submit" id="guardar" class="btn btn-outline-primary col-12" name="guardar">
                                 <i class="far fa-save"></i> Firmar
@@ -168,3 +174,95 @@
                 <?= $this->Form->end() ?>
         </div>
     </div>
+
+
+<?php $this->start('scriptBottom');
+echo $this->Html->css('uploadFiles/styleUploadFile', ['block' => 'script']);
+echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
+    <script>
+
+        $(document).ready(function() {
+            var $reportID = $("#id").val();
+            $("#fileuploader").uploadFile({
+                url: '<?php echo $this->Url->build([
+                    'controller' => 'Files',
+                    'action' => 'addFile', $report->id]); ?>',
+                fileName:"reportFile",
+                showCancel: false,
+                showAbort: false,
+                showFileSize: false,
+                showPreview: true,
+                previewHeight: "100px",
+                headers: { 'X-XSRF-TOKEN' :'<?= $this->request->getAttribute('csrfToken'); ?>'},
+                previewWidth: "100px",
+                formData: {'report_id': $reportID, "_csrfToken": '<?= $this->request->getAttribute('csrfToken'); ?>'},
+                dragDropStr: "<br/><span><b>Arrastra y solta</b></span>",
+                uploadStr: 'Subir',
+                fileCounterStyle: ') ',
+                deleteStr: 'Eliminar',
+                showDelete: true,
+                returnType: 'json',
+                onLoad:function(obj)
+                {
+                    $.ajax({
+                        cache: false,
+                        url: '<?php echo $this->Url->build(['controller' => 'Files','action' => 'viewFiles', $report->id ]); ?>',
+                        dataType: "json",
+                        success: function(data)
+                        {
+                            for(var i=0;i<data.length;i++)
+                            {
+                                obj.createProgress(
+                                    data[i]["name"],
+                                    data[i]["path"],
+                                    data[i]["size"]);
+                            }
+                        }
+                    });
+                },
+                deleteCallback: function (data, pd) {
+                    var name= '';
+                    if (typeof  data === 'string') {
+                        data = $.parseJSON(data);
+                        if (data.name) {
+                            name = data.name;
+                        }
+                    } else if (typeof  data === 'object') {
+                        name = data[0];
+                    } else {
+                        alert('No se pudo borrar. Intente nuevamente');
+                        return;
+                    }
+
+                    if (name !== "") {
+                        $.post('<?php echo $this->Url->build(['controller' => 'Files','action' => 'delete']); ?>', {op: "delete",name: name, "_csrfToken": '<?= $this->request->getAttribute('csrfToken'); ?>'},
+                            function (resp, textStatus, jqXHR) {
+                                alert(resp);
+                            });
+                        pd.statusbar.hide(); //You choice.
+                    }
+                },
+                onSuccess:function(files,data,xhr,pd) {
+                    var getNumber = pd.statusbar[0].innerText.split(')')[0];
+                    if (typeof  data === 'string') {
+                        data = $.parseJSON(data);
+                        if (data.name) {
+                            pd.filename.html(getNumber + ') ' + data.name);
+                        }
+                    }
+                },
+                onError: function(files,status,errMsg,pd)
+                {
+                    //console.log('a');
+                    //files: list of files
+                    //status: error status
+                    //errMsg: error message
+                },
+                afterUploadAll:function(obj)
+                {
+                }
+            });
+
+        })
+    </script>
+<?php $this->end(); ?>

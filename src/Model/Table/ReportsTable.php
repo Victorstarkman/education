@@ -96,6 +96,13 @@ class ReportsTable extends Table
         ]);
         $this->hasMany('Files', [
             'foreignKey' => 'report_id',
+            'conditions' => ['Files.reportType' => 1],
+        ]);
+
+        $this->hasMany('FilesAuditor', [
+	        'className' => 'Files',
+            'foreignKey' => 'report_id',
+            'conditions' => ['FilesAuditor.reportType' => 2],
         ]);
     }
 

@@ -92,6 +92,10 @@ class FilesTable extends Table
     {
 
         $countOfFiles = $this->find()->where(['name' => $filename, 'report_id' => $reportID]);
+        if (!empty($extraParams['reportType'])) {
+            $countOfFiles->where(['reportType' => $extraParams['reportType']]);
+        }
+
         if (!empty($extraParams['exclude_id'])) {
             $countOfFiles->where(['id NOT IN' => $extraParams['exclude_id']]);
         }
