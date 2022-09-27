@@ -324,7 +324,7 @@ class PatientsController extends AppController
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
                         'goTo' => $postData['go_to'] == 2
-                            ? $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
+                            ? DS . $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
                             : $redirectPrefix,
                     ];
                     $this->Flash->success(__('Se genero el paciente exitosamente'));
