@@ -41,7 +41,7 @@
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('email', ['label' => 'Email *',
-                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
