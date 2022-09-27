@@ -6,6 +6,7 @@ namespace App\Controller\RedPrestacional;
 use App\Controller\AppController;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
+use Cake\Routing\Router;
 
 /**
  * Patients Controller
@@ -233,6 +234,7 @@ class PatientsController extends AppController
 
     public function addWithReport(?string $action = 'list')
     {
+
         $postData = $this->request->getData();
         switch ($action) {
             case 'update':
@@ -264,10 +266,11 @@ class PatientsController extends AppController
                     $user = $this->Authentication->getIdentity();
                     $group = $user->groupIdentity;
                     $redirectPrefix = !empty($group) ? $group['redirect'] : '';
+	                $url = Router::url('/', true);
                     $data = [
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
-                        'goTo' => $redirectPrefix,
+                        'goTo' => $url . $redirectPrefix,
                     ];
                     $this->Flash->success(__('Se actualizo el registro exitosamente'));
                 } catch (\Exception $e) {
@@ -320,12 +323,13 @@ class PatientsController extends AppController
                     $user = $this->Authentication->getIdentity();
                     $group = $user->groupIdentity;
                     $redirectPrefix = !empty($group) ? $group['redirect'] : '';
+	                $url = Router::url('/', true);
                     $data = [
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
                         'goTo' => $postData['go_to'] == 2
-                            ? DS . $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
-                            : $redirectPrefix,
+                            ?  $url. $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
+                            : $url . $redirectPrefix,
                     ];
                     $this->Flash->success(__('Se genero el paciente exitosamente'));
                 } catch (\Exception $e) {
