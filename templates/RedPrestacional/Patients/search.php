@@ -66,7 +66,7 @@
             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
     </div>
 </div>
-<?= $this->element('partForm/addCity', ['city' => $patient->city_id]); ?>
+<?= $this->element('partForm/addCity', ['city' => (!empty($patient) && isset($patient->city_id)) ? $patient->city_id : null]); ?>
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group">
         <?= $this->Form->control('job', ['label' => 'Puesto de trabajo',
@@ -128,23 +128,38 @@
         <div class="form-group">
             <?= $this->Form->control('reports[0].comments', ['label' => 'Comentarios',
                 'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
+            <?= $this->Form->control('go_to', ['label' => false,
+	            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden' , 'value' => 1]); ?>
         </div>
     </div>
 </div>
-<div class="mx-auto form-group row col-lg-12 col-md-12">
+<div class="mx-auto form-group row col-lg-6 col-md-12">
+    <div class="pl-0 col-12">
+        <button type="submit" id="guardar_files" class="btn btn-outline-primary col-12" name="files">
+            <i class="fa fa-upload"></i> Subir archivos
+        </button>
+    </div>
+</div>
+<div class="mx-auto form-group row col-lg-6 col-md-12">
     <div class="pl-0 col-12">
         <button type="submit" id="guardar" class="btn btn-outline-primary col-12" name="guardar">
-            <i class="far fa-save"></i> Generar
+            <i class="far fa-save"></i> Finalizar
         </button>
     </div>
 </div>
 <?= $this->Form->end();?>
+
 <?php
 $group = $this->Identity->get('groupIdentity');
 $prefix = !empty($group['prefix']) ? $group['prefix'] : 'default';
 $redirect = !empty($group) ? $group['redirect'] : ''; ?>
 
 <script>
+    $('#guardar_files').on('click', function (e) {
+        e.preventDefault();
+        $('#go-to').val(2);
+        $('#guardar').click();
+    });
     $('#guardar').on('click', function (e) {
         e.preventDefault();
         $.ajax({
@@ -159,7 +174,7 @@ $redirect = !empty($group) ? $group['redirect'] : ''; ?>
                     $('.errors').show();
                     $('.searchAlert').hide();
                 } else {
-                    window.location.href= '<?= $this->Url->build($redirect, ['fullBase' => true]); ?>'
+                    window.location.href = data.goTo;
                 }
             }
         });

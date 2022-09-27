@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Ausentes con diagnostico</h4>
+        <h4>Ausentes sin diagnostico</h4>
     </div>
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
@@ -21,7 +21,7 @@
 
         <?= $this->Flash->render() ?>
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
-        <div class="pt-0 col-lg-2 col-sm-12">
+        <div class="pt-0 col-lg-4 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control('document', [
                         'label' => 'Buscar',
@@ -50,19 +50,6 @@
                         'empty' => 'Licencia',
                         'class' => 'form-control form-control-blue m-0 col-12',
                         'value' => $search['license_type'] ?? '']
-                ); ?>
-            </div>
-        </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
-            <div class="form-group">
-                <?= $this->Form->control(
-                    'status',
-                    [
-                         'options' => $getStatuses,
-                        'label' => 'Estado',
-                        'empty' => 'Estado',
-                        'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['status'] ?? '']
                 ); ?>
             </div>
         </div>
@@ -126,7 +113,9 @@
                     <td><?= $report->created->format('d/m/Y'); ?></td>
                     <td class="actions">
                         <?php if ($report->isWaitingResults()) :
-                            echo $this->Html->link('Edit', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
+                            echo $this->Html->link('Editar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
+                           // echo ' | ';
+                            //echo $this->Html->link('Eliminar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
                         else :
                             echo $this->Html->link('Ver', $redirectPrefix . '/licencias/ver/' . $report->id, ['fullBase' => true]);
                         endif;?>

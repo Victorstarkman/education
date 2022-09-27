@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Routing\Router;
 
 /**
  * File Entity
@@ -31,5 +32,35 @@ class File extends Entity
         'type' => true,
         'report_id' => true,
         'report' => true,
+        'reportType' => true,
     ];
+
+    public function getUrl()
+    {
+        $url = Router::url('/', true);
+        $output_dir =  'files' . DS;
+        $output_full_path = WWW_ROOT . $output_dir;
+        $details = [];
+        if (str_contains($this->type, 'image') !== false) {
+            $nameFile = $this->reportType == 1 ? $this->report_id : $this->report_id . DS . 'auditor';
+            $details['path'] = $url . $output_dir . $nameFile . DS . $this->name;
+            $details['absolutePath'] = $output_full_path  . $nameFile . DS . $this->name;
+        } else {
+            $details['path'] = $url . $output_dir . pathinfo($this->name, PATHINFO_EXTENSION) . '.jpg';
+            $details['absolutePath'] = $output_full_path  .  pathinfo($this->name, PATHINFO_EXTENSION) . '.jpg';
+            if (!file_exists($details['absolutePath'])) {
+                $details['path'] = $url . $output_dir . 'default.jpg';
+                $details['absolutePath'] = $output_full_path  . 'default.jpg';
+            }
+        }
+
+        return $details['path'];
+    }
+
+    public function getLink()
+    {
+        $nameFile = $this->reportType == 1 ? $this->report_id : $this->report_id . DS . 'auditor' .  DS . $this->name;
+
+        return DS . 'files' . DS . $nameFile;
+    }
 }

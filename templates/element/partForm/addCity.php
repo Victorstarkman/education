@@ -1,25 +1,25 @@
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group statesSelect">
         <?= $this->Form->control('state_id', ['label' => 'Provincia',
-            'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione']); ?>
+            'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione', 'required' => true]); ?>
     </div>
 </div>
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group countySelect">
         <?= $this->Form->control('county_id', ['label' => 'Municipio',
-            'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione provincia']); ?>
+            'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione provincia', 'required' => true]); ?>
     </div>
 </div>
 <div class="pt-0 col-lg-4 col-sm-12">
     <div class="form-group citiesSelect">
         <?= $this->Form->control('city_id', ['label' => 'Ciudad',
-            'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione municipio']); ?>
+            'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione municipio', 'required' => true]); ?>
     </div>
 </div>
 
 
 <script>
-    let city = <?= (!is_null($city)) ? $city : 0; ?>,
+    let city = <?= (isset($city) && !is_null($city)) ? $city : 0; ?>,
         dataState;
     searching('states');
     if (city > 0) {

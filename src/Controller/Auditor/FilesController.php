@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller\RedPrestacional;
+namespace App\Controller\Auditor;
 
 use App\Controller\AppController;
 use Cake\Routing\Router;
@@ -26,6 +26,7 @@ class FilesController extends AppController
                 'report_id' => $reportID,
                 'name' => '',
                 'type' => $attachment->getClientMediaType(),
+                'reportType' => 2,
             ];
 
             $path = WWW_ROOT . 'files' . DS;
@@ -37,7 +38,13 @@ class FilesController extends AppController
             if (!file_exists($path) && !is_dir($path)) {
                 mkdir($path);
             }
-            if (!$this->Files->checkDocument($attachment->getClientFilename(), $reportID)) {
+
+            $path .= 'auditor' . DS;
+            if (!file_exists($path) && !is_dir($path)) {
+                mkdir($path);
+            }
+
+            if (!$this->Files->checkDocument($attachment->getClientFilename(), $reportID, ['reportType' => 2])) {
                 try {
                     $this->loadComponent('Uploadfile');
                     $uploadStatus = $this->Uploadfile->upload($attachment, $path);
@@ -82,8 +89,8 @@ class FilesController extends AppController
                 $details = [];
                 $details['name'] =   'ID-' . $file->id . ' (' . pathinfo($file->name, PATHINFO_EXTENSION) . ')<br/>' . $file->name;
                 if ($this->Uploadfile->isImage(pathinfo($file->name, PATHINFO_EXTENSION))) {
-                    $details['path'] =  $url . $output_dir . $file->report_id . DS . $file->name;
-                    $details['absolutePath'] = $output_full_path  . $file->report_id . DS . $file->name;
+                    $details['path'] =  $url . $output_dir . $file->report_id . DS . 'auditor' . DS . $file->name;
+                    $details['absolutePath'] = $output_full_path  . $file->report_id . DS . 'auditor' . DS . $file->name;
                 } else {
                     $details['path'] = $url . $output_dir . pathinfo($file->name, PATHINFO_EXTENSION) . '.jpg';
                     $details['absolutePath'] = $output_full_path  .  pathinfo($file->name, PATHINFO_EXTENSION) . '.jpg';
@@ -122,7 +129,7 @@ class FilesController extends AppController
 
             if ($photoExist) {
                 $output_dir = 'files/';
-                $pathToProperty = WWW_ROOT . $output_dir  . $photo->report_id . DS . $photo->name;
+                $pathToProperty = WWW_ROOT . $output_dir  . $photo->report_id . DS . 'auditor' . DS . $photo->name;
                 if ($this->Files->delete($photo)) {
                     $response = __('La imagen fue eliminada.');
                     unlink($pathToProperty);

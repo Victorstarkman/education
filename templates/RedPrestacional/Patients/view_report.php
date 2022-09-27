@@ -96,6 +96,36 @@
                     </tbody>
                 </table>
             <?php endif; ?>
+	        <?php if (!empty($report->files)) : ?>
+                <div class="col-12 p-0">
+                    <div class="col-12">
+                        <p class="title-results">Archivos cargados</p>
+                    </div>
+                    <div id="table-files-preoccupational-<?= $report->id; ?>" class="col-12 tablaFiles">
+                        <table class="table table-bordered col-12" >
+                            <thead>
+                            <tr>
+                                <th><?= __('Nombre') ?></th>
+                                <th><?= __('Documentos') ?></th>
+                                <th><?= __('Acciones') ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+					        <?php foreach ($report->files as $file) :?>
+                                <tr id="file-<?= $file->id; ?>">
+
+                                    <td><?= h($file->name) ?></td>
+                                    <td><img src="<?= $file->getUrl(); ?>" height="100px"/></td>
+                                    <td>
+								        <?= $this->Html->link(__('Descargar'), DS .  'files' . DS . $report->id . DS . $file->name, ['fullBase' => true, 'class' => 'text-center', 'target' => '_blank']); ?>
+                                    </td>
+                                </tr>
+					        <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+	        <?php endif; ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
                 <div class="message error">Resultado de auditoría</div>
             </div>
@@ -143,6 +173,36 @@
                     </tbody>
                 </table>
             <?php endif; ?>
+	        <?php if (!empty($report->files_auditor)) : ?>
+                <div class="col-12 p-0">
+                    <div class="col-12">
+                        <p class="title-results">Archivos cargados en auditoría</p>
+                    </div>
+                    <div id="table-files-preoccupational-<?= $report->id; ?>" class="col-12 tablaFiles">
+                        <table class="table table-bordered col-12" >
+                            <thead>
+                            <tr>
+                                <th><?= __('Nombre') ?></th>
+                                <th><?= __('Documentos') ?></th>
+                                <th><?= __('Acciones') ?></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+					        <?php foreach ($report->files_auditor as $file) :?>
+                                <tr id="file-<?= $file->id; ?>">
+
+                                    <td><?= h($file->name) ?></td>
+                                    <td><img src="<?= $file->getUrl(); ?>" height="100px"/></td>
+                                    <td>
+								        <?= $this->Html->link(__('Descargar'), $file->getLink(), ['fullBase' => true, 'class' => 'text-center', 'target' => '_blank']); ?>
+                                    </td>
+                                </tr>
+					        <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+	        <?php endif; ?>
             <div class="pl-0 col-12">
                 <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] .
 			        '/paciente/resultado/' . $report->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">

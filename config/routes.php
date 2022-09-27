@@ -30,6 +30,11 @@ return static function (RouteBuilder $routes) {
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
+        $route->connect('/paciente/resultado/{id}/{paciente}', ['controller' => 'reports', 'action' => 'result'])
+            ->setPass(['id'])
+            ->setPatterns([
+                'id' => '[0-9]+',
+            ]);
         $route->fallbacks();
     });
 
@@ -38,6 +43,7 @@ return static function (RouteBuilder $routes) {
         $route->connect('/', ['controller' => 'Patients', 'action' => 'listWithResults']);
         $route->connect('/listado', ['controller' => 'Patients', 'action' => 'index']);
         $route->connect('/listado-resultados', ['controller' => 'Patients', 'action' => 'listWithResults']);
+	    $route->connect('/listado-sin-resultados', ['controller' => 'Patients', 'action' => 'listWithoutResults']);
         $route->connect('/nuevo-ausente', ['controller' => 'Patients', 'action' => 'addWithReport']);
         $route->connect('/nuevo-paciente', ['controller' => 'Patients', 'action' => 'add']);
         $route->connect('/paciente/ver/{id}', ['controller' => 'Patients', 'action' => 'view'])
@@ -57,6 +63,12 @@ return static function (RouteBuilder $routes) {
             ]);
 
         $route->connect('/licencias/ver/{id}', ['controller' => 'Patients', 'action' => 'viewReport'])
+            ->setPass(['id'])
+            ->setPatterns([
+                'id' => '[0-9]+',
+            ]);
+
+        $route->connect('/licencias/editar/{id}', ['controller' => 'Patients', 'action' => 'editReport'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',
