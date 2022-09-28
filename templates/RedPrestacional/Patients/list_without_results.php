@@ -35,7 +35,7 @@
                 <?= $this->Form->control('doctor_id', [
                         'label' => 'Auditor',
                     'options' => $getAuditors,
-	                'empty' => 'Auditor',
+                    'empty' => 'Auditor',
                     'class' => 'form-control form-control-blue m-0 col-12',
                     'value' => $search['doctor_id'] ?? '']); ?>
             </div>
@@ -114,8 +114,19 @@
                     <td class="actions">
                         <?php if ($report->isWaitingResults()) :
                             echo $this->Html->link('Editar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
-                           // echo ' | ';
-                            //echo $this->Html->link('Eliminar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
+                            echo ' | ';
+                            echo $this->Form->postLink(
+                                __('Eliminar'),
+                                [
+                                    'controller' => 'Patients',
+                                    'action' => 'deleteReport', $report->id],
+                                [
+                                    'confirm' => __(
+                                        'Estas seguro que queres eliminar la licencia # {0}?',
+                                        $report->id
+                                    ),
+                                ]
+                            );
                         else :
                             echo $this->Html->link('Ver', $redirectPrefix . '/licencias/ver/' . $report->id, ['fullBase' => true]);
                         endif;?>
