@@ -266,7 +266,7 @@ class PatientsController extends AppController
                     $user = $this->Authentication->getIdentity();
                     $group = $user->groupIdentity;
                     $redirectPrefix = !empty($group) ? $group['redirect'] : '';
-	                $url = Router::url('/', true);
+                    $url = Router::url('/', true);
                     $data = [
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
@@ -323,12 +323,12 @@ class PatientsController extends AppController
                     $user = $this->Authentication->getIdentity();
                     $group = $user->groupIdentity;
                     $redirectPrefix = !empty($group) ? $group['redirect'] : '';
-	                $url = Router::url('/', true);
+                    $url = Router::url('/', true);
                     $data = [
                         'error' => false,
                         'message' => 'Se genero el paciente exitosamente.',
                         'goTo' => $postData['go_to'] == 2
-                            ?  $url. $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
+                            ?  $url . $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
                             : $url . $redirectPrefix,
                     ];
                     $this->Flash->success(__('Se genero el paciente exitosamente'));
@@ -505,5 +505,22 @@ class PatientsController extends AppController
         $licenses = $this->Patients->Reports->getLicenses();
         $companies = $this->Patients->Companies->getCompanies();
         $this->set(compact('report', 'doctors', 'licenses', 'companies'));
+    }
+
+    public function deleteReport($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $report = $this->Patients->Reports->get($id);
+        if (in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
+            if ($this->Patients->Reports->delete($report)) {
+                $this->Flash->success(__('El reporte se elimino.'));
+            } else {
+                $this->Flash->error(__('El reporte no pudo ser eliminado, intente nuevamente.'));
+            }
+        } else {
+            $this->Flash->error(__('No se puede eliminar ausentes con diagnostico.'));
+        }
+
+        return $this->redirect(['action' => 'listWithoutResults']);
     }
 }
