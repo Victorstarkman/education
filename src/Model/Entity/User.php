@@ -43,6 +43,7 @@ class User extends Entity
         'email' => true,
         'password' => true,
         'license' => true,
+        'licenseNational' => true,
         'phone' => true,
         'document' => true,
         'area' => true,
