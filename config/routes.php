@@ -51,7 +51,7 @@ return static function (RouteBuilder $routes) {
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
-        $route->connect('/paciente/editar/{id}', ['controller' => 'Patients', 'action' => 'edit'])
+        $route->connect('/paciente/editar/{id}', ['controller' => 'Patients', 'asction' => 'edit'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',
@@ -90,7 +90,7 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/buscar/municipios', ['controller' => 'search', 'action' => 'counties']);
         $builder->connect('/buscar/ciudades', ['controller' => 'search', 'action' => 'cities']);
         $builder->connect('/buscar/ciudades-por-id', ['controller' => 'search', 'action' => 'citiesById']);
-
+	    $builder->connect('/manual/*', 'Pages::manual');
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */
