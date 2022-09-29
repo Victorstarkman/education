@@ -31,6 +31,13 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+	public function beforeFilter(\Cake\Event\EventInterface $event)
+	{
+		parent::beforeFilter($event);
+		$this->Authentication->addUnauthenticatedActions(['manual']);
+	}
+
     /**
      * Displays a view
      *
@@ -70,4 +77,8 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+	public function manual(){
+
+	}
 }
