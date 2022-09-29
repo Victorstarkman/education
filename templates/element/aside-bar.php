@@ -29,9 +29,8 @@
                     <div class="card-body">
                         <ul class="sub-menu">
                             <li><a href="<?= $this->Url->build('/manual#general',['fullBase'=>true])?>" class="btn btn-link" >General</a></li>
-                            <li><a href="<?= $this->Url->build('/manual#admin',['fullBase'=>true])?>" class="btn btn-link" >Administraci&oacute;n</a></li>
-                            <li><a href="<?= $this->Url->build('/manual#centro_medico',['fullBase'=>true])?>" class="btn btn-link" >C.M&eacute;dico</a></li>
-                            <li><a href="<?= $this->Url->build('/manual#policia',['fullBase'=>true])?>" class="btn btn-link" >Polic&iacute;a</a></li>
+                            <li><a href="<?= $this->Url->build('/manual#red',['fullBase'=>true])?>" class="btn btn-link" >Red Prestacional&oacute</a></li>
+                            <li><a href="<?= $this->Url->build('/manual#medico',['fullBase'=>true])?>" class="btn btn-link" >M&eacute;dico Auditor</a></li>
                         </ul>
                     </div>
                 </div>
