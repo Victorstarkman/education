@@ -22,7 +22,7 @@
                     'value' => $search['document'] ?? '']); ?>
             </div>
         </div>
-        <div class="pt-0 col-lg-3 col-sm-12">
+        <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
                     'license_type',
@@ -38,6 +38,19 @@
         <div class="pt-0 col-lg-3 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
+                    'company_id',
+                    [
+                        'options' => $companies,
+                        'label' => 'Empresa',
+                        'empty' => 'Todas',
+                        'class' => 'form-control form-control-blue m-0 col-12',
+                        'value' => $search['company_id'] ?? '']
+                ); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-2 col-sm-12">
+            <div class="form-group">
+                <?= $this->Form->control(
                     'start_date',
                     [
                         'label' => 'Creada desde',
@@ -47,7 +60,7 @@
                 ); ?>
             </div>
         </div>
-        <div class="pt-0 col-lg-3 col-sm-12">
+        <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
                     'end_date',

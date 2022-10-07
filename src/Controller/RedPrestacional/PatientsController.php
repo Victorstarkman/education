@@ -51,17 +51,32 @@ class PatientsController extends AppController
         $reports = $this->Patients->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
+            $patientsWhere = [];
+            $errorPatient = '';
             if (!empty($search['document'])) {
                 $coincide = preg_match('/@/', $search['document']);
-                $patients = $this->Patients->find();
-                if ($coincide > 0) {
-                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
-                } else {
-                    $patients->where(['document' => $search['document']]);
-                }
 
+                if ($coincide > 0) {
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
+                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                } else {
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
+                    $patientsWhere['document'] = $search['document'];
+                }
+            }
+            if (!empty($search['company_id'])) {
+                if (empty($errorPatient)) {
+                    $errorPatient = 'No se encontraron personas en la empresa indicada.';
+                } else {
+                    $errorPatient .= ' en la empresa indicada';
+                }
+                $patientsWhere['company_id'] = $search['company_id'];
+            }
+
+            if (!empty($patientsWhere)) {
+                $patients = $this->Patients->find()->where($patientsWhere);
                 if ($patients->all()->isEmpty()) {
-                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                    $this->Flash->error($errorPatient);
                 } else {
                     $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
                 }
@@ -102,7 +117,8 @@ class PatientsController extends AppController
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getStatuses = $this->Patients->Reports->getStatusForDoctor();
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors'));
+        $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
     }
 
     /**
@@ -122,17 +138,32 @@ class PatientsController extends AppController
         $reports = $this->Patients->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
+            $patientsWhere = [];
+            $errorPatient = '';
             if (!empty($search['document'])) {
                 $coincide = preg_match('/@/', $search['document']);
-                $patients = $this->Patients->find();
-                if ($coincide > 0) {
-                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
-                } else {
-                    $patients->where(['document' => $search['document']]);
-                }
 
+                if ($coincide > 0) {
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
+                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                } else {
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
+                    $patientsWhere['document'] = $search['document'];
+                }
+            }
+            if (!empty($search['company_id'])) {
+                if (empty($errorPatient)) {
+                    $errorPatient = 'No se encontraron personas en la empresa indicada.';
+                } else {
+                    $errorPatient .= ' en la empresa indicada';
+                }
+                $patientsWhere['company_id'] = $search['company_id'];
+            }
+
+            if (!empty($patientsWhere)) {
+                $patients = $this->Patients->find()->where($patientsWhere);
                 if ($patients->all()->isEmpty()) {
-                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                    $this->Flash->error($errorPatient);
                 } else {
                     $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
                 }
@@ -165,7 +196,8 @@ class PatientsController extends AppController
         $reports = $this->paginate($reports, $settings);
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
-        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors'));
+        $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
+        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies'));
     }
 
     /**
@@ -494,7 +526,7 @@ class PatientsController extends AppController
                     'FilesAuditor',
                     'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']],
                     'Modes',
-                    'Privatedoctors'
+                    'Privatedoctors',
                 ],
             ]);
             if (empty($report)) {
