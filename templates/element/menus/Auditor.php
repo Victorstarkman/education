@@ -3,7 +3,7 @@
         <h2 class="mb-0">
             <button class="btn btn-link  btn-principal" type="button" data-toggle="collapse" data-target="#collapsePacientes" aria-expanded="true" aria-controls="collapsePacientes">
                 <i class="far fa-user"></i>
-                Red Prestacional
+                Auditor
             </button>
         </h2>
     </div>

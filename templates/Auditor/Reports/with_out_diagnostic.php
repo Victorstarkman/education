@@ -92,7 +92,7 @@
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('age', 'Edad') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('pathology', 'Patologia') ?></th>
+                <th><?= $this->Paginator->sort('area', 'Area medica') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -105,7 +105,7 @@
                     <td><?= h($report->patient->lastname) ?></td>
                     <td><?= $this->Number->format($report->patient->age) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
-                    <td><?= $report->pathology; ?></td>
+                    <td><?= $report->area; ?></td>
                     <td><?= $report->askedDays; ?></td>
                     <td class="actions">
                         <?= $this->Html->link('Diagnosticar', $redirectPrefix . '/licencias/diagnosticar/' . $report->id, ['fullBase' => true]); ?>
