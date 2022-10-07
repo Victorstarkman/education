@@ -9,7 +9,7 @@
         <h4>Todos los diagnosticos</h4>
     </div>
     <div class="results">
-        <p class="title-results">Pacientes</p>
+        <p class="title-results">Agentes</p>
 
         <?= $this->Flash->render() ?>
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
@@ -60,6 +60,19 @@
         </div>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
+			    <?= $this->Form->control(
+				    'company_id',
+				    [
+					    'options' => $companies,
+					    'label' => 'Empresa',
+					    'empty' => 'Todas',
+					    'class' => 'form-control form-control-blue m-0 col-12',
+					    'value' => $search['company_id'] ?? '']
+			    ); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-2 col-sm-12">
+            <div class="form-group">
                 <?= $this->Form->control(
                     'start_date',
                     [
@@ -67,18 +80,6 @@
                         'type' => 'date',
                         'class' => 'form-control form-control-blue m-0 col-12',
                         'value' => $search['start_date'] ?? '']
-                ); ?>
-            </div>
-        </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
-            <div class="form-group">
-                <?= $this->Form->control(
-                    'end_date',
-                    [
-                        'label' => 'Creada hasta',
-                        'type' => 'date',
-                        'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['end_date'] ?? '']
                 ); ?>
             </div>
         </div>

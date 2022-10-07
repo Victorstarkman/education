@@ -138,7 +138,7 @@ declare(strict_types=1);
     <div class="resultThirdLine all">
         <p style="word-break: break-word;">
             <?php
-            if (!is_null($dataToShow->startLicense)) : ?>
+            if (is_null($dataToShow->startLicense)) : ?>
                 <span style="margin-left: 660px;">-</span>
                 <span style="margin-left: 15px;">-</span>
                 <span style="margin-left: 12px;">-</span>

@@ -1,12 +1,12 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Diagnosticar a Paciente</h4>
+        <h4>Diagnostico del agente</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
 	        <?= $this->Flash->render() ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
-                <div class="message error">Datos de paciente</div>
+                <div class="message error">Datos del agente</div>
             </div>
             <table class="table table-bordered">
                 <thead>
@@ -64,18 +64,32 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Patologia')?></th>
+                    <th><?= __('Modalidad')?></th>
+                    <th><?= __('Area medica')?></th>
                     <th><?= __('Fecha de inicio') ?></th>
                     <th><?= __('Tipo de licencia') ?></th>
-                    <th><?= __('Días solicitados') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->pathology) ?></td>
+                    <td><?= h($report->mode->name) ?></td>
+                    <td><?= h($report->area) ?></td>
                     <td><?= h($report->startPathology) ?></td>
-                    <td><?= h($report->getNameLicense()) ?></td>
+                    <td><?= $report->getNameLicense() ?></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th><?= __('Días solicitados') ?></th>
+                    <th><?= __('Medico privado') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
                     <td><?= h($report->askedDays) ?></td>
+                    <td><?= $report->privateDoctor() ?></td>
                 </tr>
                 </tbody>
             </table>
@@ -129,16 +143,18 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
+                    <th><?= __('Patologia')?></th>
                     <th><?= __('Resultado')?></th>
-                    <th><?= __('Cantidad de días aconsejados') ?></th>
+                    <th><?= __('Duración') ?></th>
                     <th><?= __('Desde') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->getNameStatus()) ?></td>
+                    <td><?= h($report->pathology) ?></td>
+                    <td><?= $report->getNameStatus(); ?></td>
                     <td><?= h($report->recommendedDays) ?></td>
-                    <td><?= h($report->startLicense) ?></td>
+                    <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense; ?></td>
                 </tr>
                 </tbody>
             </table>
@@ -202,7 +218,7 @@
 	        <?php endif; ?>
             <div class="pl-0 col-12">
                 <a href="<?= $this->Url->build(  $this->Identity->get('groupIdentity')['redirect'] .
-			        '/paciente/resultado/' . $report->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
+			        '/agente/resultado/' . $report->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
                     <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
             </div>
         </div>

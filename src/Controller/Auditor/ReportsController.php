@@ -31,17 +31,32 @@ class ReportsController extends AppController
         $reports = $this->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
+            $patientsWhere = [];
+            $errorPatient = '';
             if (!empty($search['document'])) {
                 $coincide = preg_match('/@/', $search['document']);
-                $patients = $this->Reports->Patients->find();
-                if ($coincide > 0) {
-                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
-                } else {
-                    $patients->where(['document' => $search['document']]);
-                }
 
+                if ($coincide > 0) {
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
+                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                } else {
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
+                    $patientsWhere['document'] = $search['document'];
+                }
+            }
+            if (!empty($search['company_id'])) {
+                if (empty($errorPatient)) {
+                    $errorPatient = 'No se encontraron personas en la empresa indicada.';
+                } else {
+                    $errorPatient .= ' en la empresa indicada';
+                }
+                $patientsWhere['company_id'] = $search['company_id'];
+            }
+
+            if (!empty($patientsWhere)) {
+                $patients = $this->Reports->Patients->find()->where($patientsWhere);
                 if ($patients->all()->isEmpty()) {
-                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                    $this->Flash->error($errorPatient);
                 } else {
                     $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
                 }
@@ -78,7 +93,9 @@ class ReportsController extends AppController
         $getLicenses = $this->Reports->getLicenses();
         $getStatuses = $this->Reports->getAllStatuses();
         $getAuditors = $this->Reports->Users->getDoctors();
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors'));
+        $companies = $this->Reports->Patients->Companies->find()->all()->combine('id', 'name');
+
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
     }
 
     /**
@@ -99,17 +116,32 @@ class ReportsController extends AppController
         $reports = $this->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
+            $patientsWhere = [];
+            $errorPatient = '';
             if (!empty($search['document'])) {
                 $coincide = preg_match('/@/', $search['document']);
-                $patients = $this->Reports->Patients->find();
-                if ($coincide > 0) {
-                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
-                } else {
-                    $patients->where(['document' => $search['document']]);
-                }
 
+                if ($coincide > 0) {
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
+                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                } else {
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
+                    $patientsWhere['document'] = $search['document'];
+                }
+            }
+            if (!empty($search['company_id'])) {
+                if (empty($errorPatient)) {
+                    $errorPatient = 'No se encontraron personas en la empresa indicada.';
+                } else {
+                    $errorPatient .= ' en la empresa indicada';
+                }
+                $patientsWhere['company_id'] = $search['company_id'];
+            }
+
+            if (!empty($patientsWhere)) {
+                $patients = $this->Reports->Patients->find()->where($patientsWhere);
                 if ($patients->all()->isEmpty()) {
-                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                    $this->Flash->error($errorPatient);
                 } else {
                     $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
                 }
@@ -141,7 +173,9 @@ class ReportsController extends AppController
         $getLicenses = $this->Reports->getLicenses();
         $getStatuses = $this->Reports->getAllStatuses();
         $getAuditors = $this->Reports->Users->getDoctors();
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors'));
+        $companies = $this->Reports->Patients->Companies->find()->all()->combine('id', 'name');
+
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
     }
 
     public function edit($id)
@@ -162,7 +196,7 @@ class ReportsController extends AppController
             }
 
             if (!in_array($report->status, $this->Reports->getActiveStatuses())) {
-                throw new UnauthorizedException('El paciente ya se encuentra diagnosticado');
+                throw new UnauthorizedException('El agente ya se encuentra diagnosticado');
             }
 
             if ($this->request->is(['patch', 'post', 'put'])) {
@@ -172,33 +206,40 @@ class ReportsController extends AppController
                     $errors = 'El estado es incorrecto.';
                 }
 
-                if (empty($data['recommendedDays']) || $data['recommendedDays'] <= 0) {
-                    $errors .= '</br>Los días recomendados deben ser mayor a 0.';
-                }
+                if (in_array($data['status'], $this->Reports->getDeniedStatus())) {
+                    $data['recommendedDays'] = 0;
+                    $data['startLicense'] = null;
+                    $data['cie10'] = null;
+                } else {
+                    if (empty($data['recommendedDays']) || $data['recommendedDays'] <= 0) {
+                        $errors .= '</br>Los días recomendados deben ser mayor a 0.';
+                    }
 
-                if (
-                    empty($data['startLicense'])
-                    || strtotime($data['startLicense']) < strtotime('-1 days')
-                ) {
-                    $errors .= '</br>La fecha de inicio no puede ser menor a ayer.';
-                }
+                    if (
+                        empty($data['startLicense'])
+                        || strtotime($data['startLicense']) < strtotime('-1 days')
+                    ) {
+                        $errors .= '</br>La fecha de inicio no puede ser menor a ayer.';
+                    }
 
-                if (empty($data['cie10'])) {
-                    $errors .= '</br>El diagnóstico CIE 10 no puede estar vacio.';
+                    if (empty($data['cie10'])) {
+                        $errors .= '</br>El diagnóstico CIE 10 no puede estar vacio.';
+                    }
                 }
 
                 if (!empty($errors)) {
                     throw new \Exception($errors);
                 }
 
-                $dataToSave = [
-                    'status' => $data['status'],
-                    'recommendedDays' => $data['recommendedDays'],
-                    'startLicense' => $data['startLicense'],
-                    'cie10' => $data['cie10'],
-                    'observations' => $data['observations'],
-                ];
-                $report = $this->Reports->patchEntity($report, $dataToSave);
+                $report = $this->Reports->patchEntity(
+                    $report,
+                    $data,
+                    ['associated' =>
+                        [
+                            'Patients',
+                        ],
+                    ]
+                );
                 if ($this->Reports->save($report)) {
                     $this->Flash->success(__('El diagnostico fue guardado correctamente.'));
 
@@ -216,14 +257,50 @@ class ReportsController extends AppController
             }
         }
         $getStatuses = $this->Reports->getStatusForDoctor();
-        $this->set(compact('report', 'getStatuses'));
+        $doctors = $this->Reports->Users->getDoctors();
+        $licenses = $this->Reports->getLicenses();
+        $companies = $this->Reports->Patients->Companies->getCompanies();
+        $privateDoctors = $this->Reports->Privatedoctors->find()->all()->combine('id', function ($entity) {
+            return $entity->name . ' ' . $entity->lastname
+                . ' (M.P: ' . $entity->license
+                . ' - M.N:' . $entity->licenseNational . ')';
+        });
+        $clinicalHistory = $this->Reports->find()
+            ->where([
+                'Reports.patient_id' => $report->patient_id,
+                'Reports.id IS NOT' => $report->id,
+            ])
+            ->contain([
+                'Files',
+                'FilesAuditor',
+                'Modes',
+                'Privatedoctors',
+            ]);
+        $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
+
+        $this->set(compact(
+            'report',
+            'getStatuses',
+            'doctors',
+            'licenses',
+            'companies',
+            'modes',
+            'privateDoctors',
+            'clinicalHistory'
+        ));
     }
 
     public function view($id)
     {
         try {
             $report = $this->Reports->get($id, [
-                'contain' => ['Patients' => 'Companies', 'Files', 'FilesAuditor'],
+                'contain' => [
+                    'Patients' => 'Companies',
+                    'Files',
+                    'FilesAuditor',
+                    'Modes',
+                    'Privatedoctors',
+                ],
             ]);
             if (empty($report)) {
                 throw new RecordNotFoundException('No se encontro el ID.');
@@ -233,7 +310,7 @@ class ReportsController extends AppController
                 in_array($report->status, $this->Reports->getActiveStatuses())
                 && $report->doctor_id == $this->Authentication->getIdentity()->id
             ) {
-                throw new UnauthorizedException('El paciente no se encuentra diagnosticado');
+                throw new UnauthorizedException('El agente no se encuentra diagnosticado');
             }
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage(), ['escape' => false]);

@@ -14,7 +14,7 @@
                 <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
             </div>
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
             </div>
         </div>
         <p class="title-results">Ausentes</p>
@@ -55,6 +55,19 @@
         </div>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
+			    <?= $this->Form->control(
+				    'company_id',
+				    [
+					    'options' => $companies,
+					    'label' => 'Empresa',
+					    'empty' => 'Todas',
+					    'class' => 'form-control form-control-blue m-0 col-12',
+					    'value' => $search['company_id'] ?? '']
+			    ); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-2 col-sm-12">
+            <div class="form-group">
                 <?= $this->Form->control(
                     'status',
                     [
@@ -75,18 +88,6 @@
                         'type' => 'date',
                         'class' => 'form-control form-control-blue m-0 col-12',
                         'value' => $search['start_date'] ?? '']
-                ); ?>
-            </div>
-        </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
-            <div class="form-group">
-                <?= $this->Form->control(
-                    'end_date',
-                    [
-                        'label' => 'Creada hasta',
-                        'type' => 'date',
-                        'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['end_date'] ?? '']
                 ); ?>
             </div>
         </div>

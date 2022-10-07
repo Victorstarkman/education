@@ -70,7 +70,7 @@
 						<h2>M&eacute;dico Auditor</h2>
 					</header>
 					<p>
-						Al entrar con el mail y la contrase&ntilde;a del auditor se obtiene la pagina de lista de pacientes sin diagnosticar.
+						Al entrar con el mail y la contrase&ntilde;a del auditor se obtiene la pagina de lista de agentes sin diagnosticar.
 					</p>
 					<div class="row">
 						<div class="col-4">

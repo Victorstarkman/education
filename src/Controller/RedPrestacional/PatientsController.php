@@ -51,17 +51,32 @@ class PatientsController extends AppController
         $reports = $this->Patients->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
+            $patientsWhere = [];
+            $errorPatient = '';
             if (!empty($search['document'])) {
                 $coincide = preg_match('/@/', $search['document']);
-                $patients = $this->Patients->find();
-                if ($coincide > 0) {
-                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
-                } else {
-                    $patients->where(['document' => $search['document']]);
-                }
 
+                if ($coincide > 0) {
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
+                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                } else {
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
+                    $patientsWhere['document'] = $search['document'];
+                }
+            }
+            if (!empty($search['company_id'])) {
+                if (empty($errorPatient)) {
+                    $errorPatient = 'No se encontraron personas en la empresa indicada.';
+                } else {
+                    $errorPatient .= ' en la empresa indicada';
+                }
+                $patientsWhere['company_id'] = $search['company_id'];
+            }
+
+            if (!empty($patientsWhere)) {
+                $patients = $this->Patients->find()->where($patientsWhere);
                 if ($patients->all()->isEmpty()) {
-                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                    $this->Flash->error($errorPatient);
                 } else {
                     $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
                 }
@@ -102,7 +117,8 @@ class PatientsController extends AppController
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getStatuses = $this->Patients->Reports->getStatusForDoctor();
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors'));
+        $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
     }
 
     /**
@@ -122,17 +138,32 @@ class PatientsController extends AppController
         $reports = $this->Patients->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
+            $patientsWhere = [];
+            $errorPatient = '';
             if (!empty($search['document'])) {
                 $coincide = preg_match('/@/', $search['document']);
-                $patients = $this->Patients->find();
-                if ($coincide > 0) {
-                    $patients->where(['email LIKE' => '%' . $search['document'] . '%']);
-                } else {
-                    $patients->where(['document' => $search['document']]);
-                }
 
+                if ($coincide > 0) {
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
+                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                } else {
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
+                    $patientsWhere['document'] = $search['document'];
+                }
+            }
+            if (!empty($search['company_id'])) {
+                if (empty($errorPatient)) {
+                    $errorPatient = 'No se encontraron personas en la empresa indicada.';
+                } else {
+                    $errorPatient .= ' en la empresa indicada';
+                }
+                $patientsWhere['company_id'] = $search['company_id'];
+            }
+
+            if (!empty($patientsWhere)) {
+                $patients = $this->Patients->find()->where($patientsWhere);
                 if ($patients->all()->isEmpty()) {
-                    $this->Flash->error(__('No se encontro ninguna persona con cuil o email: ') . $search['document']);
+                    $this->Flash->error($errorPatient);
                 } else {
                     $reports->where(['patient_id IN' => $patients->all()->extract('id')->toArray()]);
                 }
@@ -165,7 +196,8 @@ class PatientsController extends AppController
         $reports = $this->paginate($reports, $settings);
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
-        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors'));
+        $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
+        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies'));
     }
 
     /**
@@ -179,7 +211,7 @@ class PatientsController extends AppController
     {
         $patient = $this->Patients->get($id, [
             'contain' => [
-                'Reports' => ['doctor', 'Files', 'FilesAuditor'],
+                'Reports' => ['doctor', 'Files', 'FilesAuditor', 'Modes', 'Privatedoctors'],
                 'Companies',
                 'Cities' => ['Counties' => 'States']],
         ]);
@@ -210,10 +242,10 @@ class PatientsController extends AppController
                 }
                 $patient = $this->Patients->patchEntity($patient, $postData);
                 if (!$this->Patients->save($patient)) {
-                    throw new \Exception('Error al generar el paciente.');
+                    throw new \Exception('Error al generar el agente.');
                 }
 
-                $this->Flash->success(__('Se genero el paciente exitosamente'));
+                $this->Flash->success(__('Se genero el agente exitosamente'));
 
                 return $this->redirect(['action' => 'index']);
             } catch (\Exception $e) {
@@ -235,7 +267,6 @@ class PatientsController extends AppController
     public function addWithReport(?string $action = 'list')
     {
 
-        $postData = $this->request->getData();
         switch ($action) {
             case 'update':
                 $data = ['error' => false];
@@ -260,7 +291,7 @@ class PatientsController extends AppController
                     );
 
                     if (!$this->Patients->Reports->save($reportEntity)) {
-                        throw new \Exception('Error al generar el paciente.');
+                        throw new \Exception('Error al generar el agente.');
                     }
 
                     $user = $this->Authentication->getIdentity();
@@ -269,7 +300,7 @@ class PatientsController extends AppController
                     $url = Router::url('/', true);
                     $data = [
                         'error' => false,
-                        'message' => 'Se genero el paciente exitosamente.',
+                        'message' => 'Se genero el agente exitosamente.',
                         'goTo' => $url . $redirectPrefix,
                     ];
                     $this->Flash->success(__('Se actualizo el registro exitosamente'));
@@ -307,6 +338,43 @@ class PatientsController extends AppController
                     } elseif ($postData['type'] == 'new') {
                         throw new \Exception('Ya existe una persona con ese DNI o Email.');
                     }
+
+                    if (
+                        empty($postData['personalDoctorName'])
+                        || empty($postData['personalDoctorLastname'])
+                        || empty($postData['personalDoctorMP'])
+                        || empty($postData['personalDoctorMN'])
+                    ) {
+                        throw new \Exception('Falta informacion del Medico Particular.');
+                    }
+
+                    $privateDoctors = $this->Patients->Reports->Privatedoctors->find('all')
+                        ->where(['OR' => [
+                            ['license' => $postData['personalDoctorMP']],
+                            ['licenseNational' => $postData['personalDoctorMN']],
+                        ]])
+                        ->first();
+                    if (!empty($privateDoctors)) {
+                        $privateDoctorsEntity = $this->Patients->Reports->Privatedoctors->get($privateDoctors->id);
+                    } else {
+                        $privateDoctorsEntity = $this->Patients->Reports->Privatedoctors->newEmptyEntity([]);
+                    }
+
+                    $doctorData = [
+                        'name' => $postData['personalDoctorName'],
+                        'lastname' => $postData['personalDoctorLastname'],
+                        'license' => $postData['personalDoctorMP'],
+                        'licenseNational' => $postData['personalDoctorMN'],
+                    ];
+                    $privateDoctorsEntity = $this->Patients->Reports->Privatedoctors->patchEntity(
+                        $privateDoctorsEntity,
+                        $doctorData,
+                    );
+
+                    if ($this->Patients->Reports->Privatedoctors->save($privateDoctorsEntity)) {
+                        $postData['reports'][0]['privatedoctor_id'] = $privateDoctorsEntity->id;
+                    }
+
                     $postData['reports'][0]['user_id'] = $this->Authentication->getIdentity()->id;
 
                     $patientEntity = $this->Patients->patchEntity(
@@ -314,9 +382,8 @@ class PatientsController extends AppController
                         $postData,
                         ['associated' => ['Reports']]
                     );
-
                     if (!$this->Patients->save($patientEntity)) {
-                        throw new \Exception('Error al generar el paciente.');
+                        throw new \Exception('Error al generar el agente.');
                     }
                     $this->loadComponent('Messenger');
                     $this->Messenger->setToAuditor($patientEntity);
@@ -326,12 +393,12 @@ class PatientsController extends AppController
                     $url = Router::url('/', true);
                     $data = [
                         'error' => false,
-                        'message' => 'Se genero el paciente exitosamente.',
+                        'message' => 'Se genero el agente exitosamente.',
                         'goTo' => $postData['go_to'] == 2
                             ?  $url . $redirectPrefix . 'licencias/editar/' .  $patientEntity->reports[0]->id
                             : $url . $redirectPrefix,
                     ];
-                    $this->Flash->success(__('Se genero el paciente exitosamente'));
+                    $this->Flash->success(__('Se genero el agente exitosamente'));
                 } catch (\Exception $e) {
                     $data = [
                         'error' => true,
@@ -414,8 +481,9 @@ class PatientsController extends AppController
 
         $doctors = $this->Patients->Reports->Users->getDoctors();
         $licenses = $this->Patients->Reports->getLicenses();
+        $modes = $this->Patients->Reports->Modes->find()->all()->combine('id', 'name');
         $companies = $this->Patients->Companies->getCompanies();
-        $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies'));
+        $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies', 'modes'));
     }
 
     public function result($id)
@@ -453,14 +521,20 @@ class PatientsController extends AppController
     {
         try {
             $report = $this->Patients->Reports->get($id, [
-                'contain' => ['Files', 'FilesAuditor', 'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']]],
+                'contain' => [
+                    'Files',
+                    'FilesAuditor',
+                    'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']],
+                    'Modes',
+                    'Privatedoctors',
+                ],
             ]);
             if (empty($report)) {
                 throw new RecordNotFoundException('No se encontro el ID.');
             }
 
             if (in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
-                throw new UnauthorizedException('El paciente no se encuentra diagnosticado');
+                throw new UnauthorizedException('El agente no se encuentra diagnosticado');
             }
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage(), ['escape' => false]);
@@ -479,6 +553,7 @@ class PatientsController extends AppController
         try {
             $report = $this->Patients->Reports->get($id, [
                 'contain' => [
+                    'Privatedoctors',
                     'Patients' => [
                         'Companies',
                         'Cities' => [
@@ -491,7 +566,7 @@ class PatientsController extends AppController
             }
 
             if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
-                throw new UnauthorizedException('El paciente se encuentra diagnosticado');
+                throw new UnauthorizedException('El agente se encuentra diagnosticado');
             }
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage(), ['escape' => false]);
@@ -501,10 +576,17 @@ class PatientsController extends AppController
                 return $this->redirect(['action' => 'viewReport', $id]);
             }
         }
+
         $doctors = $this->Patients->Reports->Users->getDoctors();
+        $privateDoctors = $this->Patients->Reports->Privatedoctors->find()->all()->combine('id', function ($entity) {
+
+            return $entity->name . ' ' .  $entity->lastname . ' (M.P: ' . $entity->license . ' - M.N:' . $entity->licenseNational . ')';
+        });
         $licenses = $this->Patients->Reports->getLicenses();
         $companies = $this->Patients->Companies->getCompanies();
-        $this->set(compact('report', 'doctors', 'licenses', 'companies'));
+        $modes = $this->Patients->Reports->Modes->find()->all()->combine('id', 'name');
+
+        $this->set(compact('report', 'doctors', 'licenses', 'companies', 'modes', 'privateDoctors'));
     }
 
     public function deleteReport($id = null)
