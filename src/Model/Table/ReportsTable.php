@@ -55,7 +55,7 @@ class ReportsTable extends Table
             'name' => 'Esperando resultados',
         ],
         self::NRLL => [
-            'name' => 'NRLL',
+            'name' => 'NRLL/AUSENTE',
         ],
         self::DENIED => [
             'name' => 'DENEGADA',
