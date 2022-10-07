@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Lista de pacientes</h4>
+        <h4>Lista de Agentes</h4>
     </div>
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
@@ -14,10 +14,10 @@
                 <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
             </div>
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
             </div>
         </div>
-        <p class="title-results">Pacientes</p>
+        <p class="title-results">Agentes</p>
 
         <?= $this->Flash->render() ?>
         <table class="table table-bordered" id="tabla_actualizaciones">
@@ -48,13 +48,13 @@
                     <td class="actions">
                         <?= $this->Html->link(
                             'Ver',
-                            $redirectPrefix . '/paciente/ver/' . $patient->id,
+                            $redirectPrefix . '/agente/ver/' . $patient->id,
                             ['fullBase' => true]
                         ); ?>
                         |
                         <?= $this->Html->link(
                             'Editar',
-                            $redirectPrefix . '/paciente/editar/' . $patient->id,
+                            $redirectPrefix . '/agente/editar/' . $patient->id,
                             ['fullBase' => true]
                         ); ?>
                         |

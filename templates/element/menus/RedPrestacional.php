@@ -23,7 +23,7 @@
                     <a href="<?= $this->Url->build($redirect . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Nuevo ausente</a>
                 </li>
                 <li>
-                    <a href="<?= $this->Url->build($redirect . '/nuevo-paciente', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Nueva persona</a>
+                    <a href="<?= $this->Url->build($redirect . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Nueva persona</a>
                 </li>
                 <li>
                     <a href="<?= $this->Url->build($redirect . '/empresas', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Listado de empresas</a>

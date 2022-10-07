@@ -6,10 +6,10 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Lista de pacientes sin diagnosticar</h4>
+        <h4>Lista de agentes sin diagnosticar</h4>
     </div>
     <div class="results">
-        <p class="title-results">Pacientes</p>
+        <p class="title-results">Agentes</p>
 
         <?= $this->Flash->render() ?>
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>

@@ -1,12 +1,12 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Diagnosticar a Paciente</h4>
+        <h4>Diagnosticar al Agente</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
             <?= $this->Flash->render() ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
-                <div class="message error">Datos de paciente</div>
+                <div class="message error">Datos del agente</div>
             </div>
             <table class="table table-bordered">
                 <thead>
@@ -75,8 +75,41 @@
                     <div class="form-group">
                         <?= $this->Form->control('id', ['label' => 'Patologia*',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
-                        <?= $this->Form->control('pathology', ['label' => 'Patologia*',
+                        <?= $this->Form->control('mode_id', ['label' => 'Modalidad *',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
+                    </div>
+                </div>
+                <div class="pt-0 col-lg-6 col-sm-12">
+                    <div class="form-group">
+                        <?= $this->Form->control('area', ['label' => 'Area Medica *',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                    </div>
+                </div>
+                <div class="pt-0 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <?= $this->Form->control('type', ['label' => 'Tipo de licencia*',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $licenses,
+                            'empty' => 'Seleccione', 'required' => true]); ?>
+                    </div>
+                </div>
+                <div class="familiar row col-12 mx-auto" <?php if ($report['type'] !== 3) { echo 'style="display: none;"'; } ?>>
+                    <div class="pt-0 col-lg-4 col-sm-12">
+                        <div class="form-group">
+                            <?= $this->Form->control('relativeName', ['label' => 'Nombre del familiar *',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                        </div>
+                    </div>
+                    <div class="pt-0 col-lg-4 col-sm-12">
+                        <div class="form-group">
+                            <?= $this->Form->control('relativeLastname', ['label' => 'Apellido del familiar*',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                        </div>
+                    </div>
+                    <div class="pt-0 col-lg-4 col-sm-12">
+                        <div class="form-group">
+                            <?= $this->Form->control('relativeRelationship', ['label' => 'Relación *',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                        </div>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
@@ -87,28 +120,14 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('type', ['label' => 'Tipo de licencia*',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $licenses,
-                            'empty' => 'Seleccione', 'required' => true]); ?>
-                    </div>
-                </div>
-                <div class="pt-0 col-lg-6 col-sm-12">
-                    <div class="form-group">
-                        <?= $this->Form->control('relativeName', ['label' => 'Nombre del familiar',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
-                    </div>
-                </div>
-                <div class="pt-0 col-lg-6 col-sm-12">
-                    <div class="form-group">
                         <?= $this->Form->control('askedDays', ['label' => 'Días solicitados*',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                     </div>
                 </div>
-                <div class="pt-0 col-lg-6 col-sm-12">
+                <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('doctor_id', ['label' => 'Auditor*',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $doctors,
-                            'empty' => 'Seleccione', 'required' => true]); ?>
+	                    <?= $this->Form->control('privatedoctor_id', ['label' => 'Medico Privado *',
+		                    'class' => 'form-control form-control-blue m-0 col-12', 'options' => $privateDoctors, 'required' => true, 'empty' => 'Seleccione', 'value'=> $report['privatedoctor_id']]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
@@ -117,6 +136,13 @@
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
                         <?= $this->Form->control('go_to', ['label' => false,
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden' , 'value' => 1]); ?>
+                    </div>
+                </div>
+                <div class="pt-0 col-lg-12 col-sm-12">
+                    <div class="form-group">
+                        <?= $this->Form->control('doctor_id', ['label' => 'Auditor*',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $doctors,
+                            'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="col-12">
@@ -160,6 +186,25 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
         });
     });
 
+    $("#type").on('change', function (e) {
+        let $familiar = $('.familiar');
+        switch ($(this).val()) {
+            case "3":
+                $familiar.slideDown();
+                $('input, textarea',$familiar).each(function () {
+                    $(this).attr('required', true);
+                });
+                break;
+            default:
+                $familiar.slideUp();
+                $('input, textarea',$familiar).each(function () {
+                    $(this).val('');
+                    $(this).attr('required', false);
+                });
+
+        }
+    });
+
     $(document).ready(function() {
 
 
@@ -167,8 +212,8 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
         var $reportID = $("#id").val();
         $("#fileuploader").uploadFile({
             url: '<?php echo $this->Url->build([
-				'controller' => 'Files',
-				'action' => 'addFile', $report->id]); ?>',
+                'controller' => 'Files',
+                'action' => 'addFile', $report->id]); ?>',
             fileName:"reportFile",
             showCancel: false,
             showAbort: false,

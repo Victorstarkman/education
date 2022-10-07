@@ -62,19 +62,31 @@ class Report extends Entity
         'patient' => true,
         'user' => true,
         'relativeName' => true,
+        'relativeLastname' => true,
+        'relativeRelationship' => true,
+        'privatedoctor_id' => true,
+        'fraud' => true,
+        'mode_id' => true,
+        'area' => true,
         'files' => true,
     ];
 
     public function getNameStatus()
     {
-        return ReportsTable::STATUSES[$this->status]['name'];
+        $status = ReportsTable::STATUSES[$this->status]['name'];
+        if ($this->status == 3) {
+            $status .= '<br/>Posible fraude: ';
+            $status .= $this->fraud == 1 ? 'Si' : 'No';
+        }
+
+        return $status;
     }
 
     public function getNameLicense()
     {
         $name =  ReportsTable::LICENSES[$this->type]['name'];
         if (ReportsTable::LICENSES[$this->type]['extra']) {
-            $name .= '\r Nombre: ' . $this->relativeName;
+            $name .=  '<br/>' . $this->relativeName . ' ' . $this->relativeLastname . ' (' . $this->relativeRelationship . ')';
         }
 
         return $name;
@@ -89,7 +101,7 @@ class Report extends Entity
     {
         $value = 'X';
         if (ReportsTable::LICENSES[$this->type]['extra']) {
-            $value =  $this->relativeName;
+            $value =  $this->relativeName . ' ' . $this->relativeLastname . ' (' . $this->relativeRelationship . ')';
         }
 
         return $value;
@@ -110,7 +122,29 @@ class Report extends Entity
         return $name;
     }
 
-	public function isOwner($onlineUserID = null) {
-		return $this->doctor_id == $onlineUserID;
-	}
+    public function isOwner($onlineUserID = null)
+    {
+        return $this->doctor_id == $onlineUserID;
+    }
+
+    public function privateDoctor()
+    {
+        $license = '';
+        if (!empty($this->privatedoctor->license)) {
+            $license .= '(M.P: ' . $this->privatedoctor->license;
+        }
+
+        if (!empty($this->privatedoctor->licenseNational)) {
+            if (empty($license)) {
+                $license = ' (';
+            } else {
+                $license .= ' - ';
+            }
+            $license .= 'M.N: ' . $this->privatedoctor->licenseNational . ')';
+        } else {
+            $license = ')';
+        }
+
+        return $this->privatedoctor->name . ' ' . $this->privatedoctor->lastname . ' ' . $license;
+    }
 }

@@ -30,7 +30,7 @@ return static function (RouteBuilder $routes) {
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
-        $route->connect('/paciente/resultado/{id}/{paciente}', ['controller' => 'reports', 'action' => 'result'])
+        $route->connect('/agente/resultado/{id}/{paciente}', ['controller' => 'reports', 'action' => 'result'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',
@@ -45,18 +45,18 @@ return static function (RouteBuilder $routes) {
         $route->connect('/listado-resultados', ['controller' => 'Patients', 'action' => 'listWithResults']);
 	    $route->connect('/listado-sin-resultados', ['controller' => 'Patients', 'action' => 'listWithoutResults']);
         $route->connect('/nuevo-ausente', ['controller' => 'Patients', 'action' => 'addWithReport']);
-        $route->connect('/nuevo-paciente', ['controller' => 'Patients', 'action' => 'add']);
-        $route->connect('/paciente/ver/{id}', ['controller' => 'Patients', 'action' => 'view'])
+        $route->connect('/nuevo-agente', ['controller' => 'Patients', 'action' => 'add']);
+        $route->connect('/agente/ver/{id}', ['controller' => 'Patients', 'action' => 'view'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
-        $route->connect('/paciente/editar/{id}', ['controller' => 'Patients', 'asction' => 'edit'])
+        $route->connect('/agente/editar/{id}', ['controller' => 'Patients', 'action' => 'edit'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',
             ]);
-        $route->connect('/paciente/resultado/{id}/{paciente}', ['controller' => 'Patients', 'action' => 'result'])
+        $route->connect('/agente/resultado/{id}/{paciente}', ['controller' => 'Patients', 'action' => 'result'])
             ->setPass(['id'])
             ->setPatterns([
                 'id' => '[0-9]+',

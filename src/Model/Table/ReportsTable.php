@@ -94,13 +94,21 @@ class ReportsTable extends Table
             'foreignKey' => 'doctor_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('Privatedoctors', [
+            'foreignKey' => 'privatedoctor_id',
+        ]);
+        $this->belongsTo('Modes', [
+            'className' => 'Modes',
+            'foreignKey' => 'mode_id',
+        ]);
+
         $this->hasMany('Files', [
             'foreignKey' => 'report_id',
             'conditions' => ['Files.reportType' => 1],
         ]);
 
         $this->hasMany('FilesAuditor', [
-	        'className' => 'Files',
+            'className' => 'Files',
             'foreignKey' => 'report_id',
             'conditions' => ['FilesAuditor.reportType' => 2],
         ]);
@@ -124,12 +132,6 @@ class ReportsTable extends Table
             ->integer('user_id')
             ->requirePresence('user_id', 'create')
             ->notEmptyString('user_id');
-
-        $validator
-            ->scalar('pathology')
-            ->maxLength('pathology', 255)
-            ->requirePresence('pathology', 'create')
-            ->notEmptyString('pathology');
 
         $validator
             ->date('startPathology')
@@ -204,6 +206,14 @@ class ReportsTable extends Table
         }
 
         return $statusArray;
+    }
+
+    public function getDeniedStatus()
+    {
+        return [
+            self::NRLL,
+            self::DENIED,
+        ];
     }
 
     public function getStatusesOfDiagnosis()

@@ -9,7 +9,7 @@
         <h4>Todos los diagnosticos</h4>
     </div>
     <div class="results">
-        <p class="title-results">Pacientes</p>
+        <p class="title-results">Agentes</p>
 
         <?= $this->Flash->render() ?>
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>

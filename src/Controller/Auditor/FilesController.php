@@ -81,6 +81,7 @@ class FilesController extends AppController
         if ($type == 'file') {
             $files = $this->Files->find('all')
                 ->where(['report_id' => $id])
+                ->where(['reportType' => 2])
                 ->toArray();
             $output_dir =  'files' . DS;
             $output_full_path = WWW_ROOT . $output_dir;
