@@ -1,6 +1,6 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Diagnostico del agente</h4>
+        <h4>diagnóstico del agente</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">

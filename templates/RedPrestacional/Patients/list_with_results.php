@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Ausentes con diagnostico</h4>
+        <h4>Ausentes con diagnóstico</h4>
     </div>
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">

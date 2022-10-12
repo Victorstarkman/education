@@ -241,7 +241,7 @@ class ReportsController extends AppController
                     ]
                 );
                 if ($this->Reports->save($report)) {
-                    $this->Flash->success(__('El diagnostico fue guardado correctamente.'));
+                    $this->Flash->success(__('El diagnóstico fue guardado correctamente.'));
 
                     return $this->redirect(['action' => 'withOutDiagnostic']);
                 } else {

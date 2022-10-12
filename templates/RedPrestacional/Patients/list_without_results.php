@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Ausentes sin diagnostico</h4>
+        <h4>Ausentes sin diagnóstico</h4>
     </div>
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
@@ -105,7 +105,7 @@
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('age', 'Edad') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('pathology', 'Patologia') ?></th>
+                <th><?= $this->Paginator->sort('area', 'Area medica') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th><?= $this->Paginator->sort('status', 'Resultado') ?></th>
                 <th><?= $this->Paginator->sort('created', 'Creada') ?></th>
@@ -120,7 +120,7 @@
                     <td><?= h($report->patient->lastname) ?></td>
                     <td><?= $this->Number->format($report->patient->age) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
-                    <td><?= $report->pathology; ?></td>
+                    <td><?= $report->area; ?></td>
                     <td><?= $report->askedDays; ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>

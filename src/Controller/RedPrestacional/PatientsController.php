@@ -600,7 +600,7 @@ class PatientsController extends AppController
                 $this->Flash->error(__('El reporte no pudo ser eliminado, intente nuevamente.'));
             }
         } else {
-            $this->Flash->error(__('No se puede eliminar ausentes con diagnostico.'));
+            $this->Flash->error(__('No se puede eliminar ausentes con diagnóstico.'));
         }
 
         return $this->redirect(['action' => 'listWithoutResults']);

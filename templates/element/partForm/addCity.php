@@ -19,7 +19,7 @@
 
 
 <script>
-    let city = <?= (isset($city) && !is_null($city)) ? $city : 0; ?>,
+    let city = <?= isset($city) && !is_null($city) ? $city : 0; ?>,
         dataState;
     searching('states');
     if (city > 0) {
@@ -42,7 +42,6 @@
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
-        console.log(bySystem);
         if (typeof  bySystem == "object" && bySystem.isTriggeredBySystem) {
 
         } else {
@@ -99,4 +98,13 @@
             }
         });
     }
+
+    $( window ).on( "load", function() {
+        if (city != '') {
+            $stateSelected = $(".statesSelect select option:selected").val();
+            if ($stateSelected == '') {
+                searching('cities_by_id', city);
+            }
+        }
+    });
 </script>
