@@ -142,7 +142,7 @@ class Report extends Entity
             }
             $license .= 'M.N: ' . $this->privatedoctor->licenseNational . ')';
         } else {
-            $license = ')';
+            $license .= ')';
         }
 
         return $this->privatedoctor->name . ' ' . $this->privatedoctor->lastname . ' ' . $license;
