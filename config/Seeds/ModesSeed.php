@@ -39,6 +39,9 @@ class ModesSeed extends AbstractSeed
             [
                 'name' => 'Telemedicina Juntas Medicas',
             ],
+            [
+                'name' => 'Telemedicina Auditores Especializada',
+            ],
 
         ];
 
