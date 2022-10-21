@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Nueva persona</h4>
+        <h4>Nuevo Agente</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">

@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Lista de agentes sin diagnosticar</h4>
+        <h4>Auditorías Pendientes</h4>
     </div>
     <div class="results">
         <p class="title-results">Agentes</p>
@@ -24,15 +24,14 @@
         </div>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
-                <?= $this->Form->control(
-                    'license_type',
-                    [
-                        'options' => $getLicenses,
-                        'label' => 'Tipo de licencia',
-                        'empty' => 'Licencia',
-                        'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['license_type'] ?? '']
-                ); ?>
+                <?= $this->Form->control('modes_id', [
+                                'label' => 'Tipo de Servicio',
+                                'class' => 'form-control form-control-blue m-0 col-12', 
+                                'required' => true, 
+                                'empty' => 'Seleccione', 
+                                'value' => $search['modes']?? '']);
+                                ?>
+
             </div>
         </div>
         <div class="pt-0 col-lg-3 col-sm-12">
@@ -74,7 +73,7 @@
         </div>
         <div class="col-6 mb-3">
             <?php echo $this->Html->link(
-                'Reniciar',
+                'Reiniciar',
                 $redirectPrefix . '/',
                 ['fullBase' => true, 'class' => 'btn btn-outline-secondary col-12']
             );
@@ -90,9 +89,10 @@
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
-                <th><?= $this->Paginator->sort('age', 'Edad') ?></th>
-                <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('area', 'Area medica') ?></th>
+                <th><?= $this->Paginator->sort('company','Empresa')?></th>
+                <th><?= $this->Paginator->sort('created', 'fecha de solictud') ?></th>
+                <th><?= $this->Paginator->sort('mode','Tipo de Servicio')?></th>
+                <th><?= $this->Paginator->sort('area', 'Especialidad') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -103,12 +103,13 @@
                     <td><?= $this->Number->format($report->id) ?></td>
                     <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->lastname) ?></td>
-                    <td><?= $this->Number->format($report->patient->age) ?></td>
-                    <td><?= $report->getNameLicense(); ?></td>
+                    <td><?= h($report->patient->company->name)?></td>
+                    <td><?= $report->created->format('d/m/Y'); ?></td>
+                    <td><?= !empty($report->mode->name)?h($report->mode->name):''?></td>
                     <td><?= $report->area; ?></td>
                     <td><?= $report->askedDays; ?></td>
                     <td class="actions">
-                        <?= $this->Html->link('Diagnosticar', $redirectPrefix . '/licencias/diagnosticar/' . $report->id, ['fullBase' => true]); ?>
+                        <?= $this->Html->link('Tomar', $redirectPrefix . '/licencias/diagnosticar/' . $report->id, ['fullBase' => true]); ?>
                     </td>
                 </tr>
             <?php endforeach; ?>

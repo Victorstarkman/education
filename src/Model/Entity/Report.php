@@ -69,6 +69,7 @@ class Report extends Entity
         'mode_id' => true,
         'area' => true,
         'files' => true,
+        'modes'.'name'=>true,
     ];
 
     public function getNameStatus()

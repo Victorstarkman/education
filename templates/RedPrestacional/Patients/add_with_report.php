@@ -6,12 +6,12 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Nuevo ausente</h4>
+        <h4>Nueva Auditoría</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
             <div class="container mx-auto row">
-                <div class="pt-0 col-lg-8 col-sm-12">
+                <div class="pt-0 col-lg-7 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('document_search', ['label' => false,
                             'class' => 'form-control form-control-blue m-0 col-12', 'placeholder' => 'DNI *']); ?>
@@ -22,9 +22,9 @@
                         <i class="fa fa-search"></i> Buscar
                     </button>
                 </div>
-                <div class="pl-0 col-lg-2 col-sm-12 ">
+                <div class="pl-0 col-lg-3 col-sm-12 ">
                     <button type="button" id="new" class="btn btn-outline-primary col-12" name="new">
-                        <i class="fa fa-plus"></i> Nueva
+                        <i class="fa fa-plus"></i> Nueva Auditoría
                     </button>
                 </div>
                 <div class="msgSearch"></div>

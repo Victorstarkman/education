@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Editar persona</h4>
+        <h4>Editar Agente</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">

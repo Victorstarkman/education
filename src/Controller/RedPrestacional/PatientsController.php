@@ -88,7 +88,7 @@ class PatientsController extends AppController
 
             if (!empty($search['status'])) {
                 $searchByStatus = true;
-                $reports->where(['status' => $search['status']]);
+                $reports->where(['Reports.status' => $search['status']]);
             }
 
             if (!empty($search['start_date'])) {
@@ -105,7 +105,7 @@ class PatientsController extends AppController
         }
 
         if (!$searchByStatus) {
-            $reports->where(['status IN' => $this->Patients->Reports->getStatusesOfDiagnosis()]);
+            $reports->where(['Reports.status IN' => $this->Patients->Reports->getStatusesOfDiagnosis()]);
         }
 
         $settings = [

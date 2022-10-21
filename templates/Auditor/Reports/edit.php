@@ -1,6 +1,6 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Diagnosticar a agente</h4>
+        <h4>Auditoría</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
@@ -276,19 +276,19 @@
             </div>
             <div class="row col-12">
                 <div class="alert alert-secondary col-lg-12 text-center mt-5" role="alert">
-                    <div class="message error">Licencia Cargada</div>
+                    <div class="message error">Datos de la Licencia</div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
 			            <?= $this->Form->control('id', ['label' => 'Patologia*',
 				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
-			            <?= $this->Form->control('mode_id', ['label' => 'Modalidad *',
+			            <?= $this->Form->control('mode_id', ['label' => 'Tipo de Servicio *',
 				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('area', ['label' => 'Area Medica *',
+			            <?= $this->Form->control('area', ['label' => 'Especialidad *',
 				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                     </div>
                 </div>
@@ -321,7 +321,7 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('startPathology', ['label' => 'Fecha de inicio*',
+			            <?= $this->Form->control('startPathology', ['label' => 'Fecha de solicitud*',
 				            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
                     </div>
                 </div>
@@ -333,13 +333,13 @@
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('privatedoctor_id', ['label' => 'Medico Privado *',
+			            <?= $this->Form->control('privatedoctor_id', ['label' => 'Medico Particular *',
 				            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $privateDoctors, 'required' => true, 'empty' => 'Seleccione', 'value'=> $report['privatedoctor_id']]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('comments', ['label' => 'Comentarios',
+			            <?= $this->Form->control('comments', ['label' => 'Observaciones',
 				            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
 			            <?= $this->Form->control('go_to', ['label' => false,
 				            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden' , 'value' => 1]); ?>
@@ -377,14 +377,12 @@
                 </div>
             <?php endif; ?>
             <div class="alert alert-secondary col-lg-12 text-center mt-5" role="alert">
-                <div class="message error">Resultado de auditoría</div>
+                <div class="message error">Dictamen</div>
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
                     <?= $this->Form->control('id', ['label' => 'Resultado',
                         'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden']); ?>
-                    <?= $this->Form->control('pathology', ['label' => 'Patologia *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">

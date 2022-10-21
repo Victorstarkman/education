@@ -1,6 +1,6 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>diagnóstico del agente</h4>
+        <h4>Auditoría</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
@@ -64,9 +64,9 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Modalidad')?></th>
-                    <th><?= __('Area medica')?></th>
-                    <th><?= __('Fecha de inicio') ?></th>
+                    <th><?= __('Tipo de Servicio')?></th>
+                    <th><?= __('Especialida')?></th>
+                    <th><?= __('Fecha de solicitud') ?></th>
                     <th><?= __('Tipo de licencia') ?></th>
                 </tr>
                 </thead>
@@ -83,7 +83,7 @@
                 <thead>
                 <tr>
                     <th><?= __('Días solicitados') ?></th>
-                    <th><?= __('Medico privado') ?></th>
+                    <th><?= __('Medico Particular') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -97,7 +97,7 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th class="text-left"><?= __('Comentario'); ?></th>
+                        <th class="text-left"><?= __('Observaciones'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -138,13 +138,13 @@
                 </div>
 			<?php endif; ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
-                <div class="message error">Resultado de auditoría</div>
+                <div class="message error">Dictamen</div>
             </div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th><?= __('Patologia')?></th>
-                    <th><?= __('Resultado')?></th>
+                    <th><?= __('Dictamen')?></th>
                     <th><?= __('Duración') ?></th>
                     <th><?= __('Desde') ?></th>
                 </tr>

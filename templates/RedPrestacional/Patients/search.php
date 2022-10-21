@@ -88,13 +88,13 @@
     </p>
     <div class="pt-0 col-lg-6 col-sm-12">
         <div class="form-group">
-            <?= $this->Form->control('reports[0].mode_id', ['label' => 'Modalidad *',
+            <?= $this->Form->control('reports[0].mode_id', ['label' => 'Tipo de Servicio *',
                 'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
         </div>
     </div>
     <div class="pt-0 col-lg-6 col-sm-12">
         <div class="form-group">
-            <?= $this->Form->control('reports[0].area', ['label' => 'Area Medica *',
+            <?= $this->Form->control('reports[0].area', ['label' => 'Especialidad *',
                 'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
         </div>
     </div>
@@ -127,7 +127,7 @@
     </div>
     <div class="pt-0 col-lg-6 col-sm-12">
         <div class="form-group">
-            <?= $this->Form->control('reports[0].startPathology', ['label' => 'Fecha de inicio*',
+            <?= $this->Form->control('reports[0].startPathology', ['label' => 'Fecha de Solicitud*',
                 'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
         </div>
     </div>

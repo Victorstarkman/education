@@ -52,7 +52,7 @@ class ReportsTable extends Table
 
     public const STATUSES = [
         self::ACTIVE => [
-            'name' => 'Esperando resultados',
+            'name' => 'PENDIENTE',
         ],
         self::NRLL => [
             'name' => 'NRLL/AUSENTE',
