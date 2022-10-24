@@ -27,7 +27,6 @@
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('email', 'Email') ?></th>
-                <th><?= $this->Paginator->sort('age', 'Edad') ?></th>
                 <th><?= $this->Paginator->sort('document', 'DNI') ?></th>
                 <th class="actions"><?= __('Total Reportes') ?></th>
                 <th class="actions"><?= __('Sin revisar') ?></th>
@@ -41,7 +40,6 @@
                     <td><?= h($patient->name) ?></td>
                     <td><?= h($patient->lastname) ?></td>
                     <td><?= h($patient->email) ?></td>
-                    <td><?= $this->Number->format($patient->age) ?></td>
                     <td><?= h($patient->document) ?></td>
                     <td><?= count($patient->reports) ?></td>
                     <td><?= count($patient->reports_without_check) ?></td>

@@ -25,7 +25,9 @@ class ReportsController extends AppController
         $search = $this->request->getQueryParams();
         $this->paginate = [
             'contain' => [
-                'Patients',
+                    'Patients'=>'Companies',
+                    'Users',
+                    'Modes',
             ],
         ];
         $reports = $this->Reports->find();
@@ -82,7 +84,12 @@ class ReportsController extends AppController
             if (!empty($search['doctor_id'])) {
                 $reports->where(['Reports.doctor_id' => $search['doctor_id']]);
             }
+            if(!empty($search['modes_id'])){
+                $reports->where(['Reports.mode_id'=>$search['modes_id']]);
+            }
         }
+        $reports
+        ->where(['doctor_id' => $this->Authentication->getIdentity()->id]);
 
         $settings = [
             'order' => ['created' => 'desc'],
@@ -94,8 +101,8 @@ class ReportsController extends AppController
         $getStatuses = $this->Reports->getAllStatuses();
         $getAuditors = $this->Reports->Users->getDoctors();
         $companies = $this->Reports->Patients->Companies->find()->all()->combine('id', 'name');
-
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
+        $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','modes'));
     }
 
     /**
@@ -109,8 +116,9 @@ class ReportsController extends AppController
         $search = $this->request->getQueryParams();
         $this->paginate = [
             'contain' => [
-                'Patients',
+                'Patients'=>'Companies',
                 'Users',
+                'Modes',
             ],
         ];
         $reports = $this->Reports->find();
@@ -158,10 +166,13 @@ class ReportsController extends AppController
             if (!empty($search['end_date'])) {
                 $reports->where(['Reports.created <=' => $search['end_date']]);
             }
+            if(!empty($search['modes_id'])){
+                $reports->where(['Reports.mode_id'=>$search['modes_id']]);
+            }
         }
 
         $reports
-            ->where(['status IN' => $this->Reports::ACTIVE])
+            ->where(['Reports.status IN' => $this->Reports::ACTIVE])
             ->where(['doctor_id' => $this->Authentication->getIdentity()->id]);
 
         $settings = [
@@ -174,8 +185,8 @@ class ReportsController extends AppController
         $getStatuses = $this->Reports->getAllStatuses();
         $getAuditors = $this->Reports->Users->getDoctors();
         $companies = $this->Reports->Patients->Companies->find()->all()->combine('id', 'name');
-
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
+        $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','modes'));
     }
 
     public function edit($id)

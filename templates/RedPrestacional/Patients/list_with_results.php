@@ -6,18 +6,18 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Ausentes con diagnóstico</h4>
+        <h4>Lista de Auditorías Realizadas</h4>
     </div>
     <div class="results">
         <div class="mx-auto form-group row col-lg-12 col-md-12">
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo ausente</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-ausente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva Auditoria</a>
             </div>
             <div class="pl-0 col-6">
-                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nueva persona</a>
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo Agente</a>
             </div>
         </div>
-        <p class="title-results">Ausentes</p>
+        <p class="title-results">Auditorias</p>
 
         <?= $this->Flash->render() ?>
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="col-6 mb-3">
-            <a href="/" class="btn btn-outline-secondary col-12">Reniciar</a>
+            <a href="/" class="btn btn-outline-secondary col-12">Reiniciar</a>
         </div>
         <div class="col-6 mb-3">
             <?= $this->Form->button(__('Buscar'), ['class' => 'btn btn-outline-primary col-12']) ?>
@@ -104,11 +104,10 @@
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
-                <th><?= $this->Paginator->sort('age', 'Edad') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
                 <th><?= $this->Paginator->sort('pathology', 'Patologia') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
-                <th><?= $this->Paginator->sort('status', 'Resultado') ?></th>
+                <th><?= $this->Paginator->sort('status', 'Dictamen') ?></th>
                 <th><?= $this->Paginator->sort('created', 'Creada') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
@@ -119,7 +118,6 @@
                     <td><?= $this->Number->format($report->id) ?></td>
                     <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->lastname) ?></td>
-                    <td><?= $this->Number->format($report->patient->age) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
                     <td><?= $report->pathology; ?></td>
                     <td><?= $report->askedDays; ?></td>

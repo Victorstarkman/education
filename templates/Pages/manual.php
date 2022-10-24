@@ -51,11 +51,11 @@
 						</div>
 						<div class="col-8">
 							<p>
-								<span>Ausentes con resultados:</span> Listado de personas auditadas.<br>
-								<span>Ausentes sin resultados: </span> Listado de personas por auditar.<br>
-								<span>Listado personas:  </span> Listado de todas las personas de la empresa y estado de reportes.<br>
-								<span>Nuevo Ausente: </span> Entrada de pedido de auditor&iacute;a referido al listado de personas. En este se elige el auditor y el auditor recibir&aacute;en su casilla un mail que le advierte la entrada de un nuevo auditado<br>
-								<span>Nueva persona: </span> formulario de datos filiatorios de la persona.<br>
+								<span>Lista de Auditor&iacute;as Realizadas:</span> Listado de personas auditadas.<br>
+								<span>Auditor&iacute;as Pendientes: </span> Listado de personas por auditar.<br>
+								<span>Listado de Agentes:  </span> Listado de todas las personas de la empresa y estado de reportes.<br>
+								<span>Nueva Auditor&iacute;a: </span> Entrada de pedido de auditor&iacute;a referido al listado de personas. En este se elige el auditor y el auditor recibir&aacute;en su casilla un mail que le advierte la entrada de un nuevo auditado<br>
+								<span>Nuevo Agente: </span> formulario de datos filiatorios de la persona.<br>
 								<span>Lista de empresas:  </span> Listado de empresas que envían personas a auditar.<br>
 								<span>Nueva empresa: </span> Alta de empresa.<br>
 
@@ -79,9 +79,9 @@
 						</div>
 						<div class="col-8">
 							<p>
-								<span>Listado sin diagn&oacute;sticos: </span> : Listado de personas atribuidas al auditor.
+								<span>Auditor&iacute;s Pendientes: </span> : Listado de personas atribuidas al auditor.
 								En este se encuentra la entrada al formulario de diagn&oacute;stico el cual culmina con el resultado y firmado del Auditor. Para esto la primera vez que entra un nuevo auditor a la aplicación debe registrar una firma gr&aacute;fica que junto con su licencia rubricar&aacute;n la documentaci&oacute;n.<br>
-								<span>Todos los diagnósticos:  </span>Listado de todos los auditados. <br>
+								<span>Lista de Auditor&iacute;as:  </span>Listado de todos los auditados. <br>
 							</p>
 						</div>
 					</div>
