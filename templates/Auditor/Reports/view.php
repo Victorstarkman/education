@@ -64,8 +64,8 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Modalidad')?></th>
-                    <th><?= __('Area medica')?></th>
+                    <th><?= __('Tipo de Servicio')?></th>
+                    <th><?= __('Especialidad')?></th>
                     <th><?= __('Fecha de inicio') ?></th>
                     <th><?= __('Tipo de licencia') ?></th>
                 </tr>
@@ -138,15 +138,15 @@
                 </div>
 	        <?php endif; ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
-                <div class="message error">Resultado de auditoría</div>
+                <div class="message error">Dictamen de Auditoría</div>
             </div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th><?= __('Patologia')?></th>
-                    <th><?= __('Resultado')?></th>
+                    <th><?= __('Dictamen')?></th>
                     <th><?= __('Duración') ?></th>
-                    <th><?= __('Desde') ?></th>
+                    <th><?= __('Fecha de Solicitud') ?></th>
                 </tr>
                 </thead>
                 <tbody>
