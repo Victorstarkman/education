@@ -118,7 +118,7 @@
                     <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->lastname) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
-                    <td><?= $report->area; ?></td>
+                    <td><?= $report->getSpeciality(); ?></td>
                     <td><?= $report->askedDays; ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>

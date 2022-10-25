@@ -339,13 +339,15 @@ class PatientsController extends AppController
                         throw new \Exception('Ya existe una persona con ese DNI o Email.');
                     }
 
-                    if (
-                        empty($postData['personalDoctorName'])
-                        || empty($postData['personalDoctorLastname'])
-                        || empty($postData['personalDoctorMP'])
-                        || empty($postData['personalDoctorMN'])
-                    ) {
-                        throw new \Exception('Falta informacion del Medico Particular.');
+                    if ((int)$postData['reports'][0]['askedDays'] > 2) {
+                        if (
+                            empty($postData['personalDoctorName'])
+                            || empty($postData['personalDoctorLastname'])
+                            || empty($postData['personalDoctorMP'])
+                            || empty($postData['personalDoctorMN'])
+                        ) {
+                            throw new \Exception('Falta informacion del Medico Particular.');
+                        }
                     }
 
                     $privateDoctors = $this->Patients->Reports->Privatedoctors->find('all')
@@ -483,7 +485,8 @@ class PatientsController extends AppController
         $licenses = $this->Patients->Reports->getLicenses();
         $modes = $this->Patients->Reports->Modes->find()->all()->combine('id', 'name');
         $companies = $this->Patients->Companies->getCompanies();
-        $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies', 'modes'));
+        $specialties = $this->Patients->Reports->Specialties->find()->all()->combine('id', 'name');
+        $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies', 'modes', 'specialties'));
     }
 
     public function result($id)
@@ -554,6 +557,7 @@ class PatientsController extends AppController
             $report = $this->Patients->Reports->get($id, [
                 'contain' => [
                     'Privatedoctors',
+                    'Specialties',
                     'Patients' => [
                         'Companies',
                         'Cities' => [
@@ -585,8 +589,9 @@ class PatientsController extends AppController
         $licenses = $this->Patients->Reports->getLicenses();
         $companies = $this->Patients->Companies->getCompanies();
         $modes = $this->Patients->Reports->Modes->find()->all()->combine('id', 'name');
+        $specialties = $this->Patients->Reports->Specialties->find()->all()->combine('id', 'name');
 
-        $this->set(compact('report', 'doctors', 'licenses', 'companies', 'modes', 'privateDoctors'));
+        $this->set(compact('report', 'specialties', 'doctors', 'licenses', 'companies', 'modes', 'privateDoctors'));
     }
 
     public function deleteReport($id = null)

@@ -73,7 +73,7 @@
                 <tbody>
                 <tr>
                     <td><?= h($report->mode->name) ?></td>
-                    <td><?= h($report->area) ?></td>
+                    <td><?= h($report->getSpeciality()) ?></td>
                     <td><?= h($report->startPathology) ?></td>
                     <td><?= $report->getNameLicense() ?></td>
                 </tr>
@@ -151,7 +151,7 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->pathology) ?></td>
+                    <td><?= h($report->getPathology()) ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= h($report->recommendedDays) ?></td>
                     <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense; ?></td>

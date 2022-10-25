@@ -101,6 +101,14 @@ class ReportsTable extends Table
             'className' => 'Modes',
             'foreignKey' => 'mode_id',
         ]);
+        $this->belongsTo('Cie10', [
+            'className' => 'Cie10',
+            'foreignKey' => 'cie10_id',
+        ]);
+        $this->belongsTo('Specialties', [
+            'className' => 'Specialties',
+            'foreignKey' => 'speciality_id',
+        ]);
 
         $this->hasMany('Files', [
             'foreignKey' => 'report_id',

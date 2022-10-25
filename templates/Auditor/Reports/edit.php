@@ -109,7 +109,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <td><?= h($clinical->mode->name) ?></td>
-                                                            <td><?= h($clinical->area) ?></td>
+                                                            <td><?= h($clinical->getSpeciality()) ?></td>
                                                             <td><?= h($clinical->startPathology) ?></td>
                                                             <td><?= $clinical->getNameLicense() ?></td>
                                                         </tr>
@@ -129,7 +129,7 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
-	                                                <?php if (!empty($clinical->comments)) : ?>
+                                                    <?php if (!empty($clinical->comments)) : ?>
                                                         <table class="table table-bordered">
                                                             <thead>
                                                             <tr>
@@ -142,8 +142,8 @@
                                                             </tr>
                                                             </tbody>
                                                         </table>
-	                                                <?php endif; ?>
-	                                                <?php if (!empty($clinical->files)) : ?>
+                                                    <?php endif; ?>
+                                                    <?php if (!empty($clinical->files)) : ?>
                                                         <div class="col-12 p-0">
                                                             <div class="col-12">
                                                                 <p class="title-results">Archivos cargados</p>
@@ -158,23 +158,23 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-					                                                <?php foreach ($clinical->files as $file) :?>
+                                                                    <?php foreach ($clinical->files as $file) :?>
                                                                         <tr id="file-<?= $file->id; ?>">
 
                                                                             <td><?= h($file->name) ?></td>
                                                                             <td><img src="<?= $file->getUrl(); ?>" height="100px"/></td>
                                                                             <td>
-								                                                <?= $this->Html->link(__('Descargar'), DS .  'files' . DS . $clinical->id . DS . $file->name, ['fullBase' => true, 'class' => 'text-center', 'target' => '_blank']); ?>
+                                                                                <?= $this->Html->link(__('Descargar'), DS .  'files' . DS . $clinical->id . DS . $file->name, ['fullBase' => true, 'class' => 'text-center', 'target' => '_blank']); ?>
                                                                             </td>
                                                                         </tr>
-					                                                <?php endforeach; ?>
+                                                                    <?php endforeach; ?>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
                                                         </div>
-	                                                <?php endif; ?>
+                                                    <?php endif; ?>
 
-	                                                <?php if (!$clinical->isWaitingResults()) : ?>
+                                                    <?php if (!$clinical->isWaitingResults()) : ?>
                                                         <div class="alert alert-secondary col-lg-12 text-center" role="alert">
                                                             <div class="message error">Resultado de auditoría</div>
                                                         </div>
@@ -189,14 +189,14 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr>
-                                                                <td><?= h($clinical->pathology) ?></td>
+                                                                <td><?= h($clinical->getPathology()) ?></td>
                                                                 <td><?= $clinical->getNameStatus(); ?></td>
                                                                 <td><?= h($clinical->recommendedDays) ?></td>
                                                                 <td><?= is_null($clinical->startLicense) ? '-' : $clinical->startLicense; ?></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
-		                                                <?php if (!empty($clinical->cie10)) : ?>
+                                                        <?php if (!empty($clinical->cie10)) : ?>
                                                             <table class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
@@ -209,8 +209,8 @@
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
-		                                                <?php endif; ?>
-		                                                <?php if (!empty($clinical->observations)) : ?>
+                                                        <?php endif; ?>
+                                                        <?php if (!empty($clinical->observations)) : ?>
                                                             <table class="table table-bordered">
                                                                 <thead>
                                                                 <tr>
@@ -223,8 +223,8 @@
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
-		                                                <?php endif; ?>
-		                                                <?php if (!empty($clinical->files_auditor)) : ?>
+                                                        <?php endif; ?>
+                                                        <?php if (!empty($clinical->files_auditor)) : ?>
                                                             <div class="col-12 p-0">
                                                                 <div class="col-12">
                                                                     <p class="title-results">Archivos cargados en auditoría</p>
@@ -239,31 +239,31 @@
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
-						                                                <?php foreach ($clinical->files_auditor as $file) :?>
+                                                                        <?php foreach ($clinical->files_auditor as $file) :?>
                                                                             <tr id="file-<?= $file->id; ?>">
 
                                                                                 <td><?= h($file->name) ?></td>
                                                                                 <td><img src="<?= $file->getUrl(); ?>" height="100px"/></td>
                                                                                 <td>
-									                                                <?= $this->Html->link(__('Descargar'), $file->getLink(), ['fullBase' => true, 'class' => 'text-center', 'target' => '_blank']); ?>
+                                                                                    <?= $this->Html->link(__('Descargar'), $file->getLink(), ['fullBase' => true, 'class' => 'text-center', 'target' => '_blank']); ?>
                                                                                 </td>
                                                                             </tr>
-						                                                <?php endforeach; ?>
+                                                                        <?php endforeach; ?>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
                                                             </div>
-		                                                <?php endif; ?>
+                                                        <?php endif; ?>
                                                         <div class="pl-0 col-12">
                                                             <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] .
-				                                                '/agente/resultado/' . $clinical->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
+                                                                '/agente/resultado/' . $clinical->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
                                                                 <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
                                                         </div>
-	                                                <?php else : ?>
+                                                    <?php else : ?>
                                                         <div class="alert alert-info col-lg-12 text-center" role="alert">
                                                             <div class="message error"><?= h($clinical->getNameStatus()) ?></div>
                                                         </div>
-	                                                <?php endif; ?>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,69 +280,82 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('id', ['label' => 'Patologia*',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
-			            <?= $this->Form->control('mode_id', ['label' => 'Tipo de Servicio *',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
+                        <?= $this->Form->control('id', ['label' => 'Patologia*',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
+                        <?= $this->Form->control('mode_id', ['label' => 'Tipo de Servicio *',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('area', ['label' => 'Especialidad *',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        <?= $this->Form->control('speciality_id', ['label' => 'Especialidad *',
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $specialties,
+                            'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('type', ['label' => 'Tipo de licencia*',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $licenses,
-				            'empty' => 'Seleccione', 'required' => true]); ?>
+                        <?= $this->Form->control('type', ['label' => 'Tipo de licencia*',
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $licenses,
+                            'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
                 </div>
-                <div class="familiar row col-12 mx-auto" <?php if ($report['type'] !== 3) { echo 'style="display: none;"'; } ?>>
+                <div class="familiar row col-12 mx-auto" <?php if ($report['type'] !== 3) {
+                    echo 'style="display: none;"';
+                                                         } ?>>
                     <div class="pt-0 col-lg-4 col-sm-12">
                         <div class="form-group">
-				            <?= $this->Form->control('relativeName', ['label' => 'Nombre del familiar *',
-					            'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                            <?= $this->Form->control('relativeName', ['label' => 'Nombre del familiar *',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => $report['type'] !== 3 ? false : true]); ?>
                         </div>
                     </div>
                     <div class="pt-0 col-lg-4 col-sm-12">
                         <div class="form-group">
-				            <?= $this->Form->control('relativeLastname', ['label' => 'Apellido del familiar*',
-					            'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                            <?= $this->Form->control('relativeLastname', ['label' => 'Apellido del familiar*',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => $report['type'] !== 3 ? false : true]); ?>
                         </div>
                     </div>
                     <div class="pt-0 col-lg-4 col-sm-12">
                         <div class="form-group">
-				            <?= $this->Form->control('relativeRelationship', ['label' => 'Relación *',
-					            'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                            <?= $this->Form->control('relativeRelationship', ['label' => 'Relación *',
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => $report['type'] !== 3 ? false : true]); ?>
                         </div>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('startPathology', ['label' => 'Fecha de solicitud*',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
+                        <?= $this->Form->control('startPathology', ['label' => 'Fecha de solicitud*',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('askedDays', ['label' => 'Días solicitados*',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        <?= $this->Form->control('askedDays', ['label' => 'Días solicitados*',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('privatedoctor_id', ['label' => 'Medico Particular *',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $privateDoctors, 'required' => true, 'empty' => 'Seleccione', 'value'=> $report['privatedoctor_id']]); ?>
+                        <?php
+                        if ($report['askedDays'] > 2) {
+                            $label = 'Medico Particular <span>*</span>';
+                            $requiredDoctor = true;
+                        } else {
+                            $requiredDoctor = false;
+                            $label = 'Medico Particular <span style="display: none;">*</span>';
+                        }
+
+                        ?>
+                        <?= $this->Form->control('privatedoctor_id', ['label' => $label, 'escape' => false,
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $privateDoctors, 'data-create-new' => true, 'data-modal-title' => 'Nuevo medico', 'required' => $requiredDoctor, 'empty' => 'Seleccione', 'value' => $report['privatedoctor_id']]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-			            <?= $this->Form->control('comments', ['label' => 'Observaciones',
-				            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
-			            <?= $this->Form->control('go_to', ['label' => false,
-				            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden' , 'value' => 1]); ?>
+                        <?= $this->Form->control('comments', ['label' => 'Observaciones',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
+                        <?= $this->Form->control('go_to', ['label' => false,
+                            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden' , 'value' => 1]); ?>
                     </div>
                 </div>
             </div>
@@ -381,18 +394,18 @@
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
-                    <?= $this->Form->control('id', ['label' => 'Resultado',
+                    <?= $this->Form->control('id', ['label' => 'id',
                         'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden']); ?>
                 </div>
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
-                    <?= $this->Form->control('status', ['label' => 'Resultado',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione',
-                        'options' => $getStatuses]); ?>
+                    <?= $this->Form->control('status', ['label' => 'Resultado *',
+                        'class' => 'form-control form-control-blue m-0 col-12 select2', 'empty' => 'Seleccione',
+                        'options' => $getStatuses, 'required' => true]); ?>
                 </div>
             </div>
-            <div id="inputs-denegada" class="inputs-to-show" style="display: none;">
+            <div id="inputs-3" class="inputs-to-show" style="display: none;">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" value="1" id="fraud" name="fraud">
                     <label class="form-check-label" for="fraud">Posible fraude</label>
@@ -412,12 +425,24 @@
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <?= $this->Form->control('cie10_id', ['label' => 'Diagnóstico(Codificado CIE 10)',
+                                    'class' => 'form-control form-control-blue m-0 col-12 select2', 'empty' => 'Seleccione',
+                                    'options' => $cie10]); ?>
+                            </div>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" value="1" id="otherDiag" name="otherDiag">
+                            <label class="form-check-label" for="otherDiag">Otro Diagnóstico</label>
+                        </div>
+                </div>
+                <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none;">
                     <div class="form-group">
-                        <?= $this->Form->control('cie10', ['label' => 'Diagnóstico(Codificado CIE 10)',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
+                        <?= $this->Form->control('pathology', ['label' => 'Diagnóstico',
+                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
-
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
@@ -429,6 +454,7 @@
                 <p class="title-results">Archivos e imagenes (Máx. 10 Archivos hasta 10MB cada uno)</p>
             </div>
             <div id="fileuploader" class="col-12">Cargar</div>
+
             <div class="mx-auto form-group row col-lg-12 col-md-12 mt-3">
                 <div class="pl-0 col-12">
                     <button type="submit" id="guardar" class="btn btn-outline-primary col-12" name="guardar">
@@ -440,12 +466,50 @@
 
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade " id="modal-target-form" tabindex="-1"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal title</h1>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="toast" style="position: fixed; bottom: 15px; right: 15px;z-index:99999;" data-delay="5500">
+        <div class="toast-header">
+            <strong class="mr-auto">Notificación</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+        </div>
+    </div>
 
 <?php $this->start('scriptBottom');
 echo $this->Html->css('uploadFiles/styleUploadFile', ['block' => 'script']);
 echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
     <script>
+        selectsToactive =  $('.select2');
+        selectsToactive.select2();
+        $(selectsToactive).each(function () {
+            let createNew = $(this).data('create-new')
+            if (typeof createNew !== 'undefined' && createNew !== false) {
+                let createNewTextData = $(this).data('create-new-text'),
+                    createNewText = (typeof createNewTextData !== 'undefined' && createNewTextData !== false) ? createNewTextData : 'Crear nuevo',
+                    id = $(this).attr('id'),
+                    button = '<a href="#" style="padding: 6px;height: 20px;display: inline-table; width: 100%"  onclick="createNew(\'' + id +'\');"> <i class="si si-plus"></i>' + createNewText +'</a>';
+                $(this)
+                    .select2()
+                    .on('select2:open', () => {
+                        $(".select2-results:not(:has(a))").prepend(button);
+                    })
+            }
+        });
 
         $("#type").on('change', function (e) {
             let $familiar = $('.familiar');
@@ -465,6 +529,57 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
 
             }
         });
+
+        function createNew(id) {
+            let addUrl,
+                $modal = $("#modal-target-form"),
+                posToSearch = '',
+                modalTitle = $('#' + id).data('modal-title');
+            switch (id) {
+                case 'privatedoctor-id':
+                    addUrl = '<?php echo $this->Url->build([
+	                    'controller' => 'Reports',
+	                    'action' => 'addDoctor']); ?>';
+                    posToSearch = 'privatedoctor';
+                    break;
+            }
+
+            $.ajax({
+                type: "GET",
+                url: addUrl,
+                contentType: "application/json",
+                accepts: "application/json",
+                success: function (response) {
+                    $modal.modal("show");
+                    $('#' + id).select2("close");
+                    $(".modal-body", $modal).html(response);
+                    $(".modal-header .modal-title", $modal).html(modalTitle);
+                    $('#modal-target-form .modal-body form').on('submit', function (e) {
+                        $('button.submit', this).attr('disable', true);
+                        e.preventDefault();
+                        $.ajax({
+                            type: "POST",
+                            url: addUrl,
+                            dataType: "json",
+                            data: $(this).serialize(),
+                            success: function (response) {
+                                console.log('Test', response);
+                                $('button.submit', this).attr('disable', false);
+                                if (!response.data.error) {
+                                    var newOption = new Option(response.data[posToSearch].name, response.data[posToSearch].id, true, true);
+                                    $('#' + id).append(newOption).trigger('change');
+                                    $(".modal-body", $modal).html('');
+                                    $modal.modal('hide');
+                                }
+                                $('.toast .toast-body').html(response.data.message);
+                                $('.toast').toast('show');
+
+                            }
+                        });
+                    })
+                }
+            });
+        }
 
         $(document).ready(function() {
             var $reportID = $("#id").val();
@@ -563,10 +678,12 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                        });
                        $observationTextarea.attr('required', false);
                    break;
-                   case '3': //NRLL
-                   case '2': // DENIED
+                   case '2': // NRLL
+                   case '3': // DENIED
                        $inputsGranted.hide();
-                       $('#inputs-' + text).show();
+                       if (value != 2) {
+                           $('#inputs-' + value).show();
+                       }
                        $('input, textarea', $inputsGranted).each(function () {
                            $(this).attr('readonly', true);
                            $(this).attr('required', false);
@@ -574,6 +691,29 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                        $observationTextarea.attr('required', true);
                    break;
                }
+            });
+
+            $("#askeddays").on('change', function (e) {
+                if ($(this).val() > 2) {
+                    $('#privatedoctor-id').attr('required', true);
+                    $('label[for="privatedoctor-id"] span').show();
+                } else {
+                    $('#privatedoctor-id').attr('required', false);
+                    $('label[for="privatedoctor-id"] span').hide();
+                }
+            });
+
+            $("#otherDiag").on('change', function (e) {
+                if($(this).is(':checked')){
+                    $('.otroDiagnostico').slideDown();
+                    $('#pathology').attr('required', true);
+                    $('#cie10-id').prop('disabled', true);
+                    $('#cie10-id').val('').change();
+                } else {
+                    $('.otroDiagnostico').slideUp();
+                    $('#pathology').attr('required', false);
+                    $('#cie10-id').prop('disabled', false);
+                }
             });
         })
     </script>

@@ -76,13 +76,14 @@
                         <?= $this->Form->control('id', ['label' => 'Patologia*',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
                         <?= $this->Form->control('mode_id', ['label' => 'Tipo de Servicio *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'required' => true, 'empty' => 'Seleccione']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('area', ['label' => 'Especialidad *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+	                    <?= $this->Form->control('speciality_id', ['label' => 'Especialidad *',
+		                    'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $specialties,
+		                    'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
@@ -127,7 +128,7 @@
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
 	                    <?= $this->Form->control('privatedoctor_id', ['label' => 'Medico Particular *',
-		                    'class' => 'form-control form-control-blue m-0 col-12', 'options' => $privateDoctors, 'required' => true, 'empty' => 'Seleccione', 'value'=> $report['privatedoctor_id']]); ?>
+		                    'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $privateDoctors, 'required' => true, 'empty' => 'Seleccione', 'value'=> $report['privatedoctor_id']]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
@@ -166,6 +167,7 @@
 echo $this->Html->css('uploadFiles/styleUploadFile', ['block' => 'script']);
 echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
 <script>
+    $('.select2').select2();
     $('#guardar').on('click', function (e) {
         e.preventDefault();
         $.ajax({

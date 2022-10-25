@@ -89,19 +89,20 @@
     <div class="pt-0 col-lg-6 col-sm-12">
         <div class="form-group">
             <?= $this->Form->control('reports[0].mode_id', ['label' => 'Tipo de Servicio *',
-                'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
+                'class' => 'form-control form-control-blue m-0 col-12 select2', 'required' => true, 'empty' => 'Seleccione']); ?>
         </div>
     </div>
     <div class="pt-0 col-lg-6 col-sm-12">
         <div class="form-group">
-            <?= $this->Form->control('reports[0].area', ['label' => 'Especialidad *',
-                'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+            <?= $this->Form->control('reports[0][speciality_id]', ['label' => 'Especialidad *',
+	            'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $specialties,
+	            'empty' => 'Seleccione', 'required' => true]); ?>
         </div>
     </div>
     <div class="pt-0 col-lg-12 col-sm-12">
         <div class="form-group">
             <?= $this->Form->control('reports[0][type]', ['label' => 'Tipo de licencia*',
-                'class' => 'form-control form-control-blue m-0 col-12', 'options' => $licenses,
+                'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $licenses,
                 'empty' => 'Seleccione', 'required' => true]); ?>
         </div>
     </div>
@@ -137,31 +138,33 @@
                 'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
         </div>
     </div>
+    <div class="medicoPersonal row col-12 mx-auto">
+        <div class="pt-0 col-lg-6 col-sm-12">
+            <div class="form-group">
+			    <?= $this->Form->control('personalDoctorName', ['label' => 'Nombre Medico Particular <span style="display:none">*</span>','escape' => false,
+				    'class' => 'form-control form-control-blue m-0 col-12']); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-6 col-sm-12">
+            <div class="form-group">
+			    <?= $this->Form->control('personalDoctorLastname', ['label' => 'Apellido Medico Particular <span style="display:none">*</span>','escape' => false,
+				    'class' => 'form-control form-control-blue m-0 col-12']); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-6 col-sm-12">
+            <div class="form-group">
+			    <?= $this->Form->control('personalDoctorMP', ['label' => 'M.P. Medico Particular <span style="display:none">*</span>','escape' => false,
+				    'class' => 'form-control form-control-blue m-0 col-12']); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-6 col-sm-12">
+            <div class="form-group">
+			    <?= $this->Form->control('personalDoctorMN', ['label' => 'M.N. Medico Particular <span style="display:none">*</span>','escape' => false,
+				    'class' => 'form-control form-control-blue m-0 col-12']); ?>
+            </div>
+        </div>
+    </div>
 
-    <div class="pt-0 col-lg-6 col-sm-12">
-        <div class="form-group">
-            <?= $this->Form->control('personalDoctorName', ['label' => 'Nombre Medico Particular *',
-                'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
-        </div>
-    </div>
-    <div class="pt-0 col-lg-6 col-sm-12">
-        <div class="form-group">
-            <?= $this->Form->control('personalDoctorLastname', ['label' => 'Apellido Medico Particular *',
-                'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
-        </div>
-    </div>
-    <div class="pt-0 col-lg-6 col-sm-12">
-        <div class="form-group">
-            <?= $this->Form->control('personalDoctorMP', ['label' => 'M.P. Medico Particular *',
-                'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
-        </div>
-    </div>
-    <div class="pt-0 col-lg-6 col-sm-12">
-        <div class="form-group">
-            <?= $this->Form->control('personalDoctorMN', ['label' => 'M.N. Medico Particular *',
-                'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
-        </div>
-    </div>
     <div class="pt-0 col-lg-12 col-sm-12">
         <div class="form-group">
             <?= $this->Form->control('reports[0].comments', ['label' => 'Comentarios',
@@ -173,7 +176,7 @@
     <div class="pt-0 col-lg-12 col-sm-12">
         <div class="form-group">
             <?= $this->Form->control('reports[0].doctor_id', ['label' => 'Auditor*',
-                'class' => 'form-control form-control-blue m-0 col-12', 'options' => $doctors,
+                'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $doctors,
                 'empty' => 'Seleccione', 'required' => true]); ?>
         </div>
     </div>
@@ -200,6 +203,7 @@ $prefix = !empty($group['prefix']) ? $group['prefix'] : 'default';
 $redirect = !empty($group) ? $group['redirect'] : ''; ?>
 
 <script>
+    $('.select2').select2();
     $('#guardar_files').on('click', function (e) {
         e.preventDefault();
         $('#go-to').val(2);
@@ -253,6 +257,22 @@ $redirect = !empty($group) ? $group['redirect'] : ''; ?>
                     $(this).attr('required', false);
                 });
 
+        }
+    });
+
+    $("#reports-0-askeddays").on('change', function (e) {
+        let $familiar = $('.medicoPersonal');
+        if ($(this).val() > 2) {
+            $('input, textarea',$familiar).each(function () {
+                $(this).attr('required', true);
+            });
+            $('label span',$familiar).show();
+        } else {
+            $('input, textarea',$familiar).each(function () {
+                $(this).val('');
+                $(this).attr('required', false);
+            });
+            $('label span',$familiar).hide();
         }
     });
 

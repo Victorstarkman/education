@@ -25,7 +25,7 @@ class ReportsController extends AppController
         $search = $this->request->getQueryParams();
         $this->paginate = [
             'contain' => [
-                    'Patients'=>'Companies',
+                    'Patients' => 'Companies',
                     'Users',
                     'Modes',
             ],
@@ -84,8 +84,8 @@ class ReportsController extends AppController
             if (!empty($search['doctor_id'])) {
                 $reports->where(['Reports.doctor_id' => $search['doctor_id']]);
             }
-            if(!empty($search['modes_id'])){
-                $reports->where(['Reports.mode_id'=>$search['modes_id']]);
+            if (!empty($search['modes_id'])) {
+                $reports->where(['Reports.mode_id' => $search['modes_id']]);
             }
         }
         $reports
@@ -102,7 +102,7 @@ class ReportsController extends AppController
         $getAuditors = $this->Reports->Users->getDoctors();
         $companies = $this->Reports->Patients->Companies->find()->all()->combine('id', 'name');
         $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','modes'));
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies', 'modes'));
     }
 
     /**
@@ -116,7 +116,7 @@ class ReportsController extends AppController
         $search = $this->request->getQueryParams();
         $this->paginate = [
             'contain' => [
-                'Patients'=>'Companies',
+                'Patients' => 'Companies',
                 'Users',
                 'Modes',
             ],
@@ -166,8 +166,8 @@ class ReportsController extends AppController
             if (!empty($search['end_date'])) {
                 $reports->where(['Reports.created <=' => $search['end_date']]);
             }
-            if(!empty($search['modes_id'])){
-                $reports->where(['Reports.mode_id'=>$search['modes_id']]);
+            if (!empty($search['modes_id'])) {
+                $reports->where(['Reports.mode_id' => $search['modes_id']]);
             }
         }
 
@@ -186,7 +186,7 @@ class ReportsController extends AppController
         $getAuditors = $this->Reports->Users->getDoctors();
         $companies = $this->Reports->Patients->Companies->find()->all()->combine('id', 'name');
         $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','modes'));
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies', 'modes'));
     }
 
     public function edit($id)
@@ -196,6 +196,7 @@ class ReportsController extends AppController
                 'contain' => [
                     'Patients' => 'Companies',
                     'Files',
+                    'Specialties',
                 ],
             ]);
             if (empty($report)) {
@@ -220,20 +221,22 @@ class ReportsController extends AppController
                 if (in_array($data['status'], $this->Reports->getDeniedStatus())) {
                     $data['recommendedDays'] = 0;
                     $data['startLicense'] = null;
-                    $data['cie10'] = null;
+                    $data['cie10_id'] = null;
                 } else {
                     if (empty($data['recommendedDays']) || $data['recommendedDays'] <= 0) {
                         $errors .= '</br>Los días recomendados deben ser mayor a 0.';
                     }
 
-                    if (
-                        empty($data['startLicense'])
-                        || strtotime($data['startLicense']) < strtotime('-1 days')
-                    ) {
-                        $errors .= '</br>La fecha de inicio no puede ser menor a ayer.';
+                    $today = strtotime(date('Y-m-d', strtotime('-3 day')));
+                    if (empty($data['startLicense']) || !(strtotime($data['startLicense'])  >= $today)) {
+                        $errors .= '</br>La fecha de inicio no puede ser mayor a 3 dias atras.';
                     }
 
-                    if (empty($data['cie10'])) {
+                    if (isset($data['otherDiag']) && (int)$data['otherDiag'] == 1) {
+                        if (empty($data['pathology'])) {
+                            $errors .= '</br>El diagnóstico no puede estar vacio.';
+                        }
+                    } elseif (empty($data['cie10_id'])) {
                         $errors .= '</br>El diagnóstico CIE 10 no puede estar vacio.';
                     }
                 }
@@ -288,6 +291,10 @@ class ReportsController extends AppController
                 'Privatedoctors',
             ]);
         $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
+        $specialties = $this->Reports->Specialties->find()->all()->combine('id', 'name');
+        $cie10 = $this->Reports->Cie10->find()->all()->combine('id', function ($entity) {
+            return $entity->name . ' (' . $entity->code . ')';
+        });
 
         $this->set(compact(
             'report',
@@ -296,6 +303,8 @@ class ReportsController extends AppController
             'licenses',
             'companies',
             'modes',
+            'specialties',
+            'cie10',
             'privateDoctors',
             'clinicalHistory'
         ));
@@ -364,5 +373,61 @@ class ReportsController extends AppController
                 return $this->redirect(['action' => 'edit', $id]);
             }
         }
+    }
+
+    public function addDoctor()
+    {
+        $privateDoctor = $this->Reports->Privatedoctors->newEmptyEntity();
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $error = true;
+            try {
+                $postData = $this->request->getData();
+                $privateDoctorEntity = $this->Reports->Privatedoctors->find('all')
+                    ->where(['OR' => [
+                        ['license' => $postData['license']],
+                        ['licenseNational' => $postData['licenseNational']],
+                    ]])
+                    ->first();
+                if (!empty($privateDoctorEntity)) {
+                    throw new \Exception('Ya existe un medico con la licencia ingresada.');
+                }
+                $privateDoctor = $this->Reports->Privatedoctors->patchEntity($privateDoctor, $postData);
+                if (!$this->Reports->Privatedoctors->save($privateDoctor)) {
+                    throw new \Exception('Error al generar el agente.');
+                }
+
+                $license = '';
+                if (!empty($privateDoctor->license)) {
+                    $license .= '(M.P: ' . $privateDoctor->license;
+                }
+
+                if (!empty($privateDoctor->licenseNational)) {
+                    if (empty($license)) {
+                        $license = ' (';
+                    } else {
+                        $license .= ' - ';
+                    }
+                    $license .= 'M.N: ' . $privateDoctor->licenseNational . ')';
+                } else {
+                    $license .= ')';
+                }
+
+                $privateDoctor = [
+                    'id' => $privateDoctor->id,
+                    'name' => $privateDoctor->name .  ' ' . $privateDoctor->lastname . ' ' . $license,
+                ];
+                $message = 'Se genero correctametne el medico';
+                $error = false;
+            } catch (\Exception $e) {
+                $message = $e->getMessage();
+            }
+
+            $data = ['error' => $error, 'message' => $message, 'privatedoctor' => $privateDoctor];
+            $this->viewBuilder()->setClassName('Json');
+            $this->set(compact('data'));
+            $this->viewBuilder()->setOption('serialize', ['data']);
+        }
+
+        $this->set(compact('privateDoctor'));
     }
 }
