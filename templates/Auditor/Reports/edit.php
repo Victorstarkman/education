@@ -182,9 +182,9 @@
                                                             <thead>
                                                             <tr>
                                                                 <th><?= __('Patologia')?></th>
-                                                                <th><?= __('Resultado')?></th>
+                                                                <th><?= __('Dictamen')?></th>
                                                                 <th><?= __('Duración') ?></th>
-                                                                <th><?= __('Desde') ?></th>
+                                                                <th><?= __('Fecha de Solicitud') ?></th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -257,7 +257,7 @@
                                                         <div class="pl-0 col-12">
                                                             <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] .
                                                                 '/agente/resultado/' . $clinical->id . '/auditoria-' . strtolower($report->patient->lastname . '-' . $report->patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
-                                                                <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
+                                                                <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar Dictamen</a>
                                                         </div>
                                                     <?php else : ?>
                                                         <div class="alert alert-info col-lg-12 text-center" role="alert">
@@ -400,7 +400,7 @@
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
-                    <?= $this->Form->control('status', ['label' => 'Resultado *',
+                    <?= $this->Form->control('status', ['label' => 'Dictamen *',
                         'class' => 'form-control form-control-blue m-0 col-12 select2', 'empty' => 'Seleccione',
                         'options' => $getStatuses, 'required' => true]); ?>
                 </div>
@@ -420,7 +420,7 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('startLicense', ['label' => 'Desde (fecha)',
+                        <?= $this->Form->control('startLicense', ['label' => 'Fecha de Solicitud (fecha)',
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date']); ?>
                     </div>
                 </div>
