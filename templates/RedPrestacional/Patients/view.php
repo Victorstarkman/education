@@ -74,8 +74,8 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th><?= __('Modalidad')?></th>
-                        <th><?= __('Area medica')?></th>
+                        <th><?= __('Tipo de Servicio')?></th>
+                        <th><?= __('Especialidad')?></th>
                         <th><?= __('Fecha de inicio') ?></th>
                         <th><?= __('Tipo de licencia') ?></th>
                     </tr>
@@ -156,9 +156,9 @@
                         <thead>
                         <tr>
                             <th><?= __('Patologia')?></th>
-                            <th><?= __('Resultado')?></th>
+                            <th><?= __('Dictamen')?></th>
                             <th><?= __('Duración') ?></th>
-                            <th><?= __('Desde') ?></th>
+                            <th><?= __('Fecha de Solicitud') ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -231,7 +231,7 @@
                     <div class="pl-0 col-12">
                         <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] .
                             '/agente/resultado/' . $report->id . '/auditoria-' . strtolower($patient->lastname . '-' . $patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
-                            <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
+                            <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar Dictamen</a>
                     </div>
                 <?php else : ?>
                     <div class="alert alert-info col-lg-12 text-center" role="alert">
