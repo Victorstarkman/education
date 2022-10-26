@@ -584,9 +584,7 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
         $(document).ready(function() {
             var $reportID = $("#id").val();
             $("#fileuploader").uploadFile({
-                url: '<?php echo $this->Url->build([
-                    'controller' => 'Files',
-                    'action' => 'addFile', $report->id]); ?>',
+                url: '<?php echo $this->Url->build(['controller' => 'Files','action' => 'addFile', $report->id]); ?>',
                 fileName:"reportFile",
                 showCancel: false,
                 showAbort: false,
