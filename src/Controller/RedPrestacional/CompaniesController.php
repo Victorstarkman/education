@@ -86,4 +86,23 @@ class CompaniesController extends AppController
         $statuses = $this->Companies->getStatuses();
         $this->set(compact('company', 'statuses'));
     }
+
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $company = $this->Companies->get($id, [
+            'contain' => ['Patients'],
+        ]);
+        if (empty($company->patients)) {
+            if ($this->Companies->delete($company)) {
+                $this->Flash->success(__('Se elimino la empresa.'));
+            } else {
+                $this->Flash->error(__('La empresa no se pudo eliminar, intente nuevamente.'));
+            }
+        } else {
+            $this->Flash->error(__('La empresa tiene personas asignas, no es posible eliminarla..'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
 }

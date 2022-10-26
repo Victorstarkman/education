@@ -37,7 +37,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->patient->birthday) ?></td>
+	                <?php $time = \Cake\I18n\FrozenTime::parse($report->patient->birthday);  ?>
+                    <td><?= $time->i18nFormat('dd/MM/yyyy');?></td>
                     <td><?= h($report->patient->age) ?></td>
                     <td><?= h($report->patient->address) ?></td>
                     <td><?= h($report->patient->phone) ?></td>
@@ -74,7 +75,7 @@
                 <tr>
                     <td><?= h($report->mode->name) ?></td>
                     <td><?= h($report->getSpeciality()) ?></td>
-                    <td><?= h($report->startPathology) ?></td>
+                    <td><?= h($report->startPathology->i18nFormat('dd/MM/yyyy')) ?></td>
                     <td><?= $report->getNameLicense() ?></td>
                 </tr>
                 </tbody>
@@ -154,7 +155,7 @@
                     <td><?= h($report->getPathology()) ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= h($report->recommendedDays) ?></td>
-                    <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense; ?></td>
+                    <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense->i18nFormat('dd/MM/yyyy'); ?></td>
                 </tr>
                 </tbody>
             </table>

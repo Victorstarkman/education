@@ -375,9 +375,15 @@ class ReportsController extends AppController
         }
     }
 
-    public function addDoctor()
+    public function addDoctor($id = null)
     {
-        $privateDoctor = $this->Reports->Privatedoctors->newEmptyEntity();
+        $isNew = false;
+        if (is_null($id)) {
+            $isNew = true;
+            $privateDoctor = $this->Reports->Privatedoctors->newEmptyEntity();
+        } else {
+            $privateDoctor = $this->Reports->Privatedoctors->get($id);
+        }
         if ($this->request->is(['patch', 'post', 'put'])) {
             $error = true;
             try {
@@ -386,14 +392,18 @@ class ReportsController extends AppController
                     ->where(['OR' => [
                         ['license' => $postData['license']],
                         ['licenseNational' => $postData['licenseNational']],
-                    ]])
-                    ->first();
+                    ]]);
+                if (!$isNew) {
+                    $privateDoctorEntity->where(['id !=' => $postData['id']]);
+                }
+
+                $privateDoctorEntity = $privateDoctorEntity->first();
                 if (!empty($privateDoctorEntity)) {
                     throw new \Exception('Ya existe un medico con la licencia ingresada.');
                 }
                 $privateDoctor = $this->Reports->Privatedoctors->patchEntity($privateDoctor, $postData);
                 if (!$this->Reports->Privatedoctors->save($privateDoctor)) {
-                    throw new \Exception('Error al generar el agente.');
+                    throw new \Exception('Error al generar el medico.');
                 }
 
                 $license = '';

@@ -40,7 +40,22 @@
                     <td><?= $company->isDienst(); ?></td>
                     <td><?= $company->getNameStatus();?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $company->id]) ?>
+                        <?php echo $this->Html->link(__('Editar'), ['action' => 'edit', $company->id]);
+                            echo ' | ';
+                            echo $this->Form->postLink(
+                                __('Eliminar'),
+                                [
+                                    'controller' => 'Companies',
+                                    'action' => 'delete', $company->id],
+                                [
+                                    'confirm' => __(
+                                        'Estas seguro que queres eliminar la empresa # {0}?',
+	                                    $company->id
+                                    ),
+                                ]
+                            );
+                        ?>
+
                     </td>
                 </tr>
             <?php endforeach; ?>

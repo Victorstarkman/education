@@ -610,4 +610,70 @@ class PatientsController extends AppController
 
         return $this->redirect(['action' => 'listWithoutResults']);
     }
+
+    public function addDoctor($id = null)
+    {
+        $isNew = false;
+        if (is_null($id)) {
+            $isNew = true;
+            $privateDoctor = $this->Patients->Reports->Privatedoctors->newEmptyEntity();
+        } else {
+            $privateDoctor = $this->Patients->Reports->Privatedoctors->get($id);
+        }
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $error = true;
+            try {
+                $postData = $this->request->getData();
+                $privateDoctorEntity = $this->Patients->Reports->Privatedoctors->find('all')
+                    ->where(['OR' => [
+                        ['license' => $postData['license']],
+                        ['licenseNational' => $postData['licenseNational']],
+                    ]]);
+                if (!$isNew) {
+                    $privateDoctorEntity->where(['id !=' => $postData['id']]);
+                }
+
+                $privateDoctorEntity = $privateDoctorEntity->first();
+                if (!empty($privateDoctorEntity)) {
+                    throw new \Exception('Ya existe un medico con la licencia ingresada.');
+                }
+                $privateDoctor = $this->Patients->Reports->Privatedoctors->patchEntity($privateDoctor, $postData);
+                if (!$this->Patients->Reports->Privatedoctors->save($privateDoctor)) {
+                    throw new \Exception('Error al generar el medico.');
+                }
+
+                $license = '';
+                if (!empty($privateDoctor->license)) {
+                    $license .= '(M.P: ' . $privateDoctor->license;
+                }
+
+                if (!empty($privateDoctor->licenseNational)) {
+                    if (empty($license)) {
+                        $license = ' (';
+                    } else {
+                        $license .= ' - ';
+                    }
+                    $license .= 'M.N: ' . $privateDoctor->licenseNational . ')';
+                } else {
+                    $license .= ')';
+                }
+
+                $privateDoctor = [
+                    'id' => $privateDoctor->id,
+                    'name' => $privateDoctor->name .  ' ' . $privateDoctor->lastname . ' ' . $license,
+                ];
+                $message = 'Se genero correctametne el medico';
+                $error = false;
+            } catch (\Exception $e) {
+                $message = $e->getMessage();
+            }
+
+            $data = ['error' => $error, 'message' => $message, 'privatedoctor' => $privateDoctor];
+            $this->viewBuilder()->setClassName('Json');
+            $this->set(compact('data'));
+            $this->viewBuilder()->setOption('serialize', ['data']);
+        }
+
+        $this->set(compact('privateDoctor'));
+    }
 }

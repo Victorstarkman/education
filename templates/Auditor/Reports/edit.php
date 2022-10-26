@@ -110,7 +110,7 @@
                                                         <tr>
                                                             <td><?= h($clinical->mode->name) ?></td>
                                                             <td><?= h($clinical->getSpeciality()) ?></td>
-                                                            <td><?= h($clinical->startPathology) ?></td>
+                                                            <td><?= h($clinical->startPathology->i18nFormat('dd/MM/yyyy')) ?></td>
                                                             <td><?= $clinical->getNameLicense() ?></td>
                                                         </tr>
                                                         </tbody>
@@ -119,7 +119,7 @@
                                                         <thead>
                                                         <tr>
                                                             <th><?= __('Días solicitados') ?></th>
-                                                            <th><?= __('Medico privado') ?></th>
+                                                            <th><?= __('Medico particular') ?></th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -192,7 +192,7 @@
                                                                 <td><?= h($clinical->getPathology()) ?></td>
                                                                 <td><?= $clinical->getNameStatus(); ?></td>
                                                                 <td><?= h($clinical->recommendedDays) ?></td>
-                                                                <td><?= is_null($clinical->startLicense) ? '-' : $clinical->startLicense; ?></td>
+                                                                <td><?= is_null($clinical->startLicense) ? '-' : $clinical->startLicense->i18nFormat('dd/MM/yyyy'); ?></td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -348,6 +348,11 @@
                         ?>
                         <?= $this->Form->control('privatedoctor_id', ['label' => $label, 'escape' => false,
                             'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $privateDoctors, 'data-create-new' => true, 'data-modal-title' => 'Nuevo medico', 'required' => $requiredDoctor, 'empty' => 'Seleccione', 'value' => $report['privatedoctor_id']]); ?>
+                        <div class="text-right editMedico" <?php if ($report['privatedoctor_id'] <= 0) {
+                            echo 'style="display: none;"';
+                                                           } ?>>
+                            <a href="javascript:void(0)" data-id="<?= $report['privatedoctor_id']; ?>">Editar información del Medico</a>
+                        </div>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
@@ -538,8 +543,8 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
             switch (id) {
                 case 'privatedoctor-id':
                     addUrl = '<?php echo $this->Url->build([
-	                    'controller' => 'Reports',
-	                    'action' => 'addDoctor']); ?>';
+                        'controller' => 'Reports',
+                        'action' => 'addDoctor']); ?>';
                     posToSearch = 'privatedoctor';
                     break;
             }
@@ -663,11 +668,58 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                 }
             });
 
+            $('.editMedico a').on('click', function (){
+                let value = $(this).data('id'),
+                    $privateDoctorInput = $('#privatedoctor-id'),
+                    $modal = $("#modal-target-form");
+
+                $.ajax({
+                    type: "GET",
+                    url: '<?php echo $this->Url->build([
+                        'controller' => 'Reports',
+                        'action' => 'addDoctor']); ?>/' + value,
+                    contentType: "application/json",
+                    accepts: "application/json",
+                    success: function (response) {
+                        $modal.modal("show");
+                        $(".modal-body", $modal).html(response);
+                        $(".modal-header .modal-title", $modal).html('Editar Doctor');
+                        $('#modal-target-form .modal-body form').on('submit', function (e) {
+                            $('button.submit', this).attr('disable', true);
+                            e.preventDefault();
+                            $.ajax({
+                                type: "POST",
+                                url: '<?php echo $this->Url->build([
+                                    'controller' => 'Reports',
+                                    'action' => 'addDoctor']); ?>/' + value,
+                                dataType: "json",
+                                data: $(this).serialize(),
+                                success: function (response) {
+                                    console.log('Test', response.data.privatedoctor.name);
+                                    $('button.submit', this).attr('disable', false);
+                                    if (!response.data.error) {
+                                        $privateDoctorInput.select2('destroy');
+                                        $privateDoctorInput.find("option:selected").text(response.data.privatedoctor.name);
+                                        $privateDoctorInput.select2();
+                                        $(".modal-body", $modal).html('');
+                                        $modal.modal('hide');
+                                    }
+                                    $('.toast .toast-body').html(response.data.message);
+                                    $('.toast').toast('show');
+
+                                }
+                            });
+                        })
+                    }
+                });
+            });
+
             $("#status").on('change', function (){
                let value = $(this).val(),
                    text = $('option:selected', this).text().toLowerCase(),
                    $inputsGranted =$('#inputs-granted'),
                    $observationTextarea = $('#observations');
+                   $otherDiagCheckbox = $('#otherDiag');
                $('.inputs-to-show').hide();
                switch (value) {
                    case '4': //GRANTED
@@ -677,6 +729,8 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                            $(this).attr('required', true);
                        });
                        $observationTextarea.attr('required', false);
+                       $otherDiagCheckbox.attr('required', false);
+                       $('#pathology').attr('required', false);
                    break;
                    case '2': // NRLL
                    case '3': // DENIED
@@ -713,6 +767,16 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                     $('.otroDiagnostico').slideUp();
                     $('#pathology').attr('required', false);
                     $('#cie10-id').prop('disabled', false);
+                }
+            });
+
+            $("#privatedoctor-id").on('change', function (e) {
+                let value = $(this).val();
+                if (value) {
+                    $('.editMedico').show();
+                    $('.editMedico a').attr('data-id', value);
+                } else {
+                    $('.editMedico').hide();
                 }
             });
         })
