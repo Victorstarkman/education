@@ -673,9 +673,7 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
 
                 $.ajax({
                     type: "GET",
-                    url: '<?php echo $this->Url->build([
-                        'controller' => 'Reports',
-                        'action' => 'addDoctor']); ?>/' + value,
+                    url: '<?php echo $this->Url->build(['controller' => 'Reports','action' => 'addDoctor']); ?>/' + value,
                     contentType: "application/json",
                     accepts: "application/json",
                     success: function (response) {
@@ -687,9 +685,7 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                             e.preventDefault();
                             $.ajax({
                                 type: "POST",
-                                url: '<?php echo $this->Url->build([
-                                    'controller' => 'Reports',
-                                    'action' => 'addDoctor']); ?>/' + value,
+                                url: '<?php echo $this->Url->build(['controller' => 'Reports','action' => 'addDoctor']); ?>/' + value,
                                 dataType: "json",
                                 data: $(this).serialize(),
                                 success: function (response) {
