@@ -343,8 +343,8 @@ class PatientsController extends AppController
                         if (
                             empty($postData['personalDoctorName'])
                             || empty($postData['personalDoctorLastname'])
-                            || empty($postData['personalDoctorMP'])
-                            || empty($postData['personalDoctorMN'])
+                            || (empty($postData['personalDoctorMP'])
+                            && empty($postData['personalDoctorMN']))
                         ) {
                             throw new \Exception('Falta informacion del Medico Particular.');
                         }

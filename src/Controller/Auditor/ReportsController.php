@@ -426,7 +426,7 @@ class ReportsController extends AppController
                     'id' => $privateDoctor->id,
                     'name' => $privateDoctor->name .  ' ' . $privateDoctor->lastname . ' ' . $license,
                 ];
-                $message = 'Se genero correctametne el medico';
+                $message = 'Se genero correctamente el medico';
                 $error = false;
             } catch (\Exception $e) {
                 $message = $e->getMessage();
