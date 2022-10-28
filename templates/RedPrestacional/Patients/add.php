@@ -79,7 +79,7 @@
                     <div class="form-group">
                         <?= $this->Form->control('company_id', ['label' => 'Empresa',
                             'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione',
-                            'options' => $companies]); ?>
+                            'options' => $companies, 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="mx-auto form-group row col-lg-12 col-md-12">
