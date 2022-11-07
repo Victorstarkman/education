@@ -19,8 +19,8 @@ class SearchController extends AppController
     public function states()
     {
         $statesTable = $this->fetchTable('States');
-        $states = $statesTable->find()->all()->combine('id', 'name')->toArray();
-
+        //$states = $statesTable->find()->all()->combine('id', 'name')->toArray();
+        $states = $statesTable->find()->order(['name'=>'ASC'])->all()->combine('id','name')->toArray();
         $this->set(compact('states'));
     }
 
@@ -28,7 +28,7 @@ class SearchController extends AppController
     {
         $state_id = $this->request->getQuery('state_id');
         $countiesTable = $this->fetchTable('Counties');
-        $counties = $countiesTable->find()->where(['state_id' => $state_id])->all()->combine('id', 'name')->toArray();
+        $counties = $countiesTable->find()->where(['state_id' => $state_id])->order(['name'=>'ASC'])->all()->combine('id', 'name')->toArray();
 
         $this->set(compact('counties'));
     }
@@ -37,7 +37,7 @@ class SearchController extends AppController
     {
         $county_id = $this->request->getQuery('county_id');
         $citiesTable = $this->fetchTable('Cities');
-        $cities = $citiesTable->find()->where(['county_id' => $county_id])->all()->combine('id', 'name')->toArray();
+        $cities = $citiesTable->find()->where(['county_id' => $county_id])->order(['name'=>'ASC'])->all()->combine('id', 'name')->toArray();
 
         $this->set(compact('cities'));
     }

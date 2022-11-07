@@ -1,6 +1,6 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Diagnóstico del agente</h4>
+        <h4>Tipo de Auditoría:&nbsp;&nbsp;&nbsp;<?= h($report->mode->name) ?></h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
@@ -37,7 +37,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->patient->birthday) ?></td>
+	                <?php $time = \Cake\I18n\FrozenTime::parse($report->patient->birthday);  ?>
+                    <td><?= $time->i18nFormat('dd/MM/yyyy');?></td>
                     <td><?= h($report->patient->age) ?></td>
                     <td><?= h($report->patient->address) ?></td>
                     <td><?= h($report->patient->phone) ?></td>
@@ -48,12 +49,14 @@
                 <thead>
                 <tr>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($report->patient->job) ?></td>
+                    <td><?= h($report->patient->seniority) ?></td>
                     <td><?= h($report->patient->company->name) ?></td>
                 </tr>
                 </tbody>
@@ -64,17 +67,17 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Modalidad')?></th>
-                    <th><?= __('Area medica')?></th>
-                    <th><?= __('Fecha de inicio') ?></th>
+                    <th><?= __('Tipo de Servicio')?></th>
+                    <th><?= __('Especialidad')?></th>
+                    <th><?= __('Fecha de creación') ?></th>
                     <th><?= __('Tipo de licencia') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($report->mode->name) ?></td>
-                    <td><?= h($report->area) ?></td>
-                    <td><?= h($report->startPathology) ?></td>
+                    <td><?= h($report->getSpeciality()) ?></td>
+                    <td><?= h($report->startPathology->i18nFormat('dd/MM/yyyy')) ?></td>
                     <td><?= $report->getNameLicense() ?></td>
                 </tr>
                 </tbody>
@@ -83,7 +86,7 @@
                 <thead>
                 <tr>
                     <th><?= __('Días solicitados') ?></th>
-                    <th><?= __('Medico privado') ?></th>
+                    <th><?= __('Medico particular') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -138,23 +141,23 @@
                 </div>
 	        <?php endif; ?>
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
-                <div class="message error">Resultado de auditoría</div>
+                <div class="message error">Dictamen de Auditoría</div>
             </div>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Patologia')?></th>
-                    <th><?= __('Resultado')?></th>
+                    <th><?= __('Diagnóstico')?></th>
+                    <th><?= __('Dictamen')?></th>
                     <th><?= __('Duración') ?></th>
-                    <th><?= __('Desde') ?></th>
+                    <th><?= __('Desde (Fecha)') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->pathology) ?></td>
+                    <td><?= h($report->getPathology()) ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= h($report->recommendedDays) ?></td>
-                    <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense; ?></td>
+                    <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense->i18nFormat('dd/MM/yyyy'); ?></td>
                 </tr>
                 </tbody>
             </table>

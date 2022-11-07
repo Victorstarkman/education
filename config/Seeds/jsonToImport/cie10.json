@@ -1,0 +1,7174 @@
+[
+  {
+    "code": 52,
+    "name": "ATENCION FAMILIAR ENFERMO (AFE)"
+  },
+  {
+    "code": 317,
+    "name": "CIRUGIAS DEL OIDO MEDIO"
+  },
+  {
+    "code": 318,
+    "name": "CIRUGIAS DEL OIDO INTERNO"
+  },
+  {
+    "code": 319,
+    "name": "CIRUGIAS DE LA NARIZ Y DE LOS SENOS PARANASALES"
+  },
+  {
+    "code": 527,
+    "name": "CIRUGIAS DE LOS VASOS SANGUINEOS INTRAABDOMINALES"
+  },
+  {
+    "code": 634,
+    "name": "CIRUGIA DE PULMON"
+  },
+  {
+    "code": 635,
+    "name": "CIRUGIAS DEL ESOFAGO"
+  },
+  {
+    "code": 851,
+    "name": "CIRUGIAS DEL ANO"
+  },
+  {
+    "code": 852,
+    "name": "CIRUGIAS DE QUISTE O DE FISTULA PILONIDAL"
+  },
+  {
+    "code": 954,
+    "name": "CIRUGIAS DEL RIÑON"
+  },
+  {
+    "code": 955,
+    "name": "CIRUGIAS DEL URETER"
+  },
+  {
+    "code": 1016,
+    "name": "CIRUGIAS DEL ENCEFALO Y DE LAS MENINGES CEREBRALES"
+  },
+  {
+    "code": 1032,
+    "name": "CIRUGIAS DE MEDULA ESPINAL, RAICES DE NERVIOS RAQUIDEOS Y MENINGES ESPINAL"
+  },
+  {
+    "code": 1044,
+    "name": "NEURORRAFIA"
+  },
+  {
+    "code": 1049,
+    "name": "OTRAS CIRUGIAS DE LOS NERVIOS PERIFERICOS"
+  },
+  {
+    "code": 1167,
+    "name": "CIRUGIAS DEL OVARIO"
+  },
+  {
+    "code": 1170,
+    "name": "CIRUGIAS DEL UTERO Y DE SUS ELEMENTOS DE SOSTEN"
+  },
+  {
+    "code": 1171,
+    "name": "CIRUGIAS DE LA VAGINA"
+  },
+  {
+    "code": 1172,
+    "name": "CIRUGIAS DE LA VULVA Y DEL PERINE"
+  },
+  {
+    "code": 1274,
+    "name": "CIRUGIAS OBSTETRICAS EFECTUADAS ANTES DEL PARTO"
+  },
+  {
+    "code": 1277,
+    "name": "CESAREA"
+  },
+  {
+    "code": 1381,
+    "name": "REPARACION Y CIRUGIA PLASTICA DE HUESO"
+  },
+  {
+    "code": 1384,
+    "name": "REDUCCION DE FRACTURA, O DE LUXACION CON FRACTURA, DE OTRAS REGIONES ANATOMICAS"
+  },
+  {
+    "code": 1386,
+    "name": "INCISION Y ESCISION DE ELEMENTOS DE LAS ARTICULACIONES"
+  },
+  {
+    "code": 1388,
+    "name": "CIRUGIAS DE LOS MUSCULOS, DE LOS TENDONES, DE LAS APONEUROSIS Y DE LAS BOLSAS SINOVIALES TENDINOSAS, EXCEP DE MANO"
+  },
+  {
+    "code": 1389,
+    "name": "CIRUGIAS DE MUSCULO, TENDONES DE LA MANO (TUNEL CARPIANO)"
+  },
+  {
+    "code": 1492,
+    "name": "CIRUGIAS DE PIEL, ANEXOS Y DE TEJIDO CELULAR SUBCUTANEO"
+  },
+  {
+    "code": 1595,
+    "name": "CIRUGIAS DE LAS GLANDULAS Y CONDUCTOS SALIVALES"
+  },
+  {
+    "code": 1699,
+    "name": "CIRUGIA DENTAL"
+  },
+  {
+    "code": 2078,
+    "name": "CIRUGIAS DE LOS PARPADOS"
+  },
+  {
+    "code": 2081,
+    "name": "EXTRACCION CUERPO EXTRAÑO EN OJO"
+  },
+  {
+    "code": 2086,
+    "name": "CIRUGIA QUIRURGICA DE PTERIGION"
+  },
+  {
+    "code": 2091,
+    "name": "EXTIRPACION DE LESION DE OJO Y ORBITA"
+  },
+  {
+    "code": 2110,
+    "name": "QUERATOTOMIA"
+  },
+  {
+    "code": 2111,
+    "name": "EXTRACCION DE CUERPO EXTRAÑO DE LA CORNEA O DE LA ESCLEROTICA"
+  },
+  {
+    "code": 2115,
+    "name": "CIRUGIAS DE LA CORNEA"
+  },
+  {
+    "code": 2139,
+    "name": "CIRUGIAS DE LA RETINA"
+  },
+  {
+    "code": 2140,
+    "name": "CIRUGIA DE CATARATA"
+  },
+  {
+    "code": 3209,
+    "name": "CIRUGIAS DE LA LARINGE Y DE LA TRAQUEA"
+  },
+  {
+    "code": 3214,
+    "name": "CIRUGIAS DE LAS AMIGDALAS Y DE VEGETACIONES ADENOIDES"
+  },
+  {
+    "code": 4229,
+    "name": "CIRUGIAS DE TIROIDES"
+  },
+  {
+    "code": 4230,
+    "name": "CIRUGIAS DEL TIMO"
+  },
+  {
+    "code": 4231,
+    "name": "CIRUGIAS DE LAS GLANDULAS SUPRARENALES"
+  },
+  {
+    "code": 5244,
+    "name": "CIRUGIA DE VARICES"
+  },
+  {
+    "code": 5247,
+    "name": "RECONSTRUCCION DE ARTERIA PERIFERICA POR INJERTO DE VASO SANGUINEO(BYPASS)"
+  },
+  {
+    "code": 5249,
+    "name": "CIRUGIAS DE LOS VASOS PERIFERICOS"
+  },
+  {
+    "code": 5251,
+    "name": "CIRUGIA DE GANGLIO LINFATICO Y CADENA GLANGLIONAR"
+  },
+  {
+    "code": 5298,
+    "name": "ANGIOPLASTIA BYPASS CARDIACO - REVASCULARIZACION CARDIACA"
+  },
+  {
+    "code": 5302,
+    "name": "CATETERISMO CARDIACO"
+  },
+  {
+    "code": 5304,
+    "name": "INSERCION DE DISPOSITIVO ELECTRONICO EN EL CORAZON"
+  },
+  {
+    "code": 6329,
+    "name": "CIRUGIAS DE LA PARED DEL TORAX, DE LA PLEURA Y DEL MEDIASTINO"
+  },
+  {
+    "code": 7380,
+    "name": "CIRUGIA DE HERNIA"
+  },
+  {
+    "code": 7382,
+    "name": "CIRUGIA DE HERNIA INGUINAL Y FEMORAL"
+  },
+  {
+    "code": 7388,
+    "name": "CIRUGIA DE HERNIA UMBILICAL"
+  },
+  {
+    "code": 7391,
+    "name": "LAPAROTOMIA EXPLORADORA"
+  },
+  {
+    "code": 7409,
+    "name": "CIRUGIAS EN REGION DEL ABDOMEN Y DEL PERITONEO. EVENTROPLASTIA"
+  },
+  {
+    "code": 7411,
+    "name": "APENDICECTOMIA"
+  },
+  {
+    "code": 7429,
+    "name": "CIRUGIAS DEL HIGADO"
+  },
+  {
+    "code": 7435,
+    "name": "COLECISTECTOMIA"
+  },
+  {
+    "code": 7439,
+    "name": "CIRUGIAS DE LAS VIAS BILIARES"
+  },
+  {
+    "code": 7449,
+    "name": "CIRUGIAS DEL PANCREAS"
+  },
+  {
+    "code": 7459,
+    "name": "CIRUGIAS DEL BAZO"
+  },
+  {
+    "code": 7461,
+    "name": "PILOROPLASTIA Y OTROS PROCEDIMIENTOS PARA DRENAJE"
+  },
+  {
+    "code": 7469,
+    "name": "CIRUGIAS DEL ESTOMAGO"
+  },
+  {
+    "code": 7474,
+    "name": "RESECCION DEL INTESTINO DELGADO"
+  },
+  {
+    "code": 7478,
+    "name": "COLOSTOMIA"
+  },
+  {
+    "code": 7489,
+    "name": "CIRUGIAS DE INTESTINO GRUESO"
+  },
+  {
+    "code": 8509,
+    "name": "CIRUGIAS DEL RECTO"
+  },
+  {
+    "code": 8510,
+    "name": "CIRUGIA DE FISTULA ANAL"
+  },
+  {
+    "code": 8513,
+    "name": "CIRUGIA DE HEMORROIDES"
+  },
+  {
+    "code": 9547,
+    "name": "TRANSPLANTE DEL RIÑON"
+  },
+  {
+    "code": 9579,
+    "name": "CIRUGIAS DE LA URETRA"
+  },
+  {
+    "code": 9589,
+    "name": "CIRUGIAS DE LA PROSTATA Y DE LAS VESICULAS SEMINALES"
+  },
+  {
+    "code": 9599,
+    "name": "CIRUGIAS DEL TESTICULO, DE LA TUNICA VAGINAL, DEL ESCROTO Y DEL CORDON ESPERMATICO"
+  },
+  {
+    "code": 9619,
+    "name": "CIRUGIAS DEL PENE"
+  },
+  {
+    "code": 10655,
+    "name": "MASTECTOMIA"
+  },
+  {
+    "code": 10657,
+    "name": "REPARACION Y CIRUGIA PLASTICA DE LA MAMA"
+  },
+  {
+    "code": 10659,
+    "name": "OTRAS CIRUGIAS DE LA MAMA"
+  },
+  {
+    "code": 11681,
+    "name": "SALPINGECTOMIA"
+  },
+  {
+    "code": 11700,
+    "name": "HISTERECTOMIA"
+  },
+  {
+    "code": 11702,
+    "name": "CIRUGIAS DE UTERO Y CUELLO UTERINO (CONIZACION)"
+  },
+  {
+    "code": 11703,
+    "name": "LEGRADO UTERINO"
+  },
+  {
+    "code": 11709,
+    "name": "CIRUGIA DE PROLAPSO GENITAL"
+  },
+  {
+    "code": 11713,
+    "name": "COLPORRAFIA"
+  },
+  {
+    "code": 11714,
+    "name": "CIRUGIA DE CISTOCELE Y DE RECTOCELE"
+  },
+  {
+    "code": 11722,
+    "name": "ESCISION DE GLANDULA DE BARTHOLIN"
+  },
+  {
+    "code": 12740,
+    "name": "AMNIOCENTESIS"
+  },
+  {
+    "code": 12745,
+    "name": "OTROS PROCEDIMIENTOS EFECTUADOS ANTES DEL PARTO"
+  },
+  {
+    "code": 12759,
+    "name": "EPISIOTOMIA"
+  },
+  {
+    "code": 12769,
+    "name": "OTRAS CIRUGIAS PARA INDUCIR O PARA FACILITAR EL PARTO"
+  },
+  {
+    "code": 13862,
+    "name": "EXTRACCION DE LIQUIDO SINOVIAL (ARTROCENTESIS)"
+  },
+  {
+    "code": 13864,
+    "name": "CIRUGIA DE HERNIA DE DISCO"
+  },
+  {
+    "code": 13865,
+    "name": "CIRUGIA DE RODILLA (MENISCECTOMIA)"
+  },
+  {
+    "code": 13871,
+    "name": "ARTROPLASTIA DE LA CADERA"
+  },
+  {
+    "code": 13872,
+    "name": "REPARACION Y CIRUGIA PLASTICA DE ARTICULACION DEL PIE O DE DEDO DE PIE (HALLUX VALGUS)"
+  },
+  {
+    "code": 13873,
+    "name": "REPARACION Y CIRUGIA PLASTICA DE OTRAS ARTICULACIONES"
+  },
+  {
+    "code": 13874,
+    "name": "CIRUGIA ARTRODESIS DE LA COLUMNA VERTEBRAL (LAMINECTOMIA)"
+  },
+  {
+    "code": 13876,
+    "name": "ARTRODESIS Y ANQUILOSIS QUIRURGICAS"
+  },
+  {
+    "code": 13879,
+    "name": "OTRAS CIRUGIAS DE LOS ELEMENTOS DE LAS ARTICULACIONES"
+  },
+  {
+    "code": 13881,
+    "name": "SECCION DE MUSCULO, TENDON Y APONEUROSIS"
+  },
+  {
+    "code": 13893,
+    "name": "SUTURA DE MUSCULO, TENDON Y APONEUROSIS DE LA MANO"
+  },
+  {
+    "code": 13898,
+    "name": "CIRUGIA PLASTICA DE TENDON Y DE APONEUROSIS DE LA MANO"
+  },
+  {
+    "code": 14942,
+    "name": "CIRUGIA PLASTICA DE LA NARIZ"
+  },
+  {
+    "code": 14949,
+    "name": "OTRAS CIRUGIAS RECONTRUCTIVAS"
+  },
+  {
+    "code": 15963,
+    "name": "CIRUGIAS DE LA LENGUA"
+  },
+  {
+    "code": 15969,
+    "name": "CIRUGIAS DE LA CAVIDAD BUCAL"
+  },
+  {
+    "code": 15975,
+    "name": "CIRUGIA DE MAXILAR INFERIOR"
+  },
+  {
+    "code": 15977,
+    "name": "REDUCCION DE LUXACION DEL MAXILAR INFERIOR"
+  },
+  {
+    "code": 15979,
+    "name": "OTRAS CIRUGIAS DE LOS MAXILARES"
+  },
+  {
+    "code": 121848,
+    "name": "OTROS ESGUINCES Y DESGARROS Y LOS MAL DEFINIDOS"
+  },
+  {
+    "code": 764298,
+    "name": "OTRAS COMPLICACIONES MAL DEFINIDAS DE LAS ENFERMEDADES DEL CORAZON"
+  },
+  {
+    "code": 855178,
+    "name": "NEUMOPATIA EN AFECCIONES CLASIFICADAS EN OTRA PARTE, OTRAS"
+  },
+  {
+    "code": "043A",
+    "name": "MATERNIDAD"
+  },
+  {
+    "code": "049O993",
+    "name": "OTROS SALUD MENTAL"
+  },
+  {
+    "code": "049R908",
+    "name": "OTROS SISTEMA NERVIOSO"
+  },
+  {
+    "code": "049T07",
+    "name": "OTROS TRAUMATISMOS"
+  },
+  {
+    "code": "054I",
+    "name": "DONACION DE SANGRE"
+  },
+  {
+    "code": "17A1",
+    "name": "BIOPSIA"
+  },
+  {
+    "code": "18A4",
+    "name": "ENDOSCOPIA DIAGNOSTICA A TRAVES DE UN ORIFICIO NATURAL"
+  },
+  {
+    "code": "18A40",
+    "name": "OTOSCOPIA PARA EXTRACCION DE CUERPO EXTRAÑO"
+  },
+  {
+    "code": "18A41",
+    "name": "RINOSCOPIA PARA EXTRACCION DE CUERPO EXTRAÑO"
+  },
+  {
+    "code": "18A42",
+    "name": "LARINGOSCOPIA"
+  },
+  {
+    "code": "18A45",
+    "name": "ENDOSCOPIA DEL COLON Y DEL RECTO"
+  },
+  {
+    "code": "18A46",
+    "name": "CITOSCOPIA Y URETROSCOPIA"
+  },
+  {
+    "code": "18A59",
+    "name": "ENDOSCOPIA"
+  },
+  {
+    "code": "19A",
+    "name": "RADIOGRAFIA DIAGNOSTICO"
+  },
+  {
+    "code": "20R1",
+    "name": "RADIOTERAPIA"
+  },
+  {
+    "code": "20R16",
+    "name": "QUIMIOTERAPIA"
+  },
+  {
+    "code": "21R4",
+    "name": "MEDICINA FISICA Y REHABILITACION"
+  },
+  {
+    "code": "21R41",
+    "name": "FISIOTERAPIA"
+  },
+  {
+    "code": "22R93",
+    "name": "DIALISIS RENAL"
+  },
+  {
+    "code": "22R95",
+    "name": "PUNCION RAQUIDEA"
+  },
+  {
+    "code": "22R99",
+    "name": "OTROS PROCEDIMIENTOS NO QUIRURGICOS"
+  },
+  {
+    "code": "A009",
+    "name": "COLERA, NO ESPECIFICADO"
+  },
+  {
+    "code": "A010",
+    "name": "FIEBRE TIFOIDEA"
+  },
+  {
+    "code": "A014",
+    "name": "FIEBRE PARATIFOIDEA"
+  },
+  {
+    "code": "A020",
+    "name": "ENTERITIS DEBIDA A SALMONELLA"
+  },
+  {
+    "code": "A039",
+    "name": "DISENTERIA BACILAR, SHIGELOSIS"
+  },
+  {
+    "code": "A043",
+    "name": "INFECCION DEBIDA A ESCHERICHIA COLI ENTEROHEMORRAGICA"
+  },
+  {
+    "code": "A044",
+    "name": "ENTERITIS POR E. COLI"
+  },
+  {
+    "code": "A049",
+    "name": "ENTERITIS BACTERIANA"
+  },
+  {
+    "code": "A051",
+    "name": "BOTULISMO"
+  },
+  {
+    "code": "A059",
+    "name": "INTOXICACION ALIMENTARIA BACTERIANA"
+  },
+  {
+    "code": "A060",
+    "name": "AMEBIASIS AGUDA, DISENTERIA"
+  },
+  {
+    "code": "A071",
+    "name": "GIARDIASIS"
+  },
+  {
+    "code": "A072",
+    "name": "CRIPTOSPORIDIOSIS"
+  },
+  {
+    "code": "A073",
+    "name": "ISOSPORIASIS"
+  },
+  {
+    "code": "A079",
+    "name": "DIARREA POR PROTOZOARIOS"
+  },
+  {
+    "code": "A084",
+    "name": "GASTROENTERITIS VIRAL"
+  },
+  {
+    "code": "A09",
+    "name": "ENTEROCOLITIS INFECCIOSA"
+  },
+  {
+    "code": "A15",
+    "name": "TUBERCULOSIS RESPIRATORIA, CONFIRMADA BACTERIOLOGICA E HISTOLOGICAMENTE"
+  },
+  {
+    "code": "A150",
+    "name": "TUBERCULOSIS PULMONAR"
+  },
+  {
+    "code": "A170",
+    "name": "MENINGITIS TUBERCULOSA (G01*)"
+  },
+  {
+    "code": "A180",
+    "name": "TUBERCULOSIS DE HUESOS Y ARTICULACIONES"
+  },
+  {
+    "code": "A181",
+    "name": "TUBERCULOSIS DEL APARATO GENITOURINARIO"
+  },
+  {
+    "code": "A183",
+    "name": "TUBERCULOSIS DE LOS INTESTINOS, EL PERITONEO Y LOS GANGLIOS MESENTERICOS"
+  },
+  {
+    "code": "A184",
+    "name": "TUBERCULOSIS DE LA PIEL Y DEL TEJIDO SUBCUTANEO"
+  },
+  {
+    "code": "A19",
+    "name": "TUBERCULOSIS MILIAR, DISEMINADA."
+  },
+  {
+    "code": "A22",
+    "name": "CARBUNCLO, ANTRAX"
+  },
+  {
+    "code": "A23",
+    "name": "BRUCELOSIS"
+  },
+  {
+    "code": "A27",
+    "name": "LEPTOSPIROSIS"
+  },
+  {
+    "code": "A30",
+    "name": "LEPRA"
+  },
+  {
+    "code": "A32",
+    "name": "LISTERIOSIS"
+  },
+  {
+    "code": "A35",
+    "name": "TETANOS"
+  },
+  {
+    "code": "A36",
+    "name": "DIFTERIA"
+  },
+  {
+    "code": "A37",
+    "name": "TOS FERINA"
+  },
+  {
+    "code": "A38",
+    "name": "ESCARLATINA"
+  },
+  {
+    "code": "A39",
+    "name": "INFECCION MENINGOCOCICA"
+  },
+  {
+    "code": "A419",
+    "name": "SEPTICEMIA, SHOCK SEPTICO"
+  },
+  {
+    "code": "A42",
+    "name": "ACTINOMICOSIS"
+  },
+  {
+    "code": "A43",
+    "name": "NOCARDIOSIS"
+  },
+  {
+    "code": "A46",
+    "name": "ERISIPELA"
+  },
+  {
+    "code": "A480",
+    "name": "GANGRENA GASEOSA"
+  },
+  {
+    "code": "A499",
+    "name": "BACTERIEMIA"
+  },
+  {
+    "code": "A510",
+    "name": "CHANCRO SIFILITICO"
+  },
+  {
+    "code": "A540",
+    "name": "INFECCION GONOCOCICA"
+  },
+  {
+    "code": "A55",
+    "name": "LINFOGRANULOMA VENEREO"
+  },
+  {
+    "code": "A57",
+    "name": "CHANCRO BLANDO"
+  },
+  {
+    "code": "A590",
+    "name": "TRICOMONIASIS UROGENITAL"
+  },
+  {
+    "code": "A600",
+    "name": "INFECCION DE GENITALES Y TRAYECTO UROGENITAL DEBIDA AL VIRUS DEL HERPES (HERPES SIMPLE)"
+  },
+  {
+    "code": "A630",
+    "name": "VERRUGAS VENERAS, ANOGENITALES"
+  },
+  {
+    "code": "A64",
+    "name": "ENFERMEDAD DE TRANSMISION SEXUAL, NO ESPECIFICADA. ENF. VENEREA"
+  },
+  {
+    "code": "A70",
+    "name": "PSITACOSIS"
+  },
+  {
+    "code": "A71",
+    "name": "TRACOMA"
+  },
+  {
+    "code": "A74",
+    "name": "OTRAS ENFERMEDADES CAUSADAS POR CLAMIDIAS"
+  },
+  {
+    "code": "A759",
+    "name": "TIFUS"
+  },
+  {
+    "code": "A809",
+    "name": "POLIOMIELITIS AGUDA"
+  },
+  {
+    "code": "A810",
+    "name": "ENFERMEDAD DE CREUTZFELDT-JAKOB"
+  },
+  {
+    "code": "A829",
+    "name": "RABIA"
+  },
+  {
+    "code": "A839",
+    "name": "ENCEFALITIS VIRAL TRANSMITIDA POR MOSQUITOS, SIN OTRA ESPECIFICACION"
+  },
+  {
+    "code": "A86",
+    "name": "MENINGOENCEFALITIS VIRAL"
+  },
+  {
+    "code": "A879",
+    "name": "MENINGITIS VIRAL"
+  },
+  {
+    "code": "A95",
+    "name": "FIEBRE AMARILLA"
+  },
+  {
+    "code": "A960",
+    "name": "FIEBRE HEMORRAGICA DE JUNIN"
+  },
+  {
+    "code": "B009",
+    "name": "INFECCION POR HERPES SIMPLE"
+  },
+  {
+    "code": "B019",
+    "name": "VARICELA"
+  },
+  {
+    "code": "B029",
+    "name": "HERPES ZOSTER"
+  },
+  {
+    "code": "B059",
+    "name": "SARAMPION"
+  },
+  {
+    "code": "B06",
+    "name": "RUBEOLA [ SARAMPION ALEMAN ]"
+  },
+  {
+    "code": "B069",
+    "name": "RUBEOLA"
+  },
+  {
+    "code": "B07",
+    "name": "VERRUGA VULGAR"
+  },
+  {
+    "code": "B081",
+    "name": "MOLUSCO CONTAGIOSO"
+  },
+  {
+    "code": "B082",
+    "name": "EXANTEMA SUBITO"
+  },
+  {
+    "code": "B083",
+    "name": "ERITEMA INFECCIOSO"
+  },
+  {
+    "code": "B09",
+    "name": "ENANTEMA, EXANTEMA VIRAL INESPECIFICO"
+  },
+  {
+    "code": "B15",
+    "name": "HEPATITIS AGUDA TIPO A"
+  },
+  {
+    "code": "B16",
+    "name": "HEPATITIS AGUDA TIPO B"
+  },
+  {
+    "code": "B171",
+    "name": "HEPATITIS AGUDA TIPO C"
+  },
+  {
+    "code": "B172",
+    "name": "HEPATITIS AGUDA TIPO E"
+  },
+  {
+    "code": "B178",
+    "name": "HEPATITIS TIPO NO A NO B, VIRAL AGUDA"
+  },
+  {
+    "code": "B181",
+    "name": "HEPATITIS VIRAL TIPO B CRONICA, SIN AGENTE DELTA"
+  },
+  {
+    "code": "B182",
+    "name": "HEPATITIS VIRAL TIPO C CRONICA"
+  },
+  {
+    "code": "B189",
+    "name": "HEPATITIS VIRAL CRONICA"
+  },
+  {
+    "code": "B199",
+    "name": "HEPATITIS VIRAL"
+  },
+  {
+    "code": "B209",
+    "name": "ENFERMEDAD DEBIDA A HIV, CON ENFERMEDAD INFECCIOSA"
+  },
+  {
+    "code": "B219",
+    "name": "ENFERMEDAD POR HIV ,CON TUMOR MALIGNO"
+  },
+  {
+    "code": "B220",
+    "name": "DEMENCIA POR HIV"
+  },
+  {
+    "code": "B221",
+    "name": "ENFERMEDAD POR HIV CON NEUMONITIS LINFOIDE INTERSTICIAL"
+  },
+  {
+    "code": "B222",
+    "name": "ENFERMEDAD POR HIV CON SINDROME CAQUECTICO"
+  },
+  {
+    "code": "B230",
+    "name": "SINDROME DE INFECCION AGUDA POR HIV"
+  },
+  {
+    "code": "B231",
+    "name": "ENFERMEDAD POR HIV CON LINFADENOPATIA GENERALIZADA"
+  },
+  {
+    "code": "B24",
+    "name": "SINDROME DE INMUNODEFICIENCIA ADQUIRIDA. SIDA Y CRS"
+  },
+  {
+    "code": "B259",
+    "name": "ENFERMEDAD POR CITOMEGALOVIRUS"
+  },
+  {
+    "code": "B26",
+    "name": "PAROTIDITIS INFECCIOSA"
+  },
+  {
+    "code": "B269",
+    "name": "PAROTIDITIS"
+  },
+  {
+    "code": "B279",
+    "name": "MONONUCLEOSIS INFECCIOSA"
+  },
+  {
+    "code": "B309",
+    "name": "CONJUNTIVITIS VIRAL"
+  },
+  {
+    "code": "B34",
+    "name": "INFECCION VIRAL INESPECIFICA"
+  },
+  {
+    "code": "B34A150",
+    "name": "VIH/Sida Micobacterium TBC"
+  },
+  {
+    "code": "B34B009",
+    "name": "VIH/Sida Herpes Simple"
+  },
+  {
+    "code": "B34B209",
+    "name": "VIH/Sida Enfermedad Infecciosa"
+  },
+  {
+    "code": "B34B219",
+    "name": "VIH/Sida Tumor Maligno"
+  },
+  {
+    "code": "B34B220",
+    "name": "VIH/Sida Demencia"
+  },
+  {
+    "code": "B34B221",
+    "name": "VIH/Sida Neumonitis"
+  },
+  {
+    "code": "B34B259",
+    "name": "VIH/Sida Citomegalovirus"
+  },
+  {
+    "code": "B34B379",
+    "name": "VIH/Sida Candida"
+  },
+  {
+    "code": "B34B45",
+    "name": "VIH/Sida Criptococos"
+  },
+  {
+    "code": "B34B58",
+    "name": "VIH/Sida Toxoplasma"
+  },
+  {
+    "code": "B34B59",
+    "name": "VIH/Sida Neumonia P Carinii"
+  },
+  {
+    "code": "B35",
+    "name": "DERMATOFITOSIS"
+  },
+  {
+    "code": "B37",
+    "name": "CANDIDIASIS. AFTAS"
+  },
+  {
+    "code": "B377",
+    "name": "SEPTICEMIA POR CANDIDA"
+  },
+  {
+    "code": "B379",
+    "name": "CANDIDIASIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "B38",
+    "name": "COCCIDIODOMICOSIS"
+  },
+  {
+    "code": "B39",
+    "name": "HISTOPLASMOSIS"
+  },
+  {
+    "code": "B44",
+    "name": "ASPERGILOSIS"
+  },
+  {
+    "code": "B45",
+    "name": "CRIPTOCOCOSIS"
+  },
+  {
+    "code": "B487",
+    "name": "MICOSIS OPORTUNISTA"
+  },
+  {
+    "code": "B54",
+    "name": "PALUDISMO O MALARIA"
+  },
+  {
+    "code": "B55",
+    "name": "LEISHMANIASIS"
+  },
+  {
+    "code": "B57",
+    "name": "ENFERMEDAD DE CHAGAS"
+  },
+  {
+    "code": "B570",
+    "name": "ENFERMEDAD DE CHAGAS AGUDA QUE AFECTA AL CORAZON (I41.2*, I98.1*)"
+  },
+  {
+    "code": "B572",
+    "name": "ENFERMEDAD DE CHAGAS (CRONICA) QUE AFECTA AL CORAZON (I41.2*, I98.1*)"
+  },
+  {
+    "code": "B573",
+    "name": "ENFERMEDAD DE CHAGAS (CRONICA) QUE AFECTA AL SISTEMA DIGESTIVO"
+  },
+  {
+    "code": "B575",
+    "name": "ENFERMEDAD DE CHAGAS (CRONICA) QUE AFECTA OTROS ORGANOS"
+  },
+  {
+    "code": "B58",
+    "name": "TOXOPLASMOSIS"
+  },
+  {
+    "code": "B59",
+    "name": "NEUMONIA DEBIDA A P. CARINII"
+  },
+  {
+    "code": "B64",
+    "name": "ENFERMEDAD DEBIDA A PROTOZOARIOS, NO ESPECIFICADA"
+  },
+  {
+    "code": "B67",
+    "name": "HIDATIDOSIS. EQUINOCOCOSIS"
+  },
+  {
+    "code": "B68",
+    "name": "TENIASIS"
+  },
+  {
+    "code": "B75",
+    "name": "TRIQUINOSIS"
+  },
+  {
+    "code": "B760",
+    "name": "ANQUILOSTOMIASIS"
+  },
+  {
+    "code": "B761",
+    "name": "NECATORIASIS"
+  },
+  {
+    "code": "B77",
+    "name": "ASCARIASIS"
+  },
+  {
+    "code": "B78",
+    "name": "ESTRONGILOIDIASIS"
+  },
+  {
+    "code": "B80",
+    "name": "ENTEROBIASIS. OXIURIASIS"
+  },
+  {
+    "code": "B82",
+    "name": "PARASITOSIS INTESTINALES, SIN OTRA ESPECIFICACION"
+  },
+  {
+    "code": "B852",
+    "name": "PEDICULOSIS"
+  },
+  {
+    "code": "B853",
+    "name": "PHTHIRIASIS. LADILLA"
+  },
+  {
+    "code": "B86",
+    "name": "ESCABIOSIS"
+  },
+  {
+    "code": "B87",
+    "name": "MIASIS"
+  },
+  {
+    "code": "C000",
+    "name": "TUMOR MALIGNO DEL LABIO SUPERIOR, CARA EXTERNA"
+  },
+  {
+    "code": "C01",
+    "name": "TUMOR MALIGNO DE LA BASE DE LA LENGUA"
+  },
+  {
+    "code": "C023",
+    "name": "TUMOR MALIGNO DE LOS DOS TERCIOS ANTERIORES DE LA LENGUA"
+  },
+  {
+    "code": "C04",
+    "name": "TUMOR MALIGNO DEL PISO DE LA BOCA"
+  },
+  {
+    "code": "C05",
+    "name": "TUMOR MALIGNO DEL PALADAR"
+  },
+  {
+    "code": "C062",
+    "name": "TUMOR MALIGNO DE AREA RETROMOLAR"
+  },
+  {
+    "code": "C069",
+    "name": "TUMOR MALIGNO DE LA CAVIDAD BUCAL"
+  },
+  {
+    "code": "C07",
+    "name": "TUMOR MALIGNO DE GLANDULA PAROTIDA"
+  },
+  {
+    "code": "C080",
+    "name": "TUMOR MALIGNO DE LA GLANDULA SUBMAXILAR"
+  },
+  {
+    "code": "C10",
+    "name": "TUMOR MALIGNO DE OROFARINGE"
+  },
+  {
+    "code": "C11",
+    "name": "TUMOR MALIGNO DE LA NASOFARINGE"
+  },
+  {
+    "code": "C12",
+    "name": "TUMOR MALIGNO DEL SENO PIRIFORME (TUMORES FARINGOLARINGEOS)"
+  },
+  {
+    "code": "C13",
+    "name": "TUMOR MALIGNO DE LA HIPOFARINGE"
+  },
+  {
+    "code": "C15",
+    "name": "TUMOR MALIGNO DEL ESOFAGO"
+  },
+  {
+    "code": "C16",
+    "name": "TUMOR MALIGNO DEL ESTOMAGO"
+  },
+  {
+    "code": "C18",
+    "name": "TUMOR MALIGNO DEL COLON"
+  },
+  {
+    "code": "C19",
+    "name": "TUMOR MALIGNO DE COLON RECTOSIGMOIDEO Y DE RECTO"
+  },
+  {
+    "code": "C21",
+    "name": "TUMOR MALIGNO DEL ANO"
+  },
+  {
+    "code": "C22",
+    "name": "TUMOR MALIGNO DEL HIGADO Y VIAS BILIARES"
+  },
+  {
+    "code": "C223",
+    "name": "ANGIOSARCOMA DEL HIGADO. SARCOMA DE CELULAS KUPFFER"
+  },
+  {
+    "code": "C229",
+    "name": "TUMOR MALIGNO DEL HIGADO, NO ESPECIFICADO"
+  },
+  {
+    "code": "C25",
+    "name": "TUMOR MALIGNO DEL PANCREAS"
+  },
+  {
+    "code": "C250",
+    "name": "TUMOR MALIGNO DE LA CABEZA DEL PANCREAS"
+  },
+  {
+    "code": "C251",
+    "name": "TUMOR MALIGNO DEL CUERPO DEL PANCREAS"
+  },
+  {
+    "code": "C252",
+    "name": "TUMOR MALIGNO DE LA COLA DEL PANCREAS"
+  },
+  {
+    "code": "C301",
+    "name": "TUMOR MALIGNO DEL OIDO MEDIO"
+  },
+  {
+    "code": "C31",
+    "name": "TUMOR MALIGNO DE LOS SENOS PARANASALES"
+  },
+  {
+    "code": "C32",
+    "name": "TUMOR MALIGNO DE LA LARINGE"
+  },
+  {
+    "code": "C33",
+    "name": "TUMOR MALIGNO DE LA TRAQUEA"
+  },
+  {
+    "code": "C34",
+    "name": "TUMOR MALIGNO DE LOS BRONQUIOS Y DEL PULMON"
+  },
+  {
+    "code": "C38",
+    "name": "TUMOR MALIGNO DEL CORAZON, DEL MEDIASTINO Y DE LA PLEURA"
+  },
+  {
+    "code": "C384",
+    "name": "TUMOR MALIGNO DE LA PLEURA"
+  },
+  {
+    "code": "C40",
+    "name": "TUMOR MALIGNO DE LOS HUESOS Y DE LOS CARTILAGOS ARTICULARES DE LOS MIEMBROS"
+  },
+  {
+    "code": "C410",
+    "name": "TUMOR MALIGNO DE HUESOS DE CRANEO Y CARA"
+  },
+  {
+    "code": "C412",
+    "name": "TUMOR MALIGNO DE LA COLUMNA VERTEBRAL"
+  },
+  {
+    "code": "C413",
+    "name": "TUMOR MALIGNO DE COSTILLA, ESTERNON Y CLAVICULA"
+  },
+  {
+    "code": "C414",
+    "name": "TUMOR MALIGNO DE LOS HUESOS DE LA PELVIS, SACRO Y COXIS"
+  },
+  {
+    "code": "C43",
+    "name": "MELANOMA MALIGNO DE LA PIEL"
+  },
+  {
+    "code": "C439",
+    "name": "MELANOMA MALIGNO DE PIEL"
+  },
+  {
+    "code": "C44",
+    "name": "CARCINOMA BASOCELULAR"
+  },
+  {
+    "code": "C449",
+    "name": "TUMOR MALIGNO DE PIEL ,NO ESPECIFICADO"
+  },
+  {
+    "code": "C450",
+    "name": "MESOTELIOMA DE LA PLEURA"
+  },
+  {
+    "code": "C460",
+    "name": "SARCOMA DE KAPOSI"
+  },
+  {
+    "code": "C49",
+    "name": "TUMOR MALIGNO DE OTROS TEJIDOS CONJUNTIVOS Y DE TEJIDOS BLANDOS"
+  },
+  {
+    "code": "C50",
+    "name": "TUMOR MALIGNO DE MAMA"
+  },
+  {
+    "code": "C51",
+    "name": "TUMOR MALIGNO DE LA VULVA"
+  },
+  {
+    "code": "C52",
+    "name": "TUMOR MALIGNO DEL CUERPO DE LA VAGINA"
+  },
+  {
+    "code": "C53",
+    "name": "TUMOR MALIGNO DEL CUELLO DEL UTERO"
+  },
+  {
+    "code": "C54",
+    "name": "TUMOR MALIGNO DEL CUERPO DEL UTERO"
+  },
+  {
+    "code": "C56",
+    "name": "TUMOR MALIGNO DEL OVARIO"
+  },
+  {
+    "code": "C58",
+    "name": "TUMOR MALIGNO DE PLACENTA. CORIOCARCINOMA"
+  },
+  {
+    "code": "C60",
+    "name": "TUMOR MALIGNO DE PENE"
+  },
+  {
+    "code": "C61",
+    "name": "TUMOR MALIGNO DE PROSTATA."
+  },
+  {
+    "code": "C62",
+    "name": "TUMOR MALIGNO DE TESTICULO. SEMINOMA"
+  },
+  {
+    "code": "C63",
+    "name": "TUMOR MALIGNO DE OTROS ORGANOS GENITALES MASCULINOS Y DE LOS NO ESPECIFICADOS"
+  },
+  {
+    "code": "C64",
+    "name": "TUMOR MALIGNO DE RIÑON"
+  },
+  {
+    "code": "C66",
+    "name": "TUMOR MALIGNO DEL URETER"
+  },
+  {
+    "code": "C67",
+    "name": "TUMOR MALIGNO DE VEJIGA URINARIA"
+  },
+  {
+    "code": "C69",
+    "name": "TUMOR MALIGNO DE OJO Y SUS ANEXOS"
+  },
+  {
+    "code": "C70",
+    "name": "TUMOR MALIGNO DE LAS MENINGES"
+  },
+  {
+    "code": "C71",
+    "name": "TUMOR MALIGNO DEL ENCEFALO"
+  },
+  {
+    "code": "C717",
+    "name": "OTROS TUMORES MALIGNOS"
+  },
+  {
+    "code": "C729",
+    "name": "TUMOR MALIGNO DEL SNC, SIN OTRA ESPECIFICACION"
+  },
+  {
+    "code": "C73",
+    "name": "TUMOR MALIGNO DE GLANDULA TIROIDES"
+  },
+  {
+    "code": "C74",
+    "name": "TUMOR MALIGNO DE LA GLANDULA SUPRARRENAL"
+  },
+  {
+    "code": "C751",
+    "name": "TUMOR MALIGNO DE HIPOFISIS"
+  },
+  {
+    "code": "C779",
+    "name": "TUMOR MALIGNO SECUNDARIO DE GANGLIO LINFATICO, SITIO NO ESPECIFICADO"
+  },
+  {
+    "code": "C780",
+    "name": "TUMOR MALIGNO SECUNDARIO DE PULMON"
+  },
+  {
+    "code": "C782",
+    "name": "TUMOR MALIGNO SECUNDARIO DE LA PLEURA"
+  },
+  {
+    "code": "C786",
+    "name": "TUMOR MALIGNO DEL PERITONEO Y RETROPERITONEO. ASCITIS MALIGNA"
+  },
+  {
+    "code": "C787",
+    "name": "TUMOR MALIGNO SECUNDARIO DE HIGADO"
+  },
+  {
+    "code": "C79",
+    "name": "TUMOR MALIGNO SECUNDARIO DE OTROS SITIOS"
+  },
+  {
+    "code": "C81",
+    "name": "ENFERMEDAD DE HODGKIN"
+  },
+  {
+    "code": "C82",
+    "name": "LINFOMA NO HODGKIN"
+  },
+  {
+    "code": "C90",
+    "name": "MIELOMA MULTIPLE"
+  },
+  {
+    "code": "C91",
+    "name": "LEUCEMIA LINFOIDE"
+  },
+  {
+    "code": "C92",
+    "name": "LEUCEMIA MIELOIDE"
+  },
+  {
+    "code": "D03",
+    "name": "MELANOMA IN SITU"
+  },
+  {
+    "code": "D04",
+    "name": "CARCINOMA IN SITU"
+  },
+  {
+    "code": "D05",
+    "name": "CARCINOMA IN SITU DE LA MAMA"
+  },
+  {
+    "code": "D06",
+    "name": "CARCINOMA IN SITU DEL CUELLO DEL UTERO"
+  },
+  {
+    "code": "D10",
+    "name": "TUMOR BENIGNO DE LA BOCA Y DE LA FARINGE"
+  },
+  {
+    "code": "D11",
+    "name": "TUMOR BENIGNO DE LAS GLANDULAS SALIVALES MAYORES"
+  },
+  {
+    "code": "D12",
+    "name": "TUMOR BENIGNO DEL COLON, DEL RECTO, ANO"
+  },
+  {
+    "code": "D126",
+    "name": "TUMOR BENIGNO DEL COLON. ADENOMATOSIS O POLIPOSIS DEL COLON"
+  },
+  {
+    "code": "D13",
+    "name": "TUMOR BENIGNO DE OTRAS PARTES Y DE LAS MAL DEFINIDAS DEL SISTEMA DIGESTIVO"
+  },
+  {
+    "code": "D14",
+    "name": "TUMOR BENIGNO DEL OIDO MEDIO Y DEL SISTEMA RESPIRATORIO. INCLUYE OIDO MEDIO, CAVIDAD NASAL, SENOS PARANASALES, LARINGE, TRAQUEA, BRONQUIOS Y PULMON"
+  },
+  {
+    "code": "D15",
+    "name": "TUMOR BENIGNO DE OTROS ORGANOS INTRATORACICOS Y DE LOS NO ESPECIFICADOS"
+  },
+  {
+    "code": "D16",
+    "name": "TUMOR BENIGNO DE HUESO Y DEL CARTILAGO ARTICULAR"
+  },
+  {
+    "code": "D17",
+    "name": "TUMORES BENIGNOS LIPOMATOSOS"
+  },
+  {
+    "code": "D179",
+    "name": "TUMOR BENIGNO LIPOMATOSO"
+  },
+  {
+    "code": "D180",
+    "name": "HEMANGIOMA, ANGIOMA, DE CUALQUIER SITIO"
+  },
+  {
+    "code": "D190",
+    "name": "TUMOR BENIGNO DEL TEJIDO MESOTELIAL DE LA PLEURA"
+  },
+  {
+    "code": "D20",
+    "name": "TUMOR BENIGNO DEL TEJIDO BLANDO DEL PERITONEO Y DEL RETROPERITONEO"
+  },
+  {
+    "code": "D21",
+    "name": "TUMORES BENIGNOS DEL TEJIDO CONJUNTIVO Y DE LOS TEJIDOS BLANDOS"
+  },
+  {
+    "code": "D22",
+    "name": "NEVO MELANOCITICO"
+  },
+  {
+    "code": "D23",
+    "name": "OTROS TUMORES BENIGNOS DE LA PIEL"
+  },
+  {
+    "code": "D24",
+    "name": "TUMOR BENIGNO DE MAMA"
+  },
+  {
+    "code": "D25",
+    "name": "LEIOMIOMA DEL UTERO"
+  },
+  {
+    "code": "D27",
+    "name": "TUMOR BENIGNO DE OVARIO"
+  },
+  {
+    "code": "D28",
+    "name": "TUMOR BENIGNO DE ORGANOS GENITALES FEMENINOS"
+  },
+  {
+    "code": "D29",
+    "name": "TUMOR BENIGNO DE OTROS ORGANOS MASCULINOS"
+  },
+  {
+    "code": "D30",
+    "name": "TUMOR BENIGNO DE LOS ORGANOS URINARIOS"
+  },
+  {
+    "code": "D31",
+    "name": "TUMOR BENIGNO DE OJO Y SUS ANEXOS"
+  },
+  {
+    "code": "D329",
+    "name": "TUMOR BENIGNO DE LAS MENINGES, MENINGIOMA, PARTE NO ESPECIFICADA"
+  },
+  {
+    "code": "D339",
+    "name": "TUMOR BENIGNO DEL SNC, SITIO NO ESPECIFICADO"
+  },
+  {
+    "code": "D34",
+    "name": "TUMOR BENIGNO DE GLANDULA TIROIDES"
+  },
+  {
+    "code": "D352",
+    "name": "TUMOR BENIGNO DE HIPOFISIS"
+  },
+  {
+    "code": "D359",
+    "name": "TUMOR BENIGNO DE GLANDULA ENDOCRINA, NO ESPECIFICADO"
+  },
+  {
+    "code": "D360",
+    "name": "TUMOR BENIGNO DE LOS GANGLIOS LINFATICOS"
+  },
+  {
+    "code": "D361",
+    "name": "TUMOR BENIGNO DE LOS NERVIOS PERIFERICOS Y DEL SISTEMA NERVIOSO AUTONOMO"
+  },
+  {
+    "code": "D44",
+    "name": "TUMOR DE COMPORTAMIENTO INCIERTO DE LAS GLANDULAS ENDOCRINAS"
+  },
+  {
+    "code": "D45",
+    "name": "POLICITEMIA VERA"
+  },
+  {
+    "code": "D46",
+    "name": "SINDROMES MIELODISPLASICOS. PRELEUCEMIA"
+  },
+  {
+    "code": "D472",
+    "name": "GAMMOPATIA MONOCLONAL"
+  },
+  {
+    "code": "D50",
+    "name": "ANEMIAS POR DEFICIENCIAS DE HIERRO O A. FERROPENICA"
+  },
+  {
+    "code": "D51",
+    "name": "ANEMIA POR DEFICIENCIA DE VITAMINA B12"
+  },
+  {
+    "code": "D52",
+    "name": "ANEMIA POR DEFICIENCIA DE FOLATOS"
+  },
+  {
+    "code": "D53",
+    "name": "OTRAS ANEMIAS NUTRICIONALES"
+  },
+  {
+    "code": "D539",
+    "name": "OTRAS ANEMIAS POR DEFICIENCIA, SIN ESPECIFICACION"
+  },
+  {
+    "code": "D55",
+    "name": "ANEMIA HEMOLITICA, DEBIDA A TRASTORNOS ENZIMATICOS"
+  },
+  {
+    "code": "D56",
+    "name": "TALASEMIA"
+  },
+  {
+    "code": "D561",
+    "name": "TALASEMIA MAYOR"
+  },
+  {
+    "code": "D57",
+    "name": "TRASTORNOS FALCIFORMES"
+  },
+  {
+    "code": "D58",
+    "name": "OTRAS ANEMIAS HEMOLITICAS HEREDITARIAS"
+  },
+  {
+    "code": "D59",
+    "name": "ANEMIA HEMOLITICA ADQUIRIDA"
+  },
+  {
+    "code": "D593",
+    "name": "SINDROME HEMOLITICO-UREMICO"
+  },
+  {
+    "code": "D60",
+    "name": "ANEMIAS APLASTICAS"
+  },
+  {
+    "code": "D62",
+    "name": "ANEMIA POSTHEMORRAGICA AGUDA"
+  },
+  {
+    "code": "D649",
+    "name": "ANEMIA DE TIPO NO ESPECIFICADO"
+  },
+  {
+    "code": "D65",
+    "name": "COAGULACION INTRAVASCULAR DISEMINADA"
+  },
+  {
+    "code": "D66",
+    "name": "DEFICIENCIA HEREDITARIA DEL FACTOR VII"
+  },
+  {
+    "code": "D67",
+    "name": "DEFICIENCIA HEREDITARIA DEL FACTOR V IX"
+  },
+  {
+    "code": "D68",
+    "name": "OTROS DEFECTOS DE LA COAGULACION"
+  },
+  {
+    "code": "D69",
+    "name": "PURPURA Y OTRAS AFECCIONES HEMORRAGICAS"
+  },
+  {
+    "code": "D70",
+    "name": "AGRANULOCITOSIS O NEUTROPENIA"
+  },
+  {
+    "code": "D728",
+    "name": "OTROS TRASTORNOS DE LOS LEUCOCITOS: LEUCOCITOSIS, LINFOCITOSIS, LINFOPENIA. REACCION LEUCEMOIDE"
+  },
+  {
+    "code": "D73",
+    "name": "ENFERMEDADES DEL BAZO. INCLUYE ESPLENOMEGALIA E INFARTO"
+  },
+  {
+    "code": "D731",
+    "name": "HIPERESPLENISMO"
+  },
+  {
+    "code": "D74",
+    "name": "METAHEMOGLOBINEMIA"
+  },
+  {
+    "code": "D751",
+    "name": "POLICITEMIA SECUNDARIA"
+  },
+  {
+    "code": "D763",
+    "name": "OTROS SINDROMES HISTIOCITICOS"
+  },
+  {
+    "code": "D77",
+    "name": "OTROS SANGRE"
+  },
+  {
+    "code": "D86",
+    "name": "SARCOIDOSIS"
+  },
+  {
+    "code": "E012",
+    "name": "BOCIO ENDEMICO POR DEFICIENCIA DE YODO. HIPOTIROIDISMO"
+  },
+  {
+    "code": "E03",
+    "name": "OTROS HIPOTIROIDISMOS"
+  },
+  {
+    "code": "E032",
+    "name": "HIPOTIROIDISMO DEBIDO A MEDICAMENTOS Y A OTRAS SUST. EXOGENAS"
+  },
+  {
+    "code": "E039",
+    "name": "HIPOTIROIDISMO NO ESPECIFICADO"
+  },
+  {
+    "code": "E041",
+    "name": "NODULO TIROIDEO SOLITARIO NO TOXICO. QUISTE TIROIDEO"
+  },
+  {
+    "code": "E049",
+    "name": "BOCIO NODULAR, NO TOXICO"
+  },
+  {
+    "code": "E05",
+    "name": "TIROTOXICOSIS [ HIPERTIROIDISMO ]"
+  },
+  {
+    "code": "E050",
+    "name": "TIROTOXICOSIS CON BOCIO DIFUSO. HIPERTIROIDISMO"
+  },
+  {
+    "code": "E055",
+    "name": "CRISIS O TORMENTA TIROTOXICA"
+  },
+  {
+    "code": "E059",
+    "name": "HIPERTIROIDISMO, TIROTOXICOSIS. NO ESPECIFICADO"
+  },
+  {
+    "code": "E06",
+    "name": "TIROIDITIS"
+  },
+  {
+    "code": "E063",
+    "name": "TIROIDITIS AUTOINMUNE. T. DE HASHIMOTO"
+  },
+  {
+    "code": "E064",
+    "name": "TIROIDITIS INDUCIDA POR DROGAS"
+  },
+  {
+    "code": "E069",
+    "name": "TIROIDITIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "E079",
+    "name": "TRANSTORNO DE LA GLANDULA TIROIDES, NO ESPECIFICADO"
+  },
+  {
+    "code": "E10",
+    "name": "DIABETES MELLITUS INSULINODEPENDIENTE, TIPO L. INCLUYE COMA DIABETICO"
+  },
+  {
+    "code": "E105",
+    "name": "DIABETES CON TRASTORNOS CIRCULATORIOS PERIFERICOS"
+  },
+  {
+    "code": "E10G632",
+    "name": "Diabetes Tipo 1 Neuropatia"
+  },
+  {
+    "code": "E10H360",
+    "name": "Diabetes Tipo 1 Retinopatia"
+  },
+  {
+    "code": "E10I20",
+    "name": "Diabetes Tipo 1 Cardiopatia Isquemica"
+  },
+  {
+    "code": "E10I69",
+    "name": "Diabetes Tipo 1 Enfermedad Cerebrovascular"
+  },
+  {
+    "code": "E10L984",
+    "name": "Diabetes Tipo 1 Ulcera Miembro Inferiores"
+  },
+  {
+    "code": "E10N083",
+    "name": "Diabetes Tipo 1 Nefropatia"
+  },
+  {
+    "code": "E11",
+    "name": "DIABETES MELLITUS NO INSULINODEPENDIENTE, TIPO LL. INCLUYE COMA DIABETICO"
+  },
+  {
+    "code": "E11G632",
+    "name": "Diabetes Tipo 2 Neuropatia"
+  },
+  {
+    "code": "E11H360",
+    "name": "Diabetes Tipo 2 Retinopatia"
+  },
+  {
+    "code": "E11I20",
+    "name": "Diabetes Tipo 2 Cardiopatia Isquemica"
+  },
+  {
+    "code": "E11I69",
+    "name": "Diabetes Tipo 2 Enfermedad Cerebrovascular"
+  },
+  {
+    "code": "E11L984",
+    "name": "Diabetes Tipo 2 Ulcera Miembros Inferiores"
+  },
+  {
+    "code": "E11N083",
+    "name": "Diabetes Tipo 2 Nefropatia"
+  },
+  {
+    "code": "E15",
+    "name": "COMA HIPOGLUCEMICO NO DIABETICO"
+  },
+  {
+    "code": "E169",
+    "name": "HIPOGLUCEMIA"
+  },
+  {
+    "code": "E209",
+    "name": "HIPOPARATIROIDISMO"
+  },
+  {
+    "code": "E210",
+    "name": "HIPERPARATIROIDISMO PRIMARIO. OSTEITIS FRIBROQUISTICA GENERALIZADA (ENFERMEDAD DE VON RECKINGHAUSEN)"
+  },
+  {
+    "code": "E215",
+    "name": "TRASTORNO DE LA GLANDULA PARATIROIDES"
+  },
+  {
+    "code": "E229",
+    "name": "HIPERFUNCION DE LA GLANDULA HIPOFISIS"
+  },
+  {
+    "code": "E230",
+    "name": "HIPOPITUITARISNO"
+  },
+  {
+    "code": "E232",
+    "name": "DIABETES INSIPIDA"
+  },
+  {
+    "code": "E24",
+    "name": "SINDROME DE CUSHING"
+  },
+  {
+    "code": "E259",
+    "name": "SINDROME ADRENOGENITAL"
+  },
+  {
+    "code": "E260",
+    "name": "HIPERALDOSTERONISMO PRIMARIO, SINDROME DE CONN"
+  },
+  {
+    "code": "E271",
+    "name": "INSUFICIENCIA CORTICOSUPRARRENAL. ENF. DE ADDISON."
+  },
+  {
+    "code": "E274",
+    "name": "INSUFICIENCIA ADRENOCORTICAL"
+  },
+  {
+    "code": "E282",
+    "name": "SINDROME DE OVARIO POLIQUISTICO"
+  },
+  {
+    "code": "E283",
+    "name": "INSUFICIENCIA OVARICA PRIMARIA. MENOPAUSIA PREMATURA."
+  },
+  {
+    "code": "E29",
+    "name": "DISFUNCION TESTICULAR"
+  },
+  {
+    "code": "E32",
+    "name": "ENFERMEDADES DEL TIMO"
+  },
+  {
+    "code": "E340",
+    "name": "SINDROME CARCINOIDE"
+  },
+  {
+    "code": "E349",
+    "name": "TRASTORNO ENDOCRINO, NO ESPECIFICADO"
+  },
+  {
+    "code": "E46",
+    "name": "DESNUTRICION"
+  },
+  {
+    "code": "E509",
+    "name": "DEFICIENCIA DE VITAMINA A"
+  },
+  {
+    "code": "E511",
+    "name": "DEFICIENCIA DE TIAMINA. BERIBERI"
+  },
+  {
+    "code": "E512",
+    "name": "ENCEFALOPATIA DE WERNICKE"
+  },
+  {
+    "code": "E52",
+    "name": "DEFICIENCIA DE NIACINA:. PELAGRA"
+  },
+  {
+    "code": "E53",
+    "name": "OTRAS DEFICIENCIAS VITAMINICAS DEL GRUPO B"
+  },
+  {
+    "code": "E54",
+    "name": "DEFICIENCIA DE ACIDO ASCORBICO. ESCORBUTO"
+  },
+  {
+    "code": "E55",
+    "name": "DEFICIENCIA DE VITAMINA D"
+  },
+  {
+    "code": "E64",
+    "name": "SECUELAS DE LA DESNUTRICION Y OTRAS DEFICIENCIAS NUTRICIONALES"
+  },
+  {
+    "code": "E66",
+    "name": "OBESIDAD"
+  },
+  {
+    "code": "E662",
+    "name": "OBESIDAD EXTREMA CON HIPOVENTILACION ALVEOLAR. SINDROME DE PICKWICK"
+  },
+  {
+    "code": "E68",
+    "name": "SECUELAS DE HIPERALIMENTACION EN LOS DISTINTOS SISTEMAS Y APARATOS"
+  },
+  {
+    "code": "E709",
+    "name": "TRASTORNO DEL METABOLISMO DE LOS AMINOACIDOS AROMATICOS, NO ESPECIFICADO"
+  },
+  {
+    "code": "E72",
+    "name": "OTROS TRASTORNOS DEL METABOLISMO DE LOS AMINOACIDOS"
+  },
+  {
+    "code": "E73",
+    "name": "INTOLERANCIA A LA LACTOSA"
+  },
+  {
+    "code": "E74",
+    "name": "OTROS TRASTORNOS DEL METABOLISMO DE LOS CARBOHIDRATOS"
+  },
+  {
+    "code": "E756",
+    "name": "TRASTORNO DEL ALMACENAMIENTO DE LIPIDOS Y METABOLISMO DE LOS ESFINGOLIPIDOS"
+  },
+  {
+    "code": "E78",
+    "name": "TRASTORNOS DEL METABOLISMO DE LAS LIPOPROTEINAS Y OTRAS LIPIDEMIAS"
+  },
+  {
+    "code": "E80",
+    "name": "TRASTORNO DEL METABOLISMO DE LAS PORFIRINAS Y DE LA BILIRRUBINA"
+  },
+  {
+    "code": "E801",
+    "name": "PORFIRIA CUTANEA TARDIA"
+  },
+  {
+    "code": "E84",
+    "name": "FIBROSIS QUISTICA O MUCOVISCIDOSIS"
+  },
+  {
+    "code": "E85",
+    "name": "AMILOIDOSIS"
+  },
+  {
+    "code": "E86",
+    "name": "DESHIDRATACION"
+  },
+  {
+    "code": "E872",
+    "name": "ACIDOSIS, LACTICA, METABOLICA, RESPIRATORIA"
+  },
+  {
+    "code": "E873",
+    "name": "ALCALOSIS, METABOLICA O RESPIRATORIA"
+  },
+  {
+    "code": "E890",
+    "name": "HIPOTIROIDISMO CONSECUTIVO A CIRUGIA O RADIACION"
+  },
+  {
+    "code": "E898",
+    "name": "OTROS TRASTORNOS METABOLICOS Y ENDOCRINOS CONSECUTIVOS A PROCEDIMIENTOS"
+  },
+  {
+    "code": "F00",
+    "name": "DEMENCIA EN LA ENFERMEDAD DE ALZHEIMER (G30)"
+  },
+  {
+    "code": "F01",
+    "name": "DEMENCIA VASCULAR"
+  },
+  {
+    "code": "F021",
+    "name": "DEMENCIA EN LA ENFERMEDAD DE CREUTZFELDT-JAKOB (A81.0)"
+  },
+  {
+    "code": "F023",
+    "name": "DEMENCIA EN LA ENFERMEDAD DE PARKINSON (G20)"
+  },
+  {
+    "code": "F024",
+    "name": "DEMENCIA EN LA ENFERMEDAD POR VIRUS DE LA INMUNODEFICIENCIA HUMANA (B22.0)"
+  },
+  {
+    "code": "F028",
+    "name": "DEMENCIA EN OTRAS ENFERMEDADES CLASIFICADAS EN OTRA PARTE. COMO EPILEPSIA, LES, ESCLEROSIS MULTIPLE, INTOXICACIONES, OTRAS"
+  },
+  {
+    "code": "F03",
+    "name": "DEMENCIA, NO ESPECIFICADA - DEMENCIA SENIL"
+  },
+  {
+    "code": "F05",
+    "name": "DELIRIUM, NO INDUCIDO POR ALCOHOL O POR OTRAS SUSTANCIAS PSICOACTIVAS. INCLUYE: SINDROME PSICOORGANICO CEREBRAL DE TIPO INESPECIFICO. PSICOSIS INFECCIOSA. ESTADO CONFUSIONAL ( NO ALCOHOLICO) TIPO DE SUSTANCIAS: CORTICOIDES, ANALGESICOS, ANTIASMATIC"
+  },
+  {
+    "code": "F06",
+    "name": "TRASTORNOS MENTALES DEBIDOS A LESION Y DISFUNCION CEREBRAL, Y A ENFERMEDAD FISICA. INCLUYE: ALUCINOSIS ORGANICA. TRASTORNO CATATONICO, ORGANICO. A RAIZ DE TRAUMATISMOS, TUMORES, CIRROSIS, COMA DIABETICO, ENCEFALITIS"
+  },
+  {
+    "code": "F068",
+    "name": "PSICOSIS EPILEPTICA"
+  },
+  {
+    "code": "F069",
+    "name": "SINDROME CEREBRAL ORGANICO. TRASTORNO MENTAL NO ESPECIFICADO DEBIDO A LESION O DISFUNCION CEREBRAL Y A ENFERMEDAD FISICA. SINDROME CEREBRAL ORGANICO."
+  },
+  {
+    "code": "F07",
+    "name": "TRASTORNOS DE LA PERSONALIDAD Y DEL COMPORTAMIENTO DEBIDOS A ENFERMEDAD, LESION O DISFUNCION CEREBRAL. INCLUYE: SINDROME DEL LOBULO FRONTAL."
+  },
+  {
+    "code": "F072",
+    "name": "SINDROME POSTCONTUSIONAL O SINDROME POSTRAUMATICO NO PSICOTICO"
+  },
+  {
+    "code": "F09",
+    "name": "TRASTORNO MENTAL ORGANICO O SINTOMATICO. PSICOSIS ORGANICA. PSICOSIS SINTOMATICA. NO ESPECIFICADO"
+  },
+  {
+    "code": "F10",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL."
+  },
+  {
+    "code": "F100",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F101",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Uso Nocivo."
+  },
+  {
+    "code": "F102",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - SÑndrome de dependencia."
+  },
+  {
+    "code": "F103",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Estado de abstinencia"
+  },
+  {
+    "code": "F104",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F105",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F106",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F107",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F108",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F109",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F11",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS"
+  },
+  {
+    "code": "F110",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F111",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Uso Nocivo."
+  },
+  {
+    "code": "F112",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - SÑndrome de dependencia."
+  },
+  {
+    "code": "F113",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Estado de abstinencia"
+  },
+  {
+    "code": "F114",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F115",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F116",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F117",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F118",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F119",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F12",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES"
+  },
+  {
+    "code": "F120",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F121",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Uso Nocivo."
+  },
+  {
+    "code": "F122",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - SÑndrome de dependencia."
+  },
+  {
+    "code": "F123",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Estado de abstinencia"
+  },
+  {
+    "code": "F124",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F125",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F126",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F127",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F128",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F129",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F14",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA"
+  },
+  {
+    "code": "F140",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F141",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Uso Nocivo."
+  },
+  {
+    "code": "F142",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - SÑndrome de dependencia."
+  },
+  {
+    "code": "F143",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Estado de abstinencia"
+  },
+  {
+    "code": "F144",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F145",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F146",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F147",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F148",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F149",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F16",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS"
+  },
+  {
+    "code": "F160",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F161",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Uso Nocivo."
+  },
+  {
+    "code": "F162",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - SÑndrome de dependencia."
+  },
+  {
+    "code": "F163",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Estado de abstinencia"
+  },
+  {
+    "code": "F164",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F165",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F166",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F167",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F168",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F169",
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F17",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO"
+  },
+  {
+    "code": "F170",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F171",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Uso Nocivo."
+  },
+  {
+    "code": "F172",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - SÑndrome de dependencia."
+  },
+  {
+    "code": "F173",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Estado de abstinencia"
+  },
+  {
+    "code": "F174",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F175",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F176",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F177",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F178",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F179",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F18",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES"
+  },
+  {
+    "code": "F180",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F181",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Uso Nocivo."
+  },
+  {
+    "code": "F182",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - SÑndrome de dependencia."
+  },
+  {
+    "code": "F183",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Estado de abstinencia"
+  },
+  {
+    "code": "F184",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F185",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno PsicÑtico"
+  },
+  {
+    "code": "F186",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - SÑndrome amnÑsico"
+  },
+  {
+    "code": "F187",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F188",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F189",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F19",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS."
+  },
+  {
+    "code": "F190",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. IntoxicaciÑn Aguda."
+  },
+  {
+    "code": "F191",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Uso Nocivo."
+  },
+  {
+    "code": "F192",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. SÑndrome de dependencia."
+  },
+  {
+    "code": "F193",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Estado de abstinencia"
+  },
+  {
+    "code": "F194",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Estado de abstinencia con delirio"
+  },
+  {
+    "code": "F195",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno PsicÑtico"
+  },
+  {
+    "code": "F196",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. SÑndrome amnÑsico"
+  },
+  {
+    "code": "F197",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno PsicÑtico residual y de comienzo tardÑo"
+  },
+  {
+    "code": "F198",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Otros trastornos mentales y del comprotamiento"
+  },
+  {
+    "code": "F199",
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno mental y del comportamiento, no especificado"
+  },
+  {
+    "code": "F20",
+    "name": "ESQUIZOFRENIA"
+  },
+  {
+    "code": "F200",
+    "name": "ESQUIZOFRENIA PARANOIDE. E. PARAFRENICA"
+  },
+  {
+    "code": "F201",
+    "name": "ESQUIZOFRENIA HEBEFRENICA. E. DESORGANIZADA"
+  },
+  {
+    "code": "F202",
+    "name": "ESQUIZOFRENIA CATATONICA"
+  },
+  {
+    "code": "F203",
+    "name": "ESQUIZOFRENIA INDIFERENCIADA. E. ATIPICA"
+  },
+  {
+    "code": "F204",
+    "name": "DEPRESION POSTESQUIZOFRENICA"
+  },
+  {
+    "code": "F205",
+    "name": "ESQUIZOFRENIA RESIDUAL. ESTADO ESQUIZOFRENICO RESIDUAL"
+  },
+  {
+    "code": "F206",
+    "name": "ESQUIZOFRENIA SIMPLE"
+  },
+  {
+    "code": "F208",
+    "name": "OTRAS ESQUIZOFRENIAS. TRASTORNO ESQUIZOFRENIFORME"
+  },
+  {
+    "code": "F21",
+    "name": "TRASTORNO ESQUIZOTIPICO DE LA PERSONALIDAD."
+  },
+  {
+    "code": "F220",
+    "name": "TRASTORNO DELIRANTE. PARANOIA. PSICOSIS PARANOIDE"
+  },
+  {
+    "code": "F23",
+    "name": "TRASTORNOS PSICOTICOS AGUDOS Y TRANSITORIOS. PSICOSIS REACTIVA BREVE"
+  },
+  {
+    "code": "F230",
+    "name": "TRASTORNO PSICOTICO AGUDO POLIMORFO, SIN SINTOMAS DE ESQUIZOFRENIA. BOUFFEE DELIRANTE. PSICOSIS CICLOIDE"
+  },
+  {
+    "code": "F232",
+    "name": "TRASTORNO ESQUIZOFRENIFORME BREVE. ESQUIZOFRENIA AGUDA INDIFERENCIADA"
+  },
+  {
+    "code": "F24",
+    "name": "TRASTORNO DELIRANTE INDUCIDO. TRASTORNO PARANOIDE INDUCIDO O COMPARTIDO"
+  },
+  {
+    "code": "F25",
+    "name": "TRASTORNOS ESQUIZOAFECTIVOS O PSICOSIS ESQUIZOAFECTIVA"
+  },
+  {
+    "code": "F250",
+    "name": "TRASTORNO ESQUIZOAFECTIVO DE TIPO MANIACO O BIPOLAR"
+  },
+  {
+    "code": "F251",
+    "name": "TRASTORNO ESQUIZOAFECTIVO DE TIPO DEPRESIVO"
+  },
+  {
+    "code": "F29",
+    "name": "PSICOSIS DE ORIGEN NO ORGANICO, NO ESPECIFICADA. TRASTORNO PSICOTICO"
+  },
+  {
+    "code": "F30",
+    "name": "EPISODIO MANIACO. EPISODIO MANIACO UNICO"
+  },
+  {
+    "code": "F31",
+    "name": "TRASTORNO AFECTIVO BIPOLAR I. ENFERMEDAD MANÑACO-DEPRESIVA"
+  },
+  {
+    "code": "F318",
+    "name": "OTROS TRASTORNOS AFECTIVOS BIPOLARES. EPISODIOS MANIACOS RECURRENTES. TRASTORNO BIPOLAR II"
+  },
+  {
+    "code": "F32",
+    "name": "EPISODIO DEPRESIVO INCLUYE DEPRESION REACTIVA, DEPRESION, TRASTORNO DEPRESIVO"
+  },
+  {
+    "code": "F33",
+    "name": "TRASTORNO DEPRESIVO RECURRENTE O DEPRESION MONOPOLAR"
+  },
+  {
+    "code": "F332",
+    "name": "TRASTORNO DEPRESIVO RECURRENTE, EPISODIO DEPRESIVO GRAVE PRESENTE SIN SINTOMAS PSICOTICOS. DEPRESION ENDÑGENA SIN SINTOMAS PSICÑTICOS"
+  },
+  {
+    "code": "F333",
+    "name": "TRASTORNO DEPRESIVO RECURRENTE, EPISODIO DEPRESIVO GRAVE PRESENTE, CON SINTOMAS PSICOTICOS. INCLUYE DEPRESION ENDOGENA CON SINTOMAS PSICOTICOS, DEPRESION PSICOPATICA"
+  },
+  {
+    "code": "F34",
+    "name": "TRASTORNOS DEL HUMOR (AFECTIVOS) PERSISTENTES"
+  },
+  {
+    "code": "F340",
+    "name": "CICLOTIMIA"
+  },
+  {
+    "code": "F341",
+    "name": "DISTIMIA. DEPRESION ANSIOSA. NEUROSIS DEPRESIVA"
+  },
+  {
+    "code": "F39",
+    "name": "TRASTORNO DEL HUMOR (AFECTIVO), NO ESPECIFICADO. PSICOSIS AFECTIVA"
+  },
+  {
+    "code": "F40",
+    "name": "TRASTORNOS FÑBICOS DE ANSIEDAD."
+  },
+  {
+    "code": "F400",
+    "name": "AGORAFOBIA"
+  },
+  {
+    "code": "F401",
+    "name": "FOBIAS SOCIALES. NEUROSIS SOCIAL"
+  },
+  {
+    "code": "F41",
+    "name": "OTROS TRASTORNOS DE ANSIEDAD"
+  },
+  {
+    "code": "F419",
+    "name": "TRASTORNO DE ANSIEDAD, NO ESPECIFICADO. ANSIEDAD"
+  },
+  {
+    "code": "F42",
+    "name": "TRASTORNO OBSESIVO-COMPULSIVO"
+  },
+  {
+    "code": "F43",
+    "name": "REACCION AL ESTRES GRAVE Y TRASTORNOS DE ADAPTACION"
+  },
+  {
+    "code": "F430",
+    "name": "REACCION AL ESTRES AGUDO. CHOQUE PSIQUICO. ESTADO DE CRISIS. REACCION AGUDA DE ESTRES"
+  },
+  {
+    "code": "F431",
+    "name": "TRASTORNO DE ESTRES POSTRAUMÑTICO"
+  },
+  {
+    "code": "F432",
+    "name": "TRASTORNOS DE ADAPTACION. REACCION DE DUELO. CHOQUE CULTURAL. HOSPITALISMO EN NIÑOS"
+  },
+  {
+    "code": "F44",
+    "name": "TRASTORNOS DISOCIATIVOS (DE CONVERSION. INCLUYE HISTERIA, HISTERIA DE CONVERSION. PSICOSIS HISTERICA"
+  },
+  {
+    "code": "F440",
+    "name": "AMNESIA DISOCIATIVA"
+  },
+  {
+    "code": "F443",
+    "name": "TRASTORNOS DE TRANCE Y DE POSESION"
+  },
+  {
+    "code": "F448",
+    "name": "OTROS TRASTORNOS DISOCIATIVOS MIXTOS Y DE CONVERSION. INCLUYE ESTADO CREPUSCULAR PISONEO. PERSONALIDAD MULTIPLE. SINDROME DE GANSER"
+  },
+  {
+    "code": "F45",
+    "name": "TRASTORNOS SOMATOMORFOS O TRANSTORNO PSICOSOMATICO. SE CARACTERIZA POR LA PRESENTACION DE SINTOMAS FISICOS CON HALLAZGOS EN LOS EXAMENES FISICOS MEDICOS INEXISTENTES"
+  },
+  {
+    "code": "F450",
+    "name": "TRASTORNO DE SOMATIZACION"
+  },
+  {
+    "code": "F452",
+    "name": "TRANSTORNO HIPOCONDRIACO. NEUROSIS HIPOCONDRIACA"
+  },
+  {
+    "code": "F453",
+    "name": "DISFUNCION AUTONOMICA SOMATOMORFA. ASTENIA NEUROCIRCULATORIA POR EXCITACION DEL S.N. AUTONOMO, SUS FORMAS PSICOGENAS SON: SD. DE COLON IRRITABLE. NEUROSIS CARDIACA"
+  },
+  {
+    "code": "F48",
+    "name": "OTROS TRASTORNOS NEUROTICOS"
+  },
+  {
+    "code": "F480",
+    "name": "NEURASTENIA. SD. DE FATIGA"
+  },
+  {
+    "code": "F488",
+    "name": "OTROS TRASTORNOS NEUROTICOS ESPECIFICADOS. INCLUYEN: NEUROSIS OCUPACIONAL. PSICASTENIA. SD. DE DHAT. TRASTORNO DE BRIQUET"
+  },
+  {
+    "code": "F489",
+    "name": "TRASTORNO NEUROTICO, NO ESPECIFICADO. NEUROSIS"
+  },
+  {
+    "code": "F500",
+    "name": "ANOREXIA NERVIOSA"
+  },
+  {
+    "code": "F502",
+    "name": "BULIMIA NERVIOSA"
+  },
+  {
+    "code": "F530",
+    "name": "DEPRESION POSTPARTO"
+  },
+  {
+    "code": "F531",
+    "name": "PSICOSIS PUERPERAL"
+  },
+  {
+    "code": "F600",
+    "name": "TRASTORNO PARANOIDE DE LA PERSONALIDAD, FANATICA, QUERELLANTE"
+  },
+  {
+    "code": "F601",
+    "name": "TRASTORNO ESQUIZOIDE DE LA PERSONALIDAD."
+  },
+  {
+    "code": "F602",
+    "name": "TRASTORNO ASOCIAL DE LA PERSONALIDAD. PERSONALIDAD PSICOPATICA, ANTISOCIAL."
+  },
+  {
+    "code": "F603",
+    "name": "TRASTORNO DE LA PERSONALIDAD EMOCIONALMENTE INESTABLE. TRASTORNO LIMITE O BORDERLINE DE LA PERSONALIDAD."
+  },
+  {
+    "code": "F604",
+    "name": "TRASTORNO HISTRIONICO DE LA PERSONALIDAD. P. HISTERICA"
+  },
+  {
+    "code": "F605",
+    "name": "TRASTORNO ANANCASTICO DE LA PERSONALIDAD. P. OBSESIVO-COMPULSIVA"
+  },
+  {
+    "code": "F606",
+    "name": "TRASTORNO DE LA PERSONALIDAD ANSIOSA. TRASTORNO DE LA PERSONALIDAD POR EVITACION"
+  },
+  {
+    "code": "F607",
+    "name": "TRASTORNO DE LA PERSONALIDAD DEPENDIENTE. P. ASTENICA, PASIVA"
+  },
+  {
+    "code": "F608",
+    "name": "TRASTORNO NARCISISTA DE LA PERSONALIDAD. P. INMADURA, EXCENTRICA"
+  },
+  {
+    "code": "F609",
+    "name": "TRASTORNO DE LA PERSONALIDAD, PERSONALIDAD PATOLOGICA NO ESPECIFICADO."
+  },
+  {
+    "code": "F61",
+    "name": "TRASTORNOS MIXTOS Y OTROS TRASTORNOS DE LA PERSONALIDAD, QUE NO MUESTRA ESTRUCTURA DE LOS TRASTORNOS DESCRIPTOS EN (F60)"
+  },
+  {
+    "code": "F63",
+    "name": "TRASTORNOS DE LOS HABITOS Y DE LOS IMPULSOS."
+  },
+  {
+    "code": "F630",
+    "name": "JUEGO PATOLOGICO"
+  },
+  {
+    "code": "G009",
+    "name": "MENINGITIS BACTERIANA, NO ESPECIFICADA"
+  },
+  {
+    "code": "G020",
+    "name": "MENINGITIS VIRAL, DEBIDA A ENTEROVIRUS, HEPES SIMPLE, MONONUCLEOSIS INFECCIOSA, SARAMPION, RUBEOLA, VARICELA"
+  },
+  {
+    "code": "G021",
+    "name": "MENINGITIS MICOTICA"
+  },
+  {
+    "code": "G03",
+    "name": "MENINGITIS POR AGENTE INFECCIOSO, NO ESPECIFICADO"
+  },
+  {
+    "code": "G10",
+    "name": "COREA DE HUNTINGTON"
+  },
+  {
+    "code": "G119",
+    "name": "ATAXIA HEREDITARIA. ENFERMEDAD CEREBELOSA HEREDITARIA"
+  },
+  {
+    "code": "G122",
+    "name": "ATAXIA MUSCULAR ESPINAL PROGRESIVA. ESCLEROSIS LATERAL AMIOTROFICA. PARALISIS BULBAR PROGRESIVA"
+  },
+  {
+    "code": "G20",
+    "name": "ENFERMEDAD DE PARKINSON"
+  },
+  {
+    "code": "G210",
+    "name": "SINDROME NEUROLEPTICO MALIGNO"
+  },
+  {
+    "code": "G211",
+    "name": "PARKINSONISMO SECUNDARIO INDUCIDO POR DROGAS. ACATISIA POR NEUROLEPTICOS"
+  },
+  {
+    "code": "G212",
+    "name": "PARKINSONISMO SECUNDARIO A AGENTES EXTERNOS"
+  },
+  {
+    "code": "G24",
+    "name": "DISTONIA. DISQUINESIA. DISCINESIA TARDIA INDUCIDA POR NEUROLEPTICOS"
+  },
+  {
+    "code": "G250",
+    "name": "TEMBLOR ESENCIAL, FAMILIAR"
+  },
+  {
+    "code": "G251",
+    "name": "TEMBLOR POSTURAL INDUCIDO POR DROGAS"
+  },
+  {
+    "code": "G252",
+    "name": "TEMBLOR INTENCIONAL"
+  },
+  {
+    "code": "G30",
+    "name": "ENFERMEDAD DE ALZHEIMER, INCLUYE LA DEMENCIA SENIL Y PRESENIL"
+  },
+  {
+    "code": "G310",
+    "name": "ATROFIA CEREBRAL CIRCUNSCRIPTA. ENFERMEDAD DE PICK"
+  },
+  {
+    "code": "G312",
+    "name": "DEGENERACION DEL S.N.C DEBIDA AL ALCOHOL. ENCEFALOPATIA ALCOHOLICA"
+  },
+  {
+    "code": "G319",
+    "name": "OTRA DEGENERACION CEREBRAL"
+  },
+  {
+    "code": "G35",
+    "name": "ESCLEROSIS MULTIPLE"
+  },
+  {
+    "code": "G40",
+    "name": "EPILEPSIA, EXCLUYE ATAQUE, CONVULSIONES O CRISIS EPILEPTICAS"
+  },
+  {
+    "code": "G401",
+    "name": "EPILEPSIA CON LOCALIZACIONES FOCALES O PARCIALES, SIN ALTERACION DE LA CONCIENCIA"
+  },
+  {
+    "code": "G402",
+    "name": "EPILEPSIA CON LOCALIZACIONES FOCALES O PARCIALES, CON ALTERACION DE LA CONCIENCIA, AUTOMATISMOS"
+  },
+  {
+    "code": "G403",
+    "name": "EPILEPSIA IDIOPATICA GENERALIZADA"
+  },
+  {
+    "code": "G404",
+    "name": "OTRAS EPILEPSIAS, AUSENCIAS MIOCLONICAS"
+  },
+  {
+    "code": "G405",
+    "name": "SINDROMES EPILEPTICOS RELACIONADOS CON ALCOHOL, DROGAS, PRIVACION DEL SUEÑO, TENSION PSICOSOCIAL"
+  },
+  {
+    "code": "G406",
+    "name": "ATAQUE DE GRAN MAL, NO ESPECIFICADO"
+  },
+  {
+    "code": "G407",
+    "name": "PEQUEÑO MAL, NO ESPECIFICADO"
+  },
+  {
+    "code": "G41",
+    "name": "ESTADO DE MAL EPILEPTICO"
+  },
+  {
+    "code": "G43",
+    "name": "MIGRAÑA"
+  },
+  {
+    "code": "G44",
+    "name": "OTROS SINDROMES DE CEFALEA: EN RACIMOS, VASCULAR, TENSIONAL, POSTRAUMATICA"
+  },
+  {
+    "code": "G45",
+    "name": "ATAQUES DE ISQUEMIA CEREBRAL TRANSITORIA Y SINDROMES AFINES"
+  },
+  {
+    "code": "G450",
+    "name": "SINDROME ARTERIAL VERTEBRO-BASILAR"
+  },
+  {
+    "code": "G454",
+    "name": "AMNESIA GLOBAL TRANSITORIA"
+  },
+  {
+    "code": "G459",
+    "name": "ISQUEMIA CEREBRAL TRANSITORIA"
+  },
+  {
+    "code": "G47",
+    "name": "TRASTORNOS DEL SUENO"
+  },
+  {
+    "code": "G470",
+    "name": "TRASTORNOS DEL INICIO Y DEL MANTENIMIENTO DEL SUEÑO. INSOMNIOS"
+  },
+  {
+    "code": "G471",
+    "name": "TRASTORNOS DE LA SOMNOLIENCIA EXCESIVA. HIPERSOMNIOS"
+  },
+  {
+    "code": "G50",
+    "name": "TRASTORNOS DEL TRIGEMINO"
+  },
+  {
+    "code": "G51",
+    "name": "TRASTORNOS DEL NERVIO FACIAL"
+  },
+  {
+    "code": "G540",
+    "name": "TRASTORNOS DEL PLEXO BRAQUIAL"
+  },
+  {
+    "code": "G56",
+    "name": "MONONEUROPATIAS DEL MIEMBRO SUPERIOR"
+  },
+  {
+    "code": "G560",
+    "name": "SINDROME DEL TUNEL CARPIANO"
+  },
+  {
+    "code": "G562",
+    "name": "LESION DEL NERVIO CUBITAL"
+  },
+  {
+    "code": "G563",
+    "name": "LESION DEL NERVIO RADIAL"
+  },
+  {
+    "code": "G57",
+    "name": "MONONEUROPATIAS DEL MIEMBRO INFERIOR, LESION DEL NERVIO CIATICO, CRURAL O CIATICO POPLITEO EXTERNO O INFERIOR"
+  },
+  {
+    "code": "G61",
+    "name": "POLINEUROPATIA INFLAMATORIA"
+  },
+  {
+    "code": "G610",
+    "name": "SINDROME DE GUILLAIN-BARRE"
+  },
+  {
+    "code": "G622",
+    "name": "POLINEUROPATIA DEBIDA A OTRO AGENTE TOXICO"
+  },
+  {
+    "code": "G629",
+    "name": "POLINEUROPATIA O NEUROPATIA, NO ESPECIFICADA"
+  },
+  {
+    "code": "G630",
+    "name": "POLINEUROPATIA EN: HERPES ZOSTER, LEPRA, TBC"
+  },
+  {
+    "code": "G631",
+    "name": "POLINEUROPATIA EN ENFERMEDAD NEOPLASICA"
+  },
+  {
+    "code": "G632",
+    "name": "POLINEUROPATIA DIABETICA"
+  },
+  {
+    "code": "G635",
+    "name": "POLINEUROPATIA EN TRASTORNOS DEL TEJIDO CONECTIVO SISTÑMICO"
+  },
+  {
+    "code": "G636",
+    "name": "POLINEUROPATIA EN OTROS TRASTORNOS OSTEOMUSCULARES"
+  },
+  {
+    "code": "G638",
+    "name": "NEUROPATIA UREMICA"
+  },
+  {
+    "code": "G70",
+    "name": "MIASTENIA GRAVIS"
+  },
+  {
+    "code": "G701",
+    "name": "TRASTORNOS TOXICOS NEUROMUSCULARES"
+  },
+  {
+    "code": "G71",
+    "name": "TRASTORNOS MUSCULARES PRIMARIOS, INCLUYE DISTROFIA MUSCULAR, DISTROFIA MIOTONICA"
+  },
+  {
+    "code": "G723",
+    "name": "PARALISIS TRANSITORIA DE LOS MIEMBROS (PERIODICA)"
+  },
+  {
+    "code": "G737",
+    "name": "MIOPATIA EN: ARTITIS REUMATOIDE. ESCLERODERMIA. LUPUS ERITEMATOSO SISTEMICO. SINDROME DE SJOGREN."
+  },
+  {
+    "code": "G81",
+    "name": "HEMIPLEJIA"
+  },
+  {
+    "code": "G82",
+    "name": "PARAPLEJIA Y CUADRIPLEJIA"
+  },
+  {
+    "code": "G820",
+    "name": "PARAPLEJIA FLACIDA"
+  },
+  {
+    "code": "G821",
+    "name": "PARAPLEJIA ESPASTICA"
+  },
+  {
+    "code": "G822",
+    "name": "PARAPLEJIA EN AMBOS MIEMBROS INFERIORES"
+  },
+  {
+    "code": "G825",
+    "name": "CUADRIPLEJIA, TETRAPLEJIA"
+  },
+  {
+    "code": "G831",
+    "name": "MONOPLEJIA DE MIEMBRO INFERIOR, PARALISIS DEL MIEMBRO INFERIOR"
+  },
+  {
+    "code": "G832",
+    "name": "MONOPLEJÑA DEL MIEMBRO SUPERIOR"
+  },
+  {
+    "code": "G834",
+    "name": "SINDROME DE LA COLA DE CABALLO"
+  },
+  {
+    "code": "G91",
+    "name": "HIDROCEFALIA ADQUIRIDA"
+  },
+  {
+    "code": "G92",
+    "name": "ENCEFALOPATIA TOXICA"
+  },
+  {
+    "code": "G931",
+    "name": "LESION CEREBRAL ANOXICA, NO CLASIFICADA EN OTRA PARTE"
+  },
+  {
+    "code": "G934",
+    "name": "ENCEFALOPATIA NO ESPECIFICADA"
+  },
+  {
+    "code": "G951",
+    "name": "MIELOPATIAS VASCULARES"
+  },
+  {
+    "code": "G952",
+    "name": "COMPRESION MEDULAR"
+  },
+  {
+    "code": "G959",
+    "name": "MIELOPATIA O ENFERMEDAD DE LA MEDULA ESPINAL"
+  },
+  {
+    "code": "G96",
+    "name": "OTROS TRASTORNOS DEL SNC: PERDIDA DEL LCR"
+  },
+  {
+    "code": "G98",
+    "name": "OTROS TRASTORNOS Y LOS NO ESPECIFICADOS DEL SISTEMA NERVIOSO"
+  },
+  {
+    "code": "G990",
+    "name": "NEUROPATIA AUTONOMICA EN ENFERMEDADES METABOLICAS Y ENDOCRINAS"
+  },
+  {
+    "code": "H00",
+    "name": "ORZUELO Y CHALACIO"
+  },
+  {
+    "code": "H000",
+    "name": "ORZUELO"
+  },
+  {
+    "code": "H001",
+    "name": "CHALAZION O CALACIO"
+  },
+  {
+    "code": "H010",
+    "name": "BLEFARITIS"
+  },
+  {
+    "code": "H011",
+    "name": "DERMATITIS ALERGICA DE PARPADO"
+  },
+  {
+    "code": "H020",
+    "name": "ENTROPION Y TRIQUIASIS PALPEBRAL"
+  },
+  {
+    "code": "H021",
+    "name": "ECTROPION DEL PARPADO"
+  },
+  {
+    "code": "H024",
+    "name": "BLEFAROPTOSIS"
+  },
+  {
+    "code": "H028",
+    "name": "RETENCION DE CUERPO EXTRAÑO EN EL PARPADO"
+  },
+  {
+    "code": "H029",
+    "name": "TRASTORNO DEL PARPADO"
+  },
+  {
+    "code": "H030",
+    "name": "DERMATITIS PALPEBRAL POR DEMODEX"
+  },
+  {
+    "code": "H041",
+    "name": "SINDROME DE SEQUEDAD OCULAR"
+  },
+  {
+    "code": "H043",
+    "name": "DACRIOCISTITIS, AGUDA"
+  },
+  {
+    "code": "H044",
+    "name": "DACRIOCISTITIS, CRONICA"
+  },
+  {
+    "code": "H045",
+    "name": "ESTENOSIS DEL CANALICULO, CONDUCTO Y SACO LAGRIMAL"
+  },
+  {
+    "code": "H046",
+    "name": "FISTULA LAGRIMAL"
+  },
+  {
+    "code": "H050",
+    "name": "INFLAMACION AGUDA DE LA ORBITA, CELULITIS, ABSCESO"
+  },
+  {
+    "code": "H052",
+    "name": "AFECCIONES EXOFTALMICAS, EDEMA, HEMORRAGIA"
+  },
+  {
+    "code": "H059",
+    "name": "TRASTORNO DE LA ORBITA"
+  },
+  {
+    "code": "H062",
+    "name": "EXOFTALMIA HIPERTIROIDEA"
+  },
+  {
+    "code": "H10",
+    "name": "CONJUNTIVITIS"
+  },
+  {
+    "code": "H100",
+    "name": "CONJUNTIVITIS MUCOPURULENTA"
+  },
+  {
+    "code": "H101",
+    "name": "CONJUNTIVITIS ATOPICA AGUDA"
+  },
+  {
+    "code": "H102",
+    "name": "OTRAS CONJUNTIVITIS AGUDAS"
+  },
+  {
+    "code": "H104",
+    "name": "CONJUNTIVITIS CRONICA"
+  },
+  {
+    "code": "H105",
+    "name": "BLEFAROCONJUNTIVITIS"
+  },
+  {
+    "code": "H110",
+    "name": "PTERIGION"
+  },
+  {
+    "code": "H111",
+    "name": "DEGENERACIONES Y DEPOSITOS CONJUNTIVALES, XEROSIS"
+  },
+  {
+    "code": "H112",
+    "name": "CICATRICES CONJUNTIVALES"
+  },
+  {
+    "code": "H113",
+    "name": "HEMORRAGIAS SUBCONJUNTIVAL"
+  },
+  {
+    "code": "H114",
+    "name": "TRASTORNOS VASCULARES CONJUNTIVALES, EDEMA, ANEURISMA, HIPEREMIA"
+  },
+  {
+    "code": "H131",
+    "name": "CONJUNTIVITIS DEBIDA A HERPES, ADENOVIRUS, CLAMIDIAS."
+  },
+  {
+    "code": "H150",
+    "name": "ESCLERITIS"
+  },
+  {
+    "code": "H16",
+    "name": "QUERATITIS"
+  },
+  {
+    "code": "H160",
+    "name": "ULCERA DE CORNEA"
+  },
+  {
+    "code": "H161",
+    "name": "QUERATITIS SIN CONJUNTIVITIS. FOTOQUERATITIS"
+  },
+  {
+    "code": "H162",
+    "name": "QUERATOCONJUNTIVITIS"
+  },
+  {
+    "code": "H163",
+    "name": "QUERATITIS INTERSTICIAL Y PROFUNDA"
+  },
+  {
+    "code": "H164",
+    "name": "NEOVASCULARIZACION CORNEA, PANNUS"
+  },
+  {
+    "code": "H170",
+    "name": "LEUCOMA ADHERENTE"
+  },
+  {
+    "code": "H178",
+    "name": "OTRAS CICATRICES DE CORNEA, OPACIDADES"
+  },
+  {
+    "code": "H181",
+    "name": "QUERATOPATIA VESICULAR"
+  },
+  {
+    "code": "H182",
+    "name": "OTROS EDEMAS DE LA CORNEA"
+  },
+  {
+    "code": "H183",
+    "name": "CAMBIOS EN LAS MEMBRANAS DE LA CORNEA"
+  },
+  {
+    "code": "H184",
+    "name": "DEGENERACION DE LA CORNEA, ARCO SENIL"
+  },
+  {
+    "code": "H186",
+    "name": "QUERATOCONO"
+  },
+  {
+    "code": "H190",
+    "name": "ESCLERITIS EN HEPES ZOSTER"
+  },
+  {
+    "code": "H191",
+    "name": "QUERATITIS POR HERPES SIMPLE"
+  },
+  {
+    "code": "H193",
+    "name": "QUERATOCONJUNTIVITIS SECA EN SINDROME DE SJÑGREN"
+  },
+  {
+    "code": "H200",
+    "name": "IRIDOCICLITIS AGUDA Y SUBAGUDA"
+  },
+  {
+    "code": "H201",
+    "name": "IRIDOCICLITIS CRONICA"
+  },
+  {
+    "code": "H209",
+    "name": "IRIDOCICLITIS, NO ESPECIFICA"
+  },
+  {
+    "code": "H210",
+    "name": "HIPEMA"
+  },
+  {
+    "code": "H211",
+    "name": "NEOVASCULARIZACION DEL IRIS O DEL CUERPO CILIAR. RUBIOSIS DEL IRIS"
+  },
+  {
+    "code": "H212",
+    "name": "DEGENERACION DEL IRIS Y DEL CUERPO CILIAR"
+  },
+  {
+    "code": "H214",
+    "name": "MEMBRAMANAS PUPILARES. OCLUSION PUPILAR"
+  },
+  {
+    "code": "H215",
+    "name": "ADHERENCIAS DEI IRIS Y CUERPO CILIAR. SINEQUIA"
+  },
+  {
+    "code": "H25",
+    "name": "CATARATA"
+  },
+  {
+    "code": "H250",
+    "name": "CATARATA SENIL INCIPIENTE"
+  },
+  {
+    "code": "H261",
+    "name": "CATARATA TRAUMATICA"
+  },
+  {
+    "code": "H262",
+    "name": "CATARATA COMPLICADA. SECUNDARIA A TRASTORNOS OCULARES."
+  },
+  {
+    "code": "H263",
+    "name": "CATARATA INDUCIDA POR DROGAS"
+  },
+  {
+    "code": "H271",
+    "name": "LUXACION DEL CRISTALINO"
+  },
+  {
+    "code": "H280",
+    "name": "CATARATA DIABETICA EN DIABETES MELLITUS CON COMPLICACION"
+  },
+  {
+    "code": "H300",
+    "name": "CORIORRETINITIS , COROIDITIS, RETINITIS, FOCAL"
+  },
+  {
+    "code": "H301",
+    "name": "CORIORRETINITIS DISEMINADA"
+  },
+  {
+    "code": "H302",
+    "name": "CICLITIS POSTEROR. PARS PLANITIS"
+  },
+  {
+    "code": "H309",
+    "name": "CORIORRETINITIS, RETINITIS NO ESPECIFICADA"
+  },
+  {
+    "code": "H310",
+    "name": "CICATRICES CORIORRETINIANAS. RETINOPATIA SOLAR"
+  },
+  {
+    "code": "H311",
+    "name": "DEGENERACION COROIDEA"
+  },
+  {
+    "code": "H312",
+    "name": "DISTROFIA COROIDEA HEREDITARIA"
+  },
+  {
+    "code": "H314",
+    "name": "DESPRENDIMIENTO DE LA COROIDES"
+  },
+  {
+    "code": "H320",
+    "name": "CORIORRETINITIS EN TBC, EN TOXOPLASMA"
+  },
+  {
+    "code": "H33",
+    "name": "DESPRENDIMIENTO Y DESGARRO DE LA RETINA"
+  },
+  {
+    "code": "H330",
+    "name": "DESPRENDIMIENTO RETINIANO CON DESGARRO"
+  },
+  {
+    "code": "H332",
+    "name": "DESPRENDIMIENTO DE LA RETINA"
+  },
+  {
+    "code": "H333",
+    "name": "DESGARRO DE LA RETINA SIN DESPRENDIMIENTO"
+  },
+  {
+    "code": "H334",
+    "name": "DESPRENDIMIENTO DE RETINA POR TRACCION"
+  },
+  {
+    "code": "H342",
+    "name": "OCLUSION DE LA ARTERIA RETINIANA. MICROEMBOLISMO"
+  },
+  {
+    "code": "H348",
+    "name": "OCLUSION DE VENA RETINIANA"
+  },
+  {
+    "code": "H35",
+    "name": "OTROS TRASTORNOS DE LA RETINA"
+  },
+  {
+    "code": "H350",
+    "name": "RETINOPATIAS DEL FONDO Y CAMBIOS VASCULARES RETINIANOS"
+  },
+  {
+    "code": "H352",
+    "name": "RETINOPATIA PROLIFERATIVA"
+  },
+  {
+    "code": "H353",
+    "name": "DEGENERACION DE LA MACULA. MACULOPATIA TOXICA"
+  },
+  {
+    "code": "H354",
+    "name": "DEGENERACION PERIFERICA DE LA RETINA"
+  },
+  {
+    "code": "H355",
+    "name": "DISTROFIA HEREDITARIA DE LA RETINA. RETINITIS PIGMENTARIA"
+  },
+  {
+    "code": "H356",
+    "name": "HEMORRAGIA RETINIANA"
+  },
+  {
+    "code": "H360",
+    "name": "RETINOPATIA DIABETICA"
+  },
+  {
+    "code": "H40",
+    "name": "GLAUCOMA"
+  },
+  {
+    "code": "H401",
+    "name": "GLAUCOMA DE ANGULO ABIERTO"
+  },
+  {
+    "code": "H402",
+    "name": "GLAUCOMA DE ANGULO CERRADO"
+  },
+  {
+    "code": "H405",
+    "name": "GLAUCOMA SECUNDARIO A TRASTORNO DEL OJO"
+  },
+  {
+    "code": "H406",
+    "name": "GLAUCOMA SECUNDARIO A DROGAS"
+  },
+  {
+    "code": "H420",
+    "name": "GLAUCOMA EN ENFERMEDADES ENDOCRINAS, EN AMILOIDOSIS"
+  },
+  {
+    "code": "H431",
+    "name": "HEMORRAGIA DEL VITREO"
+  },
+  {
+    "code": "H433",
+    "name": "OPACIDADES VITREAS"
+  },
+  {
+    "code": "H440",
+    "name": "PANOFTALMIA PURULENTA"
+  },
+  {
+    "code": "H442",
+    "name": "MIOPIA DEGENERATIVA"
+  },
+  {
+    "code": "H46",
+    "name": "NEURITIS OPTICA"
+  },
+  {
+    "code": "H477",
+    "name": "TRASTORNO DE LA VIA OPTICA"
+  },
+  {
+    "code": "H49",
+    "name": "ESTRABISMO PARALITICO"
+  },
+  {
+    "code": "H52",
+    "name": "TRASTORNOS DE LA ACOMODACION Y DE LA REFRACCION. MIOPIA. ASTIGMATISMO. PRESBICIA"
+  },
+  {
+    "code": "H530",
+    "name": "AMBLIOPIA EX ANOPSICA"
+  },
+  {
+    "code": "H531",
+    "name": "ALTERACIONES VISUALES SUBJETIVAS: CEGUERA DIURNA, FOTOFOBIA, HALOS, VISUALES, PERDIDA SUBITA DELA VISION"
+  },
+  {
+    "code": "H532",
+    "name": "DIPLOPIA"
+  },
+  {
+    "code": "H534",
+    "name": "DEFECTO DEL CAMPO VISUAL"
+  },
+  {
+    "code": "H535",
+    "name": "DEFICIENCIA DE LA VISION CROMATICA"
+  },
+  {
+    "code": "H54",
+    "name": "CEGUERA Y DISMINUCION DE LA AGUDEZA VISUAL"
+  },
+  {
+    "code": "H55",
+    "name": "NISTAGMO"
+  },
+  {
+    "code": "H57",
+    "name": "OTROS OJO"
+  },
+  {
+    "code": "H571",
+    "name": "DOLOR OCULAR"
+  },
+  {
+    "code": "H60",
+    "name": "OTITIS EXTERNA"
+  },
+  {
+    "code": "H65",
+    "name": "OTITIS MEDIA NO SUPURATIVA"
+  },
+  {
+    "code": "H653",
+    "name": "OTITIS MEDIA CRONICA SEROSA"
+  },
+  {
+    "code": "H66",
+    "name": "OTITIS MEDIA SUPURATIVA Y LA NO ESPECIFICADA"
+  },
+  {
+    "code": "H660",
+    "name": "OTITIS MEDIA SUPURATIVA AGUDA"
+  },
+  {
+    "code": "H663",
+    "name": "OTITIS MEDIA CRONICA SUPURATIVA"
+  },
+  {
+    "code": "H670",
+    "name": "OTITIS MEDIA EN: ESCARLATINA. TBC"
+  },
+  {
+    "code": "H671",
+    "name": "OTITIS MEDIA EN ENFERMEDADES VIRALES"
+  },
+  {
+    "code": "H700",
+    "name": "MASTOIDITIS AGUDA, ABSCESO, EMPIEMA"
+  },
+  {
+    "code": "H71",
+    "name": "COLESTEATOMA TIMPANICO"
+  },
+  {
+    "code": "H72",
+    "name": "PERFORACION DE LA MEMBRANA TIMPANICA"
+  },
+  {
+    "code": "H730",
+    "name": "MIRINGITIS AGUDA. TIMPANITIS AGUDA"
+  },
+  {
+    "code": "H81",
+    "name": "TRASTORNOS DE LA FUNCION VESTIBULAR"
+  },
+  {
+    "code": "H810",
+    "name": "ENFERMEDAD DE MENIERE"
+  },
+  {
+    "code": "H813",
+    "name": "VERTIGO: PERISFERICO, OTOGENICO"
+  },
+  {
+    "code": "H819",
+    "name": "SINDROME VESTIBULAR. SINDROME VERTIGINOSO"
+  },
+  {
+    "code": "H830",
+    "name": "LABERINTITIS"
+  },
+  {
+    "code": "H832",
+    "name": "DISFUNCION DEL LABERINTO"
+  },
+  {
+    "code": "H833",
+    "name": "TRAUMA ACUSTICO. HIPOACUSIA PROVOCADA POR EL RUIDO"
+  },
+  {
+    "code": "H902",
+    "name": "HIPOACUSIA CONDUCTIVA"
+  },
+  {
+    "code": "H905",
+    "name": "HIPOACUSIA NEUROSENSORIAL O PERCEPTIVA"
+  },
+  {
+    "code": "H910",
+    "name": "HIPOACUSIA OTOTOXICA"
+  },
+  {
+    "code": "H911",
+    "name": "PRESBIACUSIA"
+  },
+  {
+    "code": "H912",
+    "name": "HIPOACUSIA SUBITA IDIOPATICA"
+  },
+  {
+    "code": "H913",
+    "name": "SORDOMUDEZ, NO CLASIFICADA EN OTRA PARTE"
+  },
+  {
+    "code": "H920",
+    "name": "OTALGIA"
+  },
+  {
+    "code": "H921",
+    "name": "OTORREA"
+  },
+  {
+    "code": "H922",
+    "name": "OTORRAGIA"
+  },
+  {
+    "code": "H931",
+    "name": "TINNITUS"
+  },
+  {
+    "code": "H933",
+    "name": "TRASTORNOS DEL NERVIO AUDITIVO"
+  },
+  {
+    "code": "I00",
+    "name": "FIEBRE REUMATICA. ARTRITIS REUMATICA, SIN MENCION DE COMPLICACION CARDIACA"
+  },
+  {
+    "code": "I01",
+    "name": "FIEBRE REUMATICA CON COMPLICACION CARDIACA"
+  },
+  {
+    "code": "I05",
+    "name": "ENFERMEDADES REUMATICAS DE LA VALVULA MITRAL"
+  },
+  {
+    "code": "I050",
+    "name": "ESTENOSIS MITRAL"
+  },
+  {
+    "code": "I051",
+    "name": "INSUFICIENCIA MITRAL REUMATICA"
+  },
+  {
+    "code": "I06",
+    "name": "ENFERMEDADES REUMATICAS DE LA VALVULA AORTICA"
+  },
+  {
+    "code": "I07",
+    "name": "ENFERMEDADES REUMATICAS DE LA VALVULA TRICUSPIDE"
+  },
+  {
+    "code": "I099",
+    "name": "INSUFICIENCIA CARDIACA REUMATICA"
+  },
+  {
+    "code": "I10",
+    "name": "HIPERTENSION ARTERIAL ESENCIAL, PRIMARIA"
+  },
+  {
+    "code": "I11",
+    "name": "ENFERMEDAD CARDIACA HIPERTENSIVA"
+  },
+  {
+    "code": "I12",
+    "name": "ENFERMEDAD RENAL HIPERTENSIVA"
+  },
+  {
+    "code": "I15",
+    "name": "HIPERTENSION SECUNDARIA"
+  },
+  {
+    "code": "I20",
+    "name": "ANGINA DE PECHO. DOLOR PRECORDIAL ISQUEMICO. A. DE PRINZMETAL"
+  },
+  {
+    "code": "I21",
+    "name": "INFARTO AGUDO DEL MIOCARDIO"
+  },
+  {
+    "code": "I248",
+    "name": "INSUFICIENCIA CORONARIA"
+  },
+  {
+    "code": "I248I10",
+    "name": "Insuficiencia Cardiaca Cronica HTA"
+  },
+  {
+    "code": "I248I25",
+    "name": "Insuficiencia Cardiaca Cronica Cardiopatia Isquemica Cronica"
+  },
+  {
+    "code": "I248I279",
+    "name": "Insuficiencia Cardiaca Cronica Enfer cardiopulmonar cronica"
+  },
+  {
+    "code": "I248I34",
+    "name": "Insuficiencia Cardiaca Cronica Trastorno Valvula Mitral ( no reumatica)"
+  },
+  {
+    "code": "I248I35",
+    "name": "Insuficiencia Cardiaca Cronica Trastorno Valvula Aortica ( no reumatica)"
+  },
+  {
+    "code": "I248I36",
+    "name": "Insuficiencia Cardiaca Cronica Trastorno Valvula Tricuspide ( no reumatica)"
+  },
+  {
+    "code": "I248I37",
+    "name": "Insuficiencia Cardiaca Cronica Trastorno Valvula Pulmonar ( no reumatica)"
+  },
+  {
+    "code": "I248I42",
+    "name": "Insuficiencia Cardiaca Cronica Cardiomiopatia"
+  },
+  {
+    "code": "I248I420",
+    "name": "Insuficiencia Cardiaca Cronica Cardiomiopatia Dilatada"
+  },
+  {
+    "code": "I248I499",
+    "name": "Insuficiencia Cardiaca Cronica Arritmia Cardiaca"
+  },
+  {
+    "code": "I25",
+    "name": "CARDIOPATIA ISQUEMICA CRONICA"
+  },
+  {
+    "code": "I26",
+    "name": "EMBOLIA PULMONAR"
+  },
+  {
+    "code": "I260",
+    "name": "CORAZON PULMONAR AGUDO"
+  },
+  {
+    "code": "I279",
+    "name": "ENFERMEDAD CARDIOPULMONAR CRONICA"
+  },
+  {
+    "code": "I30",
+    "name": "PERICARDITIS AGUDA"
+  },
+  {
+    "code": "I31",
+    "name": "OTRAS ENFERMEDADES DEL PERICARDIO, INCLUYE: DERRAME, TAPONAMIENDO."
+  },
+  {
+    "code": "I33",
+    "name": "ENDOCARDITIS AGUDA Y SUBAGUDA"
+  },
+  {
+    "code": "I34",
+    "name": "TRASTORNOS NO REUMATICOS DE LA VALVULA MITRAL"
+  },
+  {
+    "code": "I35",
+    "name": "TRASTORNOS NO REUMATICOS DE LA VALVULA AOTICA"
+  },
+  {
+    "code": "I36",
+    "name": "TRASTORNOS NO REUMATICOS DE LA VALVULA TRICUSPIDE"
+  },
+  {
+    "code": "I37",
+    "name": "TRASTORNOS DE LA VALVULA PULMONAR"
+  },
+  {
+    "code": "I40",
+    "name": "MIOCARDITIS AGUDA"
+  },
+  {
+    "code": "I42",
+    "name": "CARDIOMIOPATIA"
+  },
+  {
+    "code": "I420",
+    "name": "CARDIOMIOPATIA DILATADA"
+  },
+  {
+    "code": "I44",
+    "name": "BLOQUEO AURICULOVENTRICULAR Y DE RAMA IZQUIERDA DEL HAZ"
+  },
+  {
+    "code": "I459",
+    "name": "TRANSTORNO DE LA CONDUCCION, NO ESPECIFICADO. BLOQUEO CARDIACO"
+  },
+  {
+    "code": "I46",
+    "name": "PARO CARDIACO"
+  },
+  {
+    "code": "I47",
+    "name": "TAQUICARDIA PAROXISTICA"
+  },
+  {
+    "code": "I48",
+    "name": "FIBRILACION Y ALETEO AURICULAR"
+  },
+  {
+    "code": "I49",
+    "name": "OTRAS ARRITMIAS CARDIACAS"
+  },
+  {
+    "code": "I490",
+    "name": "FIBRILACION Y ALETEO VENTRICULAR"
+  },
+  {
+    "code": "I494",
+    "name": "EXTRASISTOLES"
+  },
+  {
+    "code": "I499",
+    "name": "ARRITMIA CARDIACA"
+  },
+  {
+    "code": "I50",
+    "name": "INSUFICIENCIA CARDIACA"
+  },
+  {
+    "code": "I500",
+    "name": "INSUFICIENCIA CARDIACA CONGESTIVA"
+  },
+  {
+    "code": "I501",
+    "name": "INSUFICIENCIA VENTRICULAR IZQUIERDA. ASMA CARDIACA. EDEMA AGUDO DE PULMON"
+  },
+  {
+    "code": "I516",
+    "name": "OTROS CARDIOVASCULAR"
+  },
+  {
+    "code": "I517",
+    "name": "CARDIOMAGALIA"
+  },
+  {
+    "code": "I60",
+    "name": "HEMORRAGIA SUBARACNOIDEA"
+  },
+  {
+    "code": "I61",
+    "name": "HEMORRAGIA INTRAENCEFALICA"
+  },
+  {
+    "code": "I63",
+    "name": "INFARTO CEREBRAL"
+  },
+  {
+    "code": "I64",
+    "name": "ACCIDENTE CEREBROVASCULAR"
+  },
+  {
+    "code": "I65",
+    "name": "OTRAS, OCLUSION Y ESTENOSIS DE LAS ARTERIAS PRECEREBRALES"
+  },
+  {
+    "code": "I67",
+    "name": "OTRAS ENFERMEDADES CEREBROVASCULARES, INCLUYE ANEURISMA, TROMBOSIS."
+  },
+  {
+    "code": "I674",
+    "name": "ENCEFALOPATIA HIPERTENSIVA"
+  },
+  {
+    "code": "I678",
+    "name": "INSUFICIENCIA CEREBROVASCULAR AGUDA"
+  },
+  {
+    "code": "I69",
+    "name": "SECUELAS DE ENFERMEDAD CEREBROVASCULAR, INCLUYE: SECUELAS HEMORRAGIAS INTRACRANEANAS, INFARTO CEREBRAL."
+  },
+  {
+    "code": "I70",
+    "name": "ATEROSCLEROSIS"
+  },
+  {
+    "code": "I71",
+    "name": "ANEURISMA Y DISECCION AORTICOS"
+  },
+  {
+    "code": "I729",
+    "name": "ANEURISMA DE SITIO NO ESPECIFICADO, INCLUYE RUPTURA"
+  },
+  {
+    "code": "I730",
+    "name": "SINDROME DE RAYNAUD"
+  },
+  {
+    "code": "I731",
+    "name": "TROMBOANGEITIS OBLITERANTE"
+  },
+  {
+    "code": "I739",
+    "name": "CLAUDICACION INTERMITENTE. ENFERMEDAD VASCULAR PERIFERICA"
+  },
+  {
+    "code": "I740",
+    "name": "SINDROME DE LERICHE. EMBOLIA Y TROMBOSIS DE LA AORTA ABDOMINAL"
+  },
+  {
+    "code": "I77",
+    "name": "OTROS TRASTORNOS ARTERIALES O ARTERIOLARES"
+  },
+  {
+    "code": "I776",
+    "name": "ARTERITIS, ENDARTERITIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "I781",
+    "name": "NEVO: EN ARAÑA, ESTELAR, NO NEOPLASICO"
+  },
+  {
+    "code": "I80",
+    "name": "FLEBITIS Y TROMBOFLIBITIS"
+  },
+  {
+    "code": "I802",
+    "name": "FLEBITIS Y TROMBOFLEBITIS DE LAS VENAS PROFUNDAS DE LOS MIEMBROS INFERIORES"
+  },
+  {
+    "code": "I829",
+    "name": "EMBOLIA Y TROMBOSIS DE VENA. NO ESPECIFICADA"
+  },
+  {
+    "code": "I83",
+    "name": "VENAS VARICOSAS DE LOS MIEMBROS INFERIORES"
+  },
+  {
+    "code": "I830",
+    "name": "VENAS VARICOSAS DE LOS MIEMBROS INFERIORES CON ULCERA VARICOSA"
+  },
+  {
+    "code": "I831",
+    "name": "VENAS VARICOSAS DE LOS MIEMBROS INFERIORES CON INFLAMACION O DERMATITIS"
+  },
+  {
+    "code": "I839",
+    "name": "VARICES DE MIEMBROS INFERIORES, SIN ULCERA NI INFLAMACION"
+  },
+  {
+    "code": "I84",
+    "name": "HEMORROIDES"
+  },
+  {
+    "code": "I85",
+    "name": "VARICES ESOFAGICAS"
+  },
+  {
+    "code": "I861",
+    "name": "VARICOCELE O VARICES ESCROTALES"
+  },
+  {
+    "code": "I870",
+    "name": "SINDROME POSTFLEBITICO"
+  },
+  {
+    "code": "I872",
+    "name": "INSUFICIENCIA VENOSA CRONICA, PERIFERICA"
+  },
+  {
+    "code": "I88",
+    "name": "LINFADENITIS INESPECIFICA"
+  },
+  {
+    "code": "I95",
+    "name": "HIPOTENSION"
+  },
+  {
+    "code": "I972",
+    "name": "SINDROME DE LINFEDEMA POSTMASTECTOMIA. ELEFANTIASIS"
+  },
+  {
+    "code": "ISLMCV",
+    "name": "CORONAVIRUS - COVID 19 (AISLAMIENTO)"
+  },
+  {
+    "code": "IVIII4",
+    "name": "OTROS OIDO"
+  },
+  {
+    "code": "IXII7",
+    "name": "OTROS PIEL"
+  },
+  {
+    "code": "IXIV11",
+    "name": "OTROS GENITOURINARIO"
+  },
+  {
+    "code": "J00",
+    "name": "RINOFARINGITIS AGUDA, RESFRIADO COMUN"
+  },
+  {
+    "code": "J01",
+    "name": "SINUSITIS AGUDA"
+  },
+  {
+    "code": "J02",
+    "name": "FARINGITIS AGUDA, ANGINA DE GARGANTA"
+  },
+  {
+    "code": "J03",
+    "name": "AMIGDALITIS AGUDA"
+  },
+  {
+    "code": "J04",
+    "name": "LARINGITIS Y TRAQUEITIS AGUDAS"
+  },
+  {
+    "code": "J040",
+    "name": "LARINGITIS AGUDA"
+  },
+  {
+    "code": "J042",
+    "name": "LARINGOTRAQUEITIS AGUDA"
+  },
+  {
+    "code": "J060",
+    "name": "LARINGOFARINGITIS AGUDA"
+  },
+  {
+    "code": "J11",
+    "name": "GRIPE / INFLUENZA"
+  },
+  {
+    "code": "J12",
+    "name": "NEUMONIA VIRAL NO CLASIFICADA EN OTRA PARTE"
+  },
+  {
+    "code": "J129",
+    "name": "NEUMONIA VIRICA, SIN OTRA ESPECIFICACION"
+  },
+  {
+    "code": "J15",
+    "name": "NEUMONIA BACTERIANA NO CLASIFICADA EN OTRA PARTE"
+  },
+  {
+    "code": "J18",
+    "name": "NEUMONIA, AGENTE NO ESTABLECIDO"
+  },
+  {
+    "code": "J20",
+    "name": "BRONQUITIS AGUDA, TRAQUEOBRONQUITIS"
+  },
+  {
+    "code": "J21",
+    "name": "BRONQUIOLITIS AGUDA CON BRONCOESPASMO"
+  },
+  {
+    "code": "J30",
+    "name": "RINITIS ALERGICA Y VASOMOTORA"
+  },
+  {
+    "code": "J300",
+    "name": "RINITIS VASOMOTORA"
+  },
+  {
+    "code": "J301",
+    "name": "RINITIS ALERGICA DEBIDA AL POLEN. FIEBRE DEL HENO"
+  },
+  {
+    "code": "J310",
+    "name": "RINITIS CRONICA"
+  },
+  {
+    "code": "J311",
+    "name": "RINOFARINGITIS CRONICA"
+  },
+  {
+    "code": "J32",
+    "name": "SINUSITIS CRONICA"
+  },
+  {
+    "code": "J340",
+    "name": "NECROSIS DEL TABIQUE NASAL. INCLUYE ABSCESO, ULCERACION"
+  },
+  {
+    "code": "J341",
+    "name": "QUISTE DE SENOS PARANASALES"
+  },
+  {
+    "code": "J342",
+    "name": "DESVIACION DEL TABIQUE NASAL"
+  },
+  {
+    "code": "J348",
+    "name": "PERFORACION DE TABIQUE NASAL"
+  },
+  {
+    "code": "J350",
+    "name": "AMIGDALITIS CRONICA"
+  },
+  {
+    "code": "J352",
+    "name": "HIPERTROFIA DE LAS ADENOIDES"
+  },
+  {
+    "code": "J36",
+    "name": "ABSCESO AMIGDALINO Y PERIAMIGDALINO"
+  },
+  {
+    "code": "J370",
+    "name": "LARINGITIS CRONICA"
+  },
+  {
+    "code": "J371",
+    "name": "LARINGOTRAQUEITIS CRONICA"
+  },
+  {
+    "code": "J380",
+    "name": "PARALISIS DE LAS CUERDAS VOCALES Y DE LA LARINGE"
+  },
+  {
+    "code": "J381",
+    "name": "POLIPO DE LAS CUERDAS VOCALES Y DE LA LARINGE"
+  },
+  {
+    "code": "J382",
+    "name": "NODULOS DE LAS CUERDAS VOCALES"
+  },
+  {
+    "code": "J384",
+    "name": "EDEMA DE LARINGE"
+  },
+  {
+    "code": "J385",
+    "name": "ESPASMO LARINGEO"
+  },
+  {
+    "code": "J40",
+    "name": "BRONQUITIS O TRAQUEOBRONQUITIS NO ESPECIFICADA COMO AGUDA O CRONICA"
+  },
+  {
+    "code": "J42",
+    "name": "BRONQUITIS O TRAQUEOBRONQUITIS CRONICA"
+  },
+  {
+    "code": "J43",
+    "name": "ENFISEMA"
+  },
+  {
+    "code": "J439",
+    "name": "ENFISEMA PULMONAR"
+  },
+  {
+    "code": "J44",
+    "name": "BRONQUITIS OBSTRUCTIVA CRONICA"
+  },
+  {
+    "code": "J449",
+    "name": "ENFERMEDAD PULMONAR OBSTRUCTIVA CRONICA"
+  },
+  {
+    "code": "J45",
+    "name": "ASMA"
+  },
+  {
+    "code": "J450",
+    "name": "ASMA ALERGICA EXTRINSECA"
+  },
+  {
+    "code": "J451",
+    "name": "ASMA INTRINSECA NO ALERGICA"
+  },
+  {
+    "code": "J459",
+    "name": "BRONQUITIS ASMATICA"
+  },
+  {
+    "code": "J46",
+    "name": "ESTADO ASMATICO, ASMA AGUDA SEVERA"
+  },
+  {
+    "code": "J47",
+    "name": "BRONQUIECTASIA"
+  },
+  {
+    "code": "J60",
+    "name": "ANTRACOSIS"
+  },
+  {
+    "code": "J61",
+    "name": "NEUMOCONIOSIS DEBIDA AL ASBESTO. ASBESTOSIS"
+  },
+  {
+    "code": "J628",
+    "name": "SILICOSIS"
+  },
+  {
+    "code": "J632",
+    "name": "BERILIOSIS"
+  },
+  {
+    "code": "J64",
+    "name": "NEUMOCONIOSIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "J679",
+    "name": "NEUMONITIS DEBIDA A HIPERSENSIBILIDAD A POLVO ORGANICO. NEUMONITIS POR HIPERSENSIBILIDAD."
+  },
+  {
+    "code": "J680",
+    "name": "BRONQUITIS Y NEUMONITIS DEBIDAS A INHALACION GASES, HUMOS, VAPORES Y SUSTANCIAS QUIMICAS"
+  },
+  {
+    "code": "J681",
+    "name": "EDEMA PULMONAR QUIMICO"
+  },
+  {
+    "code": "J690",
+    "name": "NEUMONIA POR ASPIRACION"
+  },
+  {
+    "code": "J700",
+    "name": "NEUMONITIS POR RADIACION"
+  },
+  {
+    "code": "J701",
+    "name": "FIBROSIS PULMONAR POR RADIACION"
+  },
+  {
+    "code": "J80",
+    "name": "SINDROME DE DIFICULTAD RESPIRATORIA DEL ADULTO ENFERMEDAD DE LA MEMBRANA HIALINA DEL ADULTO"
+  },
+  {
+    "code": "J81",
+    "name": "EDEMA AGUDO DEL PULMON"
+  },
+  {
+    "code": "J82",
+    "name": "NEUMONIA DE LÑFFLER"
+  },
+  {
+    "code": "J841",
+    "name": "FIBROSIS PULMONAR"
+  },
+  {
+    "code": "J852",
+    "name": "ABSCESO DEL PULMON"
+  },
+  {
+    "code": "J853",
+    "name": "ABSCESO DEL MEDIASTINO"
+  },
+  {
+    "code": "J86",
+    "name": "PIOTORAX"
+  },
+  {
+    "code": "J90",
+    "name": "PLEURESIA CON DERRAME"
+  },
+  {
+    "code": "J93",
+    "name": "NEUMOTORAX"
+  },
+  {
+    "code": "J930",
+    "name": "NEUMOTORAX ESPONTANEO A PRESION"
+  },
+  {
+    "code": "J940",
+    "name": "QUILOTORAX"
+  },
+  {
+    "code": "J942",
+    "name": "HEMOTORAX"
+  },
+  {
+    "code": "J949",
+    "name": "AFECCION PLEURAL, NO ESPECIFICADA"
+  },
+  {
+    "code": "J960",
+    "name": "INSUFICIENCIA RESPIRATORIA AGUDA"
+  },
+  {
+    "code": "J961",
+    "name": "INSUFICIENCIA RESPIRATORIA CRONICA"
+  },
+  {
+    "code": "J961E84",
+    "name": "Insuficiencia Respiratoria Cronica Fibrosis quistica"
+  },
+  {
+    "code": "J961J449",
+    "name": "Insuficiencia Respiratoria Cronica Epoc"
+  },
+  {
+    "code": "J961J46",
+    "name": "Insuficiencia Respiratoria Cronica Asma"
+  },
+  {
+    "code": "J961J47",
+    "name": "Insuficiencia Respiratoria Cronica Bronquiectasias"
+  },
+  {
+    "code": "J961J884",
+    "name": "Insuficiencia Respiratoria Cronica Fibrosis quistica Pulmonar Adquirida"
+  },
+  {
+    "code": "J98",
+    "name": "OTROS RESPIRATORIO"
+  },
+  {
+    "code": "J981",
+    "name": "ATELECTASIA"
+  },
+  {
+    "code": "J984",
+    "name": "ENFERMEDAD PULMONAR QUISTICA ADQUIRIDA"
+  },
+  {
+    "code": "J985",
+    "name": "ENFERMEDADES DEL MEDIASTINO. FIBROSIS, HERNIAS, MEDIASTINITIS."
+  },
+  {
+    "code": "J986",
+    "name": "TRASTORNOS DEL DIAFRAGMA. PARALISIS"
+  },
+  {
+    "code": "K02",
+    "name": "CARIES DENTAL"
+  },
+  {
+    "code": "K020",
+    "name": "EXODONCIA - DOLOR DENTAL - FLEMON DENTARIO"
+  },
+  {
+    "code": "K030",
+    "name": "ATRICION EXCESIVA DE LOS DIENTES"
+  },
+  {
+    "code": "K04",
+    "name": "ENFERMEDADES DE LA PULPA Y DE LOS TEJIDOS PERIAPICALES"
+  },
+  {
+    "code": "K040",
+    "name": "PULPITIS, ABSCESO DE LA PULPA"
+  },
+  {
+    "code": "K047",
+    "name": "ABSCESO PERIAPICAL O DENTOALVEOLAR"
+  },
+  {
+    "code": "K048",
+    "name": "QUISTE RADICULAR"
+  },
+  {
+    "code": "K05",
+    "name": "GINGIVITIS Y ENFERMEDADES PERIODONTALES"
+  },
+  {
+    "code": "K050",
+    "name": "GINGIVITIS AGUDA"
+  },
+  {
+    "code": "K052",
+    "name": "PERIODONTITIS AGUDA"
+  },
+  {
+    "code": "K055",
+    "name": "OTRAS ENFERMEDADES PERIODONTALES"
+  },
+  {
+    "code": "K076",
+    "name": "TRASTORNO DE LA ARTICULACION TEMPORO MAXILAR. SINDROME DE DISFUNCION DOLOROSA DE LA ARTICULACION TEMPOROMANDIBULAR"
+  },
+  {
+    "code": "K080",
+    "name": "EXFOLIACION DE LOS DIENTES DEBIDA A CAUSAS SISTEMICAS"
+  },
+  {
+    "code": "K088",
+    "name": "ODONTALGIA."
+  },
+  {
+    "code": "K099",
+    "name": "QUISTES DE LA REGION BUCAL, SIN OTRA ESPECIFICACION"
+  },
+  {
+    "code": "K103",
+    "name": "ALVEOLITIS DEL MAXILAR"
+  },
+  {
+    "code": "K11",
+    "name": "ENFERMEDADES DE LAS GLANDULAS SALIVALES: SIALADENITIS. ABCESO"
+  },
+  {
+    "code": "K115",
+    "name": "SIALOLITIASIS"
+  },
+  {
+    "code": "K120",
+    "name": "ESTOMATITIS AFTOSA RECURRENTE"
+  },
+  {
+    "code": "K121",
+    "name": "ESTOMATITIS ULCERATIVA"
+  },
+  {
+    "code": "K122",
+    "name": "ABSCESOS SUBMANDIBULARES O CELULITIS DEL PISO DE LA BOCA"
+  },
+  {
+    "code": "K130",
+    "name": "QUEILITIS. QUEILOSIS. ENFERMEDADES DE LOS LABIOS"
+  },
+  {
+    "code": "K132",
+    "name": "LEUCOPLASIA"
+  },
+  {
+    "code": "K141",
+    "name": "LENGUA GEOGRAFICA"
+  },
+  {
+    "code": "K149",
+    "name": "ENFERMEDAD DE LA LENGUA, NO ESPECIFICADA. GLOSOPATIA"
+  },
+  {
+    "code": "K20",
+    "name": "ESOFAGITIS"
+  },
+  {
+    "code": "K21",
+    "name": "ENFERMEDAD DEL REFLUJO GASTROESOFAGICO"
+  },
+  {
+    "code": "K210",
+    "name": "ESOFAGITIS POR REFLUJO"
+  },
+  {
+    "code": "K220",
+    "name": "ACALASIA. CARDIOESPASMO"
+  },
+  {
+    "code": "K221",
+    "name": "ULCERA DEL ESTOMAGO"
+  },
+  {
+    "code": "K222",
+    "name": "OBSTRUCCION DEL ESOFAGO"
+  },
+  {
+    "code": "K223",
+    "name": "PERFORACION DEL ESOFAGO"
+  },
+  {
+    "code": "K224",
+    "name": "DISQUINESIA DEL ESOFAGO. ESPASMO"
+  },
+  {
+    "code": "K225",
+    "name": "DIVERTICULO DEL ESOFAGO, ADQUIRIDO"
+  },
+  {
+    "code": "K226",
+    "name": "SINDROME DE MALLORY - WEIS. SINDROME DE LACERACION Y HEMORRAGIA GASTROESOFAGICA"
+  },
+  {
+    "code": "K231",
+    "name": "MEGAESOFAGO EN LA ENFERMEDAD DE CHAGAS"
+  },
+  {
+    "code": "K25",
+    "name": "ULCERA GASTRICA"
+  },
+  {
+    "code": "K26",
+    "name": "ULCERA DUODENAL"
+  },
+  {
+    "code": "K27",
+    "name": "ULCERA GASTRODUODENAL"
+  },
+  {
+    "code": "K29",
+    "name": "GASTRITIS Y DUODENITIS"
+  },
+  {
+    "code": "K290",
+    "name": "GASTRITIS AGUDA HEMORRAGICA"
+  },
+  {
+    "code": "K295",
+    "name": "GASTRITIS CRONICA"
+  },
+  {
+    "code": "K297",
+    "name": "GASTRITIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "K298",
+    "name": "DUODENETIS"
+  },
+  {
+    "code": "K30",
+    "name": "DISPEPSIA"
+  },
+  {
+    "code": "K311",
+    "name": "ESTENOSIS PILORICA"
+  },
+  {
+    "code": "K35",
+    "name": "APENDICITIS AGUDA"
+  },
+  {
+    "code": "K40",
+    "name": "HERNIA INGUINAL, ESCROTAL"
+  },
+  {
+    "code": "K41",
+    "name": "HERNIA CRURAL. HERNIA FEMORAL"
+  },
+  {
+    "code": "K42",
+    "name": "HERNIA UMBILICAL"
+  },
+  {
+    "code": "K43",
+    "name": "HERNIA EPIGASTRICA"
+  },
+  {
+    "code": "K44",
+    "name": "HERNIA HIATAL"
+  },
+  {
+    "code": "K50",
+    "name": "ENFERMEDADES DE CROHN [ENTERITIS REGIONAL]"
+  },
+  {
+    "code": "K509",
+    "name": "ENFERMEDAD DE CROHN"
+  },
+  {
+    "code": "K51",
+    "name": "COLITIS ULCERATIVA"
+  },
+  {
+    "code": "K521",
+    "name": "COLITIS Y GASTROENTERITIS TOXICA"
+  },
+  {
+    "code": "K522",
+    "name": "COLITIS Y GASTROENTERITIS ALERGICAS Y DIETETICAS"
+  },
+  {
+    "code": "K550",
+    "name": "TRASTORNO VASCULAR AGUDO DE LOS INTESTINOS. COLITIS ISQUEMICA"
+  },
+  {
+    "code": "K560",
+    "name": "ILIO PARALITICO"
+  },
+  {
+    "code": "K566",
+    "name": "ILEO OBSTRUCTIVO"
+  },
+  {
+    "code": "K57",
+    "name": "ENFERMEDAD DIVERTICULAR DEL INTESTINO"
+  },
+  {
+    "code": "K58",
+    "name": "SINDROME DEL COLON IRRITABLE"
+  },
+  {
+    "code": "K590",
+    "name": "CONSTIPACION"
+  },
+  {
+    "code": "K591",
+    "name": "DIARREA FUNCIONAL"
+  },
+  {
+    "code": "K593",
+    "name": "MEGACOLON TOXICO"
+  },
+  {
+    "code": "K594",
+    "name": "ESPASMO ANAL"
+  },
+  {
+    "code": "K60",
+    "name": "FISURA Y FISTULA DE LAS REGIONES ANAL Y RECTAL"
+  },
+  {
+    "code": "K603",
+    "name": "FISTULA ANAL"
+  },
+  {
+    "code": "K605",
+    "name": "FISTULA ANORRECTAL"
+  },
+  {
+    "code": "K61",
+    "name": "ABSCESO DE LAS REGIONES ANAL Y RECTAL"
+  },
+  {
+    "code": "K612",
+    "name": "ABSCESO ANORRECTAL"
+  },
+  {
+    "code": "K623",
+    "name": "PROLAPSO RECTAL"
+  },
+  {
+    "code": "K628",
+    "name": "PROCTITIS"
+  },
+  {
+    "code": "K65",
+    "name": "PERITONITIS"
+  },
+  {
+    "code": "K660",
+    "name": "ADHERENCIAS PERITONEALES"
+  },
+  {
+    "code": "K70",
+    "name": "ENFERMEDAD ALCOHOLICA DEL HIGADO"
+  },
+  {
+    "code": "K703",
+    "name": "CIRROSIS HEPATICA ALCOHOLICA"
+  },
+  {
+    "code": "K704",
+    "name": "INSUFICIENCIA HEPATICA ALCOHOLICA"
+  },
+  {
+    "code": "K712",
+    "name": "ENFERMEDAD TOXICA DEL HIGADO CON HEPATITIS AGUDA"
+  },
+  {
+    "code": "K72",
+    "name": "INSUFICIENCIA HEPATICA, INCLUYE: COMA HEPATICO, ENCEFALOPATIA HEPATICA"
+  },
+  {
+    "code": "K721",
+    "name": "INSUFICIENCIA HEPATICA CRONICA"
+  },
+  {
+    "code": "K738",
+    "name": "HEPATOPATIA CRONICA, SIN OTRA ESPECIFICACION Y SIN MENCION DE ALCOHOLISMO"
+  },
+  {
+    "code": "K740",
+    "name": "FIBROSIS HEPATICA"
+  },
+  {
+    "code": "K746",
+    "name": "CIRROSIS DEL HIGADO"
+  },
+  {
+    "code": "K750",
+    "name": "ABSCESO HEPATICO"
+  },
+  {
+    "code": "K759",
+    "name": "OTROS TRASTORNOS DEL HIGADO SIN ESPECIFICACION"
+  },
+  {
+    "code": "K760",
+    "name": "DEGENERACION GRASA DEL HIGADO"
+  },
+  {
+    "code": "K761",
+    "name": "CIRROSIS HEPATICA CARDIACA"
+  },
+  {
+    "code": "K764",
+    "name": "ANGIOMATOSIS HEPATICA"
+  },
+  {
+    "code": "K766",
+    "name": "HIPERTENSION PORTAL"
+  },
+  {
+    "code": "K80",
+    "name": "COLELITIASIS"
+  },
+  {
+    "code": "K81",
+    "name": "COLECISTITIS"
+  },
+  {
+    "code": "K810",
+    "name": "COLECISTITIS AGUDA"
+  },
+  {
+    "code": "K82",
+    "name": "ENFERMEDAD DE LA VESICULA BILIAR. OCLUSION DE LA VIA"
+  },
+  {
+    "code": "K83",
+    "name": "ENFERMEDAD DE LAS VIAS BILIARES. COLANGITIS. ESPASMO DEL ESFINTER DE ODDI"
+  },
+  {
+    "code": "K85",
+    "name": "PANCREATITIS AGUDA"
+  },
+  {
+    "code": "K860",
+    "name": "PANCREATITIS CRONICA INDUCIDA POR EL ALCOHOL"
+  },
+  {
+    "code": "K861",
+    "name": "PANCREATITIS CRONICA, INFECCIOSA"
+  },
+  {
+    "code": "K862",
+    "name": "QUISTE DEL PANCREAS"
+  },
+  {
+    "code": "K900",
+    "name": "ENFERMEDAD CELIACA"
+  },
+  {
+    "code": "K901",
+    "name": "ESPRUE"
+  },
+  {
+    "code": "K904",
+    "name": "MALABSORCION DEBIDA A INTOLERANCIA: ALMIDON ,GRASA, H DE CARBONO, PROTEINA"
+  },
+  {
+    "code": "K92",
+    "name": "OTROS DIGESTIVO"
+  },
+  {
+    "code": "K920",
+    "name": "HEMATEMESIS"
+  },
+  {
+    "code": "K921",
+    "name": "MELENA"
+  },
+  {
+    "code": "K922",
+    "name": "HEMORRAGIA GASTROINTESTINAL"
+  },
+  {
+    "code": "K938",
+    "name": "TRASTORNOS DE OTROS ORGANOS DIGESTIVOS ESPECIFICADOS EN ENFERMEDADES CLASIFICADAS EN OTRA PARTE"
+  },
+  {
+    "code": "L01",
+    "name": "IMPETIGO"
+  },
+  {
+    "code": "L02",
+    "name": "FORUNCULOSIS"
+  },
+  {
+    "code": "L03",
+    "name": "CELULITIS"
+  },
+  {
+    "code": "L04",
+    "name": "LINFADENITIS AGUDA"
+  },
+  {
+    "code": "L05",
+    "name": "QUISTE PILONIDAL O COCCIGEO"
+  },
+  {
+    "code": "L100",
+    "name": "PENFIGO"
+  },
+  {
+    "code": "L23",
+    "name": "DERMATITIS ALERGICA DE CONTACTO"
+  },
+  {
+    "code": "L239",
+    "name": "ECZEMA DE CONTACTO ALERGICO, DE CAUSA NO ESPECIFICADA"
+  },
+  {
+    "code": "L25",
+    "name": "DERMATITIS DE CONTACTO FORMA NO ESPECIFICADA"
+  },
+  {
+    "code": "L26",
+    "name": "DERMATITIS EXFOLIATIVA"
+  },
+  {
+    "code": "L280",
+    "name": "LIQUEN"
+  },
+  {
+    "code": "L29",
+    "name": "PRURITO"
+  },
+  {
+    "code": "L40",
+    "name": "PSORIASIS"
+  },
+  {
+    "code": "L42",
+    "name": "PITIRIASIS ROSADA"
+  },
+  {
+    "code": "L43",
+    "name": "LIQUEN PLANO"
+  },
+  {
+    "code": "L50",
+    "name": "URTICARIA"
+  },
+  {
+    "code": "L51",
+    "name": "ERITEMA MULTIFORME. SINDROME DE STEVENS JHONSON. LYELL. OTROS"
+  },
+  {
+    "code": "L52",
+    "name": "ERITEMA NUDOSO"
+  },
+  {
+    "code": "L55",
+    "name": "QUEMADURA SOLAR"
+  },
+  {
+    "code": "L570",
+    "name": "QUERATOSIS ACTINICA"
+  },
+  {
+    "code": "L578",
+    "name": "DERMATITIS SOLAR"
+  },
+  {
+    "code": "L58",
+    "name": "RADIODERMATITIS"
+  },
+  {
+    "code": "L589",
+    "name": "RADIODERMITIS"
+  },
+  {
+    "code": "L60",
+    "name": "TRASTORNOS DE LAS UÑAS"
+  },
+  {
+    "code": "L728",
+    "name": "QUISTES FOLICULARES O FOLICULITIS POR ACCION DE SUSTANCIAS"
+  },
+  {
+    "code": "L819",
+    "name": "TRASTORNO DE LA PIGMENTACION, NO ESPECIFICADO"
+  },
+  {
+    "code": "L851",
+    "name": "QUERATOSIS O QUERATODERMIA PALMAR Y PLANTAR"
+  },
+  {
+    "code": "L89",
+    "name": "ULCERA POR DECUBITO"
+  },
+  {
+    "code": "L910",
+    "name": "CICATRIZ QUELOIDE"
+  },
+  {
+    "code": "L93",
+    "name": "LUPUS ERITEMATOSO."
+  },
+  {
+    "code": "L940",
+    "name": "ESCLERODERMIA LOCALIZADA, MORFEA"
+  },
+  {
+    "code": "L959",
+    "name": "VASCULITIS LIMITADA A LA PIEL"
+  },
+  {
+    "code": "L984",
+    "name": "ULCERA CRONICA DE LA PIEL, EXCLUYE ULCERA VARICOSA."
+  },
+  {
+    "code": "M00",
+    "name": "ARTRITIS PIOGENA O A. INFECCIOSA"
+  },
+  {
+    "code": "M023",
+    "name": "ENFERMEDAD DE REITER"
+  },
+  {
+    "code": "M05",
+    "name": "ARTRITIS REUMATOIDEA"
+  },
+  {
+    "code": "M052",
+    "name": "VASCULITIS REUMATOIDE"
+  },
+  {
+    "code": "M06",
+    "name": "OTRAS ARTRITIS REUMATOIDEAS. INCLUYE ENF. DE STILL. POLIARTROPATIA INFLAMATORIA"
+  },
+  {
+    "code": "M060",
+    "name": "OTRAS ARTRITIS REUMATOIDE. INCLUYE LAS SERONEGATIVAS"
+  },
+  {
+    "code": "M072",
+    "name": "ESPONDILITIS PSORIASICA"
+  },
+  {
+    "code": "M073",
+    "name": "OTRAS ARTROPATIAS PSORIASICAS"
+  },
+  {
+    "code": "M074",
+    "name": "ARTROPATIA EN LA ENFERMEDAD DE CROHN"
+  },
+  {
+    "code": "M08",
+    "name": "ARTRITIS REUMATOIDEA JUVENIL"
+  },
+  {
+    "code": "M10",
+    "name": "GOTA"
+  },
+  {
+    "code": "M100",
+    "name": "GOTA IDIOPATICA"
+  },
+  {
+    "code": "M104",
+    "name": "OTRAS GOTAS SECUNDARIAS"
+  },
+  {
+    "code": "M11",
+    "name": "OTRAS ARTROPATIAS POR CRISTALES. INCLUYE CONDROCALCINOSIS FAMILIAR"
+  },
+  {
+    "code": "M122",
+    "name": "SINOVITIS VELLO NODULAR (PIGMENTADA)"
+  },
+  {
+    "code": "M124",
+    "name": "HIDRARTROSIS INTERMITENTE"
+  },
+  {
+    "code": "M125",
+    "name": "ARTROPATIA TRAUMATICA"
+  },
+  {
+    "code": "M130",
+    "name": "POLIARTRITIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "M131",
+    "name": "MONOARTRITIS, NO CLASIFICADA EN OTRA PARTE"
+  },
+  {
+    "code": "M139",
+    "name": "ARTROPATIA. ARTRITIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "M15",
+    "name": "POLIARTROSIS"
+  },
+  {
+    "code": "M150",
+    "name": "(OSTEO)ARTROSIS PRIMARIA GENERALIZADA"
+  },
+  {
+    "code": "M153",
+    "name": "POLIARTROSIS POSTRAUMATICA. ARTROSIS SECUNDARIA MULTIPLE"
+  },
+  {
+    "code": "M154",
+    "name": "(OSTEO)ARTROSIS EROSIVA"
+  },
+  {
+    "code": "M159",
+    "name": "OSTEOARTRITIS GENERALIZADA. POLIARTROSIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "M16",
+    "name": "COXARTROSIS (ARTROSIS DE LA CADERA)"
+  },
+  {
+    "code": "M17",
+    "name": "GONARTROSIS (ARTROSIS DE LA RODILLA)"
+  },
+  {
+    "code": "M18",
+    "name": "ARTROSIS DE LA PRIMERA ARTICULACION CARPOMETACARPICA"
+  },
+  {
+    "code": "M19",
+    "name": "OTRAS ARTROSIS. INCLUYE ARTROSIS PRIMARIA. A. SECUNDARIA. A. POSTRAUMATICA"
+  },
+  {
+    "code": "M199",
+    "name": "ARTROSIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "M20",
+    "name": "DEFORMIDADES ADQUIRIDAS DE LOS DEDOS DE LA MANO Y DEL PIE"
+  },
+  {
+    "code": "M200",
+    "name": "DEFORMIDAD DE LOS DEDOS DE LA MANO"
+  },
+  {
+    "code": "M201",
+    "name": "JUANETE. HALLUX VALGUS (ADQUIRIDO)"
+  },
+  {
+    "code": "M205",
+    "name": "OTRAS DEFORMIDADES ADQUIRIDAS DE LOS DEDOS DEL PIE"
+  },
+  {
+    "code": "M22",
+    "name": "TRASTORNOS DE LA ROTULA. LUXACION. CONDROMALACIA"
+  },
+  {
+    "code": "M23",
+    "name": "TRASTORNO INTERNO DE LA RODILLA. INCLUYE TRASTORNOS DE LOS MENISCOS"
+  },
+  {
+    "code": "M238",
+    "name": "LAXITUD DE LIGAMENTOS DE RODILLA"
+  },
+  {
+    "code": "M242",
+    "name": "INESTABILIDAD SECUNDARIA A LESION ANTIGUA DE LIGAMENTO. LAXITUD LIGAMENTOS"
+  },
+  {
+    "code": "M245",
+    "name": "CONTRACTURA ARTICULAR"
+  },
+  {
+    "code": "M247",
+    "name": "PROTRUSIÑN DE ACETABULO"
+  },
+  {
+    "code": "M250",
+    "name": "HEMARTROSIS"
+  },
+  {
+    "code": "M254",
+    "name": "DERRAME ARTICULAR"
+  },
+  {
+    "code": "M255",
+    "name": "DOLOR EN ARTICULACION"
+  },
+  {
+    "code": "M256",
+    "name": "RIGIDEZ ARTICULAR"
+  },
+  {
+    "code": "M259",
+    "name": "TRASTORNOS ARTICULARES NO ESPECIFICADOS"
+  },
+  {
+    "code": "M300",
+    "name": "POLIARTERITIS NUDOSA"
+  },
+  {
+    "code": "M31",
+    "name": "OTRAS VASCULOPATIAS NECROTIZANTES. MICROANGIOPATIA TROMBOTICA. ARTERITIS DE CELULAS GIGANTES."
+  },
+  {
+    "code": "M32",
+    "name": "LUPUS ERITEMATOSO SISTEMICO"
+  },
+  {
+    "code": "M32G737",
+    "name": "Lupus Eritematoso Sistemico Miopatias"
+  },
+  {
+    "code": "M32I30",
+    "name": "Lupus Eritematoso Sistemico Pericarditis"
+  },
+  {
+    "code": "M32J90",
+    "name": "Lupus Eritematoso Sistemico Pleuritis"
+  },
+  {
+    "code": "M32N164",
+    "name": "Lupus Eritematoso Sistemico Enf Renal"
+  },
+  {
+    "code": "M32R568",
+    "name": "Lupus Eritematoso Sistemico Convulsiones"
+  },
+  {
+    "code": "M33",
+    "name": "DERMATOPOLIMIOSITIS"
+  },
+  {
+    "code": "M34",
+    "name": "ESCLEROSIS SISTEMICA. ESCLERODERMIA"
+  },
+  {
+    "code": "M350",
+    "name": "SINDROME SECO (SJÑGEN)"
+  },
+  {
+    "code": "M40",
+    "name": "CIFOSIS Y LORDOSIS"
+  },
+  {
+    "code": "M41",
+    "name": "ESCOLIOSIS"
+  },
+  {
+    "code": "M430",
+    "name": "ESPONDILOLISIS"
+  },
+  {
+    "code": "M431",
+    "name": "ESPONDILOLISTESIS"
+  },
+  {
+    "code": "M436",
+    "name": "TORTICOLIS"
+  },
+  {
+    "code": "M45",
+    "name": "ESPONDILITIS ANQUILOSANTE"
+  },
+  {
+    "code": "M460",
+    "name": "OTRAS ESPONDILOPATIAS INFLAMATORIAS. INCLUYE ENTESOPATIA VERTEBRAL, SACROILITIS"
+  },
+  {
+    "code": "M47",
+    "name": "ESPONDILOSIS. ARTROSIS DE LA COLUMNA VERTEBRAL"
+  },
+  {
+    "code": "M48",
+    "name": "OTRAS ESPONDILOPATIAS."
+  },
+  {
+    "code": "M50",
+    "name": "TRASTORNOS DE DISCO CERVICAL"
+  },
+  {
+    "code": "M51",
+    "name": "OTROS TRASTORNOS DE LOS DISCOS INTERVERTEBRALES. INCLUYE TRASTORNOS DE DISCO DORSAL, DORSOLUMBAR Y LUMBOSACRO."
+  },
+  {
+    "code": "M511",
+    "name": "CIATICA DEBIDA A TRASTORNO DE DISCO INTERVERTEBRAL"
+  },
+  {
+    "code": "M53",
+    "name": "OTRAS DORSOPATIAS"
+  },
+  {
+    "code": "M530",
+    "name": "SINDROME CERVICOCRANEAL. SD. SIMPATICO CERVICAL POSTERIOR"
+  },
+  {
+    "code": "M531",
+    "name": "SINDROME CERVICOBRAQUIAL"
+  },
+  {
+    "code": "M532",
+    "name": "INESTABILIDAD DE LA COLUMNA VERTEBRAL"
+  },
+  {
+    "code": "M533",
+    "name": "TRASTORNOS SACROCCIGEOS. COCCIGODINIA"
+  },
+  {
+    "code": "M54",
+    "name": "DORSALGIA"
+  },
+  {
+    "code": "M541",
+    "name": "RADICULOPATIA O NEURITIS BRAQUIAL, LUMBOSACRA, TORACICA"
+  },
+  {
+    "code": "M542",
+    "name": "CERVICALGIA"
+  },
+  {
+    "code": "M543",
+    "name": "CIATICA"
+  },
+  {
+    "code": "M544",
+    "name": "LUMBAGO CON CIATICA"
+  },
+  {
+    "code": "M545",
+    "name": "LUMBAGO NO ESPECIFICADO. CONTRACTURA DORSAL INFERIOR. DOLOR LUMBAR"
+  },
+  {
+    "code": "M548",
+    "name": "DOLOR DE ESPALDA SIN ESPECIFICACION"
+  },
+  {
+    "code": "M549",
+    "name": "DORSALGIA. DOLOR DE ESPALDA"
+  },
+  {
+    "code": "M60",
+    "name": "MIOSITIS"
+  },
+  {
+    "code": "M621",
+    "name": "OTROS DESGARROS (NO TRAUMATICOS) DEL MUSCULO"
+  },
+  {
+    "code": "M624",
+    "name": "CONTRACTURA MUSCULAR"
+  },
+  {
+    "code": "M626",
+    "name": "DISTENSION MUSCULAR"
+  },
+  {
+    "code": "M65",
+    "name": "SINOVITIS Y TENOSINOVITIS"
+  },
+  {
+    "code": "M653",
+    "name": "DEDO EN GATILLO. ENFERMEDAD NODULAR DEL TENDÑN"
+  },
+  {
+    "code": "M654",
+    "name": "TENOSINOVITIS DE ESTILOIDES RADIAL (DE QUERVAIN)"
+  },
+  {
+    "code": "M66",
+    "name": "RUPTURA ESPONTANEA DE LA SINOVIA Y DEL TENDON"
+  },
+  {
+    "code": "M67",
+    "name": "OTROS TRASTORNOS DE LA SINOVIA Y DEL TENDON"
+  },
+  {
+    "code": "M673",
+    "name": "SINOVITIS TRANSITORIA. SINOVITIS TOXICA"
+  },
+  {
+    "code": "M674",
+    "name": "GANGLION"
+  },
+  {
+    "code": "M70",
+    "name": "TRASTORNOS DE LOS TEJIDOS BLANDOS RELACIONADOS CON EL USO, EL USO EXCESIVO Y LA PRESION. INCLUYE LOS DE ORIGEN OCUPACIONAL"
+  },
+  {
+    "code": "M700",
+    "name": "SINOVITIS CREPITANTE CRONICA DE LA MANO Y DE LA MUÑECA"
+  },
+  {
+    "code": "M701",
+    "name": "BURSITIS DE LA MANO"
+  },
+  {
+    "code": "M702",
+    "name": "BURSITIS DEL OLECRANON"
+  },
+  {
+    "code": "M703",
+    "name": "OTRAS BURSITIS DEL CODO"
+  },
+  {
+    "code": "M704",
+    "name": "OTRAS BURSITIS PREROTULIANAS"
+  },
+  {
+    "code": "M705",
+    "name": "OTRAS BURSITIS DE LA RODILLA"
+  },
+  {
+    "code": "M706",
+    "name": "BURSITIS DEL TROCANTER. TENDINITIS TROCANTEREA"
+  },
+  {
+    "code": "M707",
+    "name": "OTRAS BURSITIS DE LA CADERA. BURSITIS ISQUIÑTICA"
+  },
+  {
+    "code": "M71",
+    "name": "OTRAS BURSOPATIAS"
+  },
+  {
+    "code": "M712",
+    "name": "QUISTE SINOVIAL DEL HUECO POPLITEO (DE BAKER)"
+  },
+  {
+    "code": "M713",
+    "name": "QUISTE SINOVIAL"
+  },
+  {
+    "code": "M719",
+    "name": "BURSOPATIA. BURSITIS"
+  },
+  {
+    "code": "M72",
+    "name": "TRASTORNOS FIBROBLASTICOS"
+  },
+  {
+    "code": "M720",
+    "name": "FIBROMATOSIS DE LA APONEUROSIS PALMAR (DUPUYTREN)"
+  },
+  {
+    "code": "M725",
+    "name": "FASCITIS"
+  },
+  {
+    "code": "M75",
+    "name": "LESIONES DEL HOMBRO"
+  },
+  {
+    "code": "M750",
+    "name": "CAPSULITIS ADHESIVA DEL HOMBRO. HOMBRO CONGELADO. PERIARTRITIS DEL HOMBRO"
+  },
+  {
+    "code": "M751",
+    "name": "SINDROME DEL MANGUITO ROTATORIO. SINDROME DEL SUPRAESPINOSO"
+  },
+  {
+    "code": "M752",
+    "name": "TENDINITIS DEL BICEPS"
+  },
+  {
+    "code": "M753",
+    "name": "TENDINITIS CALCIFICANTE DEL HOMBRO"
+  },
+  {
+    "code": "M754",
+    "name": "SINDROME DE ABDUCCIÑN DOLOROSA DEL HOMBRO"
+  },
+  {
+    "code": "M755",
+    "name": "BURSITIS DEL HOMBRO"
+  },
+  {
+    "code": "M759",
+    "name": "LESIÑN DEL HOMBRO, NO ESPECIFICADA"
+  },
+  {
+    "code": "M76",
+    "name": "ENTESOPATIAS DEL MIEMBRO INFERIOR, EXCLUIDO EL PIE"
+  },
+  {
+    "code": "M760",
+    "name": "TENDINITIS DEL GLUTEO"
+  },
+  {
+    "code": "M761",
+    "name": "TENDINITIS DEL PSOAS"
+  },
+  {
+    "code": "M762",
+    "name": "ESPOLON DE LA CRESTA ILIACA"
+  },
+  {
+    "code": "M763",
+    "name": "SINDROME DEL TENDON DEL TENSOR DE LA FASCIA LATA"
+  },
+  {
+    "code": "M764",
+    "name": "BURSITIS TIBIAL COLATERAL (PELLEGRINI-STIEDA)"
+  },
+  {
+    "code": "M765",
+    "name": "TENDINITIS ROTULIANA"
+  },
+  {
+    "code": "M766",
+    "name": "TENDINITIS AQUILIANA. BURSITIS AQUILIANA"
+  },
+  {
+    "code": "M767",
+    "name": "TENDINITIS PERONEAL"
+  },
+  {
+    "code": "M768",
+    "name": "OTRAS ENTESOPATIAS DEL MIEMBRO INFERIOR. SINDROME TIBIAL ANTERIOR."
+  },
+  {
+    "code": "M77",
+    "name": "OTRAS ENTESOPATIAS"
+  },
+  {
+    "code": "M770",
+    "name": "EPICONDILITIS MEDIA"
+  },
+  {
+    "code": "M771",
+    "name": "EPICONDILITIS LATERAL. CODO DE TENISTA"
+  },
+  {
+    "code": "M772",
+    "name": "PERIARTRITIS DE LA MUÑECA"
+  },
+  {
+    "code": "M773",
+    "name": "ESPOLON CALCANEO"
+  },
+  {
+    "code": "M774",
+    "name": "METATARSALGIA"
+  },
+  {
+    "code": "M775",
+    "name": "OTRAS ENTESOPATIAS DEL PIE"
+  },
+  {
+    "code": "M779",
+    "name": "ENTESOPATIA, NO ESPECIFICADA. INCLUYE CAPSULITIS, ESPOLON DE HUESOS, PERIATRITIS, TENDINITIS"
+  },
+  {
+    "code": "M79",
+    "name": "OTROS TRASTORNOS DE LOS TEJIDOS BLANDOS, NO CLASIFICADOS EN OTRA PARTE"
+  },
+  {
+    "code": "M790",
+    "name": "REUMATISMO NO ESPECIFICADO. FIBROMIALGIA Y FIBROSITIS"
+  },
+  {
+    "code": "M791",
+    "name": "MIALGIAS"
+  },
+  {
+    "code": "M792",
+    "name": "NEURALGIA Y NEURITIS, NO ESPECIFICADAS"
+  },
+  {
+    "code": "M796",
+    "name": "DOLOR EN MIEMBRO"
+  },
+  {
+    "code": "M80",
+    "name": "OSTEOPOROSIS CON FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M800",
+    "name": "OSTEOPOROSIS POSTMENOPAUSICA, CON FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M802",
+    "name": "OSTEOPOROSIS POR DESUSO, CON FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M804",
+    "name": "OSTEOPOROSIS INDUCIDA POR DROGAS, CON FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M805",
+    "name": "OSTEOPOROSIS IDIOPATICA, CON FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M81",
+    "name": "OSTEOPOROSIS SIN FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M83",
+    "name": "OSTEOMALACIA DEL ADULTO"
+  },
+  {
+    "code": "M835",
+    "name": "OTRAS OSTEOMALACIAS DEL ADULTO INDUCIDAS POR DROGAS"
+  },
+  {
+    "code": "M84",
+    "name": "TRASTORNOS DE LA CONTINUIDAD DEL HUESO"
+  },
+  {
+    "code": "M840",
+    "name": "CONSOLIDACION DEFECTUOSA DE FRACTURA"
+  },
+  {
+    "code": "M841",
+    "name": "FALTA DE CONSOLIDACION DE FRACTURA (SEUDOARTROSIS)"
+  },
+  {
+    "code": "M842",
+    "name": "CONSOLIDACION RETARDADA DE FRACTURA"
+  },
+  {
+    "code": "M844",
+    "name": "FRACTURA PATOLOGICA"
+  },
+  {
+    "code": "M85",
+    "name": "OTROS TRASTORNOS DE LA DENSIDAD Y DE LA ESTRUCTURA OSEAS"
+  },
+  {
+    "code": "M850",
+    "name": "DISPLASIA FIBROSA (MONOSTOTICA)"
+  },
+  {
+    "code": "M851",
+    "name": "FLUOROSIS DEL ESQUELETO"
+  },
+  {
+    "code": "M854",
+    "name": "QUISTE OSEO SOLITARIO"
+  },
+  {
+    "code": "M855",
+    "name": "QUISTE OSEO ANEURISMATICO"
+  },
+  {
+    "code": "M86",
+    "name": "OSTEOMIELITIS"
+  },
+  {
+    "code": "M860",
+    "name": "OSTEOMIELITIS HEMATOGENA AGUDA"
+  },
+  {
+    "code": "M861",
+    "name": "OTRAS OSTEOMIELITIS AGUDAS"
+  },
+  {
+    "code": "M862",
+    "name": "OSTEOMIELITIS SUBAGUDA"
+  },
+  {
+    "code": "M863",
+    "name": "OSTEOMIELITIS MULTIFOCAL CRONICA"
+  },
+  {
+    "code": "M864",
+    "name": "OSTEOMIELITIS CRONICA CON DRENAJE DEL SENO"
+  },
+  {
+    "code": "M865",
+    "name": "OTRAS OSTEOMIELITIS HEMATOGENAS CRONICAS"
+  },
+  {
+    "code": "M866",
+    "name": "OTRAS OSTEOMIELITIS CRONICAS"
+  },
+  {
+    "code": "M868",
+    "name": "OTRASOSTEOMIELITIS. ABSCESO DE BRODIE"
+  },
+  {
+    "code": "M869",
+    "name": "OSTEOMIELITIS, NO ESPECIFICADA"
+  },
+  {
+    "code": "M87",
+    "name": "OSTEONECROSIS. NECROSIS OSEA AVASCULAR"
+  },
+  {
+    "code": "M870",
+    "name": "NECROSIS ASEPTICA IDIOPATICA OSEA"
+  },
+  {
+    "code": "M871",
+    "name": "OSTEONECROSIS DEBIDA A DROGAS"
+  },
+  {
+    "code": "M88",
+    "name": "ENFERMEDAD DE PAGET DE LOS HUESOS (OSTEITIS DEFORMANTE)"
+  },
+  {
+    "code": "M89",
+    "name": "OTROS TRASTORNOS DEL HUESO"
+  },
+  {
+    "code": "M895",
+    "name": "OSTEOLISIS"
+  },
+  {
+    "code": "M91",
+    "name": "OSTEOCONDROSIS JUVENIL DE LA CADERA Y DE LA PELVIS"
+  },
+  {
+    "code": "M910",
+    "name": "OSTEOCONDRITIS JUVENIL DE LA PELVIS"
+  },
+  {
+    "code": "M911",
+    "name": "OSTEOCONDROSIS JUVENIL DE LA CABEZA DEL FEMUR (LEGG-CALVÑ-PERTHES)"
+  },
+  {
+    "code": "M912",
+    "name": "COXA PLANA"
+  },
+  {
+    "code": "M92",
+    "name": "OTRAS OSTEOCONDROSIS JUVENILES"
+  },
+  {
+    "code": "M922",
+    "name": "OSTEOCONDROSIS JUVENIL DE LA MANO"
+  },
+  {
+    "code": "M924",
+    "name": "OSTEOCONDRSIS JUVENIL DE LA ROTULA"
+  },
+  {
+    "code": "M925",
+    "name": "OSTEOCONDRITIS JUVENIL DE LA TIBIA Y DEL PERONE"
+  },
+  {
+    "code": "M926",
+    "name": "OSTEOCONDRITIS JUVENIL DEL TARSO"
+  },
+  {
+    "code": "M927",
+    "name": "OSTEOCONDRITIS JUVENIL DEL METATARSO"
+  },
+  {
+    "code": "M93",
+    "name": "OTRAS OSTEOCONDROPATIAS"
+  },
+  {
+    "code": "M931",
+    "name": "ENFERMEDAD DE KIENBÑCK DEL ADULTO. OSTEOCONDRITIS DEL ADULTO DEL SEMILUNAR DEL CARPO"
+  },
+  {
+    "code": "M932",
+    "name": "OSTEOCONDRITIS DISECANTE"
+  },
+  {
+    "code": "M94",
+    "name": "OTROS TRASTORNOS DEL CARTILAGO"
+  },
+  {
+    "code": "M940",
+    "name": "SINDROME DE LA ARTICULACION CONDROCOSTAL (TIETZE)"
+  },
+  {
+    "code": "M942",
+    "name": "CONDROMALACIA"
+  },
+  {
+    "code": "M96",
+    "name": "TRASTORNOS OSTEOMUSCULARES CONSECUTIVOS A PROCEDIMIENTOS, NO CLASIFICADOS EN OTRA PARTE"
+  },
+  {
+    "code": "M960",
+    "name": "SEUDOARTROSIS CONSECUTIVA A FUSION O ARTRODESIS"
+  },
+  {
+    "code": "M992",
+    "name": "SUBLUXACION CON ESTENOSIS DEL CANAL NEURAL"
+  },
+  {
+    "code": "M993",
+    "name": "ESTENOSIS OSEA DEL CANAL NEURAL"
+  },
+  {
+    "code": "M994",
+    "name": "ESTENOSIS DEL CANAL NEURAL POR TEJIDO CONJUNTIVO"
+  },
+  {
+    "code": "M995",
+    "name": "ESTENOSIS DEL CANAL NEURAL POR DISCO INTERVERTEBRAL"
+  },
+  {
+    "code": "M999",
+    "name": "LESION BIOMECANICA, NO ESPECIFICADA"
+  },
+  {
+    "code": "N00",
+    "name": "SINDROME NEFRITICO AGUDO. GLOMERULONEFRITIS AGUDA"
+  },
+  {
+    "code": "N02",
+    "name": "HEMATURIA RECURRENTE Y PERSISTENTE"
+  },
+  {
+    "code": "N03",
+    "name": "SINDROME NEFRITICO CRONICO. GLOMERULONEFRITIS CRONICO."
+  },
+  {
+    "code": "N04",
+    "name": "SINDROME NEFROTICO"
+  },
+  {
+    "code": "N05",
+    "name": "SINDROME NEFRITICO NO ESPECIFICADO"
+  },
+  {
+    "code": "N06",
+    "name": "PROTEINURIA AISLADA CON LESION MORFOLOGICA ESPECIFICADA"
+  },
+  {
+    "code": "N083",
+    "name": "TRASTORNOS GLOMERULARES EN DIABETES MELLITUS CON COMPLICACIONES RENALES"
+  },
+  {
+    "code": "N10",
+    "name": "NEFRITIS TUBULOINTERSTICIAL AGUDA. PIELONEFRITIS AGUDA"
+  },
+  {
+    "code": "N11",
+    "name": "NEFRITIS TUBULOINTERSTICIAL CRONICA. PIELONEFRITIS CRONICA"
+  },
+  {
+    "code": "N12",
+    "name": "NEFRITIS TUBULOINTERSTICIAL NO ESPECIFICADA COMO AGUDA O CRONICA"
+  },
+  {
+    "code": "N13",
+    "name": "UROPATIA OBSTRUCTIVA Y POR REFLUJO"
+  },
+  {
+    "code": "N143",
+    "name": "NEFROPATIA INDUCIDA POR METALES PESADOS"
+  },
+  {
+    "code": "N144",
+    "name": "NEFROPATIA TOXICA, NO CLASIFICADA EN OTRA PARTE."
+  },
+  {
+    "code": "N158",
+    "name": "INFECCION RENAL SIN ESPECIFICACION"
+  },
+  {
+    "code": "N164",
+    "name": "TRASTORNOS RENALES TUBULOINTERSTICIALES EN ENFERMEDADES DEL TEJIDO CONJUNTIVO"
+  },
+  {
+    "code": "N17",
+    "name": "INSUFICIENCIA RENAL AGUDA"
+  },
+  {
+    "code": "N18",
+    "name": "INSUFICIENCIA RENAL CRONICA"
+  },
+  {
+    "code": "N180",
+    "name": "INSUFICIENCIA RENAL TERMINAL"
+  },
+  {
+    "code": "N19",
+    "name": "UREMIA"
+  },
+  {
+    "code": "N20",
+    "name": "LITIASIS URINARIA"
+  },
+  {
+    "code": "N21",
+    "name": "CALCULO DE LAS VIAS URINARIAS INFERIORES"
+  },
+  {
+    "code": "N23",
+    "name": "COLICO RENAL"
+  },
+  {
+    "code": "N281",
+    "name": "QUISTE DE RIÑON, ADQUIRIDO"
+  },
+  {
+    "code": "N288",
+    "name": "PTOSIS RENAL"
+  },
+  {
+    "code": "N289",
+    "name": "NEFROPATIA"
+  },
+  {
+    "code": "N291",
+    "name": "T.B.C DEL APARATO GENITOURINARIO"
+  },
+  {
+    "code": "N30",
+    "name": "CISTITIS"
+  },
+  {
+    "code": "N31",
+    "name": "VEJIGA NEUROGENA"
+  },
+  {
+    "code": "N322",
+    "name": "FISTULA DE LA VEJIGA"
+  },
+  {
+    "code": "N34",
+    "name": "URETRITIS Y SINDROME URETRAL"
+  },
+  {
+    "code": "N342",
+    "name": "URETRITIS"
+  },
+  {
+    "code": "N343",
+    "name": "SINDROME URETRAL"
+  },
+  {
+    "code": "N35",
+    "name": "ESTRECHEZ URETRAL"
+  },
+  {
+    "code": "N390",
+    "name": "INFECCION DE VIAS URINARIAS, SITIO NO ESPECIFICADO"
+  },
+  {
+    "code": "N40",
+    "name": "HIPERPLASIA DE LA PROSTATA"
+  },
+  {
+    "code": "N41",
+    "name": "ENFERMEDADES INFLAMATORIAS DE LA PROSTATA"
+  },
+  {
+    "code": "N419",
+    "name": "PROSTATITIS"
+  },
+  {
+    "code": "N433",
+    "name": "HIDROCELE"
+  },
+  {
+    "code": "N44",
+    "name": "TORSION DEL TESTICULO"
+  },
+  {
+    "code": "N45",
+    "name": "ORQUITIS Y EPIDIDIMITIS"
+  },
+  {
+    "code": "N46",
+    "name": "ESTERILIDAD EN EL VARON"
+  },
+  {
+    "code": "N47",
+    "name": "PREPUCIO REDUNDANTE, FIMOSIS Y PARAFIMOSIS"
+  },
+  {
+    "code": "N481",
+    "name": "BALANOPOSTITIS"
+  },
+  {
+    "code": "N483",
+    "name": "PRIAPISMO"
+  },
+  {
+    "code": "N499",
+    "name": "TRASTORNO INFLAMATORIO DE ORGANO GENITAL MASCULINO, NO ESPECIFICADO"
+  },
+  {
+    "code": "N501",
+    "name": "TRASTORNO VASCULAR DE LOS ORGANOS GENITALES MASCULINOS. HEMATOCELE"
+  },
+  {
+    "code": "N60",
+    "name": "DISPLASIA MAMARIA BENIGNA"
+  },
+  {
+    "code": "N61",
+    "name": "TRASTORNOS INFLAMATORIOS DE LA MAMA. MASTITIS, NO PUERPERAL"
+  },
+  {
+    "code": "N62",
+    "name": "HIPERTROFIA DE MAMA. GINECOMASTIA"
+  },
+  {
+    "code": "N63",
+    "name": "NODULO EN LA MAMA"
+  },
+  {
+    "code": "N64",
+    "name": "OTROS TRASTORNOS DE LA MAMA. FISURA DEL PESON"
+  },
+  {
+    "code": "N643",
+    "name": "GALACTORREA NO ASOCIADA CON EL PARTO"
+  },
+  {
+    "code": "N644",
+    "name": "MASTODINIA"
+  },
+  {
+    "code": "N645",
+    "name": "INDURACION DE MAMA. RETRACCION DEL PEZON"
+  },
+  {
+    "code": "N70",
+    "name": "SALPINGITIS Y OOFORITIS"
+  },
+  {
+    "code": "N71",
+    "name": "ENFERMEDAD INFLAMATORIA DEL UTERO. MIOMETRITIS"
+  },
+  {
+    "code": "N72",
+    "name": "ENFERMEDAD INFLAMATORIA DEL CUELLO UTERINO. CERVICITIS"
+  },
+  {
+    "code": "N73",
+    "name": "ENFERMEDAD INFLAMATORIA PELVICA FEMENINA. PARAMETRITIS. PERITONITIS PELVICA. ADHERENCIAS"
+  },
+  {
+    "code": "N75",
+    "name": "ENFERMEDADES DE LA GLANDULA DE BARTHOLIN"
+  },
+  {
+    "code": "N760",
+    "name": "VULVOVAGINITIS"
+  },
+  {
+    "code": "N80",
+    "name": "ENDOMETRIOSIS"
+  },
+  {
+    "code": "N81",
+    "name": "PROLAPSO GENITAL FEMENINO"
+  },
+  {
+    "code": "N811",
+    "name": "CISTOCELE"
+  },
+  {
+    "code": "N814",
+    "name": "PROLAPSO DE UTERO"
+  },
+  {
+    "code": "N816",
+    "name": "RECTOCELE"
+  },
+  {
+    "code": "N82",
+    "name": "FISTULAS QUE AFECTAN EL TRACTO GENITAL FEMENINO"
+  },
+  {
+    "code": "N830",
+    "name": "QUISTE FOLICULAR DEL OVARIO. QUISTE FOLICULAR HEMORRAGICO"
+  },
+  {
+    "code": "N84",
+    "name": "POLIPO DEL TRACTO GENITAL FEMENINO"
+  },
+  {
+    "code": "N85",
+    "name": "OTROS TRASTORNOS DEL APARATO GENITAL FEMENINO"
+  },
+  {
+    "code": "N850",
+    "name": "HIPERPLASIA DE ENDOMETRIO CON METRORRAGIA"
+  },
+  {
+    "code": "N87",
+    "name": "DIPLASIA DEL CUELLO UTERINO"
+  },
+  {
+    "code": "N91",
+    "name": "MENSTRUACION AUSENTE, ESCASA O RARA. HIPOMENORREA"
+  },
+  {
+    "code": "N92",
+    "name": "MENSTRUACION EXCESIVA, FRECUENTE E IRREGULAR"
+  },
+  {
+    "code": "N920",
+    "name": "POLIMENORREA CON CICLO REGULAR"
+  },
+  {
+    "code": "N921",
+    "name": "METRORRAGIA CON CICLO IRREGULAR"
+  },
+  {
+    "code": "N924",
+    "name": "METRORRAGIA PREMENOPAUSICA"
+  },
+  {
+    "code": "N93",
+    "name": "OTRAS HEMORRAGIAS UTERINAS O VAGINALES ANORMALES"
+  },
+  {
+    "code": "N94",
+    "name": "DOLOR Y OTRAS AFECCIONES RELACIONADAS CON LOS ORGANOS GENITALES FEMENINOS Y CON EL CICLO MENSTRUAL"
+  },
+  {
+    "code": "N943",
+    "name": "SINDROME DE TENSION PREMENSTRUAL"
+  },
+  {
+    "code": "N946",
+    "name": "DISMENORREA"
+  },
+  {
+    "code": "N950",
+    "name": "HEMORRAGIA POSTMENOPAUSICA"
+  },
+  {
+    "code": "N97",
+    "name": "INFERTILIDAD FEMENINA"
+  },
+  {
+    "code": "N98",
+    "name": "COMPLICACIONES ASOCIADAS CON LA FECUNDACION ARTIFICIAL"
+  },
+  {
+    "code": "N98FA",
+    "name": "FERTILIZACIÑN ASISTIDA"
+  },
+  {
+    "code": "NU400",
+    "name": "PACIENTE ASINTOMÃTICO"
+  },
+  {
+    "code": "O00",
+    "name": "EMBARAZO ECTOPICO"
+  },
+  {
+    "code": "O01",
+    "name": "MOLA HIDATIFORME"
+  },
+  {
+    "code": "O020",
+    "name": "DETENCION DEL DESARROLLO DEL HUEVO. HUEVO PATOLOGICO"
+  },
+  {
+    "code": "O021",
+    "name": "MUERTE FETAL PRECOZ, CON RETENCION DEL FETO MUERTO"
+  },
+  {
+    "code": "O03",
+    "name": "ABORTO ESPONTANEO"
+  },
+  {
+    "code": "O04",
+    "name": "ABORTO MEDICO. ABORTO TERAPEUTICO. ABORTO LEGAL."
+  },
+  {
+    "code": "O06",
+    "name": "ABORTO NO ESPECIFICADO. ABORTO INDUCIDO"
+  },
+  {
+    "code": "O08",
+    "name": "COMPLICACIONES CONSECUTIVAS AL ABORTO, AL EMBARAZO ECTOPICO Y AL EMBARAZO MOLAR. INCLUYE: INFECCION GENITAL Y PELVIANA. SHOCK SEPTICO. HEMORRAGIA. EMBOLIA. COLAPSO CIRCULATORIO. INSUFICIENCIA RENAL AGUDA"
+  },
+  {
+    "code": "O100",
+    "name": "HIPERTENSION ESENCIAL PREEXISTENTE, CON O SIN EDEMA, CON O SIN PROTEINURIA"
+  },
+  {
+    "code": "O12",
+    "name": "EDEMA Y PROTEINURIA GESTACIONALES, SIN HIPERTENSION"
+  },
+  {
+    "code": "O13",
+    "name": "HIPERTENSION GESTACIONAL, CON O SIN EDEMA, CON O SIN PROTEINURIA. PREECLAMSIA LEVE"
+  },
+  {
+    "code": "O15",
+    "name": "ECLAMSIA"
+  },
+  {
+    "code": "O20",
+    "name": "HEMORRAGIA PRECOZ DEL EMBARAZO. AMENAZA DE ABORTO"
+  },
+  {
+    "code": "O200",
+    "name": "HEMORRAGIA PRECOZ DEL EMBARAZO, AMENAZA DE ABORTO"
+  },
+  {
+    "code": "O21",
+    "name": "VOMITOS EXCESIVOS EN EL EMBARAZO. HIPEREMESIS GRAVIDICA"
+  },
+  {
+    "code": "O22",
+    "name": "COMPLICACIONES VENOSAS EN EL EMBARAZO. FLEBOPATIAS, TROMBOSIS GESTACIONAL"
+  },
+  {
+    "code": "O23",
+    "name": "INFECCION DE LAS VIAS URINARIAS EN EL EMBARAZO"
+  },
+  {
+    "code": "O24",
+    "name": "DIABETES MELLITUS EN EL EMBARAZO."
+  },
+  {
+    "code": "O244",
+    "name": "DIABETES MELLITUS GESTACIONAL"
+  },
+  {
+    "code": "O260",
+    "name": "AUMENTO EXCESIVO DE PESO EN EL EMBARAZO"
+  },
+  {
+    "code": "O262",
+    "name": "ATENCION DEL EMBARAZO EN UNA ABORTADORA HABITUAL"
+  },
+  {
+    "code": "O264",
+    "name": "HERPES GESTACIONAL"
+  },
+  {
+    "code": "O267",
+    "name": "SUBLUXACION DE LA SINFISIS PUBIANA"
+  },
+  {
+    "code": "O30",
+    "name": "EMBARAZO MULTIPLE"
+  },
+  {
+    "code": "O31",
+    "name": "COMPLICACIONES ESPECIFICAS DEL EMBARAZO MULTIPLE. FETO COMPRIMIDO. ABORTO DE UN FETO O MAS"
+  },
+  {
+    "code": "O340",
+    "name": "ATENCION MATERNA POR ANOMALIA CONGENITA DEL UTERO, CON COMPLICACIONES"
+  },
+  {
+    "code": "O341",
+    "name": "ATENCION MATERNA POR TUMOR DEL CUERPO DEL UTERO, QUE PRODUZCA COMPLICACIONES"
+  },
+  {
+    "code": "O343",
+    "name": "ATENCION MATERNA POR INCOMPETENCIA DEL CUELLO UTERINO. CERCLAJE"
+  },
+  {
+    "code": "O360",
+    "name": "INCOMPATIBILIDAD RH"
+  },
+  {
+    "code": "O366",
+    "name": "ATENCION MATERNA POR CRECIMIENTO FETAL EXCESIVO"
+  },
+  {
+    "code": "O40",
+    "name": "POLIHIDRAMNIOS. HIDRAMNIOS"
+  },
+  {
+    "code": "O411",
+    "name": "INFECCION DE LA BOLSA AMNIOTICA O DE LAS MEMBRANAS"
+  },
+  {
+    "code": "O42",
+    "name": "RUPTURA PREMATURA DE LAS MEMBRANAS"
+  },
+  {
+    "code": "O43",
+    "name": "TRANSTORNOS PLACENTARIOS. INCLUYE DESPRENDIMIENTO"
+  },
+  {
+    "code": "O44",
+    "name": "PLACENTA PREVIA. INCLUYE LA HEMORRAGIA"
+  },
+  {
+    "code": "O45",
+    "name": "DESPRENDIMIENTO PREMATURO DE PLACENTA (ABRUPTIO PLACENTAE)"
+  },
+  {
+    "code": "O470",
+    "name": "AMENAZA DE PARTO PREMATURO"
+  },
+  {
+    "code": "O85",
+    "name": "SEPSIS PUERPERAL"
+  },
+  {
+    "code": "O91",
+    "name": "INFECCIONES DE LA MAMA ASOCIADAS CON EL PARTO"
+  },
+  {
+    "code": "O98",
+    "name": "ENFERMEDADES MATERNAS INFECCIOSAS Y PARASITARIAS QUE COMPLICAN EL EMBARAZO. INCLUYE: TBC, LUES, GONORREA, HEPATITIS VIRAL, PROTOZOARIOS"
+  },
+  {
+    "code": "O99",
+    "name": "ENFERMEDADES MATERNAS QUE COMPLICAN EL EMBARAZO. INCLUYE: ANEMIA, CID, HEMOFILIAS, PURPURAS, HIV, TRASTORNOS ENDOCRINOS, MENTALES, DEL SNC, CARDIOVASCULAR, SISTEMA RESPIRATORIO, DIGESTIVO, PIEL"
+  },
+  {
+    "code": "P95",
+    "name": "MUERTE FETAL DE CAUSA NO ESPECIFICADA. DEFUNCION FETAL"
+  },
+  {
+    "code": "R000",
+    "name": "TAQUICARDIA, NO ESPECIFICADA"
+  },
+  {
+    "code": "R001",
+    "name": "BRADICARDIA, NO ESPECIFICADA"
+  },
+  {
+    "code": "R002",
+    "name": "PALPITACIONES"
+  },
+  {
+    "code": "R01",
+    "name": "SOPLOS Y OTROS SONIDOS CARDIACOS"
+  },
+  {
+    "code": "R03",
+    "name": "LECTURA DE PRESION SANGUINEA ANORMAL, SIN DIAGNOSTICO"
+  },
+  {
+    "code": "R040",
+    "name": "EPISTAXIS"
+  },
+  {
+    "code": "R042",
+    "name": "HEMOPTISIS"
+  },
+  {
+    "code": "R05",
+    "name": "TOS"
+  },
+  {
+    "code": "R060",
+    "name": "DISNEA"
+  },
+  {
+    "code": "R07",
+    "name": "DOLOR DE GARGANTA Y EN EL PECHO"
+  },
+  {
+    "code": "R072",
+    "name": "DOLOR PRECORDIAL"
+  },
+  {
+    "code": "R074",
+    "name": "DOLOR EN EL PECHO, NO ESPECIFICADO"
+  },
+  {
+    "code": "R092",
+    "name": "PARO RESPIRATORIO. INSUFICIENCIA CARDIORRESPIRATORIO"
+  },
+  {
+    "code": "R10",
+    "name": "DOLOR ABDOMINAL Y PELVICO"
+  },
+  {
+    "code": "R100",
+    "name": "ABDOMEN AGUDO"
+  },
+  {
+    "code": "R101",
+    "name": "DOLOR EPIGASTRICO"
+  },
+  {
+    "code": "R104",
+    "name": "OTROS DOLORES ABDOMINALES Y LOS NO ESPECIFICADOS"
+  },
+  {
+    "code": "R11",
+    "name": "NAUSEA Y VOMITO"
+  },
+  {
+    "code": "R12",
+    "name": "ACIDEZ"
+  },
+  {
+    "code": "R13",
+    "name": "DISFAGIA"
+  },
+  {
+    "code": "R14",
+    "name": "FLATULENCIA. DISTENSION ABDOMINAL"
+  },
+  {
+    "code": "R162",
+    "name": "HEPATOESPLENOMEGALIA"
+  },
+  {
+    "code": "R17",
+    "name": "ICTERICIA"
+  },
+  {
+    "code": "R18",
+    "name": "ASCITIS"
+  },
+  {
+    "code": "R19",
+    "name": "OTROS SINTOMAS Y SIGNOS QUE INVOLUCRAN EL SISTEMA DIGESTIVO Y EL ABDOMEN"
+  },
+  {
+    "code": "R202",
+    "name": "PARESTESIA DE LA PIEL, COMEZON, HORMIGUEO, PUNZADAS."
+  },
+  {
+    "code": "R203",
+    "name": "HIPERESTESIA"
+  },
+  {
+    "code": "R21",
+    "name": "SALPULLIDO Y OTRAS ERUPCIONES CUTANEAS NO ESPECIFICADAS"
+  },
+  {
+    "code": "R22",
+    "name": "TUMEFACCION DE PIEL"
+  },
+  {
+    "code": "R229",
+    "name": "TUMEFACCION, MASA O PROMINENCIA EN PARTE NO ESPECIFICADA"
+  },
+  {
+    "code": "R234",
+    "name": "CAMBIOS DE LA TEXTURA DE LA PIEL, DESCAMACION, ENGROSAMIENTO"
+  },
+  {
+    "code": "R251",
+    "name": "TEMBLOR NO ESPECIFICADO"
+  },
+  {
+    "code": "R252",
+    "name": "CALAMBRES Y ESPASMOS"
+  },
+  {
+    "code": "R253",
+    "name": "FASCICULACION, CONTRACCION"
+  },
+  {
+    "code": "R260",
+    "name": "MARCHA ATAXICA O TAMBALEANTE"
+  },
+  {
+    "code": "R261",
+    "name": "MARCHA PARALITICA O ESPASTICA"
+  },
+  {
+    "code": "R262",
+    "name": "DIFICULTAD PARA CAMINAR"
+  },
+  {
+    "code": "R270",
+    "name": "ATAXIA O FALLAS EN LA COORDINACION"
+  },
+  {
+    "code": "R291",
+    "name": "MENINGISMO"
+  },
+  {
+    "code": "R292",
+    "name": "REFLEJOS ANORMALES"
+  },
+  {
+    "code": "R300",
+    "name": "DISURIA"
+  },
+  {
+    "code": "R301",
+    "name": "TENESMO VESICAL"
+  },
+  {
+    "code": "R32",
+    "name": "INCONTINENCIA URINARIA, NO ESPECIFICADA"
+  },
+  {
+    "code": "R35",
+    "name": "POLIURIA. NICTURIA"
+  },
+  {
+    "code": "R42",
+    "name": "MAREO Y DESVANECIMIENTO"
+  },
+  {
+    "code": "R470",
+    "name": "DISFASIA Y AFASIA"
+  },
+  {
+    "code": "R471",
+    "name": "DISARTRIA Y ANARTRIA"
+  },
+  {
+    "code": "R480",
+    "name": "DISLEXIA Y ALEXIA"
+  },
+  {
+    "code": "R481",
+    "name": "AGNOSIA"
+  },
+  {
+    "code": "R482",
+    "name": "APRAXIA"
+  },
+  {
+    "code": "R490",
+    "name": "DISFONIA"
+  },
+  {
+    "code": "R491",
+    "name": "AFONIA"
+  },
+  {
+    "code": "R50",
+    "name": "FIEBRE DE ORIGEN DESCONOCIDO"
+  },
+  {
+    "code": "R501",
+    "name": "FIEBRE PERSISTENTE. SINDROME FEBRIL"
+  },
+  {
+    "code": "R509",
+    "name": "FIEBRE NO ESPECIFICADA"
+  },
+  {
+    "code": "R51",
+    "name": "CEFALEA, DOLOR FACIAL"
+  },
+  {
+    "code": "R52",
+    "name": "DOLOR NO CLASIFICADO EN OTRA PARTE"
+  },
+  {
+    "code": "R520",
+    "name": "DOLOR AGUDO"
+  },
+  {
+    "code": "R53",
+    "name": "MALESTAR Y FATIGA"
+  },
+  {
+    "code": "R55",
+    "name": "SINCOPE Y COLAPSO"
+  },
+  {
+    "code": "R560",
+    "name": "CONVULSIONES FEBRILES"
+  },
+  {
+    "code": "R568",
+    "name": "OTRAS CONVULSIONES Y LAS NO ESPECIFICADAS"
+  },
+  {
+    "code": "R570",
+    "name": "SHOCK CARDIOGENICO"
+  },
+  {
+    "code": "R571",
+    "name": "SHOCK HIPOVOLEMICO"
+  },
+  {
+    "code": "R579",
+    "name": "INSUFICIENCIA DE LA CIRCULACION PERIFERICA"
+  },
+  {
+    "code": "R58",
+    "name": "HEMORRAGIA"
+  },
+  {
+    "code": "R59",
+    "name": "ADENOMEGALIA"
+  },
+  {
+    "code": "R590",
+    "name": "ADENOMEGALIA LOCALIZADA"
+  },
+  {
+    "code": "R591",
+    "name": "ADENOMEGALIA GENERALIZADA, LINFADENOPATIA"
+  },
+  {
+    "code": "R619",
+    "name": "HIPERHIDROSIS, SUDORES NOCTURNOS"
+  },
+  {
+    "code": "R630",
+    "name": "ANOREXIA"
+  },
+  {
+    "code": "R631",
+    "name": "POLIDIPSIA"
+  },
+  {
+    "code": "R632",
+    "name": "POLIFAGIA"
+  },
+  {
+    "code": "R634",
+    "name": "PERDIDA ANORMAL DE PESO"
+  },
+  {
+    "code": "R635",
+    "name": "AUMENTO ANORMAL DE PESO"
+  },
+  {
+    "code": "S00",
+    "name": "TRAUMATISMO SUPERFICIAL DE CABEZA Y CARA"
+  },
+  {
+    "code": "S009",
+    "name": "TRAUMATISMO SUPERFICIAL DE LA CARA, DEL CUELLO Y DEL CUEROCABELLUDO, EXCEPTO EL OJO"
+  },
+  {
+    "code": "S01",
+    "name": "HERIDA DE LA CABEZA Y CARA"
+  },
+  {
+    "code": "S02",
+    "name": "FRACTURA DE HUESOS DEL CRANEO Y DE LA CARA"
+  },
+  {
+    "code": "S026",
+    "name": "FRACTURA DEL MAXILAR INFERIOR"
+  },
+  {
+    "code": "S030",
+    "name": "LUXACION TEMPOROMAXILAR"
+  },
+  {
+    "code": "S032",
+    "name": "LUXACION DE DIENTE"
+  },
+  {
+    "code": "S05",
+    "name": "TRAUMATISMO DE OJO Y DE LA ORBITA"
+  },
+  {
+    "code": "S06",
+    "name": "TRAUMATISMO INTRACRANEAL. TRAUMATISMO ENCEFALICO"
+  },
+  {
+    "code": "S060",
+    "name": "CONMOCION CEREBRAL"
+  },
+  {
+    "code": "S061",
+    "name": "EDEMA CEREBRAL TRAUMATICO"
+  },
+  {
+    "code": "S062",
+    "name": "TRAUMATISMO CEREBRAL DIFUSO. COMPRESION TRAUMATICA. CONTUSION."
+  },
+  {
+    "code": "S092",
+    "name": "RUPTURA TRAUMATICA DEL TIMPANO DEL OIDO"
+  },
+  {
+    "code": "S10",
+    "name": "TRAUMATISMO SUPERFICIAL DEL CUELLO Y REGION ANTERIOR"
+  },
+  {
+    "code": "S11",
+    "name": "HERIDA DEL CUELLO, SUPERFICIAL Y PROFUNDA"
+  },
+  {
+    "code": "S12",
+    "name": "FRACTURA DEL CUELLO, COLUMNA CERVICAL"
+  },
+  {
+    "code": "S13",
+    "name": "LUXACION, ESGUINCE Y TORCEDURA DE ARTICULACIONES Y DE LIGAMENTOS DEL CUELLO"
+  },
+  {
+    "code": "S131",
+    "name": "LUXACION DE VERTEBRA CERVICAL"
+  },
+  {
+    "code": "S134",
+    "name": "ESGUINCE Y DESGARRO DE LA COLUMNA CERVICAL. TRAUMATISMO DEL LATIGAZO"
+  },
+  {
+    "code": "S14",
+    "name": "TRAUMATISMO DE LA MEDULA ESPINAL Y DE NERVIOS A NIVEL DEL CUELLO"
+  },
+  {
+    "code": "S18",
+    "name": "AMPUTACION TRAUMATICA A NIVEL DEL CUELLO"
+  },
+  {
+    "code": "S20",
+    "name": "TRAUMATISMO SUPERFICIAL DEL TORAX. INCLUYE MAMA"
+  },
+  {
+    "code": "S208",
+    "name": "TRAUMATISMO SUPERFICIAL DEL TRONCO"
+  },
+  {
+    "code": "S21",
+    "name": "HERIDA DEL TORAX"
+  },
+  {
+    "code": "S212",
+    "name": "HERIDA DE LA PARED POSTERIOR DEL TORAX"
+  },
+  {
+    "code": "S22",
+    "name": "FRACTURA DE COSTILLAS, ESTERNON Y DE LA COLUMNA DORSAL"
+  },
+  {
+    "code": "S23",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS DEL TORAX"
+  },
+  {
+    "code": "S231",
+    "name": "LUXACION DE VERTEBRA TORACICA"
+  },
+  {
+    "code": "S242",
+    "name": "TRAUMATISMO DE RAICES NERVIOSAS DE LA COLUMNA TORACICA"
+  },
+  {
+    "code": "S26",
+    "name": "TRAUMATISMO DEL CORAZON"
+  },
+  {
+    "code": "S270",
+    "name": "NEUMOTORAX TRAUMATICO"
+  },
+  {
+    "code": "S271",
+    "name": "HEMOTORAX TRAUMATICO"
+  },
+  {
+    "code": "S272",
+    "name": "HEMONEUMOTORAX TRAUMATICO"
+  },
+  {
+    "code": "S30",
+    "name": "TRAUMATISMO SUPERFICIAL DEL ABDOMEN, DE LA REGION LUMBOSACRA Y DE LA PELVIS. INCLUYE CONTUSION DE ORGANOS GENITALES EXTERNOS. NALGAS"
+  },
+  {
+    "code": "S31",
+    "name": "HERIDA DEL ABDOMEN, DE LA REGION LUMBOSACRA Y DE LA PELVIS"
+  },
+  {
+    "code": "S32",
+    "name": "FRACTURA DE LA COLUMNA LUMBAR DE LA PELVIS"
+  },
+  {
+    "code": "S328",
+    "name": "FRACTURA DE PELVIS"
+  },
+  {
+    "code": "S33",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS DE LA COLUMNA LUMBAR Y DE LA PELVIS"
+  },
+  {
+    "code": "S330",
+    "name": "RUPTURA TRAUMATICA DE DISCO INTERVERTEBRAL LUMBAR"
+  },
+  {
+    "code": "S331",
+    "name": "LUXACION DE VERTEBRA LUMBAR"
+  },
+  {
+    "code": "S332",
+    "name": "LUXACION DE ARTICULACION SACROCOCCIGEA Y SACROILIACA"
+  },
+  {
+    "code": "S334",
+    "name": "RUPTURA TRAUMATICA DE LA SINFISIS DEL PUBIS"
+  },
+  {
+    "code": "S34",
+    "name": "TRAUMATISMO DE LOS NERVIOS Y DE LA MEDULA ESPINAL LUMBAR, A NIVEL DEL ABDOMEN, DE LA REGION LUMBOSACRA Y DE LA PELVIS. COLA DE CABALLO. PLEXO LUMBOSACRO"
+  },
+  {
+    "code": "S35",
+    "name": "TRAUMATISMO DE VASOS SANGUINEOS A NIVEL DEL ABDOMEN, DE LA REGION LUMBOSACRA Y DE LA PELVIS"
+  },
+  {
+    "code": "S36",
+    "name": "TRAUMATISMO DE ORGANOS INTRAABDOMINALES. BAZO. HIGADO"
+  },
+  {
+    "code": "S37",
+    "name": "TRAUMATISMO DE ORGANOS PELVICOS. RIÑON, VIAS, VEGIGA Y GENITALES"
+  },
+  {
+    "code": "S38",
+    "name": "TRAUMATISMO POR APLASTAMIENTO Y AMPUTACION TRAUMATICA DE REGION ABDOMINAL Y GENITALES EXTERNOS"
+  },
+  {
+    "code": "S40",
+    "name": "TRAUMATISMO SUPERFICIAL DEL HOMBRO Y DEL BRAZO"
+  },
+  {
+    "code": "S41",
+    "name": "HERIDA DEL HOMBRO Y DEL BRAZO"
+  },
+  {
+    "code": "S42",
+    "name": "FRACTURA DEL HOMBRO Y DEL BRAZO, CLAVICULA, OMOPLATO, HUMERO,"
+  },
+  {
+    "code": "S423",
+    "name": "FRACTURA DEL HUMERO"
+  },
+  {
+    "code": "S43",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS DE LA CINTURA ESCAPULAR"
+  },
+  {
+    "code": "S44",
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DE HOMBRO Y DEL BRAZO"
+  },
+  {
+    "code": "S45",
+    "name": "TRAUMATISMO DE LOS VASOS SANGUINEOS A NIVEL DEL HOMBRO Y DEL BRAZO"
+  },
+  {
+    "code": "S46",
+    "name": "TRAUMATISMO DEL TENDON Y MUSCULO A NIVEL DEL HOMBRO Y DEL BRAZO"
+  },
+  {
+    "code": "S48",
+    "name": "AMPUTACION TRAUMATICA DEL HOMBRO Y DEL BRAZO"
+  },
+  {
+    "code": "S50",
+    "name": "TRAUMATISMO SUPERFICIAL DEL ANTEBRAZO Y DEL CODO"
+  },
+  {
+    "code": "S51",
+    "name": "HERIDA DEL ANTEBRAZO Y DEL CODO"
+  },
+  {
+    "code": "S52",
+    "name": "FRACTURA DE ANTEBRAZO."
+  },
+  {
+    "code": "S520",
+    "name": "FRACTURA DE LA EPIFISIS SUPERIOR DEL CUBITO. CODO. FRACTURA-LUXACION DE MONTEGGIA"
+  },
+  {
+    "code": "S525",
+    "name": "FRACTURA DE LA EPIFISIS INFERIOR DE RADIO. FRACTURA DE COLLES"
+  },
+  {
+    "code": "S526",
+    "name": "FRACTURA DE LA EPIFISIS INFERIOR DEL CUBITO Y DEL RADIO"
+  },
+  {
+    "code": "S53",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS DEL CODO"
+  },
+  {
+    "code": "S54",
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DEL ANTEBRAZO. CUBITAL, MEDIANO, RADIAL"
+  },
+  {
+    "code": "S55",
+    "name": "TRAUMATISMO DE LOS VASOS SANGUINEOS A NIVEL DEL ANTEBRAZO"
+  },
+  {
+    "code": "S56",
+    "name": "TRAUMATISMO DE TENDON Y MUSCULO A NIVEL DEL ANTEBRAZO"
+  },
+  {
+    "code": "S58",
+    "name": "AMPUTACION TRAUMATICA DEL ANTEBRAZO"
+  },
+  {
+    "code": "S60",
+    "name": "TRAUMATISMO SUPERFICIAL DE LA MUÑECA Y LA MANO"
+  },
+  {
+    "code": "S61",
+    "name": "HERIDA DE LA MUÑECA Y DE LA MANO"
+  },
+  {
+    "code": "S62",
+    "name": "FRACTURA A NIVEL DE LA MUÑECA Y DE LA MANO, EXCLUYE EXTREMO DISTAL DE RADIO Y CUBITO"
+  },
+  {
+    "code": "S620",
+    "name": "FRACTURA DEL HUESO ESCAFOIDES"
+  },
+  {
+    "code": "S63",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS A NIVEL DE LA MUÑECA Y DE LA MANO"
+  },
+  {
+    "code": "S64",
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DE LA MUÑECA Y DE LA MANO, INCLUYE NERVIO CUBITAL, MEDIANO Y RADIAL"
+  },
+  {
+    "code": "S65",
+    "name": "TRAUMATISMO DE VASOS SANGUINEOS A NIVEL DE LA MUÑECA Y LA MANO"
+  },
+  {
+    "code": "S66",
+    "name": "TRAUMATISMO DE TENDON Y MUSCULO A NIVEL DE LA MUÑECA Y DE LA MANO"
+  },
+  {
+    "code": "S67",
+    "name": "TRAUMATISMO POR APLASTAMIENTO Y LA MUÑECA Y DE LA MANO"
+  },
+  {
+    "code": "S68",
+    "name": "AMPUTACION TRAUMATICA DE LA MUÑECA Y DE LA MANO"
+  },
+  {
+    "code": "S70",
+    "name": "TRAUMATISMO SUPERFICIAL DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S709",
+    "name": "TRAUMATISMO SUPERFICIAL DE LA CADERA, DEL MUSLO DE LA PIERNA Y DEL TOBILLO"
+  },
+  {
+    "code": "S71",
+    "name": "HERIDA DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S72",
+    "name": "FRACTURA DE FEMUR"
+  },
+  {
+    "code": "S720",
+    "name": "FRACTURA DE CUELLO DE FEMUR O DE CADERA"
+  },
+  {
+    "code": "S723",
+    "name": "FRACTURA DE LA DIAFISIS DEL FEMUR"
+  },
+  {
+    "code": "S724",
+    "name": "FRACTURA DE LA EPIFISIS INFERIOR DEL FEMUR"
+  },
+  {
+    "code": "S73",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE LA ARTICULACION Y DE LOS LIGAMENTOS DE LA CADERA"
+  },
+  {
+    "code": "S74",
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DE LA CADERA Y DEL MUSLO, INCLUYE CIATICO, FEMOROCUTANEO"
+  },
+  {
+    "code": "S75",
+    "name": "TRAUMATISMO DE LOS VASOS SANGUINEOS A NIVEL DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S76",
+    "name": "TRAUMATISMO DE TENDON Y MUSCULO A NIVEL DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S77",
+    "name": "TRAUMATISMO POR APLASTAMIENTO DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S78",
+    "name": "AMPUTACION TRAUMATICA DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S79",
+    "name": "OTROS TRAUMATISMO Y LOS NO ESPECIFICADOS DE LA CADERA Y DEL MUSLO"
+  },
+  {
+    "code": "S80",
+    "name": "TRAUMATISMO SUPERFICIAL DE LA PIERNA, INCLUYE LA RODILLA"
+  },
+  {
+    "code": "S800",
+    "name": "DOLOR DE RODILLA"
+  },
+  {
+    "code": "S81",
+    "name": "HERIDA DE LA PIERNA"
+  },
+  {
+    "code": "S82",
+    "name": "FRACTURA DE LA PIERNA, INCLUYE TOBILLO"
+  },
+  {
+    "code": "S820",
+    "name": "FRACTURA DE ROTULA"
+  },
+  {
+    "code": "S821",
+    "name": "FRACTURA DE LA EPIFISIS SUPERIOR DE LA TIBIA"
+  },
+  {
+    "code": "S822",
+    "name": "FRACTURA DE LA DIAFISIS DE LA TIBIA"
+  },
+  {
+    "code": "S823",
+    "name": "FRACTURA DE LA EPIFISIS INFERIOR DE LA TIBIA"
+  },
+  {
+    "code": "S824",
+    "name": "FRACTURA DEL PERONE"
+  },
+  {
+    "code": "S828",
+    "name": "FRACTURA DE OTRAS PARTES DE LA PIERNA, INCLUYE MALEOLOS"
+  },
+  {
+    "code": "S829",
+    "name": "FRACTURA DE LA TIBIA Y DEL PERONE"
+  },
+  {
+    "code": "S83",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS DE LA RODILLA"
+  },
+  {
+    "code": "S830",
+    "name": "LUXACION DE LA ROTULA"
+  },
+  {
+    "code": "S831",
+    "name": "LUXACION DE LA RODILLA"
+  },
+  {
+    "code": "S837",
+    "name": "TRAUMATISMO DE ESTRUCTURAS MULTIPLES DE LA RODILLA, INCLUYE MENISCOS (INTERNO Y EXTERNO) Y LIGAMENTOS (LATERALES Y CRUZADOS)"
+  },
+  {
+    "code": "S84",
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DE LA PIERNA, NERVIO TIBIAL Y PERONEO"
+  },
+  {
+    "code": "S85",
+    "name": "TRAUMATISMO DE VASOS SANGUINEOS A NIVEL DE LA PIERNA"
+  },
+  {
+    "code": "S86",
+    "name": "TRAUMATISMO DE TENDON Y MUSCULOS A NIVEL DE LA PIERNA"
+  },
+  {
+    "code": "S860",
+    "name": "TRAUMATISMO DEL TENDON DE AQUILES"
+  },
+  {
+    "code": "S87",
+    "name": "TRAUMATISMO POR APLASTAMIENTO DE LA PIERNA"
+  },
+  {
+    "code": "S88",
+    "name": "AMPUTACION TRAUMATICA DE LA PIERNA"
+  },
+  {
+    "code": "S90",
+    "name": "TRAUMATISMO SUPERFICIAL DEL TOBILLO Y DEL PIE"
+  },
+  {
+    "code": "S91",
+    "name": "HERIDA DEL TOBILLO Y DEL PIE"
+  },
+  {
+    "code": "S92",
+    "name": "FRACTURA DEL PIE, INCLUYE CALCANEO, ASTRAGALO, OTROS HUESOS DEL TARSO, METATARSO Y FALANGES"
+  },
+  {
+    "code": "S927",
+    "name": "FRACTURA DE UNA O MAS FALANGES DEL PIE"
+  },
+  {
+    "code": "S93",
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS DEL TOBILLO Y DEL PIE"
+  },
+  {
+    "code": "S94",
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DEL PIE Y DEL TOBILLO"
+  },
+  {
+    "code": "S95",
+    "name": "TRAUMATISMO DE VASOS SANGUINEOS A NIVEL DEL PIE Y DEL TOBILLO"
+  },
+  {
+    "code": "S96",
+    "name": "TRAUMATISMO DE TENDON Y MUSCULO A NIVEL DEL PIE Y DEL TOBILLO"
+  },
+  {
+    "code": "S97",
+    "name": "TRAUMATISMO POR APLASTAMIENTO DEL PIE Y DEL TOBILLO"
+  },
+  {
+    "code": "S98",
+    "name": "AMPUTACION TRAUMATICA DEL PIE Y DEL TOBILLO"
+  },
+  {
+    "code": "sd",
+    "name": "SIN DIAGNOSTICO"
+  },
+  {
+    "code": "T009",
+    "name": "TRAUMATISMOS SUPERFICIALES MULTIPLES, NO ESPECIFICADOS"
+  },
+  {
+    "code": "T019",
+    "name": "HERIDAS MULTIPLES, NO ESPECIFICADAS, INCLUYE MORDEDURA"
+  },
+  {
+    "code": "T029",
+    "name": "FRACTURAS MULTIPLES, NO ESPECIFICADAS"
+  },
+  {
+    "code": "T039",
+    "name": "LUXACIONES, DESGARROS Y ESGUINCES MULTIPLES, NO ESPECIFICADOS"
+  },
+  {
+    "code": "T049",
+    "name": "TRAUMATISMO POR APLASTAMIENTO MULTIPLE, NO ESPECIFICADOS"
+  },
+  {
+    "code": "T059",
+    "name": "AMPUTACIONES TRAUMATICAS MULTIPLES, NO ESPECIFICADAS"
+  },
+  {
+    "code": "T07",
+    "name": "TRAUMATISMOS MULTIPLES, NO ESPECIFICADOS"
+  },
+  {
+    "code": "T08",
+    "name": "FRACTURA DE LA COLUMNA VERTEBRAL, NIVEL NO ESPECIFICADO"
+  },
+  {
+    "code": "T136",
+    "name": "AMPUTACION DE MIEMBROS INFERIORES"
+  },
+  {
+    "code": "T149",
+    "name": "TRAUMATISMO, NO ESPECIFICADO. INCLUYE ABRACION, CONTUCION, AMPOLLAS, PICADURAS Y HERIDAS"
+  },
+  {
+    "code": "T15",
+    "name": "CUERPO EXTRAÑO EN PARTE EXTERNA DEL OJO"
+  },
+  {
+    "code": "T16",
+    "name": "CUERPO EXTRAÑO EN EL OIDO"
+  },
+  {
+    "code": "T17",
+    "name": "CUERPO EXTRAÑO EN LAS VIAS RESPIRATORIAS"
+  },
+  {
+    "code": "T18",
+    "name": "CUERPO EXTRAÑO EN EL TUBO DIGESTIVO"
+  },
+  {
+    "code": "T19",
+    "name": "CUERPO EXTRAÑO EN LAS VIAS GENITOURINARIAS"
+  },
+  {
+    "code": "T20",
+    "name": "QUEMADURAS Y CORROSION DE LA CABEZA Y DEL CUELLO"
+  },
+  {
+    "code": "T21",
+    "name": "QUEMADURA Y CORROSION DEL TRONCO, INCLUYE GENITALES EXTERNOS"
+  },
+  {
+    "code": "T22",
+    "name": "QUEMADURA Y CORROSION DEL HOMBRO Y MIEMBRO SUPERIOR"
+  },
+  {
+    "code": "T23",
+    "name": "QUEMADURA Y CORROSION DE LA MUÑECA Y DE LA MANO"
+  },
+  {
+    "code": "T24",
+    "name": "QUEMADURA Y CORROSION DE LA CADERA Y MIEMBRO INFERIOR"
+  },
+  {
+    "code": "T25",
+    "name": "QUEMADURA Y CORROSION DEL TOBILLO Y DEL PIE"
+  },
+  {
+    "code": "T26",
+    "name": "QUEMADURA Y CORROSION LIMITADA AL OJO Y SUS ANEXOS"
+  },
+  {
+    "code": "T27",
+    "name": "QUEMADURA Y CORROSION DE LAS VIAS RESPIRATORIAS"
+  },
+  {
+    "code": "T28",
+    "name": "QUEMADURA Y CORROSION DE OTROS ORGANOS INTERNOS"
+  },
+  {
+    "code": "T290",
+    "name": "QUEMADURAS MULTIPLES, GRADO NO ESPECIFICADO"
+  },
+  {
+    "code": "T294",
+    "name": "CORROSIONES MULTIPLES, GRADO NO ESPECIFICADO"
+  },
+  {
+    "code": "T301",
+    "name": "QUEMADURA DE PRIMER GRADO"
+  },
+  {
+    "code": "T302",
+    "name": "QUEMADURA DE SEGUNDO GRADO"
+  },
+  {
+    "code": "T303",
+    "name": "QUEMADURA DE TERCER GRADO"
+  },
+  {
+    "code": "T31",
+    "name": "QUEMADURAS CLASIFICADAS SEGUN LA EXTENSION DE LA SUPERFICIE DEL CUERPO AFECTADA"
+  },
+  {
+    "code": "T50",
+    "name": "EFECTOS TOXICOS POR SUSTANCIAS."
+  },
+  {
+    "code": "T51",
+    "name": "EFECTO TOXICO DEL ALCOHOL. EXCLUYE EMBRIAGUEZ. INCLUYE METANOL, PROPANOL-2 Y LOS INSUFICIENTEMENTE DESTILADO"
+  },
+  {
+    "code": "T58",
+    "name": "EFECTO TOXICO DEL MONOXIDO DE CARBONO"
+  },
+  {
+    "code": "T62",
+    "name": "EFECTO TOXICO DE OTRAS SUSTANCIAS NOCIVAS INGERIDAS COMO ALIMENTO"
+  },
+  {
+    "code": "T74",
+    "name": "SINDROMES DEL MALTRATO. INCLUYE: ADULTOS Y NIÑOS"
+  },
+  {
+    "code": "T741",
+    "name": "ABUSO FISICO"
+  },
+  {
+    "code": "T742",
+    "name": "ABUSO SEXUAL"
+  },
+  {
+    "code": "T743",
+    "name": "ABUSO PSICOLOGICO"
+  },
+  {
+    "code": "T754",
+    "name": "ELECTROCUCION"
+  },
+  {
+    "code": "T782",
+    "name": "SHOCK ANAFILACTICO, REACCION ANAFILACTICA, ANAFILAXIA"
+  },
+  {
+    "code": "T783",
+    "name": "EDEMA ANGIONEUROTICO. EDEMA DE QUINCKE"
+  },
+  {
+    "code": "T784",
+    "name": "REACCION ALERGICA, HIPERSENSIBILIDAD, NO ESPECIFICADA"
+  },
+  {
+    "code": "T82",
+    "name": "COMPLICACIONES DE DISPOSITIVOS PROTESICOS, IMPLANTES E INJERTOS CARDIOVASCULARES."
+  },
+  {
+    "code": "T83",
+    "name": "COMPLICACIONES DE DISPOSITIVOS, IMPLANTES E INJERTOS GENITOURINARIOS"
+  },
+  {
+    "code": "T852",
+    "name": "COMPLICACION MECANICA DE LENTES INTRAOCULARES"
+  },
+  {
+    "code": "T86",
+    "name": "FALLA Y RECHAZO DEL TRASPLANTE DE ORGANOS Y TEJIDOS"
+  },
+  {
+    "code": "T86634",
+    "name": "Rechazo de Transplante Pulmonar"
+  },
+  {
+    "code": "T867429",
+    "name": "Rechazo Transplante de HÑgado"
+  },
+  {
+    "code": "T867449",
+    "name": "Rechazo de Transplante de Pancreas"
+  },
+  {
+    "code": "T867474",
+    "name": "Rechazo Transplante de Intestino Delgado"
+  },
+  {
+    "code": "T867489",
+    "name": "Rechazo Transplante de Intestino Grueso"
+  },
+  {
+    "code": "T869547",
+    "name": "Rechazo Transplante Renal"
+  },
+  {
+    "code": "T887",
+    "name": "EFECTO ADVERSO NO ESPECIFICADO DE DROGA O MEDICAMENTO, ADMINISTRADO APROPIADAMENTE"
+  },
+  {
+    "code": "T90",
+    "name": "SECUELA DE TRAUMATISMOS DE LA CABEZA"
+  },
+  {
+    "code": "T91",
+    "name": "SECUELAS DE TRAUMATISMOS DEL CUELLO Y DEL TRONCO"
+  },
+  {
+    "code": "T92",
+    "name": "SECUELAS DE TRAUMATISMOS DE MIEMBRO SUPERIOR"
+  },
+  {
+    "code": "T93",
+    "name": "SECUELAS DE TRAUMATISMOS DE MIEMBRO INFERIOR"
+  },
+  {
+    "code": "T95",
+    "name": "SECUELAS DE QUEMADURAS, CORROSIONES Y CONGELAMIENTOS"
+  },
+  {
+    "code": "U071",
+    "name": "CORONAVIRUS - COVID 19 (INFECCION)"
+  },
+  {
+    "code": "V420",
+    "name": "TRASPLANTE DE RIÑON Y RECHAZO DE TRASPLANTE"
+  },
+  {
+    "code": "V428",
+    "name": "TRANSPLANTE DE MEDULA OSEA"
+  },
+  {
+    "code": "W54",
+    "name": "MORDEDURA O ATAQUE DE PERRO"
+  },
+  {
+    "code": "XIII",
+    "name": "OTROS OSTEOMUSCULAR Y TEJIDO CONECTIVO"
+  },
+  {
+    "code": "Z00",
+    "name": "EXAMEN MEDICO PREVENTIVO"
+  },
+  {
+    "code": "Z719",
+    "name": "CONSULTA MEDICA"
+  },
+  {
+    "code": "Z719EMP",
+    "name": "ESTUDIOS MEDICOS PREVENTIVOS"
+  },
+  {
+    "code": "Z933209",
+    "name": "Dependiente de Traqueotomia. Aberturas artificiales + cirugia traquea y laringe"
+  },
+  {
+    "code": "Z937469",
+    "name": "Dependientes de Gastrotomia. Aberturas artificiales + cirugia gastrica"
+  },
+  {
+    "code": "Z937478",
+    "name": "Dependiente de Colostomia. Abertura artificial + colostomia"
+  },
+  {
+    "code": "Z94634",
+    "name": "Transplante Pulmonar"
+  },
+  {
+    "code": "Z947429",
+    "name": "Transplante de Higado"
+  },
+  {
+    "code": "Z947449",
+    "name": "Transplante de Pancreas"
+  },
+  {
+    "code": "Z947474",
+    "name": "Trasplante de Intestino delgado"
+  },
+  {
+    "code": "Z947489",
+    "name": "Trasplante de Intestino Grueso"
+  },
+  {
+    "code": "Z99",
+    "name": "Dependencia de maquina y dispositivo capacitante, no clasificada en otra parte"
+  }
+]

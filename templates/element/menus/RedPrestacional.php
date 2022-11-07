@@ -28,9 +28,6 @@
                 <li>
                     <a href="<?= $this->Url->build($redirect . '/empresas', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Listado de empresas</a>
                 </li>
-                <li>
-                    <a href="<?= $this->Url->build($redirect . '/empresas/crear', ['fullBase' => true]); ?>" class="btn btn-link" data-togle="pill">Nueva empresa</a>
-                </li>
             </ul>
         </div>
     </div>

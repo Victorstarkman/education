@@ -74,12 +74,18 @@
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                     </div>
                 </div>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+                        <?= $this->Form->control('seniority', ['label' => 'Antiguedad (años)',
+                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                    </div>
+                </div>
                 <?= $this->element('partForm/addCity', ['city' => $patient->city_id]); ?>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('company_id', ['label' => 'Empresa',
                             'class' => 'form-control form-control-blue m-0 col-12', 'empty' => 'Seleccione',
-                            'options' => $companies]); ?>
+                            'options' => $companies, 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="mx-auto form-group row col-lg-12 col-md-12">

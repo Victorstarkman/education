@@ -38,7 +38,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->patient->birthday) ?></td>
+                    <?php $time = \Cake\I18n\FrozenTime::parse($report->patient->birthday);  ?>
+                    <td><?= $time->i18nFormat('dd/MM/yyyy');?></td>
                     <td><?= h($report->patient->age) ?></td>
                     <td><?= h($report->patient->address) ?></td>
                     <td><?= $report->patient->getLocation() ?></td>
@@ -50,6 +51,7 @@
                 <tr>
                     <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
@@ -57,6 +59,7 @@
                 <tr>
                     <td><?= h($report->patient->phone) ?></td>
                     <td><?= h($report->patient->job) ?></td>
+                    <td><?= h($report->patient->seniority) ?></td>
                     <td><?= h($report->patient->company->name) ?></td>
                 </tr>
                 </tbody>
@@ -73,16 +76,17 @@
                 </p>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('id', ['label' => 'Patologia*',
+                        <?= $this->Form->control('id', ['label' => 'Diagnóstico*',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
                         <?= $this->Form->control('mode_id', ['label' => 'Tipo de Servicio *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione']); ?>
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'required' => true, 'empty' => 'Seleccione']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('area', ['label' => 'Especialidad *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        <?= $this->Form->control('speciality_id', ['label' => 'Especialidad *',
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $specialties,
+                            'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
@@ -92,23 +96,25 @@
                             'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
                 </div>
-                <div class="familiar row col-12 mx-auto" <?php if ($report['type'] !== 3) { echo 'style="display: none;"'; } ?>>
+                <div class="familiar row col-12 mx-auto" <?php if ($report['type'] !== 3) {
+                    echo 'style="display: none;"';
+                                                         } ?>>
                     <div class="pt-0 col-lg-4 col-sm-12">
                         <div class="form-group">
                             <?= $this->Form->control('relativeName', ['label' => 'Nombre del familiar *',
-                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => $report['type'] !== 3 ? false : true]); ?>
                         </div>
                     </div>
                     <div class="pt-0 col-lg-4 col-sm-12">
                         <div class="form-group">
                             <?= $this->Form->control('relativeLastname', ['label' => 'Apellido del familiar*',
-                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => $report['type'] !== 3 ? false : true]); ?>
                         </div>
                     </div>
                     <div class="pt-0 col-lg-4 col-sm-12">
                         <div class="form-group">
                             <?= $this->Form->control('relativeRelationship', ['label' => 'Relación *',
-                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => ($report['type'] !== 3) ? false : true]); ?>
+                                'class' => 'form-control form-control-blue m-0 col-12', 'required' => $report['type'] !== 3 ? false : true]); ?>
                         </div>
                     </div>
                 </div>
@@ -126,8 +132,23 @@
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-	                    <?= $this->Form->control('privatedoctor_id', ['label' => 'Medico Particular *',
-		                    'class' => 'form-control form-control-blue m-0 col-12', 'options' => $privateDoctors, 'required' => true, 'empty' => 'Seleccione', 'value'=> $report['privatedoctor_id']]); ?>
+                        <?php
+                        if ($report['askedDays'] > 2) {
+                            $label = 'Medico Particular <span>*</span>';
+                            $requiredDoctor = true;
+                        } else {
+                            $requiredDoctor = false;
+                            $label = 'Medico Particular <span style="display: none;">*</span>';
+                        }
+
+                        ?>
+                        <?= $this->Form->control('privatedoctor_id', ['label' => $label, 'escape' => false,
+                            'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $privateDoctors, 'data-create-new' => true, 'data-modal-title' => 'Nuevo medico', 'required' => $requiredDoctor, 'empty' => 'Seleccione', 'value' => $report['privatedoctor_id']]); ?>
+                        <div class="text-right editMedico" <?php if ($report['privatedoctor_id'] <= 0) {
+                            echo 'style="display: none;"';
+                                                           } ?>>
+                            <a href="javascript:void(0)" data-id="<?= $report['privatedoctor_id']; ?>">Editar información del Medico</a>
+                        </div>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-12 col-sm-12">
@@ -162,10 +183,159 @@
 
     </div>
 
-<?php $this->start('scriptBottom');
+    <!-- Modal -->
+    <div class="modal fade " id="modal-target-form" tabindex="-1"  aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Modal title</h1>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" style="position: fixed; bottom: 15px; right: 15px;z-index:99999;" data-delay="5500">
+        <div class="toast-header">
+            <strong class="mr-auto">Notificación</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+        </div>
+    </div>
+
+
+    <?php $this->start('scriptBottom');
 echo $this->Html->css('uploadFiles/styleUploadFile', ['block' => 'script']);
 echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
 <script>
+    selectsToactive =  $('.select2');
+    selectsToactive.select2();
+    $(selectsToactive).each(function () {
+        let createNew = $(this).data('create-new')
+        if (typeof createNew !== 'undefined' && createNew !== false) {
+            let createNewTextData = $(this).data('create-new-text'),
+                createNewText = (typeof createNewTextData !== 'undefined' && createNewTextData !== false) ? createNewTextData : 'Crear nuevo',
+                id = $(this).attr('id'),
+                button = '<a href="#" style="padding: 6px;height: 20px;display: inline-table; width: 100%"  onclick="createNew(\'' + id +'\');"> <i class="si si-plus"></i>' + createNewText +'</a>';
+            $(this)
+                .select2()
+                .on('select2:open', () => {
+                    $(".select2-results:not(:has(a))").prepend(button);
+                })
+        }
+    });
+
+    function createNew(id) {
+        let addUrl,
+            $modal = $("#modal-target-form"),
+            posToSearch = '',
+            modalTitle = $('#' + id).data('modal-title');
+        switch (id) {
+            case 'privatedoctor-id':
+                addUrl = '<?php echo $this->Url->build([
+				    'controller' => 'Patients',
+				    'action' => 'addDoctor']); ?>';
+                posToSearch = 'privatedoctor';
+                break;
+        }
+
+        $.ajax({
+            type: "GET",
+            url: addUrl,
+            contentType: "application/json",
+            accepts: "application/json",
+            success: function (response) {
+                $modal.modal("show");
+                $('#' + id).select2("close");
+                $(".modal-body", $modal).html(response);
+                $(".modal-header .modal-title", $modal).html(modalTitle);
+                $('#modal-target-form .modal-body form').on('submit', function (e) {
+                    $('button.submit', this).attr('disable', true);
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: addUrl,
+                        dataType: "json",
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            console.log('Test', response);
+                            $('button.submit', this).attr('disable', false);
+                            if (!response.data.error) {
+                                var newOption = new Option(response.data[posToSearch].name, response.data[posToSearch].id, true, true);
+                                $('#' + id).append(newOption).trigger('change');
+                                $(".modal-body", $modal).html('');
+                                $modal.modal('hide');
+                            }
+                            $('.toast .toast-body').html(response.data.message);
+                            $('.toast').toast('show');
+
+                        }
+                    });
+                })
+            }
+        });
+    }
+
+    $("#privatedoctor-id").on('change', function (e) {
+        let value = $(this).val();
+        if (value) {
+            $('.editMedico').show();
+            $('.editMedico a').attr('data-id', value);
+        } else {
+            $('.editMedico').hide();
+        }
+    });
+
+    $('.editMedico a').on('click', function (){
+        let value = $(this).data('id'),
+            $privateDoctorInput = $('#privatedoctor-id'),
+            $modal = $("#modal-target-form");
+
+        $.ajax({
+            type: "GET",
+            url: '<?php echo $this->Url->build([
+			    'controller' => 'Patients',
+			    'action' => 'addDoctor']); ?>/' + value,
+            contentType: "application/json",
+            accepts: "application/json",
+            success: function (response) {
+                $modal.modal("show");
+                $(".modal-body", $modal).html(response);
+                $(".modal-header .modal-title", $modal).html('Editar Doctor');
+                $('#modal-target-form .modal-body form').on('submit', function (e) {
+                    $('button.submit', this).attr('disable', true);
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: '<?php echo $this->Url->build([
+						    'controller' => 'Patients',
+						    'action' => 'addDoctor']); ?>/' + value,
+                        dataType: "json",
+                        data: $(this).serialize(),
+                        success: function (response) {
+                            console.log('Test', response.data.privatedoctor.name);
+                            $('button.submit', this).attr('disable', false);
+                            if (!response.data.error) {
+                                $privateDoctorInput.select2('destroy');
+                                $privateDoctorInput.find("option:selected").text(response.data.privatedoctor.name);
+                                $privateDoctorInput.select2();
+                                $(".modal-body", $modal).html('');
+                                $modal.modal('hide');
+                            }
+                            $('.toast .toast-body').html(response.data.message);
+                            $('.toast').toast('show');
+
+                        }
+                    });
+                })
+            }
+        });
+    });
+
     $('#guardar').on('click', function (e) {
         e.preventDefault();
         $.ajax({

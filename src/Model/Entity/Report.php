@@ -3,7 +3,10 @@ declare(strict_types=1);
 
 namespace App\Model\Entity;
 
+use App\Model\Table\Cie10Table;
+use App\Model\Table\PrivatedoctorsTable;
 use App\Model\Table\ReportsTable;
+use App\Model\Table\SpecialtiesTable;
 use App\Model\Table\UsersTable;
 use Cake\ORM\Entity;
 
@@ -55,7 +58,6 @@ class Report extends Entity
         'askedDays' => true,
         'recommendedDays' => true,
         'startLicense' => true,
-        'cie10' => true,
         'status' => true,
         'created' => true,
         'modified' => true,
@@ -65,11 +67,12 @@ class Report extends Entity
         'relativeLastname' => true,
         'relativeRelationship' => true,
         'privatedoctor_id' => true,
+        'speciality_id' => true,
+        'cie10_id' => true,
         'fraud' => true,
         'mode_id' => true,
-        'area' => true,
         'files' => true,
-        'modes'.'name'=>true,
+        'Modes' => true,
     ];
 
     public function getNameStatus()
@@ -123,6 +126,55 @@ class Report extends Entity
         return $name;
     }
 
+    public function getSpeciality()
+    {
+        if (isset($this->specialties)) {
+            $name = $this->specialties->name;
+        } elseif (!empty($this->speciality_id)) {
+            $specialtiesTable = new SpecialtiesTable();
+            $speciality = $specialtiesTable->get($this->speciality_id);
+            $name = $speciality->name;
+        } else {
+            $name = 'Sin definir';
+        }
+
+        return $name;
+    }
+
+    public function getPathology()
+    {
+        if (isset($this->cie10)) {
+            $name = $this->cie10->name . '(' . $this->cie10->code . ')';
+        } elseif (!empty($this->cie10_id)) {
+            $cie10Table = new Cie10Table();
+            $cie10 = $cie10Table->get($this->cie10_id);
+            $name = $cie10->name . '(' . $cie10->code . ')';
+        } elseif (!empty($this->pathology)) {
+            $name = $this->pathology;
+        } else {
+            $name = 'Sin definir';
+        }
+
+        return $name;
+    }
+
+    public function getPathologyCode()
+    {
+        if (isset($this->cie10)) {
+            $name = $this->cie10->code;
+        } elseif (!empty($this->cie10_id)) {
+            $cie10Table = new Cie10Table();
+            $cie10 = $cie10Table->get($this->cie10_id);
+            $name = $cie10->code;
+        } elseif (!empty($this->pathology)) {
+            $name = $this->pathology;
+        } else {
+            $name = 'Sin definir';
+        }
+
+        return $name;
+    }
+
     public function isOwner($onlineUserID = null)
     {
         return $this->doctor_id == $onlineUserID;
@@ -130,22 +182,35 @@ class Report extends Entity
 
     public function privateDoctor()
     {
-        $license = '';
-        if (!empty($this->privatedoctor->license)) {
-            $license .= '(M.P: ' . $this->privatedoctor->license;
+        $doctor = false;
+        if (isset($this->privatedoctor)) {
+            $doctor = $this->privatedoctor;
+        } elseif (!empty($this->privatedoctor_id)) {
+            $privatedoctorsTable = new PrivatedoctorsTable();
+            $doctor = $privatedoctorsTable->get($this->privatedoctor_id);
         }
 
-        if (!empty($this->privatedoctor->licenseNational)) {
-            if (empty($license)) {
-                $license = ' (';
-            } else {
-                $license .= ' - ';
+        if ($doctor !== false) {
+            $license = '';
+            if (!empty($doctor->license)) {
+                $license .= '(M.P: ' . $doctor->license;
             }
-            $license .= 'M.N: ' . $this->privatedoctor->licenseNational . ')';
+
+            if (!empty($doctor->licenseNational)) {
+                if (empty($license)) {
+                    $license = ' (';
+                } else {
+                    $license .= ' - ';
+                }
+                $license .= 'M.N: ' . $doctor->licenseNational . ')';
+            } else {
+                $license .= ')';
+            }
+            $doctorName = $doctor->name . ' ' . $doctor->lastname . ' ' . $license;
         } else {
-            $license .= ')';
+            $doctorName = 'Sin Definir';
         }
 
-        return $this->privatedoctor->name . ' ' . $this->privatedoctor->lastname . ' ' . $license;
+        return $doctorName;
     }
 }

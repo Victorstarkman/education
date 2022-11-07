@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="col-6 mb-3">
-            <a href="/" class="btn btn-outline-secondary col-12">Reiniciar</a>
+            <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/', ['fullBase' => true]); ?>" class="btn btn-outline-secondary col-12">Reiniciar</a>
         </div>
         <div class="col-6 mb-3">
             <?= $this->Form->button(__('Buscar'), ['class' => 'btn btn-outline-primary col-12']) ?>
@@ -105,7 +105,7 @@
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('pathology', 'Patologia') ?></th>
+                <th><?= $this->Paginator->sort('pathology', 'Diagnóstico') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th><?= $this->Paginator->sort('status', 'Dictamen') ?></th>
                 <th><?= $this->Paginator->sort('created', 'Creada') ?></th>
@@ -119,7 +119,7 @@
                     <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->lastname) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
-                    <td><?= $report->pathology; ?></td>
+                    <td><?= $report->getPathology(); ?></td>
                     <td><?= $report->askedDays; ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>

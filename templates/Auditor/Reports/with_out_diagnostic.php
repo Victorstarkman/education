@@ -26,9 +26,9 @@
             <div class="form-group">
                 <?= $this->Form->control('modes_id', [
                                 'label' => 'Tipo de Servicio',
-                                'class' => 'form-control form-control-blue m-0 col-12', 
-                                'required' => true, 
-                                'empty' => 'Seleccione', 
+                                'class' => 'form-control form-control-blue m-0 col-12',
+                                'required' => true,
+                                'empty' => 'Seleccione',
                                 'value' => $search['modes']?? '']);
                                 ?>
 
@@ -87,8 +87,8 @@
             <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
-                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
+                <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('company','Empresa')?></th>
                 <th><?= $this->Paginator->sort('created', 'fecha de solictud') ?></th>
                 <th><?= $this->Paginator->sort('mode','Tipo de Servicio')?></th>
@@ -101,12 +101,12 @@
             <?php foreach ($reports as $report) : ?>
                 <tr>
                     <td><?= $this->Number->format($report->id) ?></td>
-                    <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->lastname) ?></td>
+                    <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->company->name)?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
                     <td><?= !empty($report->mode->name)?h($report->mode->name):''?></td>
-                    <td><?= $report->area; ?></td>
+                    <td><?= $report->getSpeciality(); ?></td>
                     <td><?= $report->askedDays; ?></td>
                     <td class="actions">
                         <?= $this->Html->link('Tomar', $redirectPrefix . '/licencias/diagnosticar/' . $report->id, ['fullBase' => true]); ?>

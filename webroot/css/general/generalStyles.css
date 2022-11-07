@@ -462,3 +462,17 @@ hr {
 .blue-color{
 	color: #5d9aff;
 }
+
+.select2-container {
+    margin: 0!important;
+}
+
+.select2-container .select2-selection {
+    border: 2px solid #0072bf!important;
+    border-radius: 12px!important;
+}
+
+.select2-container .select2-selection .select2-selection__arrow {
+    top: 5px!important;
+    right: 7px!important;
+}

@@ -38,7 +38,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($patient->birthday) ?></td>
+	                <?php $time = \Cake\I18n\FrozenTime::parse($patient->birthday);  ?>
+                    <td><?= $time->i18nFormat('dd/MM/yyyy');?></td>
                     <td><?= h($patient->age) ?></td>
                     <td><?= h($patient->address) ?></td>
                     <td><?= $patient->getLocation() ?></td>
@@ -51,6 +52,7 @@
                 <tr>
                     <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
@@ -58,6 +60,7 @@
                 <tr>
                     <td><?= h($patient->phone) ?></td>
                     <td><?= h($patient->job) ?></td>
+                    <td><?= h($patient->seniority) ?></td>
                     <td><?= h($patient->company->name) ?></td>
                 </tr>
                 </tbody>
@@ -73,8 +76,8 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th><?= __('Modalidad')?></th>
-                        <th><?= __('Area medica')?></th>
+                        <th><?= __('Tipo de Servicio')?></th>
+                        <th><?= __('Especialidad')?></th>
                         <th><?= __('Fecha de inicio') ?></th>
                         <th><?= __('Tipo de licencia') ?></th>
                     </tr>
@@ -82,8 +85,8 @@
                     <tbody>
                     <tr>
                         <td><?= h($report->mode->name) ?></td>
-                        <td><?= h($report->area) ?></td>
-                        <td><?= h($report->startPathology) ?></td>
+                        <td><?= h($report->getSpeciality()) ?></td>
+                        <td><?= h($report->startPathology->i18nFormat('dd/MM/yyyy')) ?></td>
                         <td><?= $report->getNameLicense() ?></td>
                     </tr>
                     </tbody>
@@ -155,17 +158,17 @@
                         <thead>
                         <tr>
                             <th><?= __('Patologia')?></th>
-                            <th><?= __('Resultado')?></th>
+                            <th><?= __('Dictamen')?></th>
                             <th><?= __('Duración') ?></th>
-                            <th><?= __('Desde') ?></th>
+                            <th><?= __('Fecha de Solicitud') ?></th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td><?= h($report->pathology) ?></td>
+                            <td><?= h($report->getPathology()) ?></td>
                             <td><?= $report->getNameStatus(); ?></td>
                             <td><?= h($report->recommendedDays) ?></td>
-                            <td><?= is_null($report->startLicense) ? '-' : $report->startLicense; ?></td>
+                            <td><?= is_null($report->startLicense) ? '-' : $report->startLicense->i18nFormat('dd/MM/yyyy'); ?></td>
                         </tr>
                         </tbody>
                     </table>
@@ -230,7 +233,7 @@
                     <div class="pl-0 col-12">
                         <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] .
                             '/agente/resultado/' . $report->id . '/auditoria-' . strtolower($patient->lastname . '-' . $patient->name), ['fullBase' => true]); ?>" target="_blank" class="btn btn-outline-primary col-12">
-                            <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar resultado</a>
+                            <i class="mr-2 fa fa-download" aria-hidden="true"></i>Descargar Dictamen</a>
                     </div>
                 <?php else : ?>
                     <div class="alert alert-info col-lg-12 text-center" role="alert">
