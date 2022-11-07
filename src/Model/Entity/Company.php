@@ -38,6 +38,7 @@ class Company extends Entity
         'status' => true,
         'created' => true,
         'modified' => true,
+        'cie10type' => true,
         'deleted' => true,
     ];
 

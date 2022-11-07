@@ -20,16 +20,23 @@
             <?= $this->Flash->render() ?>
             <div class="patientForm container mx-auto row">
                 <?= $this->Form->create($company, ['class' => 'col-lg-12 col-md-12 row', 'id' => 'userForm']) ?>
-                <div class="pt-0 col-lg-6 col-sm-12">
+                <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('razon', ['label' => 'Razón social *',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
                     </div>
                 </div>
-                <div class="pt-0 col-lg-6 col-sm-12">
+                <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('name', ['label' => 'Nombre *',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                    </div>
+                </div>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+                        <?= $this->Form->control('cie10type', ['label' => 'Tipo CIE10  *',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true,
+                            'options' => $cie10Types,  'empty' => 'Seleccione']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">

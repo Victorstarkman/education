@@ -292,7 +292,8 @@ class ReportsController extends AppController
             ]);
         $modes = $this->Reports->Modes->find()->all()->combine('id', 'name');
         $specialties = $this->Reports->Specialties->find()->all()->combine('id', 'name');
-        $cie10 = $this->Reports->Cie10->find()->all()->combine('id', function ($entity) {
+        $cie10 = $this->Reports->Cie10->find()->where(['type' => $report->patient->company->cie10type])->all()
+	        ->combine('id', function ($entity) {
             return $entity->name . ' (' . $entity->code . ')';
         });
 
