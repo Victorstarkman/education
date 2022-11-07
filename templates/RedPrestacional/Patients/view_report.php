@@ -49,12 +49,14 @@
                 <thead>
                 <tr>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($report->patient->job) ?></td>
+                    <td><?= h($report->patient->seniority) ?></td>
                     <td><?= h($report->patient->company->name) ?></td>
                 </tr>
                 </tbody>

@@ -105,7 +105,7 @@
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('pathology', 'Patologia') ?></th>
+                <th><?= $this->Paginator->sort('pathology', 'Diagnóstico') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th><?= $this->Paginator->sort('status', 'Dictamen') ?></th>
                 <th><?= $this->Paginator->sort('created', 'Creada') ?></th>

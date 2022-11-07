@@ -1,6 +1,6 @@
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Diagnóstico del agente</h4>
+        <h4>Tipo de Auditoría:&nbsp;&nbsp;&nbsp;<?= h($report->mode->name) ?></h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
@@ -49,12 +49,14 @@
                 <thead>
                 <tr>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($report->patient->job) ?></td>
+                    <td><?= h($report->patient->seniority) ?></td>
                     <td><?= h($report->patient->company->name) ?></td>
                 </tr>
                 </tbody>
@@ -67,7 +69,7 @@
                 <tr>
                     <th><?= __('Tipo de Servicio')?></th>
                     <th><?= __('Especialidad')?></th>
-                    <th><?= __('Fecha de inicio') ?></th>
+                    <th><?= __('Fecha de creación') ?></th>
                     <th><?= __('Tipo de licencia') ?></th>
                 </tr>
                 </thead>
@@ -84,7 +86,7 @@
                 <thead>
                 <tr>
                     <th><?= __('Días solicitados') ?></th>
-                    <th><?= __('Medico privado') ?></th>
+                    <th><?= __('Medico particular') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -144,10 +146,10 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Patologia')?></th>
+                    <th><?= __('Diagnóstico')?></th>
                     <th><?= __('Dictamen')?></th>
                     <th><?= __('Duración') ?></th>
-                    <th><?= __('Fecha de Solicitud') ?></th>
+                    <th><?= __('Desde (Fecha)') ?></th>
                 </tr>
                 </thead>
                 <tbody>

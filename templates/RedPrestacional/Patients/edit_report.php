@@ -51,6 +51,7 @@
                 <tr>
                     <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
@@ -58,6 +59,7 @@
                 <tr>
                     <td><?= h($report->patient->phone) ?></td>
                     <td><?= h($report->patient->job) ?></td>
+                    <td><?= h($report->patient->seniority) ?></td>
                     <td><?= h($report->patient->company->name) ?></td>
                 </tr>
                 </tbody>
@@ -74,7 +76,7 @@
                 </p>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('id', ['label' => 'Patologia*',
+                        <?= $this->Form->control('id', ['label' => 'Diagnóstico*',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'type' => 'hidden']); ?>
                         <?= $this->Form->control('mode_id', ['label' => 'Tipo de Servicio *',
                             'class' => 'form-control form-control-blue m-0 col-12 select2', 'required' => true, 'empty' => 'Seleccione']); ?>

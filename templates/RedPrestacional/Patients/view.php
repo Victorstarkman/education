@@ -52,6 +52,7 @@
                 <tr>
                     <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
+                    <th><?= __('Antiguedad (años)') ?></th>
                     <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
@@ -59,6 +60,7 @@
                 <tr>
                     <td><?= h($patient->phone) ?></td>
                     <td><?= h($patient->job) ?></td>
+                    <td><?= h($patient->seniority) ?></td>
                     <td><?= h($patient->company->name) ?></td>
                 </tr>
                 </tbody>

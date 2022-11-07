@@ -75,6 +75,12 @@
                             'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+                        <?= $this->Form->control('seniority', ['label' => 'Antiguedad (años)',
+                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                    </div>
+                </div>
                 <div class="mx-auto form-group row col-lg-12 col-md-12">
                     <div class="pl-0 col-12">
                         <button type="submit" id="guardar" class="btn btn-outline-primary col-12" name="guardar">
