@@ -59,7 +59,8 @@ class CompaniesController extends AppController
             $this->Flash->error(__('Ups, hubo un problema al crear la empresa.'));
         }
         $statuses = $this->Companies->getStatuses();
-        $this->set(compact('company', 'statuses'));
+        $cie10Types = $this->Companies->cie10Types();
+        $this->set(compact('company', 'statuses', 'cie10Types'));
     }
 
     /**
@@ -84,7 +85,8 @@ class CompaniesController extends AppController
             $this->Flash->error(__('Ups, hubo un problema al actualizar la empresa.'));
         }
         $statuses = $this->Companies->getStatuses();
-        $this->set(compact('company', 'statuses'));
+        $cie10Types = $this->Companies->cie10Types();
+        $this->set(compact('company', 'statuses', 'cie10Types'));
     }
 
     public function delete($id = null)

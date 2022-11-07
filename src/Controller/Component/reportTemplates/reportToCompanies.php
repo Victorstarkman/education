@@ -130,7 +130,7 @@ declare(strict_types=1);
         <p style="word-break: break-word;" class="status-<?= $dataToShow->status; ?>">X</p>
     </div>
     <div class="resultsSecondLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->getPathology(); ?></p>
+        <p style="word-break: break-word;"><?= $dataToShow->getPathologyCode(); ?></p>
     </div>
     <div class="resultThirdLine all" style="width: 262px; margin-left: 274px;">
         <p style="word-break: break-word;"><?= $dataToShow->recommendedDays; ?></p>

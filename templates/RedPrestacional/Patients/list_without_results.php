@@ -91,7 +91,7 @@
             </div>
         </div>
         <div class="col-6 mb-3">
-            <a href="/" class="btn btn-outline-secondary col-12">Reiniciar</a>
+            <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/listado-sin-resultados', ['fullBase' => true]); ?>" class="btn btn-outline-secondary col-12">Reiniciar</a>
         </div>
         <div class="col-6 mb-3">
             <?= $this->Form->button(__('Buscar'), ['class' => 'btn btn-outline-primary col-12']) ?>

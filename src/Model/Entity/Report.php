@@ -158,6 +158,23 @@ class Report extends Entity
         return $name;
     }
 
+    public function getPathologyCode()
+    {
+        if (isset($this->cie10)) {
+            $name = $this->cie10->code;
+        } elseif (!empty($this->cie10_id)) {
+            $cie10Table = new Cie10Table();
+            $cie10 = $cie10Table->get($this->cie10_id);
+            $name = $cie10->code;
+        } elseif (!empty($this->pathology)) {
+            $name = $this->pathology;
+        } else {
+            $name = 'Sin definir';
+        }
+
+        return $name;
+    }
+
     public function isOwner($onlineUserID = null)
     {
         return $this->doctor_id == $onlineUserID;

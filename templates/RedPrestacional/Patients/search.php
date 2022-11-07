@@ -1,3 +1,6 @@
+<style>
+    label.error { order: 3;}
+</style>
 <?php if (empty($patient)) : ?>
     <div class="alert alert-danger col-lg-12 searchAlert" role="alert">
         <div class="message error">No se encontro ninguna persona con el DNI ingresado. Ingrese los datos de la persona a crear.</div>
@@ -202,7 +205,7 @@
     </div>
 </div>
 <?= $this->Form->end();?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 <?php
 $group = $this->Identity->get('groupIdentity');
 $prefix = !empty($group['prefix']) ? $group['prefix'] : 'default';
@@ -215,26 +218,34 @@ $redirect = !empty($group) ? $group['redirect'] : ''; ?>
         $('#go-to').val(2);
         $('#guardar').click();
     });
-
+    $('span.select2').css('order', 2)
+    $('span.select2').parent().css('display', 'flex').css('flex-direction', 'column');
     $('#guardar').on('click', function (e) {
         e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: '<?= $this->Url->build($redirect . 'patients/addWithReport/create', ['fullBase' => true]); ?>',
-            dataType: "json",
-            data: $(".patientForm form").serialize(),
-            success: function (response) {
-                let data = response.data;
-                if (data.error) {
-                    $('.errors div').html(data.message).css('display', 'block');
-                    $('.errors').show();
-                    $('.searchAlert').hide();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    window.location.href = data.goTo;
+        var validator = $('#userForm').validate();
+
+        if (validator.checkForm()) {
+            $.ajax({
+                type: "POST",
+                url: '<?= $this->Url->build($redirect . 'patients/addWithReport/create', ['fullBase' => true]); ?>',
+                dataType: "json",
+                data: $(".patientForm form").serialize(),
+                success: function (response) {
+                    let data = response.data;
+                    if (data.error) {
+                        $('.errors div').html(data.message).css('display', 'block');
+                        $('.errors').show();
+                        $('.searchAlert').hide();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else {
+                        window.location.href = data.goTo;
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            validator.showErrors();
+        }
+
     });
 
     $("#birthday").on('change', function (e) {
@@ -279,6 +290,31 @@ $redirect = !empty($group) ? $group['redirect'] : ''; ?>
                 $(this).attr('required', false);
             });
             $('label span',$familiar).hide();
+        }
+    });
+
+    $("#personaldoctormp, #personaldoctormn").on('change', function (e) {
+        $type = $(this).attr('id');
+
+        switch ($type) {
+            case 'personaldoctormp':
+                if ($(this).val() != '') {
+                    $('label[for="personaldoctormn"] span').hide();
+                    $('#personaldoctormn').attr('required', false);
+                } else {
+                    $('label[for="personaldoctormn"] span').show();
+                    $('#personaldoctormn').attr('required', true);
+                }
+                break;
+            case 'personaldoctormn':
+                if ($(this).val() != '') {
+                    $('label[for="personaldoctormp"] span').hide();
+                    $('#personalDoctorMP').attr('required', false);
+                } else {
+                    $('label[for="personaldoctormp"] span').show();
+                    $('#personalDoctorMP').attr('required', true);
+                }
+                break;
         }
     });
 

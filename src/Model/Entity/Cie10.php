@@ -28,6 +28,7 @@ class Cie10 extends Entity
     protected $_accessible = [
         'name' => true,
         'code' => true,
+        'type' => true,
         'reports' => true,
     ];
 }

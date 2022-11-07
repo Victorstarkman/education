@@ -113,6 +113,14 @@ class CompaniesTable extends Table
         return $statusArray;
     }
 
+    public function cie10Types()
+    {
+        return [
+            1 => 'Default',
+            2 => 'Group 1',
+        ];
+    }
+
     public function getCompanies()
     {
         return $this->find()->where(['status' => self::ACTIVE])->all()->combine('id', 'name');

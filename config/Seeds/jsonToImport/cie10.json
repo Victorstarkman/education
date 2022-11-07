@@ -37,7 +37,7 @@
   },
   {
     "code": 954,
-    "name": "CIRUGIAS DEL RI_x001A_ON"
+    "name": "CIRUGIAS DEL RIÑON"
   },
   {
     "code": 955,
@@ -121,7 +121,7 @@
   },
   {
     "code": 2081,
-    "name": "EXTRACCION CUERPO EXTRA_x001A_O EN OJO"
+    "name": "EXTRACCION CUERPO EXTRAÑO EN OJO"
   },
   {
     "code": 2086,
@@ -137,7 +137,7 @@
   },
   {
     "code": 2111,
-    "name": "EXTRACCION DE CUERPO EXTRA_x001A_O DE LA CORNEA O DE LA ESCLEROTICA"
+    "name": "EXTRACCION DE CUERPO EXTRAÑO DE LA CORNEA O DE LA ESCLEROTICA"
   },
   {
     "code": 2115,
@@ -281,7 +281,7 @@
   },
   {
     "code": 9547,
-    "name": "TRANSPLANTE DEL RI_x001A_ON"
+    "name": "TRANSPLANTE DEL RIÑON"
   },
   {
     "code": 9579,
@@ -477,11 +477,11 @@
   },
   {
     "code": "18A40",
-    "name": "OTOSCOPIA PARA EXTRACCION DE CUERPO EXTRA_x001A_O"
+    "name": "OTOSCOPIA PARA EXTRACCION DE CUERPO EXTRAÑO"
   },
   {
     "code": "18A41",
-    "name": "RINOSCOPIA PARA EXTRACCION DE CUERPO EXTRA_x001A_O"
+    "name": "RINOSCOPIA PARA EXTRACCION DE CUERPO EXTRAÑO"
   },
   {
     "code": "18A42",
@@ -1305,7 +1305,7 @@
   },
   {
     "code": "C64",
-    "name": "TUMOR MALIGNO DE RI_x001A_ON"
+    "name": "TUMOR MALIGNO DE RIÑON"
   },
   {
     "code": "C66",
@@ -2025,7 +2025,7 @@
   },
   {
     "code": "F100",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - IntoxicaciÑn Aguda."
   },
   {
     "code": "F101",
@@ -2033,7 +2033,7 @@
   },
   {
     "code": "F102",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - SÑndrome de dependencia."
   },
   {
     "code": "F103",
@@ -2045,15 +2045,15 @@
   },
   {
     "code": "F105",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno PsicÑtico"
   },
   {
     "code": "F106",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - SÑndrome amnÑsico"
   },
   {
     "code": "F107",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE ALCOHOL. - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F108",
@@ -2069,7 +2069,7 @@
   },
   {
     "code": "F110",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - IntoxicaciÑn Aguda."
   },
   {
     "code": "F111",
@@ -2077,7 +2077,7 @@
   },
   {
     "code": "F112",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - SÑndrome de dependencia."
   },
   {
     "code": "F113",
@@ -2089,15 +2089,15 @@
   },
   {
     "code": "F115",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno PsicÑtico"
   },
   {
     "code": "F116",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - SÑndrome amnÑsico"
   },
   {
     "code": "F117",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE OPIACEOS - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F118",
@@ -2113,7 +2113,7 @@
   },
   {
     "code": "F120",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - IntoxicaciÑn Aguda."
   },
   {
     "code": "F121",
@@ -2121,7 +2121,7 @@
   },
   {
     "code": "F122",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - SÑndrome de dependencia."
   },
   {
     "code": "F123",
@@ -2133,15 +2133,15 @@
   },
   {
     "code": "F125",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno PsicÑtico"
   },
   {
     "code": "F126",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - SÑndrome amnÑsico"
   },
   {
     "code": "F127",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE CANNABINOIDES - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F128",
@@ -2157,7 +2157,7 @@
   },
   {
     "code": "F140",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - IntoxicaciÑn Aguda."
   },
   {
     "code": "F141",
@@ -2165,7 +2165,7 @@
   },
   {
     "code": "F142",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - SÑndrome de dependencia."
   },
   {
     "code": "F143",
@@ -2177,15 +2177,15 @@
   },
   {
     "code": "F145",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno PsicÑtico"
   },
   {
     "code": "F146",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - SÑndrome amnÑsico"
   },
   {
     "code": "F147",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE COCAINA - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F148",
@@ -2201,7 +2201,7 @@
   },
   {
     "code": "F160",
-    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - IntoxicaciÑn Aguda."
   },
   {
     "code": "F161",
@@ -2209,7 +2209,7 @@
   },
   {
     "code": "F162",
-    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - SÑndrome de dependencia."
   },
   {
     "code": "F163",
@@ -2221,15 +2221,15 @@
   },
   {
     "code": "F165",
-    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno PsicÑtico"
   },
   {
     "code": "F166",
-    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - SÑndrome amnÑsico"
   },
   {
     "code": "F167",
-    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DE COMPORTAMIENTO DEBIDO AL USO DE ALUCINOGENOS - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F168",
@@ -2245,7 +2245,7 @@
   },
   {
     "code": "F170",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - IntoxicaciÑn Aguda."
   },
   {
     "code": "F171",
@@ -2253,7 +2253,7 @@
   },
   {
     "code": "F172",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - SÑndrome de dependencia."
   },
   {
     "code": "F173",
@@ -2265,15 +2265,15 @@
   },
   {
     "code": "F175",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno PsicÑtico"
   },
   {
     "code": "F176",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - SÑndrome amnÑsico"
   },
   {
     "code": "F177",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE TABACO - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F178",
@@ -2289,7 +2289,7 @@
   },
   {
     "code": "F180",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - IntoxicaciÑn Aguda."
   },
   {
     "code": "F181",
@@ -2297,7 +2297,7 @@
   },
   {
     "code": "F182",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - SÑndrome de dependencia."
   },
   {
     "code": "F183",
@@ -2309,15 +2309,15 @@
   },
   {
     "code": "F185",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno PsicÑtico"
   },
   {
     "code": "F186",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - SÑndrome amnÑsico"
   },
   {
     "code": "F187",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDOS AL USO DE DISOLVENTES VOLATILES - Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F188",
@@ -2333,7 +2333,7 @@
   },
   {
     "code": "F190",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Intoxicaci_x001A_n Aguda."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. IntoxicaciÑn Aguda."
   },
   {
     "code": "F191",
@@ -2341,7 +2341,7 @@
   },
   {
     "code": "F192",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. S_x001A_ndrome de dependencia."
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. SÑndrome de dependencia."
   },
   {
     "code": "F193",
@@ -2353,15 +2353,15 @@
   },
   {
     "code": "F195",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno Psic_x001A_tico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno PsicÑtico"
   },
   {
     "code": "F196",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. S_x001A_ndrome amn_x001A_sico"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. SÑndrome amnÑsico"
   },
   {
     "code": "F197",
-    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno Psic_x001A_tico residual y de comienzo tard_x001A_o"
+    "name": "TRASTORNOS MENTALES Y DEL COMPORTAMIENTO DEBIDO AL USO DE MULTIPLES DROGAS Y AL USO DE OTRAS SUSTANCIAS PSICOACTIVAS. Trastorno PsicÑtico residual y de comienzo tardÑo"
   },
   {
     "code": "F198",
@@ -2453,7 +2453,7 @@
   },
   {
     "code": "F31",
-    "name": "TRASTORNO AFECTIVO BIPOLAR I. ENFERMEDAD MAN_x001A_ACO-DEPRESIVA"
+    "name": "TRASTORNO AFECTIVO BIPOLAR I. ENFERMEDAD MANÑACO-DEPRESIVA"
   },
   {
     "code": "F318",
@@ -2469,7 +2469,7 @@
   },
   {
     "code": "F332",
-    "name": "TRASTORNO DEPRESIVO RECURRENTE, EPISODIO DEPRESIVO GRAVE PRESENTE SIN SINTOMAS PSICOTICOS. DEPRESION END_x001A_GENA SIN SINTOMAS PSIC_x001A_TICOS"
+    "name": "TRASTORNO DEPRESIVO RECURRENTE, EPISODIO DEPRESIVO GRAVE PRESENTE SIN SINTOMAS PSICOTICOS. DEPRESION ENDÑGENA SIN SINTOMAS PSICÑTICOS"
   },
   {
     "code": "F333",
@@ -2493,7 +2493,7 @@
   },
   {
     "code": "F40",
-    "name": "TRASTORNOS F_x001A_BICOS DE ANSIEDAD."
+    "name": "TRASTORNOS FÑBICOS DE ANSIEDAD."
   },
   {
     "code": "F400",
@@ -2525,11 +2525,11 @@
   },
   {
     "code": "F431",
-    "name": "TRASTORNO DE ESTRES POSTRAUM_x001A_TICO"
+    "name": "TRASTORNO DE ESTRES POSTRAUMÑTICO"
   },
   {
     "code": "F432",
-    "name": "TRASTORNOS DE ADAPTACION. REACCION DE DUELO. CHOQUE CULTURAL. HOSPITALISMO EN NI_x001A_OS"
+    "name": "TRASTORNOS DE ADAPTACION. REACCION DE DUELO. CHOQUE CULTURAL. HOSPITALISMO EN NIÑOS"
   },
   {
     "code": "F44",
@@ -2749,7 +2749,7 @@
   },
   {
     "code": "G405",
-    "name": "SINDROMES EPILEPTICOS RELACIONADOS CON ALCOHOL, DROGAS, PRIVACION DEL SUE_x001A_O, TENSION PSICOSOCIAL"
+    "name": "SINDROMES EPILEPTICOS RELACIONADOS CON ALCOHOL, DROGAS, PRIVACION DEL SUEÑO, TENSION PSICOSOCIAL"
   },
   {
     "code": "G406",
@@ -2757,7 +2757,7 @@
   },
   {
     "code": "G407",
-    "name": "PEQUE_x001A_O MAL, NO ESPECIFICADO"
+    "name": "PEQUEÑO MAL, NO ESPECIFICADO"
   },
   {
     "code": "G41",
@@ -2765,7 +2765,7 @@
   },
   {
     "code": "G43",
-    "name": "MIGRA_x001A_A"
+    "name": "MIGRAÑA"
   },
   {
     "code": "G44",
@@ -2793,7 +2793,7 @@
   },
   {
     "code": "G470",
-    "name": "TRASTORNOS DEL INICIO Y DEL MANTENIMIENTO DEL SUE_x001A_O. INSOMNIOS"
+    "name": "TRASTORNOS DEL INICIO Y DEL MANTENIMIENTO DEL SUEÑO. INSOMNIOS"
   },
   {
     "code": "G471",
@@ -2861,7 +2861,7 @@
   },
   {
     "code": "G635",
-    "name": "POLINEUROPATIA EN TRASTORNOS DEL TEJIDO CONECTIVO SIST_x001A_MICO"
+    "name": "POLINEUROPATIA EN TRASTORNOS DEL TEJIDO CONECTIVO SISTÑMICO"
   },
   {
     "code": "G636",
@@ -2921,7 +2921,7 @@
   },
   {
     "code": "G832",
-    "name": "MONOPLEJ_x001A_A DEL MIEMBRO SUPERIOR"
+    "name": "MONOPLEJÑA DEL MIEMBRO SUPERIOR"
   },
   {
     "code": "G834",
@@ -3001,7 +3001,7 @@
   },
   {
     "code": "H028",
-    "name": "RETENCION DE CUERPO EXTRA_x001A_O EN EL PARPADO"
+    "name": "RETENCION DE CUERPO EXTRAÑO EN EL PARPADO"
   },
   {
     "code": "H029",
@@ -3161,7 +3161,7 @@
   },
   {
     "code": "H193",
-    "name": "QUERATOCONJUNTIVITIS SECA EN SINDROME DE SJ_x001A_GREN"
+    "name": "QUERATOCONJUNTIVITIS SECA EN SINDROME DE SJÑGREN"
   },
   {
     "code": "H200",
@@ -3817,7 +3817,7 @@
   },
   {
     "code": "I781",
-    "name": "NEVO: EN ARA_x001A_A, ESTELAR, NO NEOPLASICO"
+    "name": "NEVO: EN ARAÑA, ESTELAR, NO NEOPLASICO"
   },
   {
     "code": "I80",
@@ -4137,7 +4137,7 @@
   },
   {
     "code": "J82",
-    "name": "NEUMONIA DE L_x001A_FFLER"
+    "name": "NEUMONIA DE LÑFFLER"
   },
   {
     "code": "J841",
@@ -4749,7 +4749,7 @@
   },
   {
     "code": "L60",
-    "name": "TRASTORNOS DE LAS U_x001A_AS"
+    "name": "TRASTORNOS DE LAS UÑAS"
   },
   {
     "code": "L728",
@@ -4945,7 +4945,7 @@
   },
   {
     "code": "M247",
-    "name": "PROTRUSI_x001A_N DE ACETABULO"
+    "name": "PROTRUSIÑN DE ACETABULO"
   },
   {
     "code": "M250",
@@ -5009,7 +5009,7 @@
   },
   {
     "code": "M350",
-    "name": "SINDROME SECO (SJ_x001A_GEN)"
+    "name": "SINDROME SECO (SJÑGEN)"
   },
   {
     "code": "M40",
@@ -5133,7 +5133,7 @@
   },
   {
     "code": "M653",
-    "name": "DEDO EN GATILLO. ENFERMEDAD NODULAR DEL TEND_x001A_N"
+    "name": "DEDO EN GATILLO. ENFERMEDAD NODULAR DEL TENDÑN"
   },
   {
     "code": "M654",
@@ -5161,7 +5161,7 @@
   },
   {
     "code": "M700",
-    "name": "SINOVITIS CREPITANTE CRONICA DE LA MANO Y DE LA MU_x001A_ECA"
+    "name": "SINOVITIS CREPITANTE CRONICA DE LA MANO Y DE LA MUÑECA"
   },
   {
     "code": "M701",
@@ -5189,7 +5189,7 @@
   },
   {
     "code": "M707",
-    "name": "OTRAS BURSITIS DE LA CADERA. BURSITIS ISQUI_x001A_TICA"
+    "name": "OTRAS BURSITIS DE LA CADERA. BURSITIS ISQUIÑTICA"
   },
   {
     "code": "M71",
@@ -5241,7 +5241,7 @@
   },
   {
     "code": "M754",
-    "name": "SINDROME DE ABDUCCI_x001A_N DOLOROSA DEL HOMBRO"
+    "name": "SINDROME DE ABDUCCIÑN DOLOROSA DEL HOMBRO"
   },
   {
     "code": "M755",
@@ -5249,7 +5249,7 @@
   },
   {
     "code": "M759",
-    "name": "LESI_x001A_N DEL HOMBRO, NO ESPECIFICADA"
+    "name": "LESIÑN DEL HOMBRO, NO ESPECIFICADA"
   },
   {
     "code": "M76",
@@ -5305,7 +5305,7 @@
   },
   {
     "code": "M772",
-    "name": "PERIARTRITIS DE LA MU_x001A_ECA"
+    "name": "PERIARTRITIS DE LA MUÑECA"
   },
   {
     "code": "M773",
@@ -5489,7 +5489,7 @@
   },
   {
     "code": "M911",
-    "name": "OSTEOCONDROSIS JUVENIL DE LA CABEZA DEL FEMUR (LEGG-CALV_x001A_-PERTHES)"
+    "name": "OSTEOCONDROSIS JUVENIL DE LA CABEZA DEL FEMUR (LEGG-CALVÑ-PERTHES)"
   },
   {
     "code": "M912",
@@ -5525,7 +5525,7 @@
   },
   {
     "code": "M931",
-    "name": "ENFERMEDAD DE KIENB_x001A_CK DEL ADULTO. OSTEOCONDRITIS DEL ADULTO DEL SEMILUNAR DEL CARPO"
+    "name": "ENFERMEDAD DE KIENBÑCK DEL ADULTO. OSTEOCONDRITIS DEL ADULTO DEL SEMILUNAR DEL CARPO"
   },
   {
     "code": "M932",
@@ -5661,7 +5661,7 @@
   },
   {
     "code": "N281",
-    "name": "QUISTE DE RI_x001A_ON, ADQUIRIDO"
+    "name": "QUISTE DE RIÑON, ADQUIRIDO"
   },
   {
     "code": "N288",
@@ -5905,7 +5905,7 @@
   },
   {
     "code": "N98FA",
-    "name": "FERTILIZACI_x001A_N ASISTIDA"
+    "name": "FERTILIZACIÑN ASISTIDA"
   },
   {
     "code": "NU400",
@@ -6561,7 +6561,7 @@
   },
   {
     "code": "S37",
-    "name": "TRAUMATISMO DE ORGANOS PELVICOS. RI_x001A_ON, VIAS, VEGIGA Y GENITALES"
+    "name": "TRAUMATISMO DE ORGANOS PELVICOS. RIÑON, VIAS, VEGIGA Y GENITALES"
   },
   {
     "code": "S38",
@@ -6649,15 +6649,15 @@
   },
   {
     "code": "S60",
-    "name": "TRAUMATISMO SUPERFICIAL DE LA MU_x001A_ECA Y LA MANO"
+    "name": "TRAUMATISMO SUPERFICIAL DE LA MUÑECA Y LA MANO"
   },
   {
     "code": "S61",
-    "name": "HERIDA DE LA MU_x001A_ECA Y DE LA MANO"
+    "name": "HERIDA DE LA MUÑECA Y DE LA MANO"
   },
   {
     "code": "S62",
-    "name": "FRACTURA A NIVEL DE LA MU_x001A_ECA Y DE LA MANO, EXCLUYE EXTREMO DISTAL DE RADIO Y CUBITO"
+    "name": "FRACTURA A NIVEL DE LA MUÑECA Y DE LA MANO, EXCLUYE EXTREMO DISTAL DE RADIO Y CUBITO"
   },
   {
     "code": "S620",
@@ -6665,27 +6665,27 @@
   },
   {
     "code": "S63",
-    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS A NIVEL DE LA MU_x001A_ECA Y DE LA MANO"
+    "name": "LUXACION, ESGUINCE Y DESGARRO DE ARTICULACIONES Y LIGAMENTOS A NIVEL DE LA MUÑECA Y DE LA MANO"
   },
   {
     "code": "S64",
-    "name": "TRAUMATISMO DE NERVIOS A NIVEL DE LA MU_x001A_ECA Y DE LA MANO, INCLUYE NERVIO CUBITAL, MEDIANO Y RADIAL"
+    "name": "TRAUMATISMO DE NERVIOS A NIVEL DE LA MUÑECA Y DE LA MANO, INCLUYE NERVIO CUBITAL, MEDIANO Y RADIAL"
   },
   {
     "code": "S65",
-    "name": "TRAUMATISMO DE VASOS SANGUINEOS A NIVEL DE LA MU_x001A_ECA Y LA MANO"
+    "name": "TRAUMATISMO DE VASOS SANGUINEOS A NIVEL DE LA MUÑECA Y LA MANO"
   },
   {
     "code": "S66",
-    "name": "TRAUMATISMO DE TENDON Y MUSCULO A NIVEL DE LA MU_x001A_ECA Y DE LA MANO"
+    "name": "TRAUMATISMO DE TENDON Y MUSCULO A NIVEL DE LA MUÑECA Y DE LA MANO"
   },
   {
     "code": "S67",
-    "name": "TRAUMATISMO POR APLASTAMIENTO Y LA MU_x001A_ECA Y DE LA MANO"
+    "name": "TRAUMATISMO POR APLASTAMIENTO Y LA MUÑECA Y DE LA MANO"
   },
   {
     "code": "S68",
-    "name": "AMPUTACION TRAUMATICA DE LA MU_x001A_ECA Y DE LA MANO"
+    "name": "AMPUTACION TRAUMATICA DE LA MUÑECA Y DE LA MANO"
   },
   {
     "code": "S70",
@@ -6913,23 +6913,23 @@
   },
   {
     "code": "T15",
-    "name": "CUERPO EXTRA_x001A_O EN PARTE EXTERNA DEL OJO"
+    "name": "CUERPO EXTRAÑO EN PARTE EXTERNA DEL OJO"
   },
   {
     "code": "T16",
-    "name": "CUERPO EXTRA_x001A_O EN EL OIDO"
+    "name": "CUERPO EXTRAÑO EN EL OIDO"
   },
   {
     "code": "T17",
-    "name": "CUERPO EXTRA_x001A_O EN LAS VIAS RESPIRATORIAS"
+    "name": "CUERPO EXTRAÑO EN LAS VIAS RESPIRATORIAS"
   },
   {
     "code": "T18",
-    "name": "CUERPO EXTRA_x001A_O EN EL TUBO DIGESTIVO"
+    "name": "CUERPO EXTRAÑO EN EL TUBO DIGESTIVO"
   },
   {
     "code": "T19",
-    "name": "CUERPO EXTRA_x001A_O EN LAS VIAS GENITOURINARIAS"
+    "name": "CUERPO EXTRAÑO EN LAS VIAS GENITOURINARIAS"
   },
   {
     "code": "T20",
@@ -6945,7 +6945,7 @@
   },
   {
     "code": "T23",
-    "name": "QUEMADURA Y CORROSION DE LA MU_x001A_ECA Y DE LA MANO"
+    "name": "QUEMADURA Y CORROSION DE LA MUÑECA Y DE LA MANO"
   },
   {
     "code": "T24",
@@ -7009,7 +7009,7 @@
   },
   {
     "code": "T74",
-    "name": "SINDROMES DEL MALTRATO. INCLUYE: ADULTOS Y NI_x001A_OS"
+    "name": "SINDROMES DEL MALTRATO. INCLUYE: ADULTOS Y NIÑOS"
   },
   {
     "code": "T741",
@@ -7061,7 +7061,7 @@
   },
   {
     "code": "T867429",
-    "name": "Rechazo Transplante de H_x001A_gado"
+    "name": "Rechazo Transplante de HÑgado"
   },
   {
     "code": "T867449",
@@ -7109,7 +7109,7 @@
   },
   {
     "code": "V420",
-    "name": "TRASPLANTE DE RI_x001A_ON Y RECHAZO DE TRASPLANTE"
+    "name": "TRASPLANTE DE RIÑON Y RECHAZO DE TRASPLANTE"
   },
   {
     "code": "V428",
