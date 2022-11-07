@@ -64,11 +64,6 @@ class CreatePatients extends AbstractMigration
             'limit' => 120,
             'null' => false,
         ]);
-        $table->addColumn('seniority', 'integer', [
-            'default' => null,
-            'limit' => 4,
-            'null' => false,
-        ]);
         $table->addColumn('phone', 'string', [
             'default' => null,
             'limit' => 120,
