@@ -90,7 +90,7 @@
                 <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('company','Empresa')?></th>
-                <th><?= $this->Paginator->sort('created', 'fecha de solictud') ?></th>
+                <th><?= $this->Paginator->sort('created', 'fecha de Creación') ?></th>
                 <th><?= $this->Paginator->sort('mode','Tipo de Servicio')?></th>
                 <th><?= $this->Paginator->sort('area', 'Especialidad') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>

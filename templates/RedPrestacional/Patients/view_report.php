@@ -69,7 +69,7 @@
                 <tr>
                     <th><?= __('Tipo de Servicio')?></th>
                     <th><?= __('Especialidad')?></th>
-                    <th><?= __('Fecha de solicitud') ?></th>
+                    <th><?= __('Fecha de Creación') ?></th>
                     <th><?= __('Tipo de licencia') ?></th>
                 </tr>
                 </thead>

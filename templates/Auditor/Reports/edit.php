@@ -190,7 +190,7 @@
                                                                 <th><?= __('Patologia')?></th>
                                                                 <th><?= __('Dictamen')?></th>
                                                                 <th><?= __('Duración') ?></th>
-                                                                <th><?= __('Fecha de Solicitud') ?></th>
+                                                                <th><?= __('Fecha de Creacion') ?></th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -330,7 +330,7 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('startPathology', ['label' => 'Fecha de solicitud*',
+                        <?= $this->Form->control('startPathology', ['label' => 'Fecha de creacion*',
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
                     </div>
                 </div>
@@ -431,7 +431,7 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('startLicense', ['label' => 'Fecha de Solicitud (fecha)',
+                        <?= $this->Form->control('startLicense', ['label' => 'Fecha',
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date']); ?>
                     </div>
                 </div>
@@ -448,12 +448,12 @@
                             <label class="form-check-label" for="otherDiag">Otro Diagnóstico</label>
                         </div>
                 </div>
-                <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none;">
+                <!-- <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none;">
                     <div class="form-group">
-                        <?= $this->Form->control('pathology', ['label' => 'Diagnóstico',
-                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                        <?php //echo $this->Form->control('pathology', ['label' => 'Diagnóstico',
+                            //'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
