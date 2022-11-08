@@ -160,7 +160,7 @@
                             <th><?= __('Patologia')?></th>
                             <th><?= __('Dictamen')?></th>
                             <th><?= __('Duración') ?></th>
-                            <th><?= __('Fecha de Solicitud') ?></th>
+                            <th><?= __('Fecha de Creación') ?></th>
                         </tr>
                         </thead>
                         <tbody>
