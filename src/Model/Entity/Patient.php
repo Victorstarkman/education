@@ -48,7 +48,8 @@ class Patient extends Entity
         'phone' => true,
         'city_id' => true,
         'company_id' => true,
-        'companies.name'=>true
+        'companies.name'=>true,
+        'seniority'=>true 
     ];
 
 	public function getLocation() {

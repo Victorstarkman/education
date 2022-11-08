@@ -107,6 +107,7 @@
                 <th><?= $this->Paginator->sort('mode','Tipo de Servicio')?></th>
                 <th><?= $this->Paginator->sort('area', 'Especialidad') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
+                <th><?= $this->Paginator->sort('status', 'Dictamen') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
             </thead>
@@ -121,6 +122,7 @@
                     <td><?= !empty($report->mode->name)?h($report->mode->name):''?></td>
                     <td><?= $report->getSpeciality(); ?></td>
                     <td><?= $report->askedDays; ?></td>
+                    <td><?= $report->getNameStatus()?></td>
                     <td class="actions">
                         <?php if ($report->isWaitingResults() && $report->isOwner($this->Identity->get('id'))) :
                             echo $this->Html->link('Tomar', $redirectPrefix . '/licencias/diagnosticar/' . $report->id, ['fullBase' => true]);
