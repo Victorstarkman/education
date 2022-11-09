@@ -431,7 +431,7 @@
                 </div>
                 <div class="pt-0 col-lg-6 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('startLicense', ['label' => 'Fecha',
+                        <?= $this->Form->control('startLicense', ['label' => 'Fecha (desde)',
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date']); ?>
                     </div>
                 </div>
