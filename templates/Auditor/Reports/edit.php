@@ -448,12 +448,12 @@
                             <label class="form-check-label" for="otherDiag">Otro Diagnóstico</label>
                         </div>
                 </div>
-                <!-- <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none;">
+                <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none;">
                     <div class="form-group">
-                        <?php //echo $this->Form->control('pathology', ['label' => 'Diagnóstico',
-                            //'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                        <?=  $this->Form->control('pathology', ['label' => 'Diagnóstico',
+                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
-                </div> -->
+                </div> 
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
