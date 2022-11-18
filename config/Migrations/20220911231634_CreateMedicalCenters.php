@@ -23,7 +23,11 @@ class CreateMedicalCenters extends AbstractMigration
 			'limit' => 11,
 			'null' => false,
 		]);
-		$table->addColumn('name', 'string', [
+		$table->addColumn('zone', 'string', [
+			'default' => null,
+			'null' => false,
+		]);
+		$table->addColumn('district', 'string', [
 			'default' => null,
 			'null' => false,
 		]);

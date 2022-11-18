@@ -118,9 +118,9 @@ button.btn {
 }
 .custom-input-file input[type="file"]{
 	opacity: 0;
-	width: 600px;
+	width: 800px;
 	height: 32px;
-	display: inline-block;
+	 display: inline-block ;
 }
 
 @media (max-width: 1400px) { 

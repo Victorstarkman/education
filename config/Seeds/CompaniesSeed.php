@@ -23,7 +23,7 @@ class CompaniesSeed extends AbstractSeed
         $data = [
             [
                 'razon' => 'Razon 1',
-                'name' => 'Nombre de la empresa',
+                'name' => 'Ministerio de Educacion',
                 'cuit' => '2011111112',
                 'no_dienst' => 1,
                 'status' => 1,
@@ -31,16 +31,7 @@ class CompaniesSeed extends AbstractSeed
                 'modified' => date('Y-m-d H:i:s'),
                 'deleted' => null,
             ],
-            [
-                'razon' => 'Razon 2',
-                'name' => 'Nombre de la empresa 2',
-                'cuit' => '2011111112',
-                'no_dienst' => 1,
-                'status' => 1,
-                'created' => date('Y-m-d H:i:s'),
-                'modified' => date('Y-m-d H:i:s'),
-                'deleted' => null,
-            ],
+        
         ];
 
         $table = $this->table('companies');

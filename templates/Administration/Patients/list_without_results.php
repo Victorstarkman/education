@@ -16,7 +16,25 @@
             <div class="pl-0 col-6">
                 <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo Agente</a>
             </div>
-        </div>
+           
+        </div><!-- fin de row -->
+
+            <?= $this->Form->create(null,['type' => 'file','url' => [
+                                                                        'controller' => 'Patients',
+                                                                        'action' => 'excelphp'
+                                                                    ]]  )
+            ?>
+            <div class="col-6 custom-input-file ml-4 ">
+                <div class="form-group">
+                    <input type="file" class="form-control form-control-blue" name="import file">
+                </div>
+            </div>
+            <div class="col-6 ml-3  my-4">
+                <div class="mx-auto form-group ">
+                    <button type="submit" class="btn btn-outline-primary btn-block"><i class="mr-2 fas fa-save" aria-hidden="true"></i>Guardar excel</button>
+            </div>
+            </div>
+        <?= $this->Form->end()?>
         <p class="title-results">Auditorías</p>
 
         <?= $this->Flash->render() ?>

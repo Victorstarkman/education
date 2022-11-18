@@ -7,6 +7,7 @@ use App\Controller\AppController;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Routing\Router;
+use PhpOffice\PhpSpreadsheet\{Spreadsheet,IOFactory};
 
 /**
  * Patients Controller
@@ -676,4 +677,19 @@ class PatientsController extends AppController
 
         $this->set(compact('privateDoctor'));
     }
+
+    public function excelphp(){
+		if(isset( $_FILES['import_file']['name'])){
+			$filename=$_FILES['import_file']['name'];
+			$file_ext= pathinfo($filename,PATHINFO_EXTENSION);
+			$allowed_files= array('xls','csv','xlsx');
+			if(in_array($file_ext,$allowed_files)){
+				$inputFileNamePath = $_FILES['import_file']['tmp_name'];
+				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileNamePath);
+				$data= $spreadsheet->getActiveSheet()->toArray();
+                echo var_dump($data);
+                die();
+            }	
+		} 
+	}//fin de funcion*
 }
