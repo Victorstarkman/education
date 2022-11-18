@@ -687,9 +687,40 @@ class PatientsController extends AppController
 				$inputFileNamePath = $_FILES['import_file']['tmp_name'];
 				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileNamePath);
 				$data= $spreadsheet->getActiveSheet()->toArray();
-                echo var_dump($data);
-                die();
+              /*  debug(count($data));
+                exit();  */ 
+                for($i=1;$i<count($data);$i++){
+                    if(isset( $data[$i][2])){
+                        $medical_id=$data[$i][0];
+						$name=$data[$i][1];
+						$cuil= $data[$i][2];
+						$created_at=$data[$i][3];
+						$asked_days=$data[$i][5];
+						$status=$data[$i][6];
+                        $medical_center=$data[$i][7];
+						//query 
+						$t= time();
+						$created= date('Y-m-d H:m:s',$t);
+                        $created_at= join('-',array_reverse(explode('/',$created_at)));
+						$datapatient= array('medical_id'=>$medical_id,'name'=>$name,'cuil'=>$cuil,'created'=>$created);
+                        
+                        $datareport = array('askedDays'=>$asked_days,'created'=>$created_at,'status'=>$status,'	medicalCenter'=>$medical_center);
+                        
+                        $patientEntity = $this->Patients->newEmptyEntity();
+                        $patient=$this->Patients->patchEntity($patientEntity,$datapatient);
+                        //debug($patient);
+                        if ($this->Patients->save($patient)) {
+                            $this->Flash->success(__('El paciente se guardo.'));
+                        } else {
+                            $this->Flash->error(__('El paciente no se guardo.'));
+                        }
+                    }
+                }
+                
+                return $this->redirect(['action' => 'listWithoutResults']);
+                
+               
             }	
-		} 
+        }
 	}//fin de funcion*
 }

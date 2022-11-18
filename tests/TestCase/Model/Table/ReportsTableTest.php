@@ -27,6 +27,8 @@ class ReportsTableTest extends TestCase
         'app.Reports',
         'app.Patients',
         'app.Users',
+        'app.Modes',
+        'app.Privatedoctors',
         'app.Files',
     ];
 

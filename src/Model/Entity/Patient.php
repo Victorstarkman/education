@@ -10,17 +10,22 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property string $lastname
+ * @property string $medical_id
  * @property string $address
- * @property string $birthday
  * @property string|null $email
- * @property int $age
+ * @property string|null $offitial_email
  * @property string $document
  * @property string $job
+ * @property string $phone
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ * @property int|null $city_id
+ * @property int $seniority
  *
  * @property \App\Model\Entity\Report[] $reports
+ * @property \App\Model\Entity\Report[] $reports_without_check
+ * @property \App\Model\Entity\Company $company
+ * @property \App\Model\Entity\City $city
  */
 class Patient extends Entity
 {
@@ -35,24 +40,24 @@ class Patient extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'lastname' => true,
+        'medical_id' => true,
         'address' => true,
-        'birthday' => true,
         'email' => true,
-        'age' => true,
+        'offitial_email' => true,
         'document' => true,
         'job' => true,
+        'phone' => true,
         'created' => true,
         'modified' => true,
-        'reports' => true,
-        'phone' => true,
         'city_id' => true,
-        'company_id' => true,
-        'companies.name'=>true,
-        'seniority'=>true 
+        'seniority' => true,
+        'reports' => true,
+        'reports_without_check' => true,
+        'company' => true,
+        'city' => true,
+        'cuil' => true,
     ];
-
-	public function getLocation() {
+    public function getLocation() {
 		return $this->city->name . ', ' . $this->city->county->name . ', ' . $this->city->county->state->name ;
 	}
 }

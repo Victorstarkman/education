@@ -54,8 +54,8 @@ class UsersSeed extends AbstractSeed
             [
                 'name' => 'Usuario',
                 'lastname' => 'Administrat',
-                'email' => 'aloisejulian+red@gmail.com',
-                'password' => $hash->hash('red@123'),
+                'email' => 'aloisejulian+administrator@gmail.com',
+                'password' => $hash->hash('administrator@123'),
                 'group_id' => 3,
                 'created' => date('Y-m-d H:i:s'),
                 'modified' => date('Y-m-d H:i:s'),
@@ -92,8 +92,8 @@ class UsersSeed extends AbstractSeed
             [
                 'name' => 'Usuario',
                 'lastname' => 'Administrator',
-                'email' => 'victorstarkman+red@gmail.com',
-                'password' => $hash->hash('red@123'),
+                'email' => 'victorstarkman+administrator@gmail.com',
+                'password' => $hash->hash('administrator@123'),
                 'group_id' => 3,
                 'created' => date('Y-m-d H:i:s'),
                 'modified' => date('Y-m-d H:i:s'),

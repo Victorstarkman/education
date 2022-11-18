@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
@@ -12,7 +13,10 @@ use Cake\Validation\Validator;
  *
  * @property \App\Model\Table\PatientsTable&\Cake\ORM\Association\BelongsTo $Patients
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\ModesTable&\Cake\ORM\Association\BelongsTo $Modes
+ * @property \App\Model\Table\PrivatedoctorsTable&\Cake\ORM\Association\BelongsTo $Privatedoctors
  * @property \App\Model\Table\FilesTable&\Cake\ORM\Association\HasMany $Files
+ *
  * @method \App\Model\Entity\Report newEmptyEntity()
  * @method \App\Model\Entity\Report newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Report[] newEntities(array $data, array $options = [])
@@ -26,10 +30,12 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Report[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
  * @method \App\Model\Entity\Report[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \App\Model\Entity\Report[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class ReportsTable extends Table
 {
+
     public const LICENSES = [
         1 => [
             'name' => 'Titular',
@@ -64,13 +70,6 @@ class ReportsTable extends Table
             'name' => 'OTORGADA',
         ],
     ];
-
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
     public function initialize(array $config): void
     {
         parent::initialize($config);
@@ -89,36 +88,20 @@ class ReportsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('doctor', [
-            'className' => 'Users',
-            'foreignKey' => 'doctor_id',
+        $this->belongsTo('Modes', [
+            'foreignKey' => 'mode_id',
             'joinType' => 'INNER',
         ]);
         $this->belongsTo('Privatedoctors', [
             'foreignKey' => 'privatedoctor_id',
+            'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Modes', [
-            'className' => 'Modes',
-            'foreignKey' => 'mode_id',
+        $this->hasMany('Files', [
+            'foreignKey' => 'report_id',
         ]);
         $this->belongsTo('Cie10', [
             'className' => 'Cie10',
             'foreignKey' => 'cie10_id',
-        ]);
-        $this->belongsTo('Specialties', [
-            'className' => 'Specialties',
-            'foreignKey' => 'speciality_id',
-        ]);
-
-        $this->hasMany('Files', [
-            'foreignKey' => 'report_id',
-            'conditions' => ['Files.reportType' => 1],
-        ]);
-
-        $this->hasMany('FilesAuditor', [
-            'className' => 'Files',
-            'foreignKey' => 'report_id',
-            'conditions' => ['FilesAuditor.reportType' => 2],
         ]);
     }
 
@@ -130,6 +113,15 @@ class ReportsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
+        $validator
+            ->integer('patient_id')
+            ->requirePresence('patient_id', 'create')
+            ->notEmptyString('patient_id');
+
+        $validator
+            ->integer('medicalCenter')
+            ->requirePresence('medicalCenter', 'create')
+            ->notEmptyString('medicalCenter');
 
         $validator
             ->integer('doctor_id')
@@ -142,9 +134,19 @@ class ReportsTable extends Table
             ->notEmptyString('user_id');
 
         $validator
+            ->scalar('pathology')
+            ->maxLength('pathology', 255)
+            ->requirePresence('pathology', 'create')
+            ->notEmptyString('pathology');
+
+        $validator
             ->date('startPathology')
             ->requirePresence('startPathology', 'create')
             ->notEmptyDate('startPathology');
+
+        $validator
+            ->scalar('comments')
+            ->allowEmptyString('comments');
 
         $validator
             ->integer('type')
@@ -157,8 +159,66 @@ class ReportsTable extends Table
             ->notEmptyString('askedDays');
 
         $validator
+            ->integer('recommendedDays')
+            ->allowEmptyString('recommendedDays');
+
+        $validator
+            ->date('startLicense')
+            ->allowEmptyDate('startLicense');
+
+        $validator
+            ->scalar('relativeName')
+            ->maxLength('relativeName', 120)
+            ->allowEmptyString('relativeName');
+
+        $validator
+            ->scalar('observations')
+            ->allowEmptyString('observations');
+
+        $validator
             ->integer('status')
             ->notEmptyString('status');
+
+        $validator
+            ->integer('fraud')
+            ->notEmptyString('fraud');
+
+        $validator
+            ->integer('mode_id')
+            ->requirePresence('mode_id', 'create')
+            ->notEmptyString('mode_id');
+
+        $validator
+            ->scalar('relativeLastname')
+            ->maxLength('relativeLastname', 255)
+            ->requirePresence('relativeLastname', 'create')
+            ->notEmptyString('relativeLastname');
+
+        $validator
+            ->scalar('relativeRelationship')
+            ->maxLength('relativeRelationship', 255)
+            ->requirePresence('relativeRelationship', 'create')
+            ->notEmptyString('relativeRelationship');
+
+        $validator
+            ->integer('privatedoctor_id')
+            ->requirePresence('privatedoctor_id', 'create')
+            ->notEmptyString('privatedoctor_id');
+
+        $validator
+            ->integer('speciality_id')
+            ->requirePresence('speciality_id', 'create')
+            ->notEmptyString('speciality_id');
+
+        $validator
+            ->integer('cie10_id')
+            ->allowEmptyString('cie10_id');
+
+        $validator
+            ->scalar('risk_group')
+            ->maxLength('risk_group', 200)
+            ->requirePresence('risk_group', 'create')
+            ->notEmptyString('risk_group');
 
         return $validator;
     }
@@ -174,10 +234,11 @@ class ReportsTable extends Table
     {
         $rules->add($rules->existsIn('patient_id', 'Patients'), ['errorField' => 'patient_id']);
         $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
+        $rules->add($rules->existsIn('mode_id', 'Modes'), ['errorField' => 'mode_id']);
+        $rules->add($rules->existsIn('privatedoctor_id', 'Privatedoctors'), ['errorField' => 'privatedoctor_id']);
 
         return $rules;
     }
-
     public function getLicenses()
     {
         $licenseArray = [];

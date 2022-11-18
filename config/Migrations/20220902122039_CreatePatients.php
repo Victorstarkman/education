@@ -29,6 +29,11 @@ class CreatePatients extends AbstractMigration
             'limit' => 120,
             'null' => false,
         ]);
+        $table->addColumn('cuil', 'string', [
+            'default' => null,
+            'limit' => 120,
+            'null' => false,
+        ]);
         $table->addColumn('medical_id', 'string', [
             'default' => null,
             'limit' => 25,
