@@ -88,6 +88,11 @@ class ReportsTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
         ]);
+        $this->belongsTo('doctor', [
+            'className' => 'Users',
+            'foreignKey' => 'doctor_id',
+            'joinType' => 'INNER',
+        ]);
         $this->belongsTo('Modes', [
             'foreignKey' => 'mode_id',
             'joinType' => 'INNER',
@@ -102,6 +107,16 @@ class ReportsTable extends Table
         $this->belongsTo('Cie10', [
             'className' => 'Cie10',
             'foreignKey' => 'cie10_id',
+        ]);
+        $this->hasMany('Files', [
+            'foreignKey' => 'report_id',
+            'conditions' => ['Files.reportType' => 1],
+        ]);
+
+        $this->hasMany('FilesAuditor', [
+            'className' => 'Files',
+            'foreignKey' => 'report_id',
+            'conditions' => ['FilesAuditor.reportType' => 2],
         ]);
     }
 

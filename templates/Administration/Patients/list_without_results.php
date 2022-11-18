@@ -120,7 +120,6 @@
             <tr>
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
-                <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
                 <th><?= $this->Paginator->sort('area', 'Especialidad') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
@@ -134,7 +133,6 @@
                 <tr>
                     <td><?= $this->Number->format($report->id) ?></td>
                     <td><?= h($report->patient->name) ?></td>
-                    <td><?= h($report->patient->lastname) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
                     <td><?= $report->getSpeciality(); ?></td>
                     <td><?= $report->askedDays; ?></td>

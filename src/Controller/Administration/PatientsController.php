@@ -687,6 +687,7 @@ class PatientsController extends AppController
 				$inputFileNamePath = $_FILES['import_file']['tmp_name'];
 				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileNamePath);
 				$data= $spreadsheet->getActiveSheet()->toArray();
+                $patients=$this->fetchTable('Patients');
               /*  debug(count($data));
                 exit();  */ 
                 for($i=1;$i<count($data);$i++){
@@ -710,9 +711,9 @@ class PatientsController extends AppController
                         $patient=$this->Patients->patchEntity($patientEntity,$datapatient);
                         //debug($patient);
                         if ($this->Patients->save($patient)) {
-                            $this->Flash->success(__('El paciente se guardo.'));
+                            $this->Flash->success(__('El paciente se guardó.'));
                         } else {
-                            $this->Flash->error(__('El paciente no se guardo.'));
+                            $this->Flash->error(__('El paciente no se guardó.'));
                         }
                     }
                 }
