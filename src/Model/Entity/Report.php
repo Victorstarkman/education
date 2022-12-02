@@ -114,12 +114,7 @@ class Report extends Entity
 
     public function textForPDF()
     {
-        $value = 'X';
-        if (ReportsTable::LICENSES[$this->type]['extra']) {
-            $value =  $this->relativeName . ' ' . $this->relativeLastname . ' (' . $this->relativeRelationship . ')';
-        }
-
-        return $value;
+        return 'X';
     }
 
     public function getDoctorName()
