@@ -18,50 +18,50 @@ declare(strict_types=1);
     }
 
     .personThirdLine {
-        top:392px;
+        top:287px;
     }
     .personFourthLine {
-        top:430px;
+        top:368px;
     }
 
     .licenseType {
-        top: 542px;
+        top: 580px;
     }
 
     .licenseType .type-1 {
-        margin-left: 126px;
+        margin-left: 107px;
     }
     .licenseType .type-2 {
-        margin-left: 271px;
+        margin-left: 455px;
     }
     .licenseType .type-3 {
-        margin-left: 536px;
+        margin-left: 688px;
     }
 
     .resultsFirstLine {
-        top: 700px
+        top: 678px
     }
 
     .status-<?= \App\Model\Table\ReportsTable::NRLL; ?> {
-        margin-left: 153px;
+        margin-left: 145px;
     }
 
     .status-<?= \App\Model\Table\ReportsTable::DENIED; ?> {
-        margin-left: 419px;
+        margin-left: 416px;
     }
 
     .status-<?= \App\Model\Table\ReportsTable::GRANTED; ?> {
-        margin-left: 665px;
+        margin-left: 688px;
     }
 
     .resultsSecondLine {
-        top: 732px;
-        margin-left: 280px;
+        top: 720px;
+        margin-left: 200px;
         width: 450px;
     }
 
     .resultThirdLine {
-        top: 775px;
+        top: 755px;
     }
 
     .resultFourthLine {
@@ -86,37 +86,19 @@ declare(strict_types=1);
     <div style="width: 200px;margin-left: 200px;" class="personFirstLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->name . ' ' . $dataToShow->patient->lastname; ?></p>
     </div>
-    <div style="width: 169px;margin-left: 457px;" class="personFirstLine all">
+    <div style="width: 169px;margin-left: 80px;" class="personThirdLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->cuil;  ?></p>
     </div>
-    <div style="width: 80px;margin-left: 111px;" class="personSecondLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->created->format('d/m/Y'); ?></p>
-    </div>
-    <div style="width: 80px;margin-left: 241px;" class="personSecondLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->created->format('H:i'); ?></p>
-    </div>
-    <div style="width: 265px;margin-left: 471px;" class="personSecondLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->job;  ?></p>
-    </div>
-    <div style="width: 156px;margin-left: 134px;" class="personThirdLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->company->name;  ?></p>
-    </div>
-    <div style="width: 150px;margin-left: 320px;" class="personThirdLine all">
+    <div style="width: 150px;margin-left: 375px;" class="personThirdLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->phone;  ?></p>
     </div>
-    <div style="width: 236px;margin-left: 515px;" class="personThirdLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->email;  ?></p>
-    </div>
-    <div style="width: 266px;margin-left: 138px;" class="personFourthLine all">
+    <div style="width: 266px;margin-left: 160px;" class="personFourthLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->address;  ?></p>
     </div>
     <!-- END PERSON -->
     <!-- LICENSE TYPE -->
     <div style="width: 256px;" class="licenseType all">
         <p style="word-break: break-word;" class="type-<?= $dataToShow->type; ?>"><?= $dataToShow->textForPDF(); ?></p>
-    </div>
-    <div style="width: 193px;top:590px;margin-left:551px;" class=" all">
-        <p style="word-break: break-word;"><?= $dataToShow->askedDays; ?></p>
     </div>
     <!-- END LICENSE TYPE -->
     <!-- RESULT -->
@@ -126,18 +108,18 @@ declare(strict_types=1);
     <div class="resultsSecondLine all">
         <p style="word-break: break-word;"><?= $dataToShow->getPathologyCode(); ?></p>
     </div>
-    <div class="resultThirdLine all" style="width: 262px; margin-left: 274px;">
+    <div class="resultThirdLine all" style="width: 262px; margin-left: 180px;">
         <p style="word-break: break-word;"><?= $dataToShow->recommendedDays; ?></p>
     </div>
     <div class="resultThirdLine all">
         <p style="word-break: break-word;">
             <?php
             if (is_null($dataToShow->startLicense)) : ?>
-                <span style="margin-left: 660px;">-</span>
-                <span style="margin-left: 15px;">-</span>
-                <span style="margin-left: 12px;">-</span>
+                <span style="margin-left:440px;">-</span>
+                <span style="margin-left: 28px;">-</span>
+                <span style="margin-left: 20px;">-</span>
             <?php else : ?>
-            <span style="margin-left: 650px;"><?= $dataToShow->startLicense->day;?></span>
+            <span style="margin-left: 440px;"><?= $dataToShow->startLicense->day;?></span>
             <span style="margin-left: 15px;"><?= $dataToShow->startLicense->month;?></span>
             <span style="margin-left: 12px;"><?= $dataToShow->startLicense->year;?></span>
             <?php endif; ?>
