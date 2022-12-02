@@ -20,9 +20,10 @@ class MedicalCentersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2022-09-11 23:22:24',
-                'modified' => '2022-09-11 23:22:24',
+                'zone' => 'Lorem ipsum dolor sit amet',
+                'district' => 'Lorem ipsum dolor sit amet',
+                'created' => '2022-11-18 15:56:58',
+                'modified' => '2022-11-18 15:56:58',
             ],
         ];
         parent::init();

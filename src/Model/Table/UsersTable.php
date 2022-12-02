@@ -46,9 +46,9 @@ class UsersTable extends Table
             'extraFields' => false,
         ],
         3 => [
-            'name' => 'Red Prestacional',
-            'redirect' => '/red-prestacional/',
-            'prefix' => 'RedPrestacional',
+            'name' => 'Administration',
+            'redirect' => '/administration/',
+            'prefix' => 'Administration',
             'login_access' => true,
             'api_access' => false,
             'extraFields' => false,

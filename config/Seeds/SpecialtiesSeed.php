@@ -20,7 +20,7 @@ class SpecialtiesSeed extends AbstractSeed
      */
     public function run()
     {
-        $specialtiesString = 'Cardiología,Cirugía,Clinica Médica,Dermatología,Endocrinología,Gastroenterología,Ginecología y Obstetricia,Hematología,Infectología,Medicina Laboral,Medicina Legal,Nefrología,Neumonología,Neurología,Oftalmología,Oncología,Psiquiatría,Reumatología,Urología';
+        $specialtiesString = 'Cardiología,Cirugía,Clinica Médica,Dermatología,Endocrinología,Gastroenterología,Ginecología y Obstetricia,Hematología,Infectología,Medicina Laboral,Medicina Legal,Nefrología,Neumonología,Neurología,Oftalmología,Oncología,Psiquiatría,Reumatología,Urología,Ortopedia,Traumatologia';
         $specialtiesArray = explode(',', $specialtiesString);
         $dataSpeciality = [];
         foreach ($specialtiesArray as $specialty) {

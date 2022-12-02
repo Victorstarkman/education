@@ -358,7 +358,7 @@ class ReportsController extends AppController
 
             $this->loadComponent('Htmltopdf');
             $report = $this->Reports->get($id, [
-                'contain' => ['doctor', 'Patients' => ['Companies', 'Cities']],
+                'contain' => ['doctor', 'Patients' => ['Companies']],
             ]);
             if (!in_array($report->status, $this->Reports->getActiveStatuses())) {
                 $this->Htmltopdf->createReport($report);

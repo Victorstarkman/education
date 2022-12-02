@@ -6,7 +6,7 @@
 ?>
 <div class="mx-auto mt-5 col-12">
     <div class="col-12 title-section">
-        <h4>Editar Agente</h4>
+        <h4>Nuevo Agente</h4>
     </div>
     <div class="results">
         <div class="container mx-auto row">
@@ -28,32 +28,26 @@
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('lastname', ['label' => 'Apellido *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        <?= $this->Form->control('cuil', ['label' => 'CUIL *',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true ]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('document', ['label' => 'DNI *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        <?= $this->Form->control('document', ['label' => 'DNI  ',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('email', ['label' => 'Email *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                        <?= $this->Form->control('email', ['label' => 'Email  ',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('birthday', ['label' => 'Fecha de nacimiento *',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date']); ?>
-                    </div>
-                </div>
-                <div class="pt-0 col-lg-4 col-sm-12">
-                    <div class="form-group">
-                        <?= $this->Form->control('age', ['label' => 'Edad',
-                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                        <?= $this->Form->control('official_email', ['label' => 'Email Oficial ',
+                            'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
@@ -68,17 +62,10 @@
                             'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
-	            <?= $this->element('partForm/addCity', ['city' => $patient->city_id]); ?>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
                         <?= $this->Form->control('job', ['label' => 'Puesto de trabajo',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
-                    </div>
-                </div>
-                <div class="pt-0 col-lg-4 col-sm-12">
-                    <div class="form-group">
-                        <?= $this->Form->control('seniority', ['label' => 'Antiguedad (años)',
-                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
                 <div class="mx-auto form-group row col-lg-12 col-md-12">

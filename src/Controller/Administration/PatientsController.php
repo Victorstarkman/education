@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller\RedPrestacional;
+namespace App\Controller\Administration;
 
 use App\Controller\AppController;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Routing\Router;
+use PhpOffice\PhpSpreadsheet\{Spreadsheet,IOFactory};
 
 /**
  * Patients Controller
@@ -211,9 +212,9 @@ class PatientsController extends AppController
     {
         $patient = $this->Patients->get($id, [
             'contain' => [
-                'Reports' => ['doctor', 'Files', 'FilesAuditor', 'Modes', 'Privatedoctors'],
-                'Companies',
-                'Cities' => ['Counties' => 'States']],
+                'Reports' => ['doctor', 'Files', 'FilesAuditor', 'Modes'],
+                'Companies'
+            ],
         ]);
 
         $this->set(compact('patient'));
@@ -335,7 +336,7 @@ class PatientsController extends AppController
 
                     if (empty($patientEntity)) {
                         $patientEntity = $this->Patients->newEmptyEntity([]);
-                    } elseif ($postData['type'] == 'new') {
+                    } elseif (isset($postData['type']) && $postData['type'] == 'new') {
                         throw new \Exception('Ya existe una persona con ese DNI o Email.');
                     }
 
@@ -502,7 +503,7 @@ class PatientsController extends AppController
 
             $this->loadComponent('Htmltopdf');
             $report = $this->Patients->Reports->get($id, [
-                'contain' => ['doctor', 'Patients' => ['Companies', 'Cities']],
+                'contain' => ['doctor', 'Patients' => ['Companies']],
             ]);
             if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
                 $this->Htmltopdf->createReport($report);
@@ -527,7 +528,7 @@ class PatientsController extends AppController
                 'contain' => [
                     'Files',
                     'FilesAuditor',
-                    'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']],
+                    'Patients' => ['Companies'],
                     'Modes',
                     'Privatedoctors',
                 ],
@@ -558,12 +559,8 @@ class PatientsController extends AppController
                 'contain' => [
                     'Privatedoctors',
                     'Specialties',
-                    'Patients' => [
-                        'Companies',
-                        'Cities' => [
-                            'Counties' => 'States',
-                        ],
-                    ]],
+                    'Patients'
+                ],
             ]);
             if (empty($report)) {
                 throw new RecordNotFoundException('No se encontro el ID.');
@@ -676,4 +673,51 @@ class PatientsController extends AppController
 
         $this->set(compact('privateDoctor'));
     }
+
+    public function excelphp(){
+		if(isset( $_FILES['import_file']['name'])){
+			$filename=$_FILES['import_file']['name'];
+			$file_ext= pathinfo($filename,PATHINFO_EXTENSION);
+			$allowed_files= array('xls','csv','xlsx');
+			if(in_array($file_ext,$allowed_files)){
+				$inputFileNamePath = $_FILES['import_file']['tmp_name'];
+				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileNamePath);
+				$data= $spreadsheet->getActiveSheet()->toArray();
+                $patients=$this->fetchTable('Patients');
+              /*  debug(count($data));
+                exit();  */
+                for($i=1;$i<count($data);$i++){
+                    if(isset( $data[$i][2])){
+                        $medical_id=$data[$i][0];
+						$name=$data[$i][1];
+						$cuil= $data[$i][2];
+						$created_at=$data[$i][3];
+						$asked_days=$data[$i][5];
+						$status=$data[$i][6];
+                        $medical_center=$data[$i][7];
+						//query
+						$t= time();
+						$created= date('Y-m-d H:m:s',$t);
+                        $created_at= join('-',array_reverse(explode('/',$created_at)));
+						$datapatient= array('medical_id'=>$medical_id,'name'=>$name,'cuil'=>$cuil,'created'=>$created);
+
+                        $datareport = array('askedDays'=>$asked_days,'created'=>$created_at,'status'=>$status,'	medicalCenter'=>$medical_center);
+
+                        $patientEntity = $this->Patients->newEmptyEntity();
+                        $patient=$this->Patients->patchEntity($patientEntity,$datapatient);
+                        //debug($patient);
+                        if ($this->Patients->save($patient)) {
+                            $this->Flash->success(__('El paciente se guardó.'));
+                        } else {
+                            $this->Flash->error(__('El paciente no se guardó.'));
+                        }
+                    }
+                }
+
+                return $this->redirect(['action' => 'listWithoutResults']);
+
+
+            }
+        }
+	}//fin de funcion*
 }

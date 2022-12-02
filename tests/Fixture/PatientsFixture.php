@@ -21,16 +21,17 @@ class PatientsFixture extends TestFixture
             [
                 'id' => 1,
                 'name' => 'Lorem ipsum dolor sit amet',
-                'lastname' => 'Lorem ipsum dolor sit amet',
+                'medical_id' => 'Lorem ipsum dolor sit a',
                 'address' => 'Lorem ipsum dolor sit a',
-                'birthday' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
-                'age' => 1,
+                'offitial_email' => 'Lorem ipsum dolor sit amet',
                 'document' => 'Lorem ipsum dolor sit amet',
                 'job' => 'Lorem ipsum dolor sit amet',
-                'created' => '2022-09-12 00:48:15',
-                'modified' => '2022-09-12 00:48:15',
-                'status' => 1,
+                'phone' => 'Lorem ipsum dolor sit amet',
+                'created' => '2022-11-18 16:07:13',
+                'modified' => '2022-11-18 16:07:13',
+                'city_id' => 1,
+                'seniority' => 1,
             ],
         ];
         parent::init();

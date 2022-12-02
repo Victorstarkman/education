@@ -9,7 +9,6 @@ use App\Model\Table\ReportsTable;
 use App\Model\Table\SpecialtiesTable;
 use App\Model\Table\UsersTable;
 use Cake\ORM\Entity;
-
 /**
  * Report Entity
  *
@@ -20,18 +19,29 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property string $pathology
  * @property \Cake\I18n\FrozenDate $startPathology
- * @property string $comments
+ * @property string|null $comments
  * @property int $type
  * @property int $askedDays
- * @property int $recommendedDays
- * @property \Cake\I18n\FrozenDate $startLicense
- * @property string $cie10
+ * @property int|null $recommendedDays
+ * @property \Cake\I18n\FrozenDate|null $startLicense
+ * @property string|null $relativeName
+ * @property string|null $observations
  * @property int $status
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
+ * @property int $fraud
+ * @property int $mode_id
+ * @property string $relativeLastname
+ * @property string $relativeRelationship
+ * @property int $privatedoctor_id
+ * @property int $speciality_id
+ * @property int|null $cie10_id
+ * @property string $risk_group
  *
  * @property \App\Model\Entity\Patient $patient
  * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Mode $mode
+ * @property \App\Model\Entity\Privatedoctor $privatedoctor
  * @property \App\Model\Entity\File[] $files
  */
 class Report extends Entity
@@ -53,28 +63,29 @@ class Report extends Entity
         'pathology' => true,
         'startPathology' => true,
         'comments' => true,
-        'observations' => true,
         'type' => true,
         'askedDays' => true,
         'recommendedDays' => true,
         'startLicense' => true,
+        'relativeName' => true,
+        'observations' => true,
         'status' => true,
         'created' => true,
         'modified' => true,
-        'patient' => true,
-        'user' => true,
-        'relativeName' => true,
+        'fraud' => true,
+        'mode_id' => true,
         'relativeLastname' => true,
         'relativeRelationship' => true,
         'privatedoctor_id' => true,
         'speciality_id' => true,
         'cie10_id' => true,
-        'fraud' => true,
-        'mode_id' => true,
+        'risk_group' => true,
+        'patient' => true,
+        'user' => true,
+        'mode' => true,
+        'privatedoctor' => true,
         'files' => true,
-        'Modes' => true,
     ];
-
     public function getNameStatus()
     {
         $status = ReportsTable::STATUSES[$this->status]['name'];

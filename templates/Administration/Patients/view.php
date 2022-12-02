@@ -29,20 +29,19 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Fecha de nacimiento')?></th>
-                    <th><?= __('Edad') ?></th>
+                    <th><?= __('Email oficial')?></th>
+                    <th><?= __('cuil') ?></th>
                     <th><?= __('Domicilio') ?></th>
-                    <th><?= __('Localidad') ?></th>
+                    <th><?= __('Telefono') ?></th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-	                <?php $time = \Cake\I18n\FrozenTime::parse($patient->birthday);  ?>
-                    <td><?= $time->i18nFormat('dd/MM/yyyy');?></td>
-                    <td><?= h($patient->age) ?></td>
+	                <?php $time = \Cake\I18n\FrozenTime::parse($patient->oficial_email);  ?>
+                    <td><?= h($patient->cuil) ?></td>
                     <td><?= h($patient->address) ?></td>
-                    <td><?= $patient->getLocation() ?></td>
+                    <td><?= h($patient->phone) ?></td>
 
                 </tr>
                 </tbody>
@@ -50,18 +49,12 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
-                    <th><?= __('Antiguedad (años)') ?></th>
-                    <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($patient->phone) ?></td>
-                    <td><?= h($patient->job) ?></td>
-                    <td><?= h($patient->seniority) ?></td>
-                    <td><?= h($patient->company->name) ?></td>
                 </tr>
                 </tbody>
             </table>

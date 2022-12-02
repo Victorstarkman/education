@@ -38,7 +38,7 @@ return static function (RouteBuilder $routes) {
         $route->fallbacks();
     });
 
-    $routes->prefix('redPrestacional', function (RouteBuilder $route) {
+    $routes->prefix('administration', function (RouteBuilder $route) {
         $route->connect('/manual/*', ['controller' => 'Pages', 'action' => 'manual', 'prefix' => null]);
         $route->connect('/', ['controller' => 'Patients', 'action' => 'listWithResults']);
         $route->connect('/listado', ['controller' => 'Patients', 'action' => 'index']);

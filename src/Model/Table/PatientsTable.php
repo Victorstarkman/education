@@ -3,13 +3,19 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\Datasource\EntityInterface;
+use Cake\Event\EventInterface;
+use Cake\ORM\Query;
+use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
  * Patients Model
  *
+ * @property \App\Model\Table\CitiesTable&\Cake\ORM\Association\BelongsTo $Cities
  * @property \App\Model\Table\ReportsTable&\Cake\ORM\Association\HasMany $Reports
+ *
  * @method \App\Model\Entity\Patient newEmptyEntity()
  * @method \App\Model\Entity\Patient newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Patient[] newEntities(array $data, array $options = [])
@@ -23,6 +29,7 @@ use Cake\Validation\Validator;
  * @method \App\Model\Entity\Patient[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
  * @method \App\Model\Entity\Patient[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
  * @method \App\Model\Entity\Patient[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
+ *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class PatientsTable extends Table
@@ -63,6 +70,10 @@ class PatientsTable extends Table
         ]);
     }
 
+	public function beforeSave(EventInterface $event, EntityInterface $entity, \ArrayObject $options) {
+		$entity->company_id = 1;
+	}
+
     /**
      * Default validation rules.
      *
@@ -77,11 +88,6 @@ class PatientsTable extends Table
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
-        $validator
-            ->scalar('lastname')
-            ->maxLength('lastname', 120)
-            ->requirePresence('lastname', 'create')
-            ->notEmptyString('lastname');
 
         $validator
             ->scalar('address')
@@ -90,19 +96,13 @@ class PatientsTable extends Table
             ->notEmptyString('address');
 
         $validator
-            ->scalar('birthday')
-            ->maxLength('birthday', 120)
-            ->requirePresence('birthday', 'create')
-            ->notEmptyString('birthday');
-
-        $validator
             ->email('email')
             ->allowEmptyString('email');
 
         $validator
-            ->integer('age')
-            ->requirePresence('age', 'create')
-            ->notEmptyString('age');
+            ->scalar('official_email')
+            ->maxLength('official_email', 180)
+            ->allowEmptyString('official_email');
 
         $validator
             ->scalar('document')
@@ -116,6 +116,30 @@ class PatientsTable extends Table
             ->requirePresence('job', 'create')
             ->notEmptyString('job');
 
+        $validator
+            ->scalar('phone')
+            ->maxLength('phone', 120)
+            ->requirePresence('phone', 'create')
+            ->notEmptyString('phone');
+
+        $validator
+            ->integer('city_id')
+            ->allowEmptyString('city_id');
+
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->existsIn('city_id', 'Cities'), ['errorField' => 'city_id']);
+
+        return $rules;
     }
 }

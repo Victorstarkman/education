@@ -10,7 +10,7 @@ declare(strict_types=1);
     }
 
     .personFirstLine {
-        top: 315px;
+        top: 210px;
     }
 
     .personSecondLine {
@@ -81,16 +81,13 @@ declare(strict_types=1);
 <head><title>Export</title></head>
 <body>
 <div>
-    <img src="<?= WWW_ROOT;?>img/dienst-form.jpg" style="max-width: 792px"/>
+    <img src="<?= WWW_ROOT;?>img/formulario_ambulatorio.jpg" style="max-width: 792px"/>
     <!-- PERSON -->
     <div style="width: 200px;margin-left: 200px;" class="personFirstLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->name . ' ' . $dataToShow->patient->lastname; ?></p>
     </div>
     <div style="width: 169px;margin-left: 457px;" class="personFirstLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->document;  ?></p>
-    </div>
-    <div style="width: 40px;margin-left: 694px;" class="personFirstLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->age;  ?></p>
+        <p style="word-break: break-word;"><?= $dataToShow->patient->cuil;  ?></p>
     </div>
     <div style="width: 80px;margin-left: 111px;" class="personSecondLine all">
         <p style="word-break: break-word;"><?= $dataToShow->created->format('d/m/Y'); ?></p>
@@ -112,9 +109,6 @@ declare(strict_types=1);
     </div>
     <div style="width: 266px;margin-left: 138px;" class="personFourthLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->address;  ?></p>
-    </div>
-    <div style="width: 256px;margin-left: 481px;" class="personFourthLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->city->name;  ?></p>
     </div>
     <!-- END PERSON -->
     <!-- LICENSE TYPE -->
@@ -154,25 +148,6 @@ declare(strict_types=1);
     </div>
     <!-- END RESULT -->
     <!-- SIGNATURE -->
-    <div class="signature all">
-        <?php if (!is_null($dataToShow->doctor->signature)) : ?>
-        <img src="<?= $dataToShow->doctor->signature; ?>" style="position: absolute;top: 80px;left: 230px;">
-        <?php endif; ?>
-        <div style="position: absolute;top: 100px; margin: 0;left: 350px;font-size: 11px;text-align: center;">
-            <p style="margin: 0;"><?= strtoupper($dataToShow->doctor->name . ' ' . $dataToShow->doctor->lastname);?> </p>
-            <p style="margin: 0;">MÉDICO</p>
-            <p style="margin: 0;">
-                <?php if (!is_null($dataToShow->doctor->license)) : ?>
-                M.P: <?= $dataToShow->doctor->license; ?>
-                <?php endif; ?>
-                <?php if (!is_null($dataToShow->doctor->license) && !is_null($dataToShow->doctor->licenseNational)) : ?>
-                -
-                <?php endif; ?>
-                <?php if (!is_null($dataToShow->doctor->licenseNational)) : ?>
-                M.N. <?= $dataToShow->doctor->licenseNational; ?></p>
-                <?php endif; ?>
-        </div>
-    </div>
     <!-- END SIGNATURE -->
 </div>
 </body>

@@ -29,31 +29,34 @@ class CreatePatients extends AbstractMigration
             'limit' => 120,
             'null' => false,
         ]);
-        $table->addColumn('lastname', 'string', [
+        $table->addColumn('cuil', 'string', [
             'default' => null,
             'limit' => 120,
             'null' => false,
         ]);
+        $table->addColumn('medical_id', 'string', [
+            'default' => null,
+            'limit' => 25,
+            'null' => true,
+        ]);
+
         $table->addColumn('address', 'string', [
             'default' => null,
             'limit' => 25,
             'null' => false,
         ]);
-        $table->addColumn('birthday', 'string', [
-            'default' => null,
-            'limit' => 120,
-            'null' => false,
-        ]);
+
         $table->addColumn('email', 'string', [
             'default' => null,
             'limit' => 180,
             'null' => true,
         ]);
-        $table->addColumn('age', 'integer', [
+        $table->addColumn('official_email', 'string', [
             'default' => null,
-            'limit' => 4,
-            'null' => false,
+            'limit' => 180,
+            'null' => true,
         ]);
+
         $table->addColumn('document', 'string', [
             'default' => null,
             'limit' => 255,
@@ -70,11 +73,6 @@ class CreatePatients extends AbstractMigration
             'null' => false,
         ]);
 
-        $table->addColumn('company_id', 'integer', [
-            'default' => null,
-            'limit' => 4,
-            'null' => false,
-        ]);
         $table->addColumn('created', 'datetime', [
             'default' => null,
             'null' => false,

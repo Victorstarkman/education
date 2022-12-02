@@ -3,23 +3,22 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class AddSenorityToPatients extends AbstractMigration
+class AddcompanyIdToPatients extends AbstractMigration
 {
     /**
      * Change Method.
      *
      * More information on this method is available here:
      * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
-     *
      * @return void
      */
     public function change()
     {
         $table = $this->table('patients');
-        $table->addColumn('seniority', 'integer', [
+        $table->addColumn('company_id', 'integer', [
             'default' => null,
-            'limit' => 4,
-            'null' => true,
+            'limit' => 3,
+            'null' => false,
         ]);
         $table->update();
     }

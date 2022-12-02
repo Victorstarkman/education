@@ -3,23 +3,22 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class AddSenorityToPatients extends AbstractMigration
+class AddRiskGroupToReports extends AbstractMigration
 {
     /**
      * Change Method.
      *
      * More information on this method is available here:
      * https://book.cakephp.org/phinx/0/en/migrations.html#the-change-method
-     *
      * @return void
      */
     public function change()
     {
-        $table = $this->table('patients');
-        $table->addColumn('seniority', 'integer', [
+        $table = $this->table('reports');
+        $table->addColumn('risk_group', 'string', [
             'default' => null,
-            'limit' => 4,
-            'null' => true,
+            'limit' => 200,
+            'null' => false,
         ]);
         $table->update();
     }

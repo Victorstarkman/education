@@ -9,7 +9,8 @@ use Cake\ORM\Entity;
  * MedicalCenter Entity
  *
  * @property int $id
- * @property string $name
+ * @property string $zone
+ * @property string $district
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  */
@@ -25,7 +26,8 @@ class MedicalCenter extends Entity
      * @var array<string, bool>
      */
     protected $_accessible = [
-        'name' => true,
+        'zone' => true,
+        'district' => true,
         'created' => true,
         'modified' => true,
     ];

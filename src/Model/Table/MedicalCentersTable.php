@@ -40,7 +40,7 @@ class MedicalCentersTable extends Table
         parent::initialize($config);
 
         $this->setTable('medical_centers');
-        $this->setDisplayField('name');
+        $this->setDisplayField('district');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
@@ -55,10 +55,16 @@ class MedicalCentersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('name')
-            ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->scalar('zone')
+            ->maxLength('zone', 255)
+            ->requirePresence('zone', 'create')
+            ->notEmptyString('zone');
+
+        $validator
+            ->scalar('district')
+            ->maxLength('district', 255)
+            ->requirePresence('district', 'create')
+            ->notEmptyString('district');
 
         return $validator;
     }

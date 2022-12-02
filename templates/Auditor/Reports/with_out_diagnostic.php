@@ -87,7 +87,6 @@
             <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
-                <th><?= $this->Paginator->sort('lastname', 'Apellido') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('company','Empresa')?></th>
                 <th><?= $this->Paginator->sort('created', 'fecha de Creación') ?></th>
@@ -101,7 +100,6 @@
             <?php foreach ($reports as $report) : ?>
                 <tr>
                     <td><?= $this->Number->format($report->id) ?></td>
-                    <td><?= h($report->patient->lastname) ?></td>
                     <td><?= h($report->patient->name) ?></td>
                     <td><?= h($report->patient->company->name)?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
