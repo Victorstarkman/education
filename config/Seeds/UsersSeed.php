@@ -75,7 +75,7 @@ class UsersSeed extends AbstractSeed
             ],
             [
                 'name' => 'Usuario',
-                'lastname' => 'Auditor',
+                'lastname' => 'Auditor 2',
                 'email' => 'victorstarkman+auditor@gmail.com',
                 'password' => $hash->hash('auditor@123'),
                 'group_id' => 2,

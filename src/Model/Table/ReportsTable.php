@@ -97,10 +97,9 @@ class ReportsTable extends Table
             'foreignKey' => 'mode_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Privatedoctors', [
-            'foreignKey' => 'privatedoctor_id',
-            'joinType' => 'INNER',
-        ]);
+	    $this->belongsTo('Privatedoctors', [
+		    'foreignKey' => 'privatedoctor_id',
+	    ]);
         $this->hasMany('Files', [
             'foreignKey' => 'report_id',
         ]);
@@ -118,6 +117,11 @@ class ReportsTable extends Table
             'foreignKey' => 'report_id',
             'conditions' => ['FilesAuditor.reportType' => 2],
         ]);
+
+	    $this->belongsTo('Specialties', [
+		    'className' => 'Specialties',
+		    'foreignKey' => 'speciality_id',
+	    ]);
     }
 
     /**
@@ -128,15 +132,6 @@ class ReportsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->integer('patient_id')
-            ->requirePresence('patient_id', 'create')
-            ->notEmptyString('patient_id');
-
-        $validator
-            ->integer('medicalCenter')
-            ->requirePresence('medicalCenter', 'create')
-            ->notEmptyString('medicalCenter');
 
         $validator
             ->integer('doctor_id')
@@ -147,12 +142,6 @@ class ReportsTable extends Table
             ->integer('user_id')
             ->requirePresence('user_id', 'create')
             ->notEmptyString('user_id');
-
-        $validator
-            ->scalar('pathology')
-            ->maxLength('pathology', 255)
-            ->requirePresence('pathology', 'create')
-            ->notEmptyString('pathology');
 
         $validator
             ->date('startPathology')
@@ -204,23 +193,6 @@ class ReportsTable extends Table
             ->notEmptyString('mode_id');
 
         $validator
-            ->scalar('relativeLastname')
-            ->maxLength('relativeLastname', 255)
-            ->requirePresence('relativeLastname', 'create')
-            ->notEmptyString('relativeLastname');
-
-        $validator
-            ->scalar('relativeRelationship')
-            ->maxLength('relativeRelationship', 255)
-            ->requirePresence('relativeRelationship', 'create')
-            ->notEmptyString('relativeRelationship');
-
-        $validator
-            ->integer('privatedoctor_id')
-            ->requirePresence('privatedoctor_id', 'create')
-            ->notEmptyString('privatedoctor_id');
-
-        $validator
             ->integer('speciality_id')
             ->requirePresence('speciality_id', 'create')
             ->notEmptyString('speciality_id');
@@ -229,11 +201,6 @@ class ReportsTable extends Table
             ->integer('cie10_id')
             ->allowEmptyString('cie10_id');
 
-        $validator
-            ->scalar('risk_group')
-            ->maxLength('risk_group', 200)
-            ->requirePresence('risk_group', 'create')
-            ->notEmptyString('risk_group');
 
         return $validator;
     }
@@ -250,7 +217,6 @@ class ReportsTable extends Table
         $rules->add($rules->existsIn('patient_id', 'Patients'), ['errorField' => 'patient_id']);
         $rules->add($rules->existsIn('user_id', 'Users'), ['errorField' => 'user_id']);
         $rules->add($rules->existsIn('mode_id', 'Modes'), ['errorField' => 'mode_id']);
-        $rules->add($rules->existsIn('privatedoctor_id', 'Privatedoctors'), ['errorField' => 'privatedoctor_id']);
 
         return $rules;
     }

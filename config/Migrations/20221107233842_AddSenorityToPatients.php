@@ -19,7 +19,7 @@ class AddSenorityToPatients extends AbstractMigration
         $table->addColumn('seniority', 'integer', [
             'default' => null,
             'limit' => 4,
-            'null' => false,
+            'null' => true,
         ]);
         $table->update();
     }

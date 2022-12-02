@@ -37,26 +37,26 @@ class CreatePatients extends AbstractMigration
         $table->addColumn('medical_id', 'string', [
             'default' => null,
             'limit' => 25,
-            'null' => false,
+            'null' => true,
         ]);
-       
+
         $table->addColumn('address', 'string', [
             'default' => null,
             'limit' => 25,
             'null' => false,
         ]);
-       
+
         $table->addColumn('email', 'string', [
             'default' => null,
             'limit' => 180,
             'null' => true,
         ]);
-        $table->addColumn('offitial_email', 'string', [
+        $table->addColumn('official_email', 'string', [
             'default' => null,
             'limit' => 180,
             'null' => true,
         ]);
-       
+
         $table->addColumn('document', 'string', [
             'default' => null,
             'limit' => 255,

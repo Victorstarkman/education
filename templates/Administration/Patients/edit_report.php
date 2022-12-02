@@ -29,38 +29,16 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Fecha de nacimiento')?></th>
-                    <th><?= __('Edad') ?></th>
                     <th><?= __('Domicilio') ?></th>
-                    <th><?= __('Localidad') ?></th>
-
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <?php $time = \Cake\I18n\FrozenTime::parse($report->patient->birthday);  ?>
-                    <td><?= $time->i18nFormat('dd/MM/yyyy');?></td>
-                    <td><?= h($report->patient->age) ?></td>
-                    <td><?= h($report->patient->address) ?></td>
-                    <td><?= $report->patient->getLocation() ?></td>
-                </tr>
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
                     <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
-                    <th><?= __('Antiguedad (años)') ?></th>
-                    <th><?= __('Empresa') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
+                    <td><?= h($report->patient->address) ?></td>
                     <td><?= h($report->patient->phone) ?></td>
                     <td><?= h($report->patient->job) ?></td>
-                    <td><?= h($report->patient->seniority) ?></td>
-                    <td><?= h($report->patient->company->name) ?></td>
                 </tr>
                 </tbody>
             </table>

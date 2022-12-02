@@ -43,7 +43,7 @@ class Patient extends Entity
         'medical_id' => true,
         'address' => true,
         'email' => true,
-        'offitial_email' => true,
+        'official_email' => true,
         'document' => true,
         'job' => true,
         'phone' => true,

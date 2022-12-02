@@ -10,72 +10,54 @@
             <div class="alert alert-secondary col-lg-12 text-center" role="alert">
                 <div class="message error">Datos del Agente</div>
             </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.name', ['label' => 'Nombre *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+            <div class="patientForm container mx-auto row">
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.name', ['label' => 'Nombre *',
+					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.lastname', ['label' => 'Apellido *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.cuil', ['label' => 'CUIL *',
+					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true ]); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.document', ['label' => 'DNI *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.document', ['label' => 'DNI  ',
+					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.email', ['label' => 'Email *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.email', ['label' => 'Email  ',
+					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.birthday', ['label' => 'Fecha de nacimiento *',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date', 'required' => true]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.official_email', ['label' => 'Email Oficial ',
+					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.age', ['label' => 'Edad',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.address', ['label' => 'Domicilio',
+					        'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.address', ['label' => 'Domicilio',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.phone', ['label' => 'Telefono',
+					        'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                    </div>
                 </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.phone', ['label' => 'Telefono',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
-                </div>
-            </div>
-            <?= $this->element('partForm/addCity', ['city' => !empty($report->patient) && isset($report->patient->city_id) ? $report->patient->city_id : null]); ?>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.job', ['label' => 'Puesto de trabajo',
-                        'class' => 'form-control form-control-blue m-0 col-12']); ?>
-                </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.seniority', ['label' => 'Antiguedad (años)',
-                        'class' => 'form-control form-control-blue m-0 col-12']); ?>
-                </div>
-            </div>
-            <div class="pt-0 col-lg-4 col-sm-12">
-                <div class="form-group">
-                    <?= $this->Form->control('patient.company_id', ['label' => 'Empresa',
-                        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true, 'empty' => 'Seleccione',
-                        'options' => $companies]); ?>
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+				        <?= $this->Form->control('patient.job', ['label' => 'Puesto de trabajo',
+					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true]); ?>
+                    </div>
                 </div>
             </div>
             <div class="row col-12">
@@ -453,7 +435,7 @@
                         <?=  $this->Form->control('pathology', ['label' => 'Diagnóstico',
                             'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">

@@ -212,9 +212,9 @@ class PatientsController extends AppController
     {
         $patient = $this->Patients->get($id, [
             'contain' => [
-                'Reports' => ['doctor', 'Files', 'FilesAuditor', 'Modes', 'Privatedoctors'],
-                'Companies',
-                'Cities' => ['Counties' => 'States']],
+                'Reports' => ['doctor', 'Files', 'FilesAuditor', 'Modes'],
+                'Companies'
+            ],
         ]);
 
         $this->set(compact('patient'));
@@ -336,7 +336,7 @@ class PatientsController extends AppController
 
                     if (empty($patientEntity)) {
                         $patientEntity = $this->Patients->newEmptyEntity([]);
-                    } elseif ($postData['type'] == 'new') {
+                    } elseif (isset($postData['type']) && $postData['type'] == 'new') {
                         throw new \Exception('Ya existe una persona con ese DNI o Email.');
                     }
 
@@ -503,7 +503,7 @@ class PatientsController extends AppController
 
             $this->loadComponent('Htmltopdf');
             $report = $this->Patients->Reports->get($id, [
-                'contain' => ['doctor', 'Patients' => ['Companies', 'Cities']],
+                'contain' => ['doctor', 'Patients' => ['Companies']],
             ]);
             if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
                 $this->Htmltopdf->createReport($report);
@@ -528,7 +528,7 @@ class PatientsController extends AppController
                 'contain' => [
                     'Files',
                     'FilesAuditor',
-                    'Patients' => ['Companies', 'Cities' => ['Counties' => 'States']],
+                    'Patients' => ['Companies'],
                     'Modes',
                     'Privatedoctors',
                 ],
@@ -559,12 +559,8 @@ class PatientsController extends AppController
                 'contain' => [
                     'Privatedoctors',
                     'Specialties',
-                    'Patients' => [
-                        'Companies',
-                        'Cities' => [
-                            'Counties' => 'States',
-                        ],
-                    ]],
+                    'Patients'
+                ],
             ]);
             if (empty($report)) {
                 throw new RecordNotFoundException('No se encontro el ID.');
@@ -689,7 +685,7 @@ class PatientsController extends AppController
 				$data= $spreadsheet->getActiveSheet()->toArray();
                 $patients=$this->fetchTable('Patients');
               /*  debug(count($data));
-                exit();  */ 
+                exit();  */
                 for($i=1;$i<count($data);$i++){
                     if(isset( $data[$i][2])){
                         $medical_id=$data[$i][0];
@@ -699,14 +695,14 @@ class PatientsController extends AppController
 						$asked_days=$data[$i][5];
 						$status=$data[$i][6];
                         $medical_center=$data[$i][7];
-						//query 
+						//query
 						$t= time();
 						$created= date('Y-m-d H:m:s',$t);
                         $created_at= join('-',array_reverse(explode('/',$created_at)));
 						$datapatient= array('medical_id'=>$medical_id,'name'=>$name,'cuil'=>$cuil,'created'=>$created);
-                        
+
                         $datareport = array('askedDays'=>$asked_days,'created'=>$created_at,'status'=>$status,'	medicalCenter'=>$medical_center);
-                        
+
                         $patientEntity = $this->Patients->newEmptyEntity();
                         $patient=$this->Patients->patchEntity($patientEntity,$datapatient);
                         //debug($patient);
@@ -717,11 +713,11 @@ class PatientsController extends AppController
                         }
                     }
                 }
-                
+
                 return $this->redirect(['action' => 'listWithoutResults']);
-                
-               
-            }	
+
+
+            }
         }
 	}//fin de funcion*
 }

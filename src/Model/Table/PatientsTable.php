@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\Datasource\EntityInterface;
+use Cake\Event\EventInterface;
 use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -68,6 +70,10 @@ class PatientsTable extends Table
         ]);
     }
 
+	public function beforeSave(EventInterface $event, EntityInterface $entity, \ArrayObject $options) {
+		$entity->company_id = 1;
+	}
+
     /**
      * Default validation rules.
      *
@@ -82,11 +88,6 @@ class PatientsTable extends Table
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
-        $validator
-            ->scalar('medical_id')
-            ->maxLength('medical_id', 25)
-            ->requirePresence('medical_id', 'create')
-            ->notEmptyString('medical_id');
 
         $validator
             ->scalar('address')
@@ -99,9 +100,9 @@ class PatientsTable extends Table
             ->allowEmptyString('email');
 
         $validator
-            ->scalar('offitial_email')
-            ->maxLength('offitial_email', 180)
-            ->allowEmptyString('offitial_email');
+            ->scalar('official_email')
+            ->maxLength('official_email', 180)
+            ->allowEmptyString('official_email');
 
         $validator
             ->scalar('document')
@@ -124,11 +125,6 @@ class PatientsTable extends Table
         $validator
             ->integer('city_id')
             ->allowEmptyString('city_id');
-
-        $validator
-            ->integer('seniority')
-            ->requirePresence('seniority', 'create')
-            ->notEmptyString('seniority');
 
         return $validator;
     }
