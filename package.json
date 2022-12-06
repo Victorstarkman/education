@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@types/jasmine": "^4.3.1",
+    "ajax": "^0.0.4",
+    "protractor": "^7.0.0"
+  }
+}

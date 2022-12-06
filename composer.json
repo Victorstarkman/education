@@ -14,7 +14,6 @@
         "muffin/trash": "^3.1",
         "firebase/php-jwt": "^6.0",
         "mirko-pagliai/cakephp-thumber": "^1.9",
-        "mobiledetect/mobiledetectlib": "^2.8",
         "phpoffice/phpspreadsheet": "^1.22",
       "ext-json": "*"
     },
