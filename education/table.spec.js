@@ -1,26 +1,25 @@
 const fs = require('fs');
 const path = require('path');
-
 const {browser, element, By}= require('protractor');
 
 describe('Handling table education',()=>{
     beforeAll(async()=>{
-        browser.waitForAngularEnabled(false);
+        await browser.waitForAngularEnabled(false);
         await browser.get("https://login.abc.gob.ar/nidp/idff/sso?id=ABC-Form&sid=1&option=credential&sid=1&target=https://menu.abc.gob.ar/");
         await browser.manage().window().maximize();
     })
     it('input user and password',async()=>{
         
         await browser.waitForAngularEnabled(false);
-        element(By.id("Ecom_User_ID")).sendKeys('27240122524');
+        await element(By.id("Ecom_User_ID")).sendKeys('27240122524');
         
-        element(By.id("Ecom_Password")).sendKeys('24012252');
+        await element(By.id("Ecom_Password")).sendKeys('24012252');
        
-       element(By.linkText('ENTRAR')).click();
-       browser.sleep(5000); 
-       element(By.linkText('Mis Licencias')).click();
-       browser.sleep(5000)
-
+        await element(By.linkText('ENTRAR')).click();
+        await browser.sleep(1000);
+     
+         await element(By.linkText('Mis Licencias')).click()
+        
     })
     it('enter in the ion area',async()=>{
        
@@ -28,7 +27,6 @@ describe('Handling table education',()=>{
         windowHandles.then(function(handles){
             var parentWindow = handles[0];
             var tabbedWindow = handles[1];
-       
             browser.waitForAngularEnabled(true);
             browser.switchTo().window(tabbedWindow);
             element(By.className('label label-md')).click();
@@ -39,11 +37,7 @@ describe('Handling table education',()=>{
     it('scroll pages',async()=>{
       let date = new Date().toLocaleDateString();
       console.log(date);
-      
-      
-      //browser.executeScript("window.sessionStorage.getItem('contador')==0")
-      //browser.executeScript("var j=0;window.sessionStorage.setItem('contador',j)")
-     
+      browser.waitForAngularEnabled(true);
       let datetodir = date.split('/').reverse().join('');
       var path ='./jsonfiles/'
       var dir = path+datetodir;
@@ -53,24 +47,28 @@ describe('Handling table education',()=>{
         var j=0;
         scrap(j,date,dir);
       }else{   //si existe cuento la cantidad de archivos y clickeo hasta la pagina y pongo j al valor de la cantidad de archivos
-            let file=[];
+          /*   let file=[];
           fs.readdir(dir,(err,res)=>{
-            if(err){
-              console.log(err);
-            }else{
-                    file= res;
-                    //console.log(file.length);
-                    var j= file.length;
-                    browser.waitForAngularEnabled(true);
+            try{
+                var j= res.length;
+                  
                     for(let count=0;count<j;count++){
-                      //console.log (count);
-                      element(By.xpath('//body[1]/ion-app[1]/ng-component[1]/ion-nav[1]/page-listado-solicitudes-prestadora[1]/ion-content[1]/div[2]/ion-grid[1]/ion-row[2]/ion-col[1]/listado-solicitudes[1]/div[1]/div[1]/div[3]/button[1]/span[1]')).click();
-                      browser.sleep(5000);
+                      browser.waitForAngularEnabled(true);
+                     
+                      browser.executeScript('window.scroll(0,2000);').then(()=>{
+                           console.log('aca'); browser.sleep(2000);
+                      }) 
+                      var pager= element(By.xpath('//div[@id="page-buttons-right"]/button[1]')).click();
+                      console.log(count);
                     }
                     scrap(j,date,dir);
-                  }
-            })
-          }
+              } catch(err){
+                console.log(err);
+              }
+                    
+                  
+            })*/
+          } 
          
     },2500000)//fin de it
 })
@@ -174,16 +172,25 @@ async function scrap(j,date,dir){
      
      
       fs.writeFile(dir+'/userspage_'+j+'.json',jsonTotal,function(err,file){
-        if(err) throw err;
-        console.log('Saved!')
+        if(err) {throw err
+          /* $.ajax({
+            type: "post",
+            url: "url",
+            data: "data",
+            dataType: "dataType",
+            success: function (response) {
+              
+            }
+          }); */
+        }else{
+          console.log('Saved!');
+          
+        };
        
       })//fin de guardado
 
       j=j+1;
-      //browser.executeScript("var j=parseInt(window.sessionStorage.getItem('contador'))+1;;window.sessionStorage.setItem('contador',j)");
-      var pager= element(By.xpath('//body[1]/ion-app[1]/ng-component[1]/ion-nav[1]/page-listado-solicitudes-prestadora[1]/ion-content[1]/div[2]/ion-grid[1]/ion-row[2]/ion-col[1]/listado-solicitudes[1]/div[1]/div[1]/div[3]/button[1]/span[1]')).click();
-      
+      var pager= element(By.xpath('//div[@id="page-buttons-right"]/button[1]')).click();
   
   }while(createdday == date)//fin de do  
 }
-
