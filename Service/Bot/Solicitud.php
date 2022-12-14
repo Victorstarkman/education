@@ -248,6 +248,10 @@ class Solicitud
     }
 
     private function moveFile($file){
+        $path = $this->path.'\\File\\Users\\'.date('Y-m-d').'\\';
+        if(!file_exists($path)){
+            mkdir($path);
+        }
         $path = $this->path.'\\File\\Users\\'.date('Y-m-d').'\\'.$this->positionPath.'\\';
         $pathFile = $path.$file;
 
