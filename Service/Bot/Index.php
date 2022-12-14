@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Service\Bot;
+namespace Service\Bot;
 
-use App\Service\Request\RequestServer;
-use App\Service\LogService;
+use Service\Request\RequestServer;
+use Service\LogService;
 
 class Index
 {
@@ -63,7 +63,7 @@ class Index
 
             throw new \Exception('la json está vacía');
         }
-
+	$count = 0;
         for($page=0; $page < $json->totalPages; $page++){
             $body = $this->requestPageNoAprovadas($page,20);
             $jsonBody = json_decode($body);
@@ -85,7 +85,10 @@ class Index
 
             $this->saveFileInJson($content);
             $this->saveIdLogSucces($content);
-            break;
+            if($count == 2){
+            	break;
+            }
+            $count++;
         }
 
         return true;

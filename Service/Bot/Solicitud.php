@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Service\Bot;
+namespace Service\Bot;
 
-use App\Service\Request\RequestServer;
-use App\Service\LogService;
-use App\Service\Treatment\TreatmentService;
+use Service\Request\RequestServer;
+use Service\LogService;
+use Service\Treatment\TreatmentService;
 
 class Solicitud
 {
@@ -65,8 +65,6 @@ class Solicitud
             return false;
         }
 
-        $this->countPathInUser();
-
         foreach($files as $file){
             $content = $this->getFileJson($file);
             $this->runContent($content);
@@ -106,6 +104,8 @@ class Solicitud
     }
 
     private function runContent($content){
+        $this->countPathInUser();
+
         foreach($content as $item){
             $id = $item->solicitudLicencia->id;
 

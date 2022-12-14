@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Service\Bot;
+namespace Service\Bot;
 
-use App\Service\Request\RequestServer;
-use App\Service\LogService;
+use Service\Request\RequestServer;
+use Service\LogService;
 
 class Login
 {

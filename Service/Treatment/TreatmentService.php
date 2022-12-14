@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Service\Treatment;
+namespace Service\Treatment;
 
-use App\Service\LogService;
+use Service\LogService;
 
 class TreatmentService
 {

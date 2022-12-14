@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Service;
+namespace Service;
 
-use App\Service\Bot\Login;
-use App\Service\Bot\Index;
-use App\Service\Bot\Solicitud;
-use App\Service\LogService;
-use App\Service\Treatment\TreatmentService;
+use Service\Bot\Login;
+use Service\Bot\Index;
+use Service\Bot\Solicitud;
+use Service\LogService;
+use Service\Treatment\TreatmentService;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 class Bot
 {
@@ -61,6 +61,9 @@ class Bot
                     'message' => 'the bot has been stopped because it has exceeded the number of attempts',
                 ];
                 $this->LogService->setLog($log, 'Failure', 'Bot.php');
+
+                throw new \Exception('the bot has been stopped because it has exceeded the number of attempts');
+
                 break;
             }
 

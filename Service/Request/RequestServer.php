@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service\Request;
+namespace Service\Request;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\SessionCookieJar;
