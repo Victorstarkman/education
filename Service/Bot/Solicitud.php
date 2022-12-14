@@ -25,11 +25,11 @@ class Solicitud
 
     private $token;
 
-    private $pathFile = "/File/DatosTratados";
+    private $pathFile = "\\File\\DatosTratados";
 
     private $positionPath = 0;
 
-    private $pathUsers = "/File/Users";
+    private $pathUsers = "\\File\\Users";
 
     /**
      * @var RequestServer $Request
@@ -77,7 +77,7 @@ class Solicitud
     }
 
     private function getFiles(){
-        $files = scandir($this->pathFile."/");
+        $files = scandir($this->pathFile."\\");
         $files = array_diff($files, array('.', '..'));
 
         if(empty($files)){
@@ -88,8 +88,8 @@ class Solicitud
     }
 
     private function countPathInUser(){
-        if(file_exists($this->pathUsers."/".date('Y-m-d'))){
-            $files = scandir($this->pathUsers."/".date('Y-m-d'));
+        if(file_exists($this->pathUsers."\\".date('Y-m-d'))){
+            $files = scandir($this->pathUsers."\\".date('Y-m-d'));
             $files = array_diff($files, array('.', '..'));
             $this->positionPath = count($files);
         }
@@ -157,40 +157,40 @@ class Solicitud
             $this->creatingPath($date, $pathName, $id);
         }
 
-        return $this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}";
+        return $this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}";
     }
 
     private function creatingPath($date, $pathName, $id){
 
-        if(!file_exists($this->path."/File/Users/{$date}")){
-            mkdir($this->path."/File/Users/{$date}/");
+        if(!file_exists($this->path."\\File\\Users\\{$date}")){
+            mkdir($this->path."\\File\\Users\\{$date}\\");
         }
 
-        if(!file_exists($this->path."/File/Users/{$date}/{$this->positionPath}")){
-            mkdir($this->path."/File/Users/{$date}/{$this->positionPath}");
+        if(!file_exists($this->path."\\File\\Users\\{$date}\\{$this->positionPath}")){
+            mkdir($this->path."\\File\\Users\\{$date}\\{$this->positionPath}");
         }
 
-        if(!file_exists($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}")){
-            mkdir($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}");
+        if(!file_exists($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}")){
+            mkdir($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}");
         }
 
-        if(!file_exists($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}")){
-            mkdir($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}");
+        if(!file_exists($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}")){
+            mkdir($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}");
         }
 
-        if(!file_exists($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/img")){
-            mkdir($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/img");
+        if(!file_exists($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}\\img")){
+            mkdir($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}\\img");
         }
 
-        if(!file_exists($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json")){
-            mkdir($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json");
+        if(!file_exists($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}\\json")){
+            mkdir($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}\\json");
         }
 
-        if(!file_exists($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json/consultarDatos")){
-            mkdir($this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json/consultarDatos");
+        if(!file_exists($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}\\json\\consultarDatos")){
+            mkdir($this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}\\json\\consultarDatos");
         }
 
-        return $this->path."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}";
+        return $this->path."\\File\\Users\\{$date}\\{$this->positionPath}\\{$pathName}\\{$id}";
     }
 
     private function requestGetImage($id) {
@@ -224,7 +224,7 @@ class Solicitud
 
         foreach($imgArray as $key => $img) {
             $filename = $key . '.jpg';
-            $path = "{$pathName}/img/{$filename}";
+            $path = "{$pathName}\\img\\{$filename}";
 
             file_put_contents($path, $img);
         }
@@ -234,7 +234,7 @@ class Solicitud
         foreach($response as $key => $item)
         {
             $filename = "{$item->id}_{$item->idReg}.json";
-            $path = "{$pathName}/json/consultarDatos/{$filename}";
+            $path = "{$pathName}\\json\\consultarDatos\\{$filename}";
             $item = $this->TreatmentService->treatmentJsonConsultarDatos($item,$path);
             $item['codigoRegEstat'] = $this->TreatmentService->convertCodigoRegEstat($item['codigoRegEstat'] ?? null);
 
@@ -242,13 +242,13 @@ class Solicitud
         }
 
         $filename = "jsonOriginResponse.json";
-        $path = "{$pathName}/json/{$filename}";
+        $path = "{$pathName}\\json\\{$filename}";
 
         file_put_contents($path, json_encode($jsonOriginResponse));
     }
 
     private function moveFile($file){
-        $path = $this->path.'/File/Users/'.date('Y-m-d').'/'.$this->positionPath.'/';
+        $path = $this->path.'\\File\\Users\\'.date('Y-m-d').'\\'.$this->positionPath.'\\';
         $pathFile = $path.$file;
 
         if(!file_exists($path)){

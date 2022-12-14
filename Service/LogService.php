@@ -50,14 +50,14 @@ class LogService {
 
         foreach ($this->typeLog as $type){
 
-            if(!file_exists($this->path."/{$path}/{$type}")){
-                mkdir($this->path."/{$path}/{$type}");
+            if(!file_exists($this->path."\\{$path}\\{$type}")){
+                mkdir($this->path."\\{$path}\\{$type}");
             }
         }
     }
 
     private function creatingLog($log,$type){
-        $file = $this->path."/Logs/{$type}/log.txt";
+        $file = $this->path."\\Logs\\{$type}\\log.txt";
 
         if(file_exists($file)){
             $contentfile = file_get_contents($file);
