@@ -12,7 +12,7 @@ class Login
         "Host" => "login.abc.gob.ar",
         "User-Agent" => "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0",
         "Accept" => "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language" => "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Language" => "es-AR;q=0.8,en-US;q=0.5,en;q=0.3",
         "Accept-Encoding" => "gzip, deflate, br",
         "Content-Type" => "application/x-www-form-urlencoded",
         "Origin" => "https://login.abc.gob.ar",
@@ -131,7 +131,7 @@ class Login
             'headers' => [
                 "Host" => "misaplicaciones5.abc.gob.ar",
                 "Accept" => "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-                "Accept-Language" => "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
+                "Accept-Language" => "es-AR;q=0.8,en-US;q=0.5,en;q=0.3",
                 "Accept-Encoding" => "gzip, deflate, br",
                 "Content-Type" => "application/x-www-form-urlencoded",
                 "Origin" => "https://login.abc.gob.ar",

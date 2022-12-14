@@ -13,7 +13,7 @@ class Index
         "Accept" => "application/json, text/plain, */*",
         "Host" => "misaplicaciones5.abc.gob.ar",
         "Accept" => "application/json, text/plain, */*",
-        "Accept-Language" => "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Language" => "es-AR;q=0.8,en-US;q=0.5,en;q=0.3",
         "Accept-Encoding" => "gzip, deflate, br",
         "Connection" => "keep-alive",
         "Referer" => "https://misaplicaciones5.abc.gob.ar/LicenciasMedicasWeb/index.html",
