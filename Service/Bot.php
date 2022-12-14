@@ -117,20 +117,20 @@ class Bot
     }
 
     private function createPaths(){
-        if(!file_exists(__DIR__.'\\File')){
-            mkdir(__DIR__.'\\File');
+        if(!file_exists(__DIR__.'/File')){
+            mkdir(__DIR__.'/File');
         }
 
-        if(!file_exists(__DIR__.'\\File\\PageNoAprovadas')){
-            mkdir(__DIR__.'\\File\\PageNoAprovadas');
+        if(!file_exists(__DIR__.'/File/PageNoAprovadas')){
+            mkdir(__DIR__.'/File/PageNoAprovadas');
         }
 
-        if(!file_exists(__DIR__.'\\File\\Users')){
-            mkdir(__DIR__.'\\File\\Users');
+        if(!file_exists(__DIR__.'/File/Users')){
+            mkdir(__DIR__.'/File/Users');
         }
 
-        if(!file_exists(__DIR__.'\\File\\DatosTratados')){
-            mkdir(__DIR__.'\\File\\DatosTratados');
+        if(!file_exists(__DIR__.'/File/DatosTratados')){
+            mkdir(__DIR__.'/File/DatosTratados');
         }
     }
 }

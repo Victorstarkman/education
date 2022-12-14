@@ -45,7 +45,6 @@ class Login
 
     public function run()
     {
-        die(__DIR__);
         $this->requestGetLogin();
         $this->requestPostLogin();
         $this->requestGetMisLicencias();

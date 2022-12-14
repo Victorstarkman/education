@@ -102,7 +102,7 @@ class Index
 
     private function saveFileInJson($content){
         $date = date('Y-m-d H:i:s');
-        $file = $this->path."\\File\\PageNoAprovadas\\{$date}.json";
+        $file = $this->path."/File/PageNoAprovadas/{$date}.json";
         if(file_exists($file)){
             $file = file_get_contents($file);
             $json = json_decode($file);
@@ -142,7 +142,7 @@ class Index
     }
 
     private function checkContentExistInFile($content){
-        $path = $this->path."\\Logs\\Success\\";
+        $path = $this->path."/Logs/Success/";
         $files = scandir($path);
         $files = array_diff($files, array('.', '..'));
 
