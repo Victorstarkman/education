@@ -56,7 +56,7 @@ class TreatmentService
 
     private function getJsonFilePageNoAprovadas()
     {
-        $path = __DIR__."/File/PageNoAprovadas";
+        $path = "File/PageNoAprovadas";
         $files = scandir($path);
         $files = array_diff($files, array('.', '..'));
 
@@ -65,7 +65,7 @@ class TreatmentService
 
     private function getJson($file)
     {
-        $path = __DIR__."/File/PageNoAprovadas/";
+        $path = "File/PageNoAprovadas/";
         $content = file_get_contents($path . $file);
         $content = json_decode($content);
 
@@ -254,7 +254,7 @@ class TreatmentService
 
     private function saveJson($json, $file)
     {
-        $pathDatosTratados = __DIR__."/File/DatosTratados/";
+        $pathDatosTratados = "File/DatosTratados/";
 
         $file = str_replace('.json', '', $file);
         $file = $file . '_treated.json';
@@ -275,7 +275,7 @@ class TreatmentService
 
     private function deleteJson($file, $status)
     {
-        $path = __DIR__."/File/PageNoAprovadas/";
+        $path = "File/PageNoAprovadas/";
 
         if($status) {
             unlink($path . $file);

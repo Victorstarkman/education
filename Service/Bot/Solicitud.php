@@ -25,11 +25,11 @@ class Solicitud
 
     private $token;
 
-    private $pathFile = __DIR__."/../File/DatosTratados/";
+    private $pathFile = "../File/DatosTratados/";
 
     private $positionPath = 0;
 
-    private $pathUsers = __DIR__."/File/Users/";
+    private $pathUsers = "File/Users/";
 
     /**
      * @var RequestServer $Request
@@ -154,40 +154,40 @@ class Solicitud
             $this->creatingPath($date, $pathName, $id);
         }
 
-        return __DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}";
+        return "File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}";
     }
 
     private function creatingPath($date, $pathName, $id){
 
-        if(!file_exists(__DIR__."/File/Users/{$date}")){
-            mkdir(__DIR__."/File/Users/{$date}/");
+        if(!file_exists("File/Users/{$date}")){
+            mkdir("File/Users/{$date}/");
         }
 
-        if(!file_exists(__DIR__."/File/Users/{$date}/{$this->positionPath}")){
-            mkdir(__DIR__."/File/Users/{$date}/{$this->positionPath}");
+        if(!file_exists("File/Users/{$date}/{$this->positionPath}")){
+            mkdir("File/Users/{$date}/{$this->positionPath}");
         }
 
-        if(!file_exists(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}")){
-            mkdir(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}");
+        if(!file_exists("File/Users/{$date}/{$this->positionPath}/{$pathName}")){
+            mkdir("File/Users/{$date}/{$this->positionPath}/{$pathName}");
         }
 
-        if(!file_exists(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}")){
-            mkdir(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}");
+        if(!file_exists("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}")){
+            mkdir("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}");
         }
 
-        if(!file_exists(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/img")){
-            mkdir(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/img");
+        if(!file_exists("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/img")){
+            mkdir("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/img");
         }
 
-        if(!file_exists(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json")){
-            mkdir(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json");
+        if(!file_exists("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json")){
+            mkdir("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json");
         }
 
-        if(!file_exists(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json/consultarDatos")){
-            mkdir(__DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json/consultarDatos");
+        if(!file_exists("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json/consultarDatos")){
+            mkdir("File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}/json/consultarDatos");
         }
 
-        return __DIR__."/File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}";
+        return "File/Users/{$date}/{$this->positionPath}/{$pathName}/{$id}";
     }
 
     private function requestGetImage($id) {
@@ -245,7 +245,7 @@ class Solicitud
     }
 
     private function moveFile($file){
-        $path = __DIR__.'/File/Users/'.date('Y-m-d').'/'.$this->positionPath.'/';
+        $path = 'File/Users/'.date('Y-m-d').'/'.$this->positionPath.'/';
         $pathFile = $path.$file;
 
         if(!file_exists($path)){
