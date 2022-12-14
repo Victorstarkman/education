@@ -23,6 +23,7 @@ class Index
     ];
 
     private $token;
+    private $path;
 
     /**
      * @var RequestServer $Request
@@ -34,10 +35,11 @@ class Index
      */
     private $LogService;
 
-    public function __construct()
+    public function __construct($path)
     {
         $this->Request = new RequestServer();
-        $this->LogService = new LogService();
+        $this->LogService = new LogService($path);
+        $this->path = $path;
     }
 
     public function run($token){
@@ -100,7 +102,7 @@ class Index
 
     private function saveFileInJson($content){
         $date = date('Y-m-d H:i:s');
-        $file = "File/PageNoAprovadas/{$date}.json";
+        $file = $this->path."\\File\\PageNoAprovadas\\{$date}.json";
         if(file_exists($file)){
             $file = file_get_contents($file);
             $json = json_decode($file);
@@ -140,7 +142,7 @@ class Index
     }
 
     private function checkContentExistInFile($content){
-        $path = "Logs/Success/";
+        $path = $this->path."\\Logs\\Success\\";
         $files = scandir($path);
         $files = array_diff($files, array('.', '..'));
 

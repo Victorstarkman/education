@@ -37,14 +37,15 @@ class Login
      */
     private $LogService;
 
-    public function __construct()
+    public function __construct($path)
     {
-        $this->LogService = new LogService();
+        $this->LogService = new LogService($path);
         $this->Request = new RequestServer();
     }
 
     public function run()
     {
+        die(__DIR__);
         $this->requestGetLogin();
         $this->requestPostLogin();
         $this->requestGetMisLicencias();

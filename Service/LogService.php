@@ -5,9 +5,10 @@ namespace Service;
 class LogService {
 
     private $typeLog = ['Execution', 'Failure', 'Success', 'Treatment', 'Info'];
-
-    public function __construct(){
+    private $path;
+    public function __construct($path){
         $this->creatingPath();
+        $this->path = $path;
     }
 
     public function setLog($log, $type, $way){
@@ -47,14 +48,14 @@ class LogService {
         }
 
         foreach ($this->typeLog as $type){
-            if(!file_exists("{$path}/{$type}")){
-                mkdir("{$path}/{$type}");
+            if(!file_exists($this->path."\\{$path}\\{$type}")){
+                mkdir($this->path."\\{$path}\\{$type}");
             }
         }
     }
 
     private function creatingLog($log,$type){
-        $file = "Logs/{$type}/log.txt";
+        $file = $this->path."\\Logs\\{$type}\\log.txt";
 
         if(file_exists($file)){
             $contentfile = file_get_contents($file);

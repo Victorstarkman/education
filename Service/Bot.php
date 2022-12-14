@@ -42,11 +42,11 @@ class Bot
 
     public function __construct()
     {
-        $this->Login = new Login();
-        $this->Index = new Index();
-        $this->Solicitud = new Solicitud();
-        $this->LogService = new LogService();
-        $this->TreatmentService = new TreatmentService();
+        $this->Login = new Login(__DIR__);
+        $this->Index = new Index(__DIR__);
+        $this->Solicitud = new Solicitud(__DIR__);
+        $this->LogService = new LogService(__DIR__);
+        $this->TreatmentService = new TreatmentService(__DIR__);
         $this->createPaths();
     }
 
@@ -116,20 +116,20 @@ class Bot
     }
 
     private function createPaths(){
-        if(!file_exists('File')){
-            mkdir('File');
+        if(!file_exists(__DIR__.'\\File')){
+            mkdir(__DIR__.'\\File');
         }
 
-        if(!file_exists('File/PageNoAprovadas')){
-            mkdir('File/PageNoAprovadas');
+        if(!file_exists(__DIR__.'\\File\\PageNoAprovadas')){
+            mkdir(__DIR__.'\\File\\PageNoAprovadas');
         }
 
-        if(!file_exists('File/Users')){
-            mkdir('File/Users');
+        if(!file_exists(__DIR__.'\\File\\Users')){
+            mkdir(__DIR__.'\\File\\Users');
         }
 
-        if(!file_exists('File/DatosTratados')){
-            mkdir('File/DatosTratados');
+        if(!file_exists(__DIR__.'\\File\\DatosTratados')){
+            mkdir(__DIR__.'\\File\\DatosTratados');
         }
     }
 }
