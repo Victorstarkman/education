@@ -100,7 +100,7 @@ class Index
 
     private function saveFileInJson($content){
         $date = date('Y-m-d H:i:s');
-        $file = "File/PageNoAprovadas/{$date}.json";
+        $file = __DIR__."/File/PageNoAprovadas/{$date}.json";
         if(file_exists($file)){
             $file = file_get_contents($file);
             $json = json_decode($file);
