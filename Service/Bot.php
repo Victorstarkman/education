@@ -112,6 +112,7 @@ class Bot
 
             $this->LogService->setLog($log, 'Execution', 'Bot.php');
         }
+        die('Bot has been stopped');
         return true;
     }
 
