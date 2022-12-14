@@ -15,6 +15,7 @@
         "firebase/php-jwt": "^6.0",
         "mirko-pagliai/cakephp-thumber": "^1.9",
         "phpoffice/phpspreadsheet": "^1.22",
+        "guzzlehttp/guzzle": "^7.2",
       "ext-json": "*"
     },
     "require-dev": {
@@ -33,7 +34,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "src/",
-            "Service": "Service/"
+            "Service\\": "Service/"
         }
     },
     "autoload-dev": {
