@@ -101,7 +101,7 @@ class Index
     }
 
     private function saveFileInJson($content){
-        $date = date('Y-m-d H:i:s');
+        $date = date('Y-m-d');
         $file = $this->path."\\File\\PageNoAprovadas\\{$date}.json";
         if(file_exists($file)){
             $file = file_get_contents($file);
