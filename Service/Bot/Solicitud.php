@@ -49,8 +49,8 @@ class Solicitud
     public function __construct($path)
     {
         $this->Request = new RequestServer();
-        $this->LogService = new LogService();
-        $this->TreatmentService = new TreatmentService();
+        $this->LogService = new LogService($path);
+        $this->TreatmentService = new TreatmentService($path);
         $this->path = $path;
         $this->pathFile = $path.$this->pathFile;
         $this->pathUsers = $path.$this->pathUsers;
