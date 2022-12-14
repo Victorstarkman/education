@@ -25,7 +25,7 @@ class Solicitud
 
     private $token;
 
-    private $pathFile = "../File/DatosTratados/";
+    private $pathFile = "File/DatosTratados/";
 
     private $positionPath = 0;
 
