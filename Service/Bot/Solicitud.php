@@ -112,7 +112,11 @@ class Solicitud
     private function runContent($content)
     {
         $this->countPathInUser();
+        if(! is_array($content)){
+            //thow new \Exception('Content is not array');
+            throw new \Exception('content is not array'. $content);
 
+        }
         foreach ($content as $item) {
             $id = $item->solicitudLicencia->id;
 
@@ -275,12 +279,18 @@ class Solicitud
 
         if ($attempts == 3) {
             throw new \Exception("Failed to move file after 3 attempts.");
-        // } else {
-        //     try{
-        //         unlink($this->pathFile. '\\' . $file);
-        //     }catch (\Exception $e){
-
-        //     }
+         } else {
+            //remover arquivo caso ele exista
+            if (file_exists($this->pathFile .'\\'. $file)) {
+                //tentar remover o arquivo
+                $attempts = 0;
+                while (!unlink($this->pathFile .'\\'. $file) && $attempts < 3) {
+                    $attempts++;
+                }
+                if ($attempts == 3) {
+                    throw new \Exception("Failed to remove file after 3 attempts.");
+                }
+            }
          }
     }
 }
