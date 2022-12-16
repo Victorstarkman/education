@@ -136,7 +136,7 @@ class Solicitud
 
 
         foreach ($content as $item) {
-            $id = $item->solicitudLicencia->id;
+            $id = $item['solicitudLicencia']['id'];
 
             $response = $this->requestGetSolictud($id);
 
