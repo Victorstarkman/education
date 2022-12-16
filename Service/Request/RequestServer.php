@@ -85,7 +85,7 @@ class RequestServer
 
             try{
                 $randoSleep = rand(1, 3);
-                //sleep($randoSleep);
+                sleep($randoSleep);
                 $res = $this->client->request($metodo, $url, $a_param);
             }catch (\Exception $e) {
                 return sprintf("Excecao: %d - %s, acessando %s\n", $e->getCode(), $e->getMessage(), $url);
