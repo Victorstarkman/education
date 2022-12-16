@@ -269,14 +269,14 @@ class Solicitud
         $targetFile = $targetPath . $file;
         $attempts = 0;
 
-        while (!rename($this->pathFile . $file, $targetFile) && $attempts < 3) {
+        while (!rename($this->pathFile .'\\'. $file, $targetFile) && $attempts < 3) {
             $attempts++;
         }
 
         if ($attempts == 3) {
             throw new \Exception("Failed to move file after 3 attempts.");
         } else {
-            unlink($this->pathFile . $file);
+            unlink($this->pathFile. '\\' . $file);
         }
     }
 }
