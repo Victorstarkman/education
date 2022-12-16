@@ -4,6 +4,8 @@ namespace Service\Bot;
 
 use Service\Request\RequestServer;
 use Service\LogService;
+use Service\Bot\Solicitud;
+use Service\Treatment\TreatmentService;
 
 class Index
 {
@@ -13,7 +15,7 @@ class Index
         "Accept" => "application/json, text/plain, */*",
         "Host" => "misaplicaciones5.abc.gob.ar",
         "Accept" => "application/json, text/plain, */*",
-        "Accept-Language" => "pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Language" => "es-AR;q=0.8,en-US;q=0.5,en;q=0.3",
         "Accept-Encoding" => "gzip, deflate, br",
         "Connection" => "keep-alive",
         "Referer" => "https://misaplicaciones5.abc.gob.ar/LicenciasMedicasWeb/index.html",
@@ -23,6 +25,7 @@ class Index
     ];
 
     private $token;
+    private $path;
 
     /**
      * @var RequestServer $Request
@@ -34,10 +37,13 @@ class Index
      */
     private $LogService;
 
-    public function __construct()
+    public function __construct($path)
     {
         $this->Request = new RequestServer();
-        $this->LogService = new LogService();
+        $this->LogService = new LogService($path);
+        $this->Solicitud = new Solicitud($path);
+        $this->TreatmentService = new TreatmentService($path);
+        $this->path = $path;
     }
 
     public function run($token){
@@ -53,9 +59,9 @@ class Index
         $this->token = $token;
 
         $body = $this->requestPageNoAprovadas(0,20);
-        $json = json_decode($body);
+        $jsonBody = json_decode($body);
 
-        if(empty($json)){
+        if(empty($jsonBody)){
             $this->LogService->setLog([
                 'message' => 'la json está vacía',
                 'function' => 'run',
@@ -64,9 +70,10 @@ class Index
             throw new \Exception('la json está vacía');
         }
 
-        for($page=0; $page < $json->totalPages; $page++){
-            $body = $this->requestPageNoAprovadas($page,20);
-            $jsonBody = json_decode($body);
+        echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages ."\n";
+        echo "Procesando solicitudes... pagina 1\n";
+
+        for($page=1; $page < $jsonBody->totalPages; $page++){
 
             if(empty($jsonBody)){
                 $this->LogService->setLog([
@@ -86,6 +93,14 @@ class Index
             $this->saveFileInJson($content);
             $this->saveIdLogSucces($content);
 
+            $this->TreatmentService->run();
+            $this->Solicitud ->run($token);
+
+            $body = $this->requestPageNoAprovadas($page,20);
+            $jsonBody = json_decode($body);
+            $pageEcho = $page + 1;
+            echo "Procesando solicitudes... pagina {$pageEcho}\n";
+
         }
 
         return true;
@@ -99,8 +114,9 @@ class Index
     }
 
     private function saveFileInJson($content){
-        $date = date('Y-m-d H:i:s');
-        $file = "File/PageNoAprovadas/{$date}.json";
+        //data mais uid
+        $date = date('Y-m-d').'_'.uniqid(rand(0, 1000));
+        $file = $this->path."/File/PageNoAprovadas/{$date}.json";
         if(file_exists($file)){
             $file = file_get_contents($file);
             $json = json_decode($file);
@@ -140,7 +156,7 @@ class Index
     }
 
     private function checkContentExistInFile($content){
-        $path = "Logs/Success/";
+        $path = $this->path."/Logs/Success/";
         $files = scandir($path);
         $files = array_diff($files, array('.', '..'));
 
