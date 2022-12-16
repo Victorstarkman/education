@@ -11,7 +11,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class Bot
 {
     private $attempt = 0;
-    private $runNumber = 0;
 
     /**
      * @var Login $Login
@@ -54,16 +53,6 @@ class Bot
                 break;
             }
 
-
-            if($this->runNumber >= 10){
-                $log = [
-                    'date' => date('Y-m-d H:i:s'),
-                    'message' => 'the bot has been stopped because it has exceeded the number of executions',
-                ];
-                $this->LogService->setLog($log, 'Execution', 'Bot.php');
-                break;
-            }
-
             $log = [
                 'date' => date('Y-m-d H:i:s'),
                 'message' => 'starting the web crawler',
@@ -85,7 +74,6 @@ class Bot
 
                 $this->LogService->setLog($log, 'Failure', 'Bot.php');
                 $this->attempt++;
-                $this->runNumber--;
             }
 
             $log = [
@@ -93,7 +81,6 @@ class Bot
                 'message' => 'ending the web crawler',
             ];
 
-            $this->runNumber++;
 
             $this->LogService->setLog($log, 'Execution', 'Bot.php');
         }
