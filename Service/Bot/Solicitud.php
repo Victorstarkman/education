@@ -136,7 +136,26 @@ class Solicitud
 
 
         foreach ($content as $item) {
-            die($item);
+            if( ! is_array($item)){
+                if(is_object($item)){
+                    $item = json_encode($item);
+                    $item = json_decode($item, true);
+                }elseif(is_string($item)){
+                    $item = json_decode($item, true);
+                }
+            }
+            if(!isset($item['solicitudLicencia']['id'])){
+                $log = [
+                    'date' => date('Y-m-d H:i:s'),
+                    'message' => 'Error en el archivo json',
+                    'content' => $item,
+                    'line' => 'runContent',
+                ];
+
+                $this->LogService->setLog($log, 'Failure', 'solicitud.php');
+                throw new \Exception('Error en el archivo json');
+            }
+
             $id = $item['solicitudLicencia']['id'];
 
             $response = $this->requestGetSolictud($id);
