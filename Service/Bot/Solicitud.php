@@ -99,7 +99,7 @@ class Solicitud
 
     private function getFileJson($file)
     {
-        $content = file_get_contents($this->pathFile . $file);
+        $content = file_get_contents($this->pathFile . '\\' . $file);
         $content = json_decode($content);
 
         if (empty($content)) {
