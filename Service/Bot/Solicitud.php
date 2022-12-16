@@ -129,6 +129,15 @@ class Solicitud
                 $this->saveImg($pathName, $imags);
                 $this->saveJson($response, $item, $pathName);
             }
+        }else{
+            $log = [
+                'date' => date('Y-m-d H:i:s'),
+                'message' => 'Error en el archivo json',
+                'content' => $content,
+                'line' => 'runContent',
+            ];
+
+            $this->LogService->setLog($log, 'Failure', 'solicitud.php');
         }
 
     }
