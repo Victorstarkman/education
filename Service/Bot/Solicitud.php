@@ -250,8 +250,10 @@ class Solicitud
         foreach ($response as $key => $item) {
             $item = $this->TreatmentService->treatmentJsonConsultarDatos($item, $path);
             $item['codigoRegEstat'] = $this->TreatmentService->convertCodigoRegEstat($item['codigoRegEstat'] ?? null);
+            $id = $item['id'] ?? $item->id;
+            $idReg = $item['idReg'] ?? $item->idReg;
 
-            $filename = "{$item->id}_{$item->idReg}.json";
+            $filename = "{$id}_{$idReg}.json";
             $filepath = "{$path}\\consultarDatos\\{$filename}";
             file_put_contents($filepath, json_encode($item));
         }
