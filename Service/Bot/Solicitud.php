@@ -275,12 +275,12 @@ class Solicitud
 
         if ($attempts == 3) {
             throw new \Exception("Failed to move file after 3 attempts.");
-        } else {
-            try{
-                unlink($this->pathFile. '\\' . $file);
-            }catch (\Exception $e){
+        // } else {
+        //     try{
+        //         unlink($this->pathFile. '\\' . $file);
+        //     }catch (\Exception $e){
 
-            }
-        }
+        //     }
+        // }
     }
 }
