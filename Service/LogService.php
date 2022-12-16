@@ -57,7 +57,13 @@ class LogService {
     }
 
     private function creatingLog($log,$type){
-        $file = $this->path."\\Logs\\{$type}\\log.txt";
+
+        if($type != 'Success') {
+            $date = date('Y-m-d');
+            $file = $this->path."\\Logs\\{$type}\\log_{$date}.txt";
+        }else{
+            $file = $this->path."\\Logs\\{$type}\\log.txt";
+        }
 
         if(file_exists($file)){
             $contentfile = file_get_contents($file);
