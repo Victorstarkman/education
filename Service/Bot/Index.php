@@ -70,6 +70,9 @@ class Index
             throw new \Exception('la json está vacía');
         }
 
+        echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages ."\n";
+        echo "Procesando solicitudes... page 1\n";
+
         for($page=1; $page < $jsonBody->totalPages; $page++){
 
             if(empty($jsonBody)){
@@ -95,6 +98,8 @@ class Index
 
             $body = $this->requestPageNoAprovadas($page,20);
             $jsonBody = json_decode($body);
+            $pageEcho = $page + 1;
+            echo "Procesando solicitudes... page {$pageEcho}\n";
 
         }
 
