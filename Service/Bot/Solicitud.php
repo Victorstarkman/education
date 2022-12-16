@@ -112,24 +112,17 @@ class Solicitud
     private function runContent($content)
     {
         $this->countPathInUser();
-        if( is_array($content)){
-            foreach ($content as $item) {
-                $id = $item->solicitudLicencia->id;
-
-                $response = $this->requestGetSolictud($id);
-
-                if (empty($response)) {
-                    return false;
-                }
-
-                $pathName = $this->creatingPathUsers($response, $id);
-
-                $imags = $this->requestGetImage($id);
-
-                $this->saveImg($pathName, $imags);
-                $this->saveJson($response, $item, $pathName);
+        if( ! is_array($content)){
+            if(is_object($content)){
+                $content = json_encode($content);
+                $content = json_decode($content, true);
+            }elseif(is_string($content)){
+                $content = json_decode($content, true);
             }
-        }else{
+        }
+
+
+        if( ! is_array($content)){
             $log = [
                 'date' => date('Y-m-d H:i:s'),
                 'message' => 'Error en el archivo json',
@@ -138,6 +131,25 @@ class Solicitud
             ];
 
             $this->LogService->setLog($log, 'Failure', 'solicitud.php');
+            throw new \Exception('Error en el archivo json');
+        }
+
+
+        foreach ($content as $item) {
+            $id = $item->solicitudLicencia->id;
+
+            $response = $this->requestGetSolictud($id);
+
+            if (empty($response)) {
+                return false;
+            }
+
+            $pathName = $this->creatingPathUsers($response, $id);
+
+            $imags = $this->requestGetImage($id);
+
+            $this->saveImg($pathName, $imags);
+            $this->saveJson($response, $item, $pathName);
         }
 
     }
