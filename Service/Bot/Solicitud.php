@@ -112,27 +112,25 @@ class Solicitud
     private function runContent($content)
     {
         $this->countPathInUser();
-        if(! is_array($content)){
-            //thow new \Exception('Content is not array');
-            throw new \Exception('content is not array'. $content);
+        if( is_array($content)){
+            foreach ($content as $item) {
+                $id = $item->solicitudLicencia->id;
 
-        }
-        foreach ($content as $item) {
-            $id = $item->solicitudLicencia->id;
+                $response = $this->requestGetSolictud($id);
 
-            $response = $this->requestGetSolictud($id);
+                if (empty($response)) {
+                    return false;
+                }
 
-            if (empty($response)) {
-                return false;
+                $pathName = $this->creatingPathUsers($response, $id);
+
+                $imags = $this->requestGetImage($id);
+
+                $this->saveImg($pathName, $imags);
+                $this->saveJson($response, $item, $pathName);
             }
-
-            $pathName = $this->creatingPathUsers($response, $id);
-
-            $imags = $this->requestGetImage($id);
-
-            $this->saveImg($pathName, $imags);
-            $this->saveJson($response, $item, $pathName);
         }
+
     }
 
     private function requestGetSolictud($id)
