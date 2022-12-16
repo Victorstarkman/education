@@ -4,6 +4,8 @@ namespace Service\Bot;
 
 use Service\Request\RequestServer;
 use Service\LogService;
+use Service\Bot\Solicitud;
+use Service\Treatment\TreatmentService;
 
 class Index
 {
@@ -39,6 +41,8 @@ class Index
     {
         $this->Request = new RequestServer();
         $this->LogService = new LogService($path);
+        $this->Solicitud = new Solicitud($path);
+        $this->TreatmentService = new TreatmentService($path);
         $this->path = $path;
     }
 
@@ -55,9 +59,9 @@ class Index
         $this->token = $token;
 
         $body = $this->requestPageNoAprovadas(0,20);
-        $json = json_decode($body);
+        $jsonBody = json_decode($body);
 
-        if(empty($json)){
+        if(empty($jsonBody)){
             $this->LogService->setLog([
                 'message' => 'la json está vacía',
                 'function' => 'run',
@@ -66,9 +70,7 @@ class Index
             throw new \Exception('la json está vacía');
         }
 
-        for($page=0; $page < $json->totalPages; $page++){
-            $body = $this->requestPageNoAprovadas($page,20);
-            $jsonBody = json_decode($body);
+        for($page=1; $page < $jsonBody->totalPages; $page++){
 
             if(empty($jsonBody)){
                 $this->LogService->setLog([
@@ -87,6 +89,12 @@ class Index
 
             $this->saveFileInJson($content);
             $this->saveIdLogSucces($content);
+
+            $this->TreatmentService->run();
+            $this->Solicitud ->run($token);
+
+            $body = $this->requestPageNoAprovadas($page,20);
+            $jsonBody = json_decode($body);
 
         }
 
