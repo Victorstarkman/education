@@ -106,20 +106,19 @@ class Index
 
             $content = $this->checkContentExistInFile($jsonBody->content);
 
-            if (empty($content)) {
-                break;
+            if (!empty($content)) {
+                $this->saveFileInJson($content);
+                $this->saveIdLogSucces($content);
+
+                $this->TreatmentService->run();
+                $this->Solicitud->run($token);
             }
-
-            $this->saveFileInJson($content);
-            $this->saveIdLogSucces($content);
-
-            $this->TreatmentService->run();
-            $this->Solicitud->run($token);
-
             $body = $this->requestPageNoAprovadas($page, 20);
             $jsonBody = json_decode($body);
             $pageEcho = $page + 1;
             echo "Procesando solicitudes... pagina {$pageEcho}\n";
+
+
         }
 
         return true;
