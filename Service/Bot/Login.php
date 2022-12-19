@@ -62,7 +62,7 @@ class Login
     {
         $this->Request->request('https://login.abc.gob.ar', 'https://login.abc.gob.ar', 'GET', [
             'headers' => self::DEFAULT_HEADER
-        ]);
+        ], true);
     }
 
     private function requestPostLogin()
@@ -76,7 +76,7 @@ class Login
            'headers' => self::DEFAULT_HEADER
         ];
 
-        return $this->Request->request('https://login.abc.gob.ar/nidp/idff/sso?id=ABC-Form&sid=1&option=credential&sid=1&target=https://menu.abc.gob.ar/','https://login.abc.gob.ar/nidp/portal','POST',$payLoad);
+        return $this->Request->request('https://login.abc.gob.ar/nidp/idff/sso?id=ABC-Form&sid=1&option=credential&sid=1&target=https://menu.abc.gob.ar/','https://login.abc.gob.ar/nidp/portal','POST',$payLoad,true);
 
     }
 
@@ -87,7 +87,7 @@ class Login
                 'Host' => 'menu.abc.gob.ar',
                 'Origin' => 'https://menu.abc.gob.ar',
             ]
-        ]);
+        ],true);
     }
 
     private function requestGetLicenciasMedicasWeb()
@@ -97,14 +97,14 @@ class Login
                 'Host' => 'misaplicaciones5.abc.gob.ar',
                 'Origin' => 'https://misaplicaciones5.abc.gob.ar',
             ]
-        ]);
+        ],true);
 
         $body = $this->Request->request('https://misaplicaciones5.abc.gob.ar/LicenciasMedicasWeb/','https://menu.abc.gob.ar','GET',[
             'headers' => [
                 'Host' => 'misaplicaciones5.abc.gob.ar',
                 'Origin' => 'https://misaplicaciones5.abc.gob.ar',
             ]
-        ]);
+        ],true);
 
         $TokenSAML = $this->getTokenSAMLResponse($body);
 
@@ -142,7 +142,7 @@ class Login
                 "Sec-Fetch-Mode" => "navigate",
                 "Sec-Fetch-Site" => "same-site"
             ]
-        ]) ;
+            ], true) ;
 
 
         return $body;
@@ -157,7 +157,7 @@ class Login
                 'ar.gob.abc.slm.perfil' => 'PRESTADORA',
                 'app-version' => self::APP_VERSION,
             ]
-            ]);
+            ], true) ;
     }
 
     private function requestGetLoginCallback()
@@ -168,7 +168,7 @@ class Login
                 'Accept' => 'application/json, text/plain, */*',
                 'DNT' => '1',
             ]
-        ]);
+        ], true);
 
         if (
             preg_match('@enctype=[\'"]application/x-www-form-urlencoded[\'"]\s*action=[\'"](.*?)[\'"]@is', $body,$url) &&
@@ -184,7 +184,7 @@ class Login
                 'form_params' => [
                     'SAMLResponse' => $token[1]
                 ]
-            ]);
+            ], true);
             return;
         }
 
@@ -205,7 +205,7 @@ class Login
                 'Accept' => 'application/json, text/plain, */*',
                 'DNT' => '1',
             ]
-        ]);
+        ], true);
 
         $json = json_decode($body);
 

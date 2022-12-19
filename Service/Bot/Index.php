@@ -46,8 +46,9 @@ class Index
         $this->path = $path;
     }
 
-    public function run($token){
-        if(empty($token)){
+    public function run($token)
+    {
+        if (empty($token)) {
             $this->LogService->setLog([
                 'message' => 'la token está vacía',
                 'function' => 'run',
@@ -58,35 +59,54 @@ class Index
 
         $this->token = $token;
 
-        $body = $this->requestPageNoAprovadas(0,20);
+        $pageActual = $this->getPageActual();
+        $processedPage = $this->getProcessedPage();
+        $body = $this->requestPageNoAprovadas($pageActual, 20);
         $jsonBody = json_decode($body);
 
-        if(empty($jsonBody)){
+        if (empty($jsonBody)) {
             $this->LogService->setLog([
                 'message' => 'la json está vacía',
                 'function' => 'run',
             ], 'Failure', 'Index');
 
+            $jsonBody = new \stdClass();
+            $jsonBody->totalPages = 0;
+            $jsonBody->totalElements = 0;
+            $jsonBody->error = true;
+            $jsonBody->message = 'la json está vacía';
+
+            $this->LogService->savePageActual($pageActual,$jsonBody,'Index');
+
             throw new \Exception('la json está vacía');
         }
 
-        echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages ."\n";
-        echo "Procesando solicitudes... pagina 1\n";
+        echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages . "\n";
+        echo "Procesando solicitudes... pagina {$processedPage}\n";
+        $pageActual = ($pageActual == 0) ? 1 : $pageActual;
+        for ($page = $pageActual; $page < $jsonBody->totalPages; $page++) {
 
-        for($page=1; $page < $jsonBody->totalPages; $page++){
+            $this->LogService->savePageActual($page,$jsonBody,'Index');
 
-            if(empty($jsonBody)){
+            if (empty($jsonBody)) {
                 $this->LogService->setLog([
                     'message' => 'la jsonBody está vacía',
                     'function' => 'run',
                 ], 'Failure', 'Index');
 
+                $jsonBody = new \stdClass();
+                $jsonBody->totalPages = 0;
+                $jsonBody->totalElements = 0;
+                $jsonBody->error = true;
+                $jsonBody->message = 'la json está vacía';
+
+                $this->LogService->savePageActual($pageActual,$jsonBody,'Index');
                 throw new \Exception('la jsonBody está vacía');
             }
 
             $content = $this->checkContentExistInFile($jsonBody->content);
 
-            if(empty($content)){
+            if (empty($content)) {
                 break;
             }
 
@@ -94,51 +114,52 @@ class Index
             $this->saveIdLogSucces($content);
 
             $this->TreatmentService->run();
-            $this->Solicitud ->run($token);
+            $this->Solicitud->run($token);
 
-            $body = $this->requestPageNoAprovadas($page,20);
+            $body = $this->requestPageNoAprovadas($page, 20);
             $jsonBody = json_decode($body);
             $pageEcho = $page + 1;
             echo "Procesando solicitudes... pagina {$pageEcho}\n";
-
         }
 
         return true;
     }
 
-    private function requestPageNoAprovadas($page = 0, $numPerPage=20) {
+    private function requestPageNoAprovadas($page = 0, $numPerPage = 20)
+    {
         return $this->Request->request("https://misaplicaciones5.abc.gob.ar/wsLicenciasMedicas/solicitudestado/noAprobadas?&page={$page}&numPerPage={$numPerPage}&sortField=solicitudLicencia.fechaCreacion&sortDir=DESC&filterType=&filterData=&version=PRESTADORA", 'https://misaplicaciones5.abc.gob.ar/LicenciasMedicasWeb/index.html', 'GET', [
-            'headers' => array_merge(self::HEADER_DEFAULT, ['Authorization' => 'Bearer '.$this->token, 'app-version' => self::APP_VERSION]),
+            'headers' => array_merge(self::HEADER_DEFAULT, ['Authorization' => 'Bearer ' . $this->token, 'app-version' => self::APP_VERSION]),
 
         ]);
     }
 
-    private function saveFileInJson($content){
+    private function saveFileInJson($content)
+    {
         //data mais uid
-        $date = date('Y-m-d').'_'.uniqid(rand(0, 1000));
-        $file = $this->path."/File/PageNoAprovadas/{$date}.json";
-        if(file_exists($file)){
+        $date = date('Y-m-d') . '_' . uniqid(rand(0, 1000));
+        $file = $this->path . "/File/PageNoAprovadas/{$date}.json";
+        if (file_exists($file)) {
             $file = file_get_contents($file);
             $json = json_decode($file);
             $content = array_merge($json, $content);
-        }else{
+        } else {
             $content = $content;
         }
         file_put_contents($file, json_encode($content));
-
     }
 
-    private function saveIdLogSucces($conten){
+    private function saveIdLogSucces($conten)
+    {
 
-        if(!is_array($conten)){
+        if (!is_array($conten)) {
             $json = json_decode($conten, true);
-        }else{
+        } else {
             $json = $conten;
         }
 
 
 
-        if(empty($json)){
+        if (empty($json)) {
             $this->LogService->setLog([
                 'message' => 'la json conten está vacía',
                 'function' => 'saveIdLogSucces',
@@ -147,7 +168,7 @@ class Index
             throw new \Exception('la json conten está vacía');
         }
 
-        foreach($json as $key => $value){
+        foreach ($json as $key => $value) {
             $this->LogService->setLog([
                 'id' => $value->id,
                 'function' => 'saveIdLogSucces',
@@ -155,31 +176,60 @@ class Index
         }
     }
 
-    private function checkContentExistInFile($content){
-        $path = $this->path."/Logs/Success/";
+    private function checkContentExistInFile($content)
+    {
+        $path = $this->path . "/Logs/Success/";
         $files = scandir($path);
         $files = array_diff($files, array('.', '..'));
 
-        if(empty($files)){
+        if (empty($files)) {
             return $content;
         }
 
-        foreach($files as $file){
-            $file = file_get_contents($path.$file);
+        foreach ($files as $file) {
+            $file = file_get_contents($path . $file);
             $json = json_decode($file);
-            foreach($json as $key => $value){
-                foreach($content as $keyContent => $valueContent){
-                    if($value->id == $valueContent->id){
+            foreach ($json as $key => $value) {
+                foreach ($content as $keyContent => $valueContent) {
+                    if ($value->id == $valueContent->id) {
                         unset($content[$keyContent]);
                     }
                 }
             }
         }
 
-        if(empty($content)){
+        if (empty($content)) {
             return false;
         }
 
         return $content;
+    }
+
+    private function getPageActual()
+    {
+        $file = $this->path . "/Logs/Pages/log.txt";
+
+        if (!file_exists($file)) {
+            return 0;
+        }
+
+        $file = file_get_contents($file);
+        $json = json_decode($file, true)[0];
+
+        return ((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] < $json['totalPages']) ? $json['actualPage'] : 0;
+    }
+
+    private function getProcessedPage()
+    {
+        $file = $this->path . "/Logs/Pages/log.txt";
+
+        if (!file_exists($file)) {
+            return 1;
+        }
+
+        $file = file_get_contents($file);
+        $json = json_decode($file, true)[0];
+
+        return ((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] < $json['totalPages']) ? $json['processedPage'] : 1;
     }
 }

@@ -4,7 +4,7 @@ namespace Service;
 
 class LogService {
 
-    private $typeLog = ['Execution', 'Failure', 'Success', 'Treatment', 'Info'];
+    private $typeLog = ['Execution', 'Failure', 'Success', 'Treatment', 'Info', 'Pages'];
     private $path;
 
     public function __construct($path){
@@ -58,7 +58,7 @@ class LogService {
 
     private function creatingLog($log,$type){
 
-        if($type != 'Success') {
+        if($type != 'Success' && $type != 'Pages') {
             $date = date('Y-m-d');
             $file = $this->path."/Logs/{$type}/log_{$date}.txt";
         }else{
@@ -74,5 +74,32 @@ class LogService {
         }
 
         file_put_contents($file, json_encode($content));
+    }
+
+    public function savePageActual($page,$content,$way) {
+
+        //verificar se existe e se existir exclui
+        $file = $this->path."/Logs/Pages/log.txt";
+        if(file_exists($file)){
+            unlink($file);
+        }
+
+        $actualPage = $page;
+        $processedPage = $page + 1;
+        $processedRecord = $page*20;
+        $erroe = $content->error ?? false;
+        $message = $content->message ?? '';
+
+        $json = [
+            'totalPages' => $content->totalPages,
+            'totalRecords' => $content->totalElements,
+            'actualPage' => $actualPage,
+            'processedPage' => $processedPage,
+            'processedRecord' => $processedRecord,
+            'error' => $erroe,
+            'message' => $message,
+        ];
+
+        $this->setLog($json, 'Pages', $way);
     }
 }

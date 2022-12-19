@@ -39,25 +39,18 @@ class Bot
     public function run()
     {
         $token = $this->Login->run();
+        $this->setLogExeculte('starting the web crawler');
+
         while(true) {
 
             if($this->attempt > 3){
-                $log = [
-                    'date' => date('Y-m-d H:i:s'),
-                    'message' => 'the bot has been stopped because it has exceeded the number of attempts',
-                ];
-                $this->LogService->setLog($log, 'Failure', 'Bot.php');
+                $this->setLogFailue('the bot has been stopped because it has exceeded the number of attempts');
 
                 throw new \Exception('the bot has been stopped because it has exceeded the number of attempts');
 
                 break;
             }
 
-            $log = [
-                'date' => date('Y-m-d H:i:s'),
-                'message' => 'starting the web crawler',
-            ];
-            $this->LogService->setLog($log, 'Execution', 'Bot.php');
 
             try{
                 $this->Index->run($token);
@@ -67,43 +60,49 @@ class Bot
                 }
 
             }catch (\Exception $e){
-                $log = [
-                    'date' => date('Y-m-d H:i:s'),
-                    'message' => $e->getMessage(),
-                ];
-
-                $this->LogService->setLog($log, 'Failure', 'Bot.php');
+                $this->setLogFailue($e->getMessage());
                 $this->attempt++;
             }
 
-            $log = [
-                'date' => date('Y-m-d H:i:s'),
-                'message' => 'ending the web crawler',
-            ];
-
-
-            $this->LogService->setLog($log, 'Execution', 'Bot.php');
         }
+        $this->setLogExeculte('ending the web crawler');
+
         die('Bot has been stopped');
+
         return true;
     }
 
     private function createPaths(){
-        if(!file_exists(__DIR__.'/File')){
-            mkdir(__DIR__.'/File');
-        }
 
-        if(!file_exists(__DIR__.'/File/PageNoAprovadas')){
-            mkdir(__DIR__.'/File/PageNoAprovadas');
-        }
+        $path = [
+            '/File',
+            '/File/PageNoAprovadas',
+            '/File/Users',
+            '/File/DatosTratados',
+        ];
 
-        if(!file_exists(__DIR__.'/File/Users')){
-            mkdir(__DIR__.'/File/Users');
+        foreach ($path as $item){
+            if(!file_exists(__DIR__.$item)){
+                mkdir(__DIR__.$item);
+            }
         }
+    }
 
-        if(!file_exists(__DIR__.'/File/DatosTratados')){
-            mkdir(__DIR__.'/File/DatosTratados');
-        }
+    private function setLogExeculte($message){
+        $log = [
+            'date' => date('Y-m-d H:i:s'),
+            'message' => $message,
+        ];
+        $this->LogService->setLog($log, 'Execution', 'Bot.php');
+    }
+
+    private function setLogFailue($message) {
+        $log = [
+            'date' => date('Y-m-d H:i:s'),
+            'message' => $message,
+        ];
+
+        $this->LogService->setLog($log, 'Failure', 'Bot.php');
     }
 }
 

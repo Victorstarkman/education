@@ -49,7 +49,7 @@ class RequestServer
         return $this->cookies;
     }
 
-    public function request($url, $ref = null, $metodo = 'GET', $param = [])
+    public function request($url, $ref = null, $metodo = 'GET', $param = [], $isLogin = false)
     {
         try {
             preg_match('@(http[s]?:\/\/)?(.*?)\/@is', $url, $match);
@@ -84,8 +84,10 @@ class RequestServer
 
 
             try{
-                $randoSleep = rand(1, 3);
-                sleep($randoSleep);
+                if(!$isLogin){
+                    $randoSleep = rand(1, 3);
+                    sleep($randoSleep);
+                }
                 $res = $this->client->request($metodo, $url, $a_param);
             }catch (\Exception $e) {
                 return sprintf("Excecao: %d - %s, acessando %s\n", $e->getCode(), $e->getMessage(), $url);
