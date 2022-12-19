@@ -84,6 +84,18 @@ class Index
         echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages . "\n";
         echo "Procesando solicitudes... pagina {$processedPage}\n";
         $pageActual = ($pageActual == 0) ? 1 : $pageActual;
+        if( !isset($jsonBody->totalPages) || empty($jsonBody)) {
+            $log = [
+                'message' => 'la jsonBody está vacía',
+                'function' => 'run',
+                'jsonBody' => $jsonBody,
+            ];
+
+            $this->LogService->setLog($log, 'Failure', 'Index');
+
+            throw new \Exception('la jsonBody está vacía');
+        }
+
         for ($page = $pageActual; $page < $jsonBody->totalPages; $page++) {
 
             $this->LogService->savePageActual($page,$jsonBody,'Index');
