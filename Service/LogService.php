@@ -85,7 +85,7 @@ class LogService {
         }
 
         $actualPage = $page;
-        $processedPage = $page;
+        $processedPage = $page - 1s;
         $processedRecord = $page*20;
         $erroe = $content->error ?? false;
         $message = $content->message ?? '';
