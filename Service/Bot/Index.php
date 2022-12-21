@@ -97,8 +97,11 @@ class Index
         }
 
         for ($page = $pageActual; $page < $jsonBody->totalPages; $page++) {
-
-            $this->LogService->savePageActual($page,$jsonBody,'Index');
+            if($page == $jsonBody->totalPages){
+                $this->LogService->savePageActual($page,$jsonBody,'Index',true);
+            }else{
+                $this->LogService->savePageActual($page,$jsonBody,'Index');
+            }
 
             if (empty($jsonBody)) {
                 $this->LogService->setLog([
@@ -226,6 +229,10 @@ class Index
 
         $file = file_get_contents($file);
         $json = json_decode($file, true)[0];
+
+        if (((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] == $json['totalPages'])){
+            $this->LogService->savePageActual($json['actualPage'], $json['totalPages'],'Index',true);
+        }
 
         return ((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] < $json['totalPages']) ? $json['actualPage'] : 0;
     }

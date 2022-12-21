@@ -76,10 +76,11 @@ class LogService {
         file_put_contents($file, json_encode($content));
     }
 
-    public function savePageActual($page,$content,$way) {
+    public function savePageActual($page,$content,$way, $termino = false) {
 
         //verificar se existe e se existir exclui
         $file = $this->path."/Logs/Pages/log.txt";
+
         if(file_exists($file)){
             unlink($file);
         }
@@ -98,6 +99,7 @@ class LogService {
             'processedRecord' => $processedRecord,
             'error' => $erroe,
             'message' => $message,
+            'termino' => $termino,
         ];
 
         $this->setLog($json, 'Pages', $way);
