@@ -107,7 +107,7 @@ class LogService {
     }
 
 	private function saveOnDatabase($json) {
-		$mysqli = mysqli_connect('localhost', 'root', 'Cartul1na@', 'dienst_educacion')
+		$mysqli = mysqli_connect('localhost', 'root', '', '')
 		or die('No se pudo conectar: ' . mysqli_error());
 		$sql = "SELECT * FROM jobs WHERE name ='scrapperInit' and status = 1 order by id DESC LIMIT 1";
 		$id = null;
