@@ -84,6 +84,7 @@ class Report extends Entity
         'user' => true,
         'mode' => true,
         'privatedoctor' => true,
+        'externalID' => true,
         'files' => true,
     ];
     public function getNameStatus()

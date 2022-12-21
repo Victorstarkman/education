@@ -88,13 +88,6 @@ class PatientsTable extends Table
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
-
-        $validator
-            ->scalar('address')
-            ->maxLength('address', 25)
-            ->requirePresence('address', 'create')
-            ->notEmptyString('address');
-
         $validator
             ->email('email')
             ->allowEmptyString('email');
@@ -110,11 +103,6 @@ class PatientsTable extends Table
             ->requirePresence('document', 'create')
             ->notEmptyString('document');
 
-        $validator
-            ->scalar('job')
-            ->maxLength('job', 120)
-            ->requirePresence('job', 'create')
-            ->notEmptyString('job');
 
         $validator
             ->scalar('phone')

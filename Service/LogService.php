@@ -103,5 +103,33 @@ class LogService {
         ];
 
         $this->setLog($json, 'Pages', $way);
+	    $this->saveOnDatabase($json);
     }
+
+	private function saveOnDatabase($json) {
+		$mysqli = mysqli_connect('localhost', 'root', 'Cartul1na@', 'dienst_educacion')
+		or die('No se pudo conectar: ' . mysqli_error());
+		$sql = "SELECT * FROM jobs WHERE name ='scrapperInit' and status = 1 order by id DESC LIMIT 1";
+		$id = null;
+		if ($result = $mysqli->query($sql)) {
+			while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+				$id = $row['id'];
+			}
+		}
+
+		if (!is_null($id)) {
+			$extraSQL = '';
+			if ($json['termino']) {
+				$extraSQL = ' , status=2';
+			}
+
+			if ($json['error']) {
+				$extraSQL = ' , status=3';
+			}
+
+			$message = json_encode($json);
+			$sql ="UPDATE jobs SET message= '" . $message . "'". $extraSQL . " WHERE id=" . $id . ";";
+			$result = $mysqli->query($sql);
+		}
+	}
 }

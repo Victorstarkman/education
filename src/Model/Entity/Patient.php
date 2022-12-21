@@ -56,8 +56,10 @@ class Patient extends Entity
         'company' => true,
         'city' => true,
         'cuil' => true,
+        'externalID' => true,
         'company_id'=>true,
     ];
+
     public function getLocation() {
 		return $this->city->name . ', ' . $this->city->county->name . ', ' . $this->city->county->state->name ;
 	}
