@@ -75,6 +75,7 @@ return static function (RouteBuilder $routes) {
             ]);
         $route->connect('/empresas', ['controller' => 'Companies', 'action' => 'index']);
         $route->connect('/empresas/crear', ['controller' => 'Companies', 'action' => 'add']);
+        $route->connect('/scrapper', ['controller' => 'Jobs', 'action' => 'index']);
         $route->fallbacks();
     });
 
