@@ -72,7 +72,7 @@ $redirect = !empty($group) ? $group['redirect'] : ''; ?>
         });
     }
 
-    setTimeout(reload, 30000);
+    setInterval(reload, 30000);
 </script>
 <?php $this->end(); ?>
 
