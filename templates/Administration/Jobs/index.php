@@ -15,7 +15,7 @@
 		<p class="title-results">Scrappers</p>
 		<?= $this->Flash->render() ?>
         <div class="show-results">
-	        <?php $actualTime = new \Cake\I18n\FrozenTime(); ?>
+	        <?php $actualTime = new \Cake\I18n\FrozenTime(null,  'America/Argentina/Buenos_Aires'); ?>
             <p>Informacion se actualiza automaticamente cada 30 segundos. Ultima actualización: <?= $actualTime->format('d/m/Y H:i:s'); ?></p>
             <table class="table table-bordered" id="tabla_actualizaciones">
                 <thead>
