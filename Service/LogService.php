@@ -76,30 +76,122 @@ class LogService {
         file_put_contents($file, json_encode($content));
     }
 
-    public function savePageActual($page,$content,$way, $termino = false) {
+    public function savePageActual($page = false, $content = false, $way = false, $termino = false, $recordsSalteados = 0) {
 
         //verificar se existe e se existir exclui
         $file = $this->path."/Logs/Pages/log.txt";
 
         if(file_exists($file)){
+            //get content
+            $contentfile = file_get_contents($file);
+            $json = json_decode($contentfile)[0];
+
+            //verificar se o page atual é maior que o page processado
+            if($page <= $json->processedPage){
+                $termino = true;
+            }else{
+                $termino = false;
+            }
+
+            //get records salteados e erro
+            if(isset($json->recordsSalteados))
+                $recordsSalteadosExiti = $json->recordsSalteados;
+            else
+                $recordsSalteadosExiti = 0;
+
+            if(isset($json->error))
+                $error = $json->error;
+            else
+                $error = false;
+
+            if(isset($json->message))
+                $message = $json->message;
+            else
+                $message = '';
+
+            if(isset($json->termino))
+                $termino = $json->termino;
+            else
+                $termino = false;
+
+            if(isset($json->actualPage))
+                $actualPage = $json->actualPage;
+            else
+                $actualPage = 0;
+
+            if(isset($json->processedPage))
+                $processedPage = $json->processedPage;
+            else
+                $processedPage = 0;
+
+            if(isset($json->processedRecord))
+                $processedRecord = $json->processedRecord;
+            else
+                $processedRecord = 0;
+
+            if(isset($json->totalPages))
+                $totalPages = $json->totalPages;
+            else
+                $totalPages = 0;
+
+            if(isset($json->totalRecords))
+                $totalRecords = $json->totalRecords;
+            else
+                $totalRecords = 0;
+
+
+
+            //excluir arquivo
             unlink($file);
         }
 
-        $actualPage = $page;
-        $processedPage = $page - 1;
-        $processedRecord = $page * 20;
-        $erroe = $content->error ?? false;
-        $message = $content->message ?? '';
+        if($page != false && $content != false){
+            $actualPage = $page;
+            $processedPage = $page - 1;
+            $processedRecord = $page * 20;
+            $error = $content->error ?? false;
+            $message = $content->message ?? '';
+            $totalPages = $content->totalPages ?? 0;
+            $totalRecords =  is_object($content) ? $content->totalElements : 0;
+
+            if($recordsSalteados > 0){
+                $processedRecord = $processedRecord - $recordsSalteados;
+                if(isset($recordsSalteadosExiti))
+                    $recordsSalteados = $recordsSalteados + $recordsSalteadosExiti;
+                else
+                    $recordsSalteados = $recordsSalteados;
+            }else{
+                if(isset($recordsSalteadosExiti))
+                    $recordsSalteados = $recordsSalteadosExiti;
+                else
+                    $recordsSalteados = 0;
+            }
+
+        }else{
+            if($recordsSalteados > 0){
+                $processedRecord = $processedRecord - $recordsSalteados;
+                if(isset($recordsSalteadosExiti))
+                    $recordsSalteados = $recordsSalteados + $recordsSalteadosExiti;
+                else
+                    $recordsSalteados = $recordsSalteados;
+            }else{
+                if(isset($recordsSalteadosExiti))
+                    $recordsSalteados = $recordsSalteadosExiti;
+                else
+                    $recordsSalteados = 0;
+            }
+        }
 
         $json = [
-            'totalPages' => $content->totalPages,
-            'totalRecords' => $content->totalElements,
+            'totalPages' => $totalPages,
+            'totalRecords' => $totalRecords,
             'actualPage' => $actualPage,
             'processedPage' => $processedPage,
             'processedRecord' => $processedRecord,
-            'error' => $erroe,
+            'error' => $error,
             'message' => $message,
             'termino' => $termino,
+            'recordsSalteados' => $recordsSalteados
         ];
 
         $this->setLog($json, 'Pages', $way);

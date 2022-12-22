@@ -112,66 +112,53 @@ class Solicitud
     private function runContent($content)
     {
         $this->countPathInUser();
-        if( ! is_array($content)){
-            if(is_object($content)){
+        if (!is_array($content)) {
+            if (is_object($content)) {
                 $content = json_encode($content);
                 $content = json_decode($content, true);
-            }elseif(is_string($content)){
+            } elseif (is_string($content)) {
                 $content = json_decode($content, true);
             }
         }
 
 
-        if( ! is_array($content)){
-            $log = [
-                'date' => date('Y-m-d H:i:s'),
-                'message' => 'Error en el archivo json',
-                'content' => $content,
-                'line' => 'runContent',
-            ];
-
-            $this->LogService->setLog($log, 'Failure', 'solicitud.php');
-            throw new \Exception('Error en el archivo json');
-        }
+        if (!is_array($content)) {
+            $this->LogService->savePageActual(false, false, 'Solicitud', false, 20);
+        } else {
 
 
-        foreach ($content as $item) {
-            if( ! is_array($item)){
-                if(is_object($item)){
-                    $item = json_encode($item);
-                    $item = json_decode($item, true);
-                }elseif(is_string($item)){
-                    $item = json_decode($item, true);
+
+
+            foreach ($content as $item) {
+                if (!is_array($item)) {
+                    if (is_object($item)) {
+                        $item = json_encode($item);
+                        $item = json_decode($item, true);
+                    } elseif (is_string($item)) {
+                        $item = json_decode($item, true);
+                    }
+                }
+                if (!isset($item['solicitudLicencia']['id'])) {
+                    $this->LogService->savePageActual(false, false, 'Solicitud', false, 20);
+
+                } else {
+                    $id = $item['solicitudLicencia']['id'];
+
+                    $response = $this->requestGetSolictud($id);
+
+                    if (empty($response)) {
+                        return false;
+                    }
+
+                    $pathName = $this->creatingPathUsers($response, $id);
+
+                    $imags = $this->requestGetImage($id);
+
+                    $this->saveImg($pathName, $imags);
+                    $this->saveJson($response, $item, $pathName);
                 }
             }
-            if(!isset($item['solicitudLicencia']['id'])){
-                $log = [
-                    'date' => date('Y-m-d H:i:s'),
-                    'message' => 'Error en el archivo json',
-                    'content' => $item,
-                    'line' => 'runContent',
-                ];
-
-                $this->LogService->setLog($log, 'Failure', 'solicitud.php');
-                throw new \Exception('Error en el archivo json');
-            }
-
-            $id = $item['solicitudLicencia']['id'];
-
-            $response = $this->requestGetSolictud($id);
-
-            if (empty($response)) {
-                return false;
-            }
-
-            $pathName = $this->creatingPathUsers($response, $id);
-
-            $imags = $this->requestGetImage($id);
-
-            $this->saveImg($pathName, $imags);
-            $this->saveJson($response, $item, $pathName);
         }
-
     }
 
     private function requestGetSolictud($id)
@@ -314,24 +301,24 @@ class Solicitud
         $targetFile = $targetPath . $file;
         $attempts = 0;
 
-        while (!rename($this->pathFile .'/'. $file, $targetFile) && $attempts < 3) {
+        while (!rename($this->pathFile . '/' . $file, $targetFile) && $attempts < 3) {
             $attempts++;
         }
 
         if ($attempts == 3) {
             throw new \Exception("Failed to move file after 3 attempts.");
-         } else {
+        } else {
             //remover arquivo caso ele exista
-            if (file_exists($this->pathFile .'/'. $file)) {
+            if (file_exists($this->pathFile . '/' . $file)) {
                 //tentar remover o arquivo
                 $attempts = 0;
-                while (!unlink($this->pathFile .'/'. $file) && $attempts < 3) {
+                while (!unlink($this->pathFile . '/' . $file) && $attempts < 3) {
                     $attempts++;
                 }
                 if ($attempts == 3) {
                     throw new \Exception("Failed to remove file after 3 attempts.");
                 }
             }
-         }
+        }
     }
 }
