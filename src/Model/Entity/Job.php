@@ -73,20 +73,30 @@ class Job extends Entity
 		return $name;
 	}
 
-	function getPorcentaje() {
-		$porcentaje = 'Desconocido';
+	function getPercentage() {
+		$value = $this->showProgressBar();
+		$percentage = 'Desconocido';
+		if ($value) {
+			$percentage = $value. '%';
+		}
+
+		return $percentage;
+	}
+
+	function showProgressBar() {
+		$show = false;
 		if (!empty($this->message)) {
 			$msg = json_decode($this->message, true);
 			switch ($this->name) {
 				case 'scrapperInit':
 				case 'scrapperProcessor':
 					if ($msg['processedPage'] > 0 && $msg['totalPages'] > 0) {
-						$porcentaje = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2) . '%';
+						$show = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2);
 					}
 					break;
 			}
 		}
 
-		return $porcentaje;
+		return $show;
 	}
 }
