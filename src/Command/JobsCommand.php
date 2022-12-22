@@ -35,7 +35,7 @@ class JobsCommand extends Command
 	//	$this->Messenger = new MessengerComponent(new ComponentRegistry(), []);
 
 		$this->statuses = [
-			'running' => [0,1],
+			'running' => 1,
 			'finished' => 2,
 			'error' => 3,
 			'completed' => 4,
@@ -91,7 +91,7 @@ class JobsCommand extends Command
 	private function initCommand() {
 		$this->saveOnTable('jobs', [
 			'name' => 'scrapperInit',
-			'status' => 1,
+			'status' => 0,
 			'user_id' => 1,
 		]);
 
@@ -129,14 +129,20 @@ class JobsCommand extends Command
 		$files = $dir->read(true, ['files']);
 		// Recorro las paginas
 		$this->consoleLog('Reading directories.');
-		$patientsTable = $this->fetchTable('Patients');
+		$data = [
+			'totalPages' => count($files[0]),
+			'actualPage' => 1,
+			'processedPage' => 0,
+			'recordsProcessed' => 0,
+			'ended' => false,
+		];
+		$this->updateJob('scrapperProcessor', $data);
 		foreach ($files[0] as $file) {
 			$dir2 = new Folder($directoryFiles . DS . $file);
 			$files2 = $dir2->read(true);
 			//Recorro los registros
 			foreach ($files2[0] as $file2) {
 				$dir3 = new Folder($directoryFiles . DS . $file . DS . $file2);
-
 				$files3 = $dir3->read(true);
 				foreach ($files3 as $file3) {
 					if (!empty($file3)) {
@@ -146,13 +152,13 @@ class JobsCommand extends Command
 							if (!empty($userFile['solicitudLicencia'])) {
 								if (!empty($userFile['solicitudLicencia']['agente'])) {
 									$patientID = $this->searchOnTableOrCreate('Patients', [
-										'document' => trim($userFile['solicitudLicencia']['agente']['cuil']),
+										'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
 									],
 										[
-											'name' => trim($userFile['solicitudLicencia']['agente']['apellidoNombre']),
-											'email' => trim($userFile['solicitudLicencia']['agente']['emailAlternativo']),
-											'official_email' => trim($userFile['solicitudLicencia']['agente']['email']),
-											'document' => trim($userFile['solicitudLicencia']['agente']['cuil']),
+											'name' => $this->trim($userFile['solicitudLicencia']['agente']['apellidoNombre']),
+											'email' => $this->trim($userFile['solicitudLicencia']['agente']['emailAlternativo']),
+											'official_email' => $this->trim($userFile['solicitudLicencia']['agente']['email']),
+											'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
 											'phone' => $userFile['solicitudLicencia']['agente']['area'] . '' . $userFile['solicitudLicencia']['agente']['numCelular'],
 											'company_id' => 1,
 											'externalID' => $userFile['solicitudLicencia']['agente']['id'],
@@ -166,8 +172,8 @@ class JobsCommand extends Command
 											$userMedicalCenterInfo = $userFile['solicitudLicencia']['agente']['centroAuditoria'];
 											$medicalCenterID = $this->searchOnTableOrCreate(
 												'MedicalCenters' ,
-												['district' => trim($userMedicalCenterInfo['razonSocial'])],
-												['district' => trim($userMedicalCenterInfo['razonSocial'])]);
+												['district' => $this->trim($userMedicalCenterInfo['razonSocial'])],
+												['district' => $this->trim($userMedicalCenterInfo['razonSocial'])]);
 										}
 
 										$cie10ID = null;
@@ -177,7 +183,7 @@ class JobsCommand extends Command
 												['code' => $userFile['diagnostico']['idDiagnostico']],
 												[
 													'code' => $userFile['diagnostico']['idDiagnostico'],
-													'name' => trim($userFile['diagnostico']['detalle']),
+													'name' => $this->trim($userFile['diagnostico']['detalle']),
 												],
 											);
 										}
@@ -194,8 +200,8 @@ class JobsCommand extends Command
 													]
 												],
 												[
-													'name' => trim($doctorData['nombre']),
-													'lastname' => trim($doctorData['apellido']),
+													'name' => $this->trim($doctorData['nombre']),
+													'lastname' => $this->trim($doctorData['apellido']),
 													'license' => ($doctorData['matriculaProvincial'] > 0) ? $doctorData['matriculaProvincial'] : null,
 													'licenseNational' => ($doctorData['matriculaNacional'] > 0) ? $doctorData['matriculaNacional'] : null,
 												],
@@ -307,14 +313,37 @@ class JobsCommand extends Command
 									}
 								}
 							}
+							$data['recordsProcessed']++;
+							$this->updateJob('scrapperProcessor', $data);
 							$this->consoleLog('User file reading done.');
 						}
 					}
 				}
 			}
+			$data['processedPage']++;
+			$this->updateJob('scrapperProcessor', $data);
 		}
-
+		$data['ended'] = true;
+		$this->updateJob('scrapperProcessor', $data);
 		$this->consoleLog('Reading directories done.');
+	}
+
+	private function updateJob($type, $data) {
+		$jobTable = $this->fetchTable('jobs');
+		switch ($type) {
+			case 'scrapperProcessor':
+				$lastJob = $jobTable->find()->where(['name' => 'scrapperProcessor', 'status IN' => [1,0]])->order(['id' => 'DESC'])->first();
+				$jobToUpdate = $jobTable->get($lastJob->id);
+				if ($jobToUpdate->status == 0) {
+					$jobToUpdate->status = 1;
+				}
+				$jobToUpdate->message = json_encode($data);
+				if ($data['ended']) {
+					$jobToUpdate->status = $this->statuses['completed'];
+				}
+				$jobTable->save($jobToUpdate);
+				break;
+		}
 	}
 
 	private function jobRunning($type): bool
@@ -398,6 +427,10 @@ class JobsCommand extends Command
 
 
 		return $result;
+	}
+
+	private function trim($string) {
+		return (!empty($string)) ? trim($string) : $string;
 	}
 
 }

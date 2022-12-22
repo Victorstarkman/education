@@ -19,7 +19,8 @@ class JobsController extends AppController
 	 */
 	public function index()
 	{
-		$jobs = $this->paginate($this->Jobs);
+		$getJobs = $this->Jobs->find()->order(['id' => 'desc']);
+		$jobs = $this->paginate($getJobs);
 		$this->set(compact('jobs'));
 	}
 }

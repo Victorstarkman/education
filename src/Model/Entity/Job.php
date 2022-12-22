@@ -79,6 +79,7 @@ class Job extends Entity
 			$msg = json_decode($this->message, true);
 			switch ($this->name) {
 				case 'scrapperInit':
+				case 'scrapperProcessor':
 					$porcentaje = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2) . '%';
 					break;
 			}
