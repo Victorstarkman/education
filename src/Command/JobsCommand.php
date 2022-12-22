@@ -91,7 +91,7 @@ class JobsCommand extends Command
 	private function initCommand() {
 		$this->saveOnTable('jobs', [
 			'name' => 'scrapperInit',
-			'status' => 0,
+			'status' => 1,
 			'user_id' => 1,
 		]);
 
@@ -106,7 +106,7 @@ class JobsCommand extends Command
 			$jobsTable->save($job);
 			$this->saveOnTable('jobs', [
 				'name' => 'scrapperProcessor',
-				'status' => 1,
+				'status' => 0,
 				'user_id' => 1,
 			]);
 			$this->executeCommand(JobsCommand::class);
