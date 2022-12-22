@@ -78,6 +78,8 @@ class Job extends Entity
 		$percentage = 'Desconocido';
 		if ($value) {
 			$percentage = $value. '%';
+		} elseif ($this->status !=3) {
+			$percentage = '-';
 		}
 
 		return $percentage;
@@ -87,13 +89,15 @@ class Job extends Entity
 		$show = false;
 		if (!empty($this->message)) {
 			$msg = json_decode($this->message, true);
-			switch ($this->name) {
-				case 'scrapperInit':
-				case 'scrapperProcessor':
-					if ($msg['processedPage'] > 0 && $msg['totalPages'] > 0) {
-						$show = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2);
-					}
-					break;
+			if ($this->status !=3) {
+				switch ($this->name) {
+					case 'scrapperInit':
+					case 'scrapperProcessor':
+						if ($msg['processedPage'] > 0 && $msg['totalPages'] > 0) {
+							$show = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2);
+						}
+						break;
+				}
 			}
 		}
 
