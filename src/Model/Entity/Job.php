@@ -78,7 +78,7 @@ class Job extends Entity
 		$percentage = 'Desconocido';
 		if ($value) {
 			$percentage = $value. '%';
-		} elseif ($this->status !=3) {
+		} elseif ($this->status == 3) {
 			$percentage = '-';
 		}
 
