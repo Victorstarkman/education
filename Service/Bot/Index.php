@@ -65,26 +65,27 @@ class Index
         $jsonBody = json_decode($body);
 
         if (empty($jsonBody)) {
-            $this->LogService->setLog([
-                'message' => 'la json está vacía',
-                'function' => 'run',
-            ], 'Failure', 'Index');
+            $jsonPages = $this->LogService->getPages();
 
-            $jsonBody = new \stdClass();
-            $jsonBody->totalPages = 0;
-            $jsonBody->totalElements = 0;
-            $jsonBody->error = true;
-            $jsonBody->message = 'la json está vacía';
+            if ($jsonPages) {
 
-            $this->LogService->savePageActual($pageActual,$jsonBody,'Index');
+                $pageActual = $jsonPages->pageActual;
+                $termino = $jsonPages->termino;
+                $totalPages = $jsonPages->totalPages;
 
-            throw new \Exception('la json está vacía');
+                if ($pageActual == $totalPages) {
+                    $jsonBody = $jsonPages;
+                    $jsonBody->termino = true;
+                    $this->LogService->savePageActual($pageActual, $jsonBody, 'Index', true);
+                    throw new \Exception('la json está vacía');
+                }
+            }
         }
 
         echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages . "\n";
         echo "Procesando solicitudes... pagina {$processedPage}\n";
         $pageActual = ($pageActual == 0) ? 1 : $pageActual;
-        if( !isset($jsonBody->totalPages) || empty($jsonBody)) {
+        if (!isset($jsonBody->totalPages) || empty($jsonBody)) {
             $log = [
                 'message' => 'la jsonBody está vacía',
                 'function' => 'run',
@@ -97,43 +98,44 @@ class Index
         }
 
         for ($page = $pageActual; $page < $jsonBody->totalPages; $page++) {
-            if($page == $jsonBody->totalPages){
-                $this->LogService->savePageActual($page,$jsonBody,'Index',true);
-            }else{
-                $this->LogService->savePageActual($page,$jsonBody,'Index');
+            if ($page == $jsonBody->totalPages) {
+                $this->LogService->savePageActual($page, $jsonBody, 'Index', true);
+            } else {
+                $this->LogService->savePageActual($page, $jsonBody, 'Index');
             }
 
             if (empty($jsonBody)) {
-                $this->LogService->setLog([
-                    'message' => 'la jsonBody está vacía',
-                    'function' => 'run',
-                ], 'Failure', 'Index');
+                $jsonPages = $this->LogService->getPages();
 
-                $jsonBody = new \stdClass();
-                $jsonBody->totalPages = 0;
-                $jsonBody->totalElements = 0;
-                $jsonBody->error = true;
-                $jsonBody->message = 'la json está vacía';
+                if ($jsonPages) {
 
-                $this->LogService->savePageActual($pageActual,$jsonBody,'Index');
-                throw new \Exception('la jsonBody está vacía');
+                    $pageActual = $jsonPages->pageActual;
+                    $termino = $jsonPages->termino;
+                    $totalPages = $jsonPages->totalPages;
+
+                    if ($pageActual == $totalPages) {
+                        $jsonBody = $jsonPages;
+                        $jsonBody->termino = true;
+                        $this->LogService->savePageActual($pageActual, $jsonBody, 'Index', true);
+                        throw new \Exception('la json está vacía');
+                    }
+                }
+            } else {
+
+                $content = $this->checkContentExistInFile($jsonBody->content);
+
+                if (!empty($content)) {
+                    $this->saveFileInJson($content);
+                    $this->saveIdLogSucces($content);
+
+                    $this->TreatmentService->run();
+                    $this->Solicitud->run($token);
+                }
+                $body = $this->requestPageNoAprovadas($page, 20);
+                $jsonBody = json_decode($body);
+                $pageEcho = $page + 1;
+                echo "Procesando solicitudes... pagina {$pageEcho}\n";
             }
-
-            $content = $this->checkContentExistInFile($jsonBody->content);
-
-            if (!empty($content)) {
-                $this->saveFileInJson($content);
-                $this->saveIdLogSucces($content);
-
-                $this->TreatmentService->run();
-                $this->Solicitud->run($token);
-            }
-            $body = $this->requestPageNoAprovadas($page, 20);
-            $jsonBody = json_decode($body);
-            $pageEcho = $page + 1;
-            echo "Procesando solicitudes... pagina {$pageEcho}\n";
-
-
         }
 
         return true;
@@ -230,8 +232,8 @@ class Index
         $file = file_get_contents($file);
         $json = json_decode($file, true)[0];
 
-        if (((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] == $json['totalPages'])){
-            $this->LogService->savePageActual($json['actualPage'], $json['totalPages'],'Index',true);
+        if (((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] == $json['totalPages'])) {
+            $this->LogService->savePageActual($json['actualPage'], $json['totalPages'], 'Index', true);
         }
 
         return ((isset($json['actualPage']) && isset($json['totalPages'])) && $json['actualPage'] < $json['totalPages']) ? $json['actualPage'] : 0;

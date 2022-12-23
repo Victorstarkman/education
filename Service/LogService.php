@@ -198,6 +198,17 @@ class LogService {
 	    $this->saveOnDatabase($json);
     }
 
+    public function getPages() {
+        $file = $this->path."/Logs/Pages/log.txt";
+        if(file_exists($file)){
+            $contentfile = file_get_contents($file);
+            $json = json_decode($contentfile)[0];
+            return $json;
+        }else{
+            return false;
+        }
+    }
+
 	private function saveOnDatabase($json) {
 		$config = include 'config.php';
 		$mysqli = mysqli_connect($config['hostname'], $config['user'], $config['password'], $config['database'])
