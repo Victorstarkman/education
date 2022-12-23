@@ -133,9 +133,9 @@ class Index
                 }
                 $body = $this->requestPageNoAprovadas($page, 20);
                 $jsonBody = json_decode($body);
-                $pageEcho = $page + 1;
-                echo "Procesando solicitudes... pagina {$pageEcho}\n";
             }
+            $pageEcho = $page + 1;
+            echo "Procesando solicitudes... pagina {$pageEcho}\n";
         }
 
         return true;
