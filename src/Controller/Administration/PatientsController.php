@@ -187,14 +187,17 @@ class PatientsController extends AppController
             }
         }
 
-        $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()]);
+        $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()])->contain(['Modes','MedicalCenters']);
 
         $settings = [
             'order' => ['created' => 'desc'],
             'limit' => 10,
+            
         ];
 
         $reports = $this->paginate($reports, $settings);
+        /*  debug($reports);
+        die();  */
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
