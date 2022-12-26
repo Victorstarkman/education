@@ -12,49 +12,31 @@
                 <thead>
                 <tr>
                     <th><?= __('Nombre')?></th>
-                    <th><?= __('Apellido') ?></th>
-                    <th><?= __('DNI') ?></th>
+                    <th><?= __('CUIL') ?></th>
                     <th><?= __('Email') ?></th>
+                    <th><?= __('Email Oficial') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($patient->name) ?></td>
-                    <td><?= h($patient->lastname) ?></td>
                     <td><?= h($patient->document) ?></td>
                     <td><?= h($patient->email) ?></td>
-                </tr>
+                    <td><?= h($patient->official_email) ?></td>
                 </tbody>
             </table>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th><?= __('Email oficial')?></th>
-                    <th><?= __('cuil') ?></th>
-                    <th><?= __('Domicilio') ?></th>
+                    
                     <th><?= __('Telefono') ?></th>
-
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-	                <?php $time = \Cake\I18n\FrozenTime::parse($patient->oficial_email);  ?>
-                    <td><?= h($patient->cuil) ?></td>
-                    <td><?= h($patient->address) ?></td>
-                    <td><?= h($patient->phone) ?></td>
-
-                </tr>
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
                     <th><?= __('Puesto de trabajo') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($patient->phone) ?></td>
+                    <td><?= h($patient->job) ?></td>
                 </tr>
                 </tbody>
             </table>

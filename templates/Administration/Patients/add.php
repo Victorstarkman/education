@@ -28,13 +28,13 @@
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('cuil', ['label' => 'CUIL *',
+                        <?= $this->Form->control('document', ['label' => 'CUIL *',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => true ]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('document', ['label' => 'DNI  ',
+                        <?= $this->Form->control('cuil', ['label' => 'DNI  ',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                     </div>
                 </div>
@@ -48,12 +48,6 @@
                     <div class="form-group">
                         <?= $this->Form->control('official_email', ['label' => 'Email Oficial ',
                             'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
-                    </div>
-                </div>
-                <div class="pt-0 col-lg-4 col-sm-12">
-                    <div class="form-group">
-                        <?= $this->Form->control('address', ['label' => 'Domicilio',
-                            'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
