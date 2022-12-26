@@ -163,15 +163,29 @@ class JobsCommand extends Command
 								if (!empty($userFile)) {
 									if (!empty($userFile['solicitudLicencia'])) {
 										if (!empty($userFile['solicitudLicencia']['agente'])) {
+											$cuil = $this->trim($userFile['solicitudLicencia']['agente']['cuil']);
+											$document = $this->trim($userFile['solicitudLicencia']['agente']['documento']);
+											$searchWhere = [];
+											if (!empty($cuil) && !empty($document))  {
+												$searchWhere = [
+													'OR' => [
+														'cuil' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
+														'document' => $this->trim($userFile['solicitudLicencia']['agente']['documento'])
+													]
+												];
+											} elseif (!empty($cuil)) {
+												$searchWhere = ['cuil' => $this->trim($userFile['solicitudLicencia']['agente']['cuil'])];
+											} elseif (!empty($document)) {
+												$searchWhere = ['document' => $this->trim($userFile['solicitudLicencia']['agente']['documento'])];
+											}
 
-											$patientResponse = $this->searchOnTableOrCreate('Patients', [
-												'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
-											],
+											$patientResponse = $this->searchOnTableOrCreate('Patients', $searchWhere,
 												[
 													'name' => $this->trim($userFile['solicitudLicencia']['agente']['apellidoNombre']),
 													'email' => $this->trim($userFile['solicitudLicencia']['agente']['emailAlternativo']),
 													'official_email' => $this->trim($userFile['solicitudLicencia']['agente']['email']),
-													'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
+													'cuil' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
+													'document' => $this->trim($userFile['solicitudLicencia']['agente']['documento']),
 													'phone' => $userFile['solicitudLicencia']['agente']['area'] . '' . $userFile['solicitudLicencia']['agente']['numCelular'],
 													'company_id' => 1,
 													'externalID' => $userFile['solicitudLicencia']['agente']['id'],
