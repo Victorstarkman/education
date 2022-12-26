@@ -1,0 +1,44 @@
+version: "3"
+services:
+  mysql_docker_bot:
+    image: mysql:8.0
+    container_name: mysql_docker_bot_abc_gov_ag
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: [ 'CMD', 'mysqladmin', 'ping', '-u', 'root', '--password=123456' ]
+      interval: 1m
+      timeout: 10s
+      retries: 5
+    environment:
+      MYSQL_DATABASE: bot
+      MYSQL_USER: bot_mysql
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_PORT: 3307
+      MYSQL_CHARSET: utf8
+  php_docker:
+    build:
+      context: ./docker/php-7.4
+      dockerfile: Dockerfile
+    container_name: php_7_4_abc_gov_ag
+    links:
+      - mysql_docker_bot
+    ports:
+      - "8000:80"
+    volumes:
+    #  - ./config/site-available/laravel.conf:/etc/apache2/sites-available/000-default.conf
+    #  - ./laravel:/var/www/html
+      - ./src/:/var/www/bot
+      - ./docker/php-7.4/Files:/var/www/filesBot
+    environment:
+      - GENERICSQLFORMAT_HOST=mysql_docker_bot
+      - GENERICSQLFORMAT_USER=bot_mysql
+      - GENERICSQLFORMAT_PASSWORD=123456
+      - GENERICSQLFORMAT_DATABASENAME=bot
+      - GENERICSQLFORMAT_PORT=3306
+      - GENERICSQLFORMAT_DRIVE=mysql
+      - APP_VERSION=1.4.4
+      - SLEEP=false
+      - PATHFBOOT=/var/www/filesBot/
