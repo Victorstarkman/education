@@ -516,14 +516,15 @@ class JobsCommand extends Command
 			'msg' => '',
 		];
 		try {
-			$table = $this->fetchTable($table);
+			$tableName = $table;
+			$table = $this->fetchTable($tableName);
 			$tableEntity = $table->newEmptyEntity();
 			$tableEntity = $table->patchEntity($tableEntity, $data);
 			$response['creationEntity'] = $table->save($tableEntity);
 			if (!$response['creationEntity']) {
 				//debug($tableEntity);
 				$response['error'] = true;
-				$response['msg'] = 'Error al generar: ' . $table . 'Data: ' . json_encode($data);
+				$response['msg'] = 'Error al generar: ' . $tableName . 'Data: ' . json_encode($data);
 			}
 		} catch (\Exception $e) {
 			$response['error'] = true;
