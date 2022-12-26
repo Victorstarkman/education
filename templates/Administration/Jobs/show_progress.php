@@ -1,5 +1,5 @@
 <?php $actualTime = new \Cake\I18n\FrozenTime(null,  'America/Argentina/Buenos_Aires'); ?>
-<p>Informacion se actualiza automaticamente cada 30 segundos. Ultima actualización: <?= $actualTime->format('d/m/Y H:i:s'); ?></p>
+<p>Informacion se actualiza automaticamente cada 5 segundos. Ultima actualización: <?= $actualTime->format('d/m/Y H:i:s'); ?></p>
 <table class="table table-bordered" id="tabla_actualizaciones">
 	<thead>
 	<tr>
