@@ -24,15 +24,14 @@ class JobsCommand extends Command
 	private function consoleLog($text = '') {
 		$this->logs[] = $text;
 		$this->io->out($text);
-	//	$this->file->append($text."\r\n");
+		//	$this->file->append($text."\r\n");
 	}
 
 	public function initialize(): void
 	{
 		parent::initialize();
 		$this->io = new ConsoleIo();
-	//	$this->file = new File(ROOT . DS . 'logs/import_police_appointment.log');
-	//	$this->Messenger = new MessengerComponent(new ComponentRegistry(), []);
+		//	$this->file = new File(ROOT . DS . 'logs/import_police_appointment.log');
 
 		$this->statuses = [
 			'running' => 1,
@@ -99,7 +98,8 @@ class JobsCommand extends Command
 	}
 
 	private function checkInitCommand() {
-		if ($lastId = $this->jobFinished('scrapperInit')) {
+		$lastId = (int) $this->jobFinished('scrapperInit');
+		if ($lastId > 0 && !$this->jobRunning('scrapperProcessor')) {
 			$jobsTable = $this->fetchTable('Jobs');
 			$job = $jobsTable->get($lastId);
 			$job->status = $this->statuses['completed'];
@@ -119,7 +119,8 @@ class JobsCommand extends Command
 		}
 
 		$today = new FrozenTime();
-		$directoryFiles = ROOT . DS . 'Service' . DS . 'File' . DS . 'Users' . DS . $today->format('Y-m-d');
+		$today = $today->format('Y-m-d');
+		$directoryFiles = ROOT . DS . 'Service' . DS . 'File' . DS . 'Users' . DS . $today;
 
 		if (!file_exists($directoryFiles)) {
 			$this->io->abort('Directory not found. Aborting command. Directory path: ' . $directoryFiles);
@@ -134,6 +135,14 @@ class JobsCommand extends Command
 			'actualPage' => 1,
 			'processedPage' => 0,
 			'recordsProcessed' => 0,
+			'newUsers' => 0,
+			'usersProcessed' => 0,
+			'userError' => 0,
+			'newReports' => 0,
+			'reportsProcessed' => 0,
+			'reportsError' => 0,
+			'newFiles' => 0,
+			'filesProcessed' => 0,
 			'ended' => false,
 		];
 		$this->updateJob('scrapperProcessor', $data);
@@ -148,171 +157,238 @@ class JobsCommand extends Command
 					if (!empty($file3)) {
 						foreach ($file3 as $userFolder) {
 							$this->consoleLog('Reading user file.');
-							$userFile = json_decode(file_get_contents($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'json/jsonOriginResponse.json'), true);
-							if (!empty($userFile['solicitudLicencia'])) {
-								if (!empty($userFile['solicitudLicencia']['agente'])) {
-									$patientID = $this->searchOnTableOrCreate('Patients', [
-										'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
-									],
-										[
-											'name' => $this->trim($userFile['solicitudLicencia']['agente']['apellidoNombre']),
-											'email' => $this->trim($userFile['solicitudLicencia']['agente']['emailAlternativo']),
-											'official_email' => $this->trim($userFile['solicitudLicencia']['agente']['email']),
-											'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
-											'phone' => $userFile['solicitudLicencia']['agente']['area'] . '' . $userFile['solicitudLicencia']['agente']['numCelular'],
-											'company_id' => 1,
-											'externalID' => $userFile['solicitudLicencia']['agente']['id'],
-										]
-									);
+							$jsonUserPath = $directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'json/jsonOriginResponse.json';
+							if (file_exists($jsonUserPath)) {
+								$userFile = json_decode(file_get_contents($jsonUserPath), true);
+								if (!empty($userFile)) {
+									if (!empty($userFile['solicitudLicencia'])) {
+										if (!empty($userFile['solicitudLicencia']['agente'])) {
 
-									if (!empty($userFile['diagnostico'])) {
-										$medicalCenterID = null;
-										if (!empty($userFile['solicitudLicencia']['agente']['centroAuditoria'])) {
-											$this->consoleLog('Searching Medical Center.');
-											$userMedicalCenterInfo = $userFile['solicitudLicencia']['agente']['centroAuditoria'];
-											$medicalCenterID = $this->searchOnTableOrCreate(
-												'MedicalCenters' ,
-												['district' => $this->trim($userMedicalCenterInfo['razonSocial'])],
-												['district' => $this->trim($userMedicalCenterInfo['razonSocial'])]);
-										}
-
-										$cie10ID = null;
-										if (!empty($userFile['diagnostico']['idDiagnostico'])) {
-											$cie10ID = $this->searchOnTableOrCreate(
-												'Cie10' ,
-												['code' => $userFile['diagnostico']['idDiagnostico']],
+											$patientResponse = $this->searchOnTableOrCreate('Patients', [
+												'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
+											],
 												[
-													'code' => $userFile['diagnostico']['idDiagnostico'],
-													'name' => $this->trim($userFile['diagnostico']['detalle']),
-												],
-											);
-										}
-
-										$privateDoctorID = null;
-										if (!empty($userFile['solicitudLicencia']['medicoParticular'])) {
-											$doctorData = $userFile['solicitudLicencia']['medicoParticular'];
-											$privateDoctorID = $this->searchOnTableOrCreate(
-												'privatedoctors' ,
-												[
-													'OR' => [
-														'license' => $doctorData['matriculaProvincial'],
-														'licenseNational' => $doctorData['matriculaNacional'],
-													]
-												],
-												[
-													'name' => $this->trim($doctorData['nombre']),
-													'lastname' => $this->trim($doctorData['apellido']),
-													'license' => ($doctorData['matriculaProvincial'] > 0) ? $doctorData['matriculaProvincial'] : null,
-													'licenseNational' => ($doctorData['matriculaNacional'] > 0) ? $doctorData['matriculaNacional'] : null,
-												],
+													'name' => $this->trim($userFile['solicitudLicencia']['agente']['apellidoNombre']),
+													'email' => $this->trim($userFile['solicitudLicencia']['agente']['emailAlternativo']),
+													'official_email' => $this->trim($userFile['solicitudLicencia']['agente']['email']),
+													'document' => $this->trim($userFile['solicitudLicencia']['agente']['cuil']),
+													'phone' => $userFile['solicitudLicencia']['agente']['area'] . '' . $userFile['solicitudLicencia']['agente']['numCelular'],
+													'company_id' => 1,
+													'externalID' => $userFile['solicitudLicencia']['agente']['id'],
+												]
 											);
 
-											$specialityID = $this->searchOnTableOrCreate('specialties',
-												['name' => $doctorData['especialidad']['especialidad']],
-												['name' => $doctorData['especialidad']['especialidad']]);
-										}
 
-
-										$reportTable = $this->fetchTable('Reports');
-										$status = $reportTable::ACTIVE;
-										$modeID = $this->searchOnTableOrCreate('modes',
-											['name' => 'Auditoria Medica Ambulatoria'],
-											[]);
-										if (!empty($userFile['solicitudLicencia']['estadoNombre'])) {
-											switch ($userFile['solicitudLicencia']['estadoNombre']['estadoNombre']) {
-												case 'APROBADA':
-													$status = $reportTable::GRANTED;
-													break;
-												case 'PENDIENTE':
-													//No hacer nada
-													break;
-												CASE 'DENEGADA':
-												CASE 'RECHAZADA':
-													$status = $reportTable::DENIED;
-													break;
-												CASE 'AUSENTE':
-													$status = $reportTable::NRLL;
-													break;
-												CASE 'JUNTA':
-													$modeID = $this->searchOnTableOrCreate('modes',
-														['name' => 'Juntas Medicas'],
-														[]);
-													break;
-												CASE 'DOMICILIO':
-													$modeID = $this->searchOnTableOrCreate('modes',
-														['name' => 'Auditoria Medica Domiciliaria'],
-														[]);
-													break;
+											if ($patientResponse['error']) {
+												$data['userError']++;
+												continue;
 											}
-										}
-
-										$licenseTypes = $reportTable::LICENSES;
-										$licenseType = array_search('Titular', array_column($licenseTypes, 'name'));
-
-										if (!empty($userFile['solicitudLicencia']['esFamiliar']) == 1) {
-											$licenseType = array_search('Cuidado de Familiar Enfermo', array_column($licenseTypes, 'name'));
-											// FALTA LOS FAMILIARES. Tambie nse puede sacar la direccion si es domicilio. EJ: 9497383
-										}
-
-										$reportID = $this->searchOnTableOrCreate('reports',
-											['externalID' => $userFile['id']],
-											[
-											'patient_id' => $patientID,
-											'medicalCenter' => $medicalCenterID,
-											'doctor_id' => 1,
-											'user_id' => 1,
-											'startPathology' => (!empty($userFile['fechaInicio'])) ? new FrozenTime($userFile['fechaInicio']) : $today->format('Y-m-d'),
-											'comments' => $userFile['nota'],
-											'type' => $licenseType + 1,
-											'askedDays' => $userFile['solicitudLicencia']['diasSolicitados'],
-											'recommendedDays' => $userFile['diasAprobados'],
-											'startLicense' => null,
-											'observations' => null,
-											'status' => $status,
-											'fraud' => 0,
-											'mode_id' => $modeID,
-											'relativeName' => null,
-											'relativeLastname' => null,
-											'relativeRelationship' => null,
-											'privatedoctor_id' => $privateDoctorID,
-											'speciality_id' => $specialityID,
-											'cie10_id' => $cie10ID,
-											'risk_group' => $userFile['docGrupoRiesgo'],
-											'externalID' => $userFile['id'],
-										]);
-
-										//Guardo los archivos.
-										$dirImg = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img');
-										$imgFiles = $dirImg->read(true);
-										foreach ($imgFiles[1] as $imgFile) {
-											$mimeContentType = mime_content_type($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img' . DS . $imgFile);
-
-											$path = WWW_ROOT . 'files' . DS;
-											if (!file_exists($path) && !is_dir($path)) {
-												mkdir($path);
+											$data['usersProcessed']++;
+											if ($patientResponse['created']) {
+												$data['newUsers']++;
 											}
 
-											$path .= $reportID . DS;
-											if (!file_exists($path) && !is_dir($path)) {
-												mkdir($path);
+											$patientID = $patientResponse['id'];
+
+											if (!empty($userFile['diagnostico'])) {
+												$medicalCenterID = null;
+												if (!empty($userFile['solicitudLicencia']['agente']['centroAuditoria'])) {
+													$this->consoleLog('Searching Medical Center.');
+													$userMedicalCenterInfo = $userFile['solicitudLicencia']['agente']['centroAuditoria'];
+													$medicalCenterResponse = $this->searchOnTableOrCreate(
+														'MedicalCenters' ,
+														['district' => $this->trim($userMedicalCenterInfo['razonSocial'])],
+														['district' => $this->trim($userMedicalCenterInfo['razonSocial'])]);
+													if (!$medicalCenterResponse['error']) {
+														$medicalCenterID = $medicalCenterResponse['id'];
+													}
+
+												}
+
+												$cie10ID = null;
+												if (!empty($userFile['diagnostico']['idDiagnostico'])) {
+													$cie10DResponse = $this->searchOnTableOrCreate(
+														'Cie10' ,
+														['code' => $userFile['diagnostico']['idDiagnostico']],
+														[
+															'code' => $userFile['diagnostico']['idDiagnostico'],
+															'name' => $this->trim($userFile['diagnostico']['detalle']),
+														],
+													);
+													if (!$cie10DResponse['error']) {
+														$cie10ID = $cie10DResponse['id'];
+													}
+												}
+
+												$privateDoctorID = null;
+												if (!empty($userFile['solicitudLicencia']['medicoParticular'])) {
+													$doctorData = $userFile['solicitudLicencia']['medicoParticular'];
+													$privateDoctorResponse = $this->searchOnTableOrCreate(
+														'privatedoctors' ,
+														[
+															'OR' => [
+																'license' => $doctorData['matriculaProvincial'],
+																'licenseNational' => $doctorData['matriculaNacional'],
+															]
+														],
+														[
+															'name' => $this->trim($doctorData['nombre']),
+															'lastname' => $this->trim($doctorData['apellido']),
+															'license' => ($doctorData['matriculaProvincial'] > 0) ? $doctorData['matriculaProvincial'] : null,
+															'licenseNational' => ($doctorData['matriculaNacional'] > 0) ? $doctorData['matriculaNacional'] : null,
+														],
+													);
+
+													if (!$privateDoctorResponse['error']) {
+														$privateDoctorID = $privateDoctorResponse['id'];
+													}
+
+													$specialityResponse = $this->searchOnTableOrCreate('specialties',
+														['name' => $doctorData['especialidad']['especialidad']],
+														['name' => $doctorData['especialidad']['especialidad']]);
+
+													if (!$specialityResponse['error']) {
+														$specialityID = $specialityResponse['id'];
+													}
+												}
+
+
+												$reportTable = $this->fetchTable('Reports');
+												$status = $reportTable::ACTIVE;
+												$modeResponse = $this->searchOnTableOrCreate('modes',
+													['name' => 'Auditoria Medica Ambulatoria'],
+													[]);
+												if (!$modeResponse['error']) {
+													$modeID = $modeResponse['id'];
+												}
+												if (!empty($userFile['solicitudLicencia']['estadoNombre'])) {
+													switch ($userFile['solicitudLicencia']['estadoNombre']['estadoNombre']) {
+														case 'APROBADA':
+															$status = $reportTable::GRANTED;
+															break;
+														case 'PENDIENTE':
+															//No hacer nada
+															break;
+														CASE 'DENEGADA':
+														CASE 'RECHAZADA':
+															$status = $reportTable::DENIED;
+															break;
+														CASE 'AUSENTE':
+															$status = $reportTable::NRLL;
+															break;
+														CASE 'JUNTA':
+															$modeResponse = $this->searchOnTableOrCreate('modes',
+																['name' => 'Juntas Medicas'],
+																[]);
+															if (!$modeResponse['error']) {
+																$modeID = $modeResponse['id'];
+															}
+															break;
+														CASE 'DOMICILIO':
+															$modeResponse = $this->searchOnTableOrCreate('modes',
+																['name' => 'Auditoria Medica Domiciliaria'],
+																[]);
+															if (!$modeResponse['error']) {
+																$modeID = $modeResponse['id'];
+															}
+															break;
+													}
+												}
+
+												$licenseTypes = $reportTable::LICENSES;
+												$licenseType = array_search('Titular', array_column($licenseTypes, 'name'));
+
+												if (!empty($userFile['solicitudLicencia']['esFamiliar']) == 1) {
+													$licenseType = array_search('Cuidado de Familiar Enfermo', array_column($licenseTypes, 'name'));
+													// FALTA LOS FAMILIARES. Tambie nse puede sacar la direccion si es domicilio. EJ: 9497383
+												}
+
+												$reportResponse = $this->searchOnTableOrCreate('reports',
+													['externalID' => $userFile['id']],
+													[
+														'patient_id' => $patientID,
+														'medicalCenter' => $medicalCenterID,
+														'doctor_id' => 1,
+														'user_id' => 1,
+														'startPathology' => (!empty($userFile['fechaInicio'])) ? new FrozenTime($userFile['fechaInicio']) : $today->format('Y-m-d'),
+														'comments' => $userFile['nota'],
+														'type' => $licenseType + 1,
+														'askedDays' => $userFile['solicitudLicencia']['diasSolicitados'],
+														'recommendedDays' => $userFile['diasAprobados'],
+														'startLicense' => null,
+														'observations' => null,
+														'status' => $status,
+														'fraud' => 0,
+														'mode_id' => $modeID,
+														'relativeName' => null,
+														'relativeLastname' => null,
+														'relativeRelationship' => null,
+														'privatedoctor_id' => $privateDoctorID,
+														'speciality_id' => $specialityID,
+														'cie10_id' => $cie10ID,
+														'risk_group' => $userFile['docGrupoRiesgo'],
+														'externalID' => $userFile['solicitudLicencia']['id'],
+													]);
+
+
+
+
+												if (!$reportResponse['error']) {
+													$reportID = $reportResponse['id'];
+													$data['reportsProcessed']++;
+
+													if ($patientResponse['created']) {
+														$data['newReports']++;
+													}
+												} else {
+													$data['reportsError']++;
+													continue;
+												}
+												//Guardo los archivos.
+												$dirImg = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img');
+												$imgFiles = $dirImg->read(true);
+												foreach ($imgFiles[1] as $imgFile) {
+													$mimeContentType = mime_content_type($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img' . DS . $imgFile);
+
+													$path = WWW_ROOT . 'files' . DS;
+													if (!file_exists($path) && !is_dir($path)) {
+														mkdir($path);
+													}
+
+													$path .= $reportID . DS;
+													if (!file_exists($path) && !is_dir($path)) {
+														mkdir($path);
+													}
+													$copy = copy($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img' . DS . $imgFile, $path . DS . $imgFile);
+													if ($copy) {
+														$fileResponse = $this->searchOnTableOrCreate('files',
+															[
+																'report_id' => $reportID,
+																'name' => $imgFile,
+															],
+															[
+																'report_id' => $reportID,
+																'name' => $imgFile,
+																'type' => $mimeContentType,
+																'reportType' => 1,
+															]);
+
+														if (!$fileResponse['error']) {
+															$data['filesProcessed']++;
+
+															if ($fileResponse['created']) {
+																$data['newFiles']++;
+															}
+														}
+													}
+												}
+
 											}
-
-											$fileID = $this->searchOnTableOrCreate('files',
-												[
-													'report_id' => $reportID,
-													'name' => $imgFile,
-												],
-												[
-													'report_id' => $reportID,
-													'name' => $imgFile,
-													'type' => $mimeContentType,
-													'reportType' => 1,
-												]);
 										}
-
 									}
 								}
 							}
+
 							$data['recordsProcessed']++;
 							$this->updateJob('scrapperProcessor', $data);
 							$this->consoleLog('User file reading done.');
@@ -386,47 +462,65 @@ class JobsCommand extends Command
 	}
 
 	private function searchOnTableOrCreate($tableName, $where, $creationData) {
-		$returnID = null;
+		$returnData = [
+			'id' => null,
+			'error' => false,
+			'created' => false,
+			'msg' => '',
+		];
 		$this->consoleLog('Searching on ' . $tableName . '.');
 		$table = $this->fetchTable($tableName);
 		$entityExist = $table->find()->where($where)->first();
 
 		if (!empty($entityExist)) {
 			$this->consoleLog( $tableName . ' found. ID: ' . $entityExist->id);
-			$returnID = $entityExist->id;
+			$returnData['id'] = $entityExist->id;
 		} elseif (!empty($creationData)) {
 			$this->consoleLog( $tableName . ' not found. Creating...');
+			$returnData['created'] = true;
 			$newCreation = $this->saveOnTable($tableName, $creationData);
-			if ($newCreation) {
-				$this->consoleLog( $tableName . ' new record created. ID: ' . $newCreation->id);
-				$returnID = $newCreation->id;
+			if (!$newCreation['error']) {
+				$this->consoleLog( $tableName . ' new record created. ID: ' . $newCreation['creationEntity']->id);
+				$returnData['id'] = $newCreation['creationEntity']->id;
 			} else {
+				$returnData['false'] = true;
+				$returnData['msg'] = $newCreation['msg'];
 				$this->consoleLog( $tableName . '  record not created. A problem occurs');
 			}
 		}
 
-		return $returnID;
+		return $returnData;
 	}
 
 	private function saveOnTable($table, $data) {
 		if (empty($data)) {
 			return;
 		}
+		$response = [
+			'error' => false,
+			'creationEntity' => null,
+			'msg' => '',
+		];
 		try {
 			$table = $this->fetchTable($table);
 			$tableEntity = $table->newEmptyEntity();
 			$tableEntity = $table->patchEntity($tableEntity, $data);
-			$result = $table->save($tableEntity);
-			if (!$result) {
-				debug($tableEntity);
+			$response['creationEntity'] = $table->save($tableEntity);
+			if (!$response['creationEntity']) {
+				//debug($tableEntity);
+				$response['error'] = true;
+				$response['msg'] = 'Error al generar: ' . $table . 'Data: ' . json_encode($data);
 			}
 		} catch (\Exception $e) {
-			$this->consoleLog('<error>' . $e->getMessage() . '</error>');
-			$result = false;
+			$response['error'] = true;
+			debug('Error');
+			debug($e);
+		//	$response['msg'] = $e->getMessage();
+			//$this->consoleLog('<error>' . $e->getMessage() . '</error>');
 		}
 
 
-		return $result;
+		return $response;
 	}
 
 	private function trim($string) {
