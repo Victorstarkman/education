@@ -481,7 +481,7 @@ class JobsCommand extends Command
 			$newCreation = $this->saveOnTable($tableName, $creationData);
 			if (!$newCreation['error']) {
 				$this->consoleLog( $tableName . ' new record created. ID: ' . $newCreation['creationEntity']->id);
-				$returnData['id'] = $newCreation['creationEntity'];
+				$returnData['id'] = $newCreation['creationEntity']->id;
 			} else {
 				$returnData['false'] = true;
 				$returnData['msg'] = $newCreation['msg'];
@@ -513,8 +513,10 @@ class JobsCommand extends Command
 			}
 		} catch (\Exception $e) {
 			$response['error'] = true;
-			$response['msg'] = $e->getMessage();
-			$this->consoleLog('<error>' . $e->getMessage() . '</error>');
+			debug('Error');
+			debug($e);
+		//	$response['msg'] = $e->getMessage();
+			//$this->consoleLog('<error>' . $e->getMessage() . '</error>');
 		}
 
 
