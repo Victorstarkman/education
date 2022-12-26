@@ -71,19 +71,19 @@
                 ); ?>
             </div>
         </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
+       <!--  <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
-                <?= $this->Form->control(
-                    'company_id',
-                    [
-                        'options' => $companies,
+                <?//= $this->Form->control(
+                    //'company_id',
+                    //[
+                        /* 'options' => $companies,
                         'label' => 'Empresa',
                         'empty' => 'Todas',
                         'class' => 'form-control form-control-blue m-0 col-12',
                         'value' => $search['company_id'] ?? '']
-                ); ?>
+                ); */ ?>
             </div>
-        </div>
+        </div> -->
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
@@ -119,12 +119,13 @@
             <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
+                <th><?= $this->Paginator->sort('externalID', 'id Ministerio') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
                 <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('area', 'Especialidad') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
-                <th><?= $this->Paginator->sort('status', 'Dictamen') ?></th>
                 <th><?= $this->Paginator->sort('created', 'Creada') ?></th>
+                <th><?= $this->Paginator->sort('mode', 'Estado') ?></th>
+                <th><?= $this->Paginator->sort('medicalCenter', 'Asignado a') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
             </thead>
@@ -132,12 +133,14 @@
             <?php foreach ($reports as $report) : ?>
                 <tr>
                     <td><?= $this->Number->format($report->id) ?></td>
+                    <td><?= $this->Number->format($report->externalID) ?></td>
                     <td><?= h($report->patient->name) ?></td>
                     <td><?= $report->getNameLicense(); ?></td>
-                    <td><?= $report->getSpeciality(); ?></td>
+                    <!-- <td><?//= $report->getSpeciality(); ?></td> -->
                     <td><?= $report->askedDays; ?></td>
-                    <td><?= $report->getNameStatus(); ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
+                    <td><?= $report->mode->name; ?></td>
+                    <td><?= $report->medical_center->district; ?></td>
                     <td class="actions">
                         <?php if ($report->isWaitingResults()) :
                             echo $this->Html->link('Editar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
