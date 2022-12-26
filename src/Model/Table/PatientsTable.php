@@ -105,12 +105,6 @@ class PatientsTable extends Table
 
 
         $validator
-            ->scalar('phone')
-            ->maxLength('phone', 120)
-            ->requirePresence('phone', 'create')
-            ->notEmptyString('phone');
-
-        $validator
             ->integer('city_id')
             ->allowEmptyString('city_id');
 

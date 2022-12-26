@@ -55,12 +55,6 @@ class MedicalCentersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('zone')
-            ->maxLength('zone', 255)
-            ->requirePresence('zone', 'create')
-            ->notEmptyString('zone');
-
-        $validator
             ->scalar('district')
             ->maxLength('district', 255)
             ->requirePresence('district', 'create')

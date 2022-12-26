@@ -232,7 +232,7 @@ class LogService {
 			}
 
 			$message = json_encode($json);
-			$sql ="UPDATE jobs SET modified=NOW(), message= '" . $message . "'". $extraSQL . " WHERE id=" . $id . ";";
+			$sql ="UPDATE jobs SET modified=CONVERT_TZ(NOW(),'SYSTEM','UTC'), message= '" . $message . "'". $extraSQL . " WHERE id=" . $id . ";";
 			$result = $mysqli->query($sql);
 		}
 	}
