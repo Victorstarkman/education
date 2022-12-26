@@ -137,8 +137,10 @@ class JobsCommand extends Command
 			'recordsProcessed' => 0,
 			'newUsers' => 0,
 			'usersProcessed' => 0,
+			'userError' => 0,
 			'newReports' => 0,
 			'reportsProcessed' => 0,
+			'reportsError' => 0,
 			'newFiles' => 0,
 			'filesProcessed' => 0,
 			'ended' => false,
@@ -178,6 +180,7 @@ class JobsCommand extends Command
 
 
 											if ($patientResponse['error']) {
+												$data['userError']++;
 												continue;
 											}
 											$data['usersProcessed']++;
@@ -337,6 +340,9 @@ class JobsCommand extends Command
 													if ($patientResponse['created']) {
 														$data['newReports']++;
 													}
+												} else {
+													$data['reportsError']++;
+													continue;
 												}
 												//Guardo los archivos.
 												$dirImg = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img');
@@ -353,7 +359,8 @@ class JobsCommand extends Command
 													if (!file_exists($path) && !is_dir($path)) {
 														mkdir($path);
 													}
-													if (copy($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img' . DS . $imgFile, $path . DS . $imgFile)) {
+													$copy = copy($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'img' . DS . $imgFile, $path . DS . $imgFile);
+													if ($copy) {
 														$fileResponse = $this->searchOnTableOrCreate('files',
 															[
 																'report_id' => $reportID,
@@ -473,7 +480,7 @@ class JobsCommand extends Command
 			$returnData['created'] = true;
 			$newCreation = $this->saveOnTable($tableName, $creationData);
 			if (!$newCreation['error']) {
-				$this->consoleLog( $tableName . ' new record created. ID: ' . $newCreation->id);
+				$this->consoleLog( $tableName . ' new record created. ID: ' . $newCreation['creationEntity']->id);
 				$returnData['id'] = $newCreation['creationEntity'];
 			} else {
 				$returnData['false'] = true;
