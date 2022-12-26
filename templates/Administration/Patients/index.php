@@ -20,6 +20,21 @@
         <p class="title-results">Agentes</p>
 
         <?= $this->Flash->render() ?>
+       <div class="row">
+            <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
+                <div class="col-lg-4 col-sm-12" >
+                    <div class="form-group">
+                        <?= $this->Form->control('document', [
+                            'label' => 'Buscar',
+                            'placeholder' => 'Buscar por CUIL',
+                            'class' => 'form-control form-control-blue mb-1 col-12',
+                            'value' => $search['document'] ?? '']); ?>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12" ><a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/listado', ['fullBase' => true]); ?>" class="btn btn-outline-secondary col-12 mt-5">Reiniciar</a></div>
+                <div class="col-lg-4 col-sm-12">  <?= $this->Form->button(__('Buscar'), ['class' => 'btn btn-outline-primary col-12 mt-5']) ?></div>
+            <?= $this->Form->end() ?>
+       </div>
         <table class="table table-bordered" id="tabla_actualizaciones">
             <thead>
             <tr>
@@ -37,7 +52,7 @@
                 <tr>
                     <td><?= $this->Number->format($patient->id) ?></td>
                     <td><?= h($patient->name) ?></td>
-                    <td><?= h($patient->cuil) ?></td>
+                    <td><?= h($patient->document) ?></td>
                     <td><?= h($patient->email) ?></td>
                     <td><?= count($patient->reports) ?></td>
                     <td><?= count($patient->reports_without_check) ?></td>

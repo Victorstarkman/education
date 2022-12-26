@@ -30,9 +30,12 @@ class PatientsController extends AppController
                 'ReportsWithoutCheck',
             ],
         ];
-
-        $patients = $this->paginate($this->Patients);
-
+        $search = $this->request->getQueryParams();
+        $patients = $this->Patients->find();
+        if(!empty($search['document'])){
+            $patients->where(['document'=> $search['document']]); 
+        }
+        $patients = $this->paginate($patients);
         $this->set(compact('patients'));
     }
 
