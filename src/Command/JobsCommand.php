@@ -120,6 +120,7 @@ class JobsCommand extends Command
 
 		$today = new FrozenTime();
 		$today = $today->format('Y-m-d');
+		$today = '2022-12-22';
 		$directoryFiles = ROOT . DS . 'Service' . DS . 'File' . DS . 'Users' . DS . $today;
 
 		if (!file_exists($directoryFiles)) {
@@ -508,11 +509,10 @@ class JobsCommand extends Command
 			$response['error'] = true;
 			$response['msg'] = $e->getMessage();
 			$this->consoleLog('<error>' . $e->getMessage() . '</error>');
-			$result = false;
 		}
 
 
-		return $result;
+		return $response;
 	}
 
 	private function trim($string) {
