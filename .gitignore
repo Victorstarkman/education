@@ -7,6 +7,8 @@ Service/config.php
 /logs/*
 /tmp/*
 /vendor/*
+/Service/File/*
+/jsonfiles/*
 /webroot/signatures/*
 /webroot/files/*
 /config/Migrations/schema-dump-default.lock

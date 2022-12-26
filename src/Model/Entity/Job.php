@@ -43,7 +43,7 @@ class Job extends Entity
 		$name = 'Desconocido';
 		switch ($this->name) {
 			case 'scrapperInit':
-				$name = 'Scrappeando Sitio.';
+				$name = 'Procesando Datos.';
 				break;
 			case 'scrapperProcessor':
 				$name = 'Guardando datos en base de datos.';
@@ -57,7 +57,7 @@ class Job extends Entity
 		$name = 'Desconocido';
 		switch ($this->status) {
 			case 1:
-				$name = 'Corriendo';
+				$name = 'Procesando';
 				break;
 			case 2:
 				$name = 'Finalizado';

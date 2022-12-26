@@ -6,13 +6,13 @@
 ?>
 <div class="mx-auto mt-5 col-12">
 	<div class="col-12 title-section">
-		<h4>Lista de Scrappers</h4>
+		<h4>Lista de Estado de Procesamiento de Datos</h4>
 	</div>
 	<div class="results">
 		<div class="mx-auto form-group row col-lg-12 col-md-12">
 
 		</div>
-		<p class="title-results">Scrappers</p>
+		<p class="title-results">Procesamiento de Datos</p>
 		<?= $this->Flash->render() ?>
         <div class="show-results">
 	        <?php $actualTime = new \Cake\I18n\FrozenTime(null,  'America/Argentina/Buenos_Aires'); ?>

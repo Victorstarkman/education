@@ -18,11 +18,11 @@
             </div>
            
         </div><!-- fin de row -->
-
-            <?= $this->Form->create(null,['type' => 'file','url' => [
-                                                                        'controller' => 'Patients',
-                                                                        'action' => 'excelphp'
-                                                                    ]]  )
+<!-- 
+            <?php //echo $this->Form->create(null,['type' => 'file','url' => [
+                                                                        //'controller' => 'Patients',
+                                                                        //'action' => 'excelphp'
+                                                                   // ]] // )
             ?>
             <div class="col-6 custom-input-file ml-4 ">
                 <div class="form-group">
@@ -34,7 +34,7 @@
                     <button type="submit" class="btn btn-outline-primary btn-block"><i class="mr-2 fas fa-save" aria-hidden="true"></i>Guardar excel</button>
             </div>
             </div>
-        <?= $this->Form->end()?>
+        <?php // echo $this->Form->end()?> -->
         <p class="title-results">Auditorías</p>
 
         <?= $this->Flash->render() ?>
