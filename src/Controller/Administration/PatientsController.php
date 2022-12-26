@@ -185,8 +185,15 @@ class PatientsController extends AppController
             if (!empty($search['doctor_id'])) {
                 $reports->where(['Reports.doctor_id' => $search['doctor_id']]);
             }
+            if(!empty($search['medical_center'])){
+                 $reports->where(['Reports.medicalCenter' => $search['medical_center']]);
+                 
+            } 
+            if(!empty($search['modes'])){
+                $reports->where(['Reports.mode_id' => $search['modes']]);
+            }
         }
-
+      
         $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()])->contain(['Modes','MedicalCenters']);
 
         $settings = [
@@ -196,12 +203,12 @@ class PatientsController extends AppController
         ];
 
         $reports = $this->paginate($reports, $settings);
-        /*  debug($reports);
-        die();  */
         $getLicenses = $this->Patients->Reports->getLicenses();
+        $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
+        $getmodes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->combine('id','name');
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies'));
+        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies','getMedicalCenter','getmodes'));
     }
 
     /**
