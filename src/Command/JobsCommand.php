@@ -120,7 +120,6 @@ class JobsCommand extends Command
 
 		$today = new FrozenTime();
 		$today = $today->format('Y-m-d');
-		$today = '2022-12-22';
 		$directoryFiles = ROOT . DS . 'Service' . DS . 'File' . DS . 'Users' . DS . $today;
 
 		if (!file_exists($directoryFiles)) {
