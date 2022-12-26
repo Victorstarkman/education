@@ -325,7 +325,7 @@ class JobsCommand extends Command
 														'speciality_id' => $specialityID,
 														'cie10_id' => $cie10ID,
 														'risk_group' => $userFile['docGrupoRiesgo'],
-														'externalID' => $userFile['id'],
+														'externalID' => $userFile['solicitudLicencia']['id'],
 													]);
 
 
