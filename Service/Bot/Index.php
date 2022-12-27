@@ -10,6 +10,7 @@ use Service\Treatment\TreatmentService;
 class Index
 {
     public const APP_VERSION = '1.4.4';
+    private $doubleCheck = false;
 
     public const HEADER_DEFAULT = [
         "Accept" => "application/json, text/plain, */*",
@@ -82,8 +83,20 @@ class Index
             }
         }
 
+        if($jsonBody->totalPages < $processedPage){
+            $jsonBody->error = false;
+            $jsonBody->message = '';
+            $jsonBody->termino = true;
+            $jsonBody->processedRecord = $jsonBody->totalElements;
+            $jsonBody->processedPage = $jsonBody->totalPages;
+            $this->LogService->savePageActual($jsonBody->totalPages,$jsonBody);
+            throw new \Exception('finish');
+        }
+
         echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages . "\n";
         echo "Procesando solicitudes... pagina {$processedPage}\n";
+        $processeOld = $processedPage;
+
         $pageActual = ($pageActual == 0) ? 1 : $pageActual;
         if (!isset($jsonBody->totalPages) || empty($jsonBody)) {
             $log = [
@@ -93,8 +106,14 @@ class Index
             ];
 
             $this->LogService->setLog($log, 'Failure', 'Index');
+            if(!$this->doubleCheck){
+                $this->doubleCheck = true;
+                $this->run($token);
+            }else{
+                $this->doubleCheck = false;
+                throw new \Exception('la jsonBody está vacía');
+            }
 
-            throw new \Exception('la jsonBody está vacía');
         }
 
         for ($page = $pageActual; $page < $jsonBody->totalPages; $page++) {
@@ -135,6 +154,13 @@ class Index
                 $jsonBody = json_decode($body);
             }
             $pageEcho = $page + 1;
+            if($pageEcho != $processeOld){
+                $processeOld = $pageEcho;
+
+            }else{
+                $pageEcho = $pageEcho + 1;
+                $page = $page + 1;
+            }
             echo "Procesando solicitudes... pagina {$pageEcho}\n";
         }
 

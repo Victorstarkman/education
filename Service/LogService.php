@@ -147,12 +147,13 @@ class LogService {
 
         if($page != false && $content != false){
             $actualPage = $page;
-            $processedPage = $page - 1;
-            $processedRecord = $page * 20;
+            $processedPage = $content->processedPage ?? $page - 1;
+            $processedRecord = $content->processedRecord ?? $page * 20;
             $error = $content->error ?? false;
             $message = $content->message ?? '';
             $totalPages = $content->totalPages ?? 0;
             $totalRecords =  is_object($content) ? $content->totalElements : 0;
+            $termino = $content->termino ?? $termino;
 
             if($recordsSalteados > 0){
                 $processedRecord = $processedRecord - $recordsSalteados;
