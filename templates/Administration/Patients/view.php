@@ -13,29 +13,30 @@
                 <tr>
                     <th><?= __('Nombre')?></th>
                     <th><?= __('CUIL') ?></th>
-                    <th><?= __('Email') ?></th>
+                    <th><?= __('DNI') ?></th>
                     <th><?= __('Email Oficial') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td><?= h($patient->name) ?></td>
+                    <td><?= h($patient->cuil) ?></td>
                     <td><?= h($patient->document) ?></td>
-                    <td><?= h($patient->email) ?></td>
                     <td><?= h($patient->official_email) ?></td>
                 </tbody>
             </table>
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    
+                    <th><?= __('Email') ?></th>
                     <th><?= __('Telefono') ?></th>
                     <th><?= __('Puesto de trabajo') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($patient->phone) ?></td>
+                    <td><?= h($patient->email) ?></td>
+                    <td><?= $patient->phone!=''? h($patient->phone):'No Figura'?></td>
                     <td><?= h($patient->job) ?></td>
                 </tr>
                 </tbody>

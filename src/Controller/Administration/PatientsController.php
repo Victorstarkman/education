@@ -32,8 +32,8 @@ class PatientsController extends AppController
         ];
         $search = $this->request->getQueryParams();
         $patients = $this->Patients->find();
-        if(!empty($search['document'])){
-            $patients->where(['document'=> $search['document']]); 
+        if(!empty($search['cuil'])){
+            $patients->where(['cuil'=> $search['cuil']]); 
         }
         $patients = $this->paginate($patients);
         $this->set(compact('patients'));
@@ -144,15 +144,15 @@ class PatientsController extends AppController
         if (!empty($search)) {
             $patientsWhere = [];
             $errorPatient = '';
-            if (!empty($search['document'])) {
-                $coincide = preg_match('/@/', $search['document']);
+            if (!empty($search['cuil'])) {
+                $coincide = preg_match('/@/', $search['cuil']);
 
                 if ($coincide > 0) {
-                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
-                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['cuil'];
+                    $patientsWhere['email LIKE'] = '%' . $search['cuil'] . '%';
                 } else {
-                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
-                    $patientsWhere['document'] = $search['document'];
+                    $errorPatient = 'No se encontro persona con el documento: ' . $search['cuil'];
+                    $patientsWhere['cuil'] = $search['cuil'];
                 }
             }
             if (!empty($search['company_id'])) {
@@ -197,7 +197,7 @@ class PatientsController extends AppController
             }
         }
       
-        $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()])->contain(['Modes','MedicalCenters']);
+        $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()])->contain(['Modes','MedicalCenters','Patients']);
 
         $settings = [
             'order' => ['created' => 'desc'],
@@ -246,13 +246,13 @@ class PatientsController extends AppController
                 $postData = $this->request->getData();
                 $patientEntity = $this->Patients->find('all')
                     ->where(['OR' => [
-                        ['document' => $postData['document']],
+                        ['cuil' => $postData['cuil']],
                         ['email' => $postData['email']],
                     ]])
                     ->contain(['Reports'])
                     ->first();
                 if (!empty($patientEntity)) {
-                    throw new \Exception('Ya existe una persona con ese DNI o Email.');
+                    throw new \Exception('Ya existe una persona con ese CUIL o Email.');
                 }
                 $patient = $this->Patients->patchEntity($patient, $postData);
                 if (!$this->Patients->save($patient)) {

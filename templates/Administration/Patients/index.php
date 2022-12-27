@@ -24,11 +24,11 @@
             <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
                 <div class="col-lg-4 col-sm-12" >
                     <div class="form-group">
-                        <?= $this->Form->control('document', [
+                        <?= $this->Form->control('cuil', [
                             'label' => 'Buscar',
                             'placeholder' => 'Buscar por CUIL',
                             'class' => 'form-control form-control-blue mb-1 col-12',
-                            'value' => $search['document'] ?? '']); ?>
+                            'value' => $search['cuil'] ?? '']); ?>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12" ><a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/listado', ['fullBase' => true]); ?>" class="btn btn-outline-secondary col-12 mt-5">Reiniciar</a></div>
@@ -52,7 +52,7 @@
                 <tr>
                     <td><?= $this->Number->format($patient->id) ?></td>
                     <td><?= h($patient->name) ?></td>
-                    <td><?= h($patient->document) ?></td>
+                    <td><?= h($patient->cuil) ?></td>
                     <td><?= h($patient->email) ?></td>
                     <td><?= count($patient->reports) ?></td>
                     <td><?= count($patient->reports_without_check) ?></td>
