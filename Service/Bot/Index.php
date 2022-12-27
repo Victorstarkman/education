@@ -83,6 +83,16 @@ class Index
             }
         }
 
+        if($jsonBody->totalPages < $processedPage){
+            $jsonBody->error = false;
+            $jsonBody->message = '';
+            $jsonBody->termino = true;
+            $jsonBody->processedRecord = $jsonBody->totalElements;
+            $jsonBody->processedPage = $jsonBody->totalPages;
+            $this->LogService->savePageActual($jsonBody->totalPages,$jsonBody);
+            throw new \Exception('finish');
+        }
+
         echo "Total de solicitudes: " . $jsonBody->totalElements . " Total de páginas: " . $jsonBody->totalPages . "\n";
         echo "Procesando solicitudes... pagina {$processedPage}\n";
         $processeOld = $processedPage;
