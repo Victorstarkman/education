@@ -14,7 +14,7 @@ class Page extends RepositoryBase
 
     public function getPage(): array
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $this->select();
         $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded']);
         $this->setLimit(1);
@@ -25,7 +25,7 @@ class Page extends RepositoryBase
     public function insertPage(int $pageTotal, int $currentPage, int $totalFileDownloaded, int $total_file): bool
     {
 
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
 
         $pages = [
             'id' => 1,
@@ -58,7 +58,7 @@ class Page extends RepositoryBase
 
     public function updateCurrentPage(int $id, int $currentPage, int $totalFileDownloaded): bool
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'current_page' => $currentPage,
             'total_file_downloaded' => $totalFileDownloaded,
@@ -78,7 +78,7 @@ class Page extends RepositoryBase
 
     public function updateEnd(int $id): bool
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'end' => true,
             'termino' => true,
@@ -96,7 +96,7 @@ class Page extends RepositoryBase
 
     public function updateTotalPageAndTotalFiles(int $id, int $totalPage, int $totalFile): bool
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'page_total' => $totalPage,
             'total_file' => $totalFile,
@@ -116,7 +116,7 @@ class Page extends RepositoryBase
 
     public function updateFileDownload(int $id, int $totalDownload): bool
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'total_file_downloaded' => $totalDownload,
             'processedRecord' => $totalDownload,
@@ -134,7 +134,7 @@ class Page extends RepositoryBase
 
     public function updatePages(int $id, int $totalPage, int $totalFile, int $totalDownload): bool
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'page_total' => $totalPage,
             'current_page' => $totalPage,
@@ -157,7 +157,7 @@ class Page extends RepositoryBase
 
     public function updatePageTotal(int $id, int $totalPage)
     {
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'page_total' => $totalPage,
             'totalPages' => $totalPage,
@@ -176,7 +176,7 @@ class Page extends RepositoryBase
     private function saveOnDatabase()
     {
 
-        $this->setFrom('log_pages');
+        $this->setFromLogs('Logs_Pages');
         $this->select();
         $json = $this->getSelect()[0] ?? [];
         return;
