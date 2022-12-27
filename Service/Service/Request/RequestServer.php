@@ -14,6 +14,7 @@ class RequestServer
     public static $user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0';
     protected $cookies = [];
     public $client;
+    private $isSleep;
 
     //Spider
     public function __construct()
@@ -32,6 +33,8 @@ class RequestServer
             'timeout' => 60
         ]);
 
+        $this->isSleep = getenv('SLEEP', true);
+
     }
     public function setcookie($cookie)
     {
@@ -49,7 +52,7 @@ class RequestServer
         return $this->cookies;
     }
 
-    public function request($url, $ref = null, $metodo = 'GET', $param = [], $isLogin = false)
+    public function request($url, $ref = null, $metodo = 'GET', $param = [], $sleep = true)
     {
         try {
             preg_match('@(http[s]?:\/\/)?(.*?)\/@is', $url, $match);
@@ -84,7 +87,7 @@ class RequestServer
 
 
             try{
-                if(!$isLogin){
+                if($this->isSleep){
                     $randoSleep = rand(1, 3);
                     sleep($randoSleep);
                 }
@@ -109,7 +112,7 @@ class RequestServer
                 // return 1;
                 return "Error code: $code";
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // return 2;
             return sprintf("Excecao: %d - %s, acessando %s\n", $e->getCode(), $e->getMessage(), $url);
         }

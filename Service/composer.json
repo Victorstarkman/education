@@ -1,0 +1,13 @@
+{
+    "require": {
+        "sql/genericsqlformat": "^2.0",
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Service\\": "Service/",
+            "Repository\\": "Repository/",
+            "Handlers\\": "Handlers/"
+        }
+    }
+}
