@@ -287,8 +287,9 @@ class JobsCommand extends Command
 												if (!$modeResponse['error']) {
 													$modeID = $modeResponse['id'];
 												}
-												if (!empty($userFile['solicitudLicencia']['estadoNombre'])) {
-													switch ($userFile['solicitudLicencia']['estadoNombre']['estadoNombre']) {
+
+												if (!empty($userFile['estadoNombre'])) {
+													switch ($userFile['estadoNombre']['estadoNombre']) {
 														case 'APROBADA':
 															$status = $reportTable::GRANTED;
 															break;
@@ -320,7 +321,6 @@ class JobsCommand extends Command
 															break;
 													}
 												}
-
 												$licenseTypes = $reportTable::LICENSES;
 												$licenseType = array_search('Titular', array_column($licenseTypes, 'name'));
 
