@@ -113,7 +113,7 @@ class PatientsController extends AppController
         }
 
         $settings = [
-            'order' => 'desc',
+            'order' => ['created'=> 'desc'],
             'limit' => 10,
         ];
 
