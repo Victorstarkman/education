@@ -98,8 +98,8 @@ class ReportsTable extends Table
             'joinType' => 'INNER',
         ]);
         $this->belongsTo('MedicalCenters', [
-            'foreignKey' => 'id',
-            'joinType' => 'INNER',
+            'foreignKey' => 'medicalCenter',
+            
         ]);
 	    $this->belongsTo('Privatedoctors', [
 		    'foreignKey' => 'privatedoctor_id',

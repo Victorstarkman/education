@@ -3,7 +3,7 @@
 </style>
 <?php if (empty($patient)) : ?>
     <div class="alert alert-danger col-lg-12 searchAlert" role="alert">
-        <div class="message error">No se encontro ninguna persona con el DNI ingresado. Ingrese los datos de la persona a crear.</div>
+        <div class="message error">No se encontro ninguna persona con el CUIL ingresado. Ingrese los datos de la persona a crear.</div>
     </div>
 <?php elseif ($type == 'new') : ?>
     <div class="alert alert-info col-lg-12 searchAlert" role="alert">
@@ -11,7 +11,7 @@
     </div>
 <?php else : ?>
     <div class="alert alert-success col-lg-12 searchAlert" role="alert">
-        <div class="message error">Se encontro la persona <?= $patient->name; ?> <?= $patient->lastname; ?> con el DNI <?= $patient->document; ?></div>
+        <div class="message error">Se encontro la persona <?= $patient->name; ?> <?= $patient->lastname; ?> con el CUIL<?= $patient->cuil; ?></div>
     </div>
 <?php endif;?>
 <div class="alert alert-danger col-lg-12 errors" role="alert" style="display: none;">
@@ -28,13 +28,13 @@
     </div>
     <div class="pt-0 col-lg-4 col-sm-12">
         <div class="form-group">
-			<?= $this->Form->control('document', ['label' => 'CUIL *',
+			<?= $this->Form->control('cuil', ['label' => 'CUIL *',
 				'class' => 'form-control form-control-blue m-0 col-12', 'required' => true ]); ?>
         </div>
     </div>
     <div class="pt-0 col-lg-4 col-sm-12">
         <div class="form-group">
-			<?= $this->Form->control('cuil', ['label' => 'DNI  ',
+			<?= $this->Form->control('document', ['label' => 'DNI  ',
 				'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
         </div>
     </div>

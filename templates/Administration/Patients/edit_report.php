@@ -275,9 +275,7 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
 
         $.ajax({
             type: "GET",
-            url: '<?php echo $this->Url->build([
-			    'controller' => 'Patients',
-			    'action' => 'addDoctor']); ?>/' + value,
+            url: '<?php echo $this->Url->build(['controller' => 'Patients','action' => 'addDoctor']); ?>/' + value,
             contentType: "application/json",
             accepts: "application/json",
             success: function (response) {
@@ -289,9 +287,7 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                     e.preventDefault();
                     $.ajax({
                         type: "POST",
-                        url: '<?php echo $this->Url->build([
-						    'controller' => 'Patients',
-						    'action' => 'addDoctor']); ?>/' + value,
+                        url: '<?php echo $this->Url->build(['controller' => 'Patients','action' => 'addDoctor']); ?>/' + value,
                         dataType: "json",
                         data: $(this).serialize(),
                         success: function (response) {
@@ -359,9 +355,7 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
 
         var $reportID = $("#id").val();
         $("#fileuploader").uploadFile({
-            url: '<?php echo $this->Url->build([
-                'controller' => 'Files',
-                'action' => 'addFile', $report->id]); ?>',
+            url: '<?php echo $this->Url->build(["controller" => "Files","action" => "addFile", $report->id]); ?>',
             fileName:"reportFile",
             showCancel: false,
             showAbort: false,

@@ -28,13 +28,13 @@
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-				        <?= $this->Form->control('document', ['label' => 'CUIL *',
+				        <?= $this->Form->control('cuil', ['label' => 'CUIL *',
 					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => true ]); ?>
                     </div>
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-				        <?= $this->Form->control('cuil', ['label' => 'DNI  ',
+				        <?= $this->Form->control('document', ['label' => 'DNI  ',
 					        'class' => 'form-control form-control-blue m-0 col-12', 'required' => false]); ?>
                     </div>
                 </div>
