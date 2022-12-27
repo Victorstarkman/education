@@ -95,7 +95,7 @@ class SolicitudBot
             $this->Files->deletePathAndFilies($page);
             return;
         }
-
+        $IDSjSONoRIGIN = [];
         foreach ($files as $file) {
 
             if (isset($file['solicitudLicencia'])) {
@@ -122,6 +122,7 @@ class SolicitudBot
                 $data = $this->standardizeData($jsonFile);
                 $dataEncode = json_encode($data);
                 $this->Files->createFilesSolicitedJson($page, $data[0]['id'], $data[0]['idReg'], $dataEncode);
+                $IDSjSONoRIGIN[] = $data[0]['id'];
 
                 foreach ($this->requestGetImage($data[0]['solicitudLicencia']['id'], false) as $key => $image) {
                     $nameImg = $data[0]['id'] . '_' . $key . '.jpg';
@@ -132,7 +133,7 @@ class SolicitudBot
             }
 
         }
-        $this->Files->deleteAndMovePathAndFilies($page);
+        $this->Files->deleteAndMovePathAndFilies($page,$IDSjSONoRIGIN);
         $this->Files->movePathUsersForSolicited();
         $totalDownload = $this->pages['total_file_downloaded'] + $this->size;
         $this->pages['total_file_downloaded'] = $totalDownload;
