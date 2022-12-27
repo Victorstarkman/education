@@ -52,7 +52,7 @@ class PatientsController extends AppController
                 'Patients',
             ],
         ];
-        $reports = $this->Patients->Reports->find()->order(['created'=>'desc']);
+        $reports = $this->Patients->Reports->find();
         $searchByStatus = false;
         if (!empty($search)) {
             $patientsWhere = [];
@@ -113,7 +113,7 @@ class PatientsController extends AppController
         }
 
         $settings = [
-           
+            'order' => 'desc',
             'limit' => 10,
         ];
 
