@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Service\Bot\components;
 
 use Service\Request\RequestServer;
@@ -38,6 +38,7 @@ class Login extends RequestServer
 
     public function login($user, $pass)
     {
+        echo "Iniciando login...\n";
         $this->requestGetLogin();
         $this->requestPostLogin($user, $pass);
         $this->requestGetMisLicencias();

@@ -75,8 +75,9 @@ class Bot
                 $this->logFailure->prepareLog('There is no registered user or no user active', __FILE__, __LINE__);
                 die;
             }
-
+            echo "\n get token \n";
             $token = $this->login($users);
+            echo "\n set token \n";
             $this->token->setToken($token);
             $idToken = $this->token->getToken()['id'];
         } else {
