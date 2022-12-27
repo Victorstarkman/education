@@ -49,6 +49,7 @@ class PageBot
     public function scrapingPages($token, $stop = false)
     {
         $this->token .= $token;
+        echo "\n Start scraping pages \n";
         $pages = $this->getPage();
 
         if ($this->isNewScraping && !$stop) {
@@ -91,6 +92,7 @@ class PageBot
     private function requestPages(int $page = 0, bool $sleep = true)
     {
         $numPerPage = $this->size;
+        echo "\r\n Request page {$page} \r\n";
 
         return $this->Request->request(
             "https://misaplicaciones5.abc.gob.ar/wsLicenciasMedicas/solicitudestado/noAprobadas?&page={$page}&numPerPage={$numPerPage}&sortField=solicitudLicencia.fechaCreacion&sortDir=DESC&filterType=&filterData=&version=PRESTADORA",
@@ -171,7 +173,7 @@ class PageBot
             $data = json_decode($this->requestPages($i, false), true)['content'] ?? [];
             if(empty($data)){
                 $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
-                continue;
+                throw new \Exception('pageEmpty');
             }
             $newData = $this->standardizeData($data);
             $this->SaveFile->createFilesPages($i, json_encode($newData, JSON_PRETTY_PRINT));

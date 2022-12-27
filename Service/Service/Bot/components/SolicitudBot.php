@@ -85,6 +85,7 @@ class SolicitudBot
 
     private function startScaping(int $page, $files)
     {
+        echo 'Tratameto Page: ' . $page . PHP_EOL;
         if (is_string($files)) {
             $files = json_decode($files, true);
             $this->startScaping($page, $files);
