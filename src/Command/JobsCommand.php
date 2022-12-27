@@ -178,7 +178,18 @@ class JobsCommand extends Command
 											} elseif (!empty($document)) {
 												$searchWhere = ['document' => $this->trim($userFile['solicitudLicencia']['agente']['documento'])];
 											}
-
+											$dirJob = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'json' . DS  . 'consultarDatos');
+											$filesJob = $dirJob->read(true);
+											$jobOfPatient = null;
+											if (!empty($filesJob[1])) {
+												foreach ($filesJob[1] as $fileJob) {
+													if (!is_null($jobOfPatient)) {
+														continue;
+													}
+													$getDataJob = json_decode(file_get_contents($directoryFiles . DS . $file . DS . $file2 . DS . $userFolder . DS . 'json' . DS  . 'consultarDatos' . DS . $fileJob), true);
+													$jobOfPatient = $getDataJob['codigoRegEstat'];
+												}
+											}
 											$patientResponse = $this->searchOnTableOrCreate('Patients', $searchWhere,
 												[
 													'name' => $this->trim($userFile['solicitudLicencia']['agente']['apellidoNombre']),
@@ -188,6 +199,7 @@ class JobsCommand extends Command
 													'document' => $this->trim($userFile['solicitudLicencia']['agente']['documento']),
 													'phone' => $userFile['solicitudLicencia']['agente']['area'] . '' . $userFile['solicitudLicencia']['agente']['numCelular'],
 													'company_id' => 1,
+													'job' => $jobOfPatient,
 													'externalID' => $userFile['solicitudLicencia']['agente']['id'],
 												]
 											);
@@ -342,6 +354,8 @@ class JobsCommand extends Command
 														'cie10_id' => $cie10ID,
 														'risk_group' => $userFile['docGrupoRiesgo'],
 														'externalID' => $userFile['solicitudLicencia']['id'],
+														'created' => $userFile['solicitudLicencia']['fechaCreacion'],
+														'modified' => $userFile['solicitudLicencia']['fechaCreacion'],
 													]);
 
 
@@ -516,14 +530,15 @@ class JobsCommand extends Command
 			'msg' => '',
 		];
 		try {
-			$table = $this->fetchTable($table);
+			$tableName = $table;
+			$table = $this->fetchTable($tableName);
 			$tableEntity = $table->newEmptyEntity();
 			$tableEntity = $table->patchEntity($tableEntity, $data);
 			$response['creationEntity'] = $table->save($tableEntity);
 			if (!$response['creationEntity']) {
 				//debug($tableEntity);
 				$response['error'] = true;
-				$response['msg'] = 'Error al generar: ' . $table . 'Data: ' . json_encode($data);
+				$response['msg'] = 'Error al generar: ' . $tableName . 'Data: ' . json_encode($data);
 			}
 		} catch (\Exception $e) {
 			$response['error'] = true;
@@ -538,7 +553,7 @@ class JobsCommand extends Command
 	}
 
 	private function trim($string) {
-		return (!empty($string)) ? trim($string) : $string;
+		return (!empty($string) && is_string($string)) ? trim($string) : $string;
 	}
 
 }
