@@ -208,7 +208,7 @@ class PatientsController extends AppController
         $reports = $this->paginate($reports, $settings);
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
-        $getmodes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->combine('id','name');
+        $getmodes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->all()->combine('id','name');
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
         $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies','getMedicalCenter','getmodes'));
