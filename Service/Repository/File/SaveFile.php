@@ -90,13 +90,13 @@ class SaveFile
 
     private function createJsonFile(int $page, int $id, int $idReg, string $json)
     {
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/consultarDatos/json/$idReg.json";
+        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/consultarDatos/$idReg.json";
         file_put_contents($path, $json);
     }
 
     public function createImgFile(int $page, string $nameImg, int $idReg, string $img)
     {
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$idReg/consultarDatos/img/$nameImg.jpg";
+        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$idReg/img/$nameImg.jpg";
 
         file_put_contents($path, $img);
     }
@@ -109,8 +109,8 @@ class SaveFile
         $paths = [
             "Treatment/$date/$page/$idReg",
             "Treatment/$date/$page/$idReg/consultarDatos",
-            "Treatment/$date/$page/$idReg/consultarDatos/json",
-            "Treatment/$date/$page/$idReg/consultarDatos/img"
+            "Treatment/$date/$page/$idReg/json/consultarDatos",
+            "Treatment/$date/$page/$idReg/img"
         ];
 
         foreach ($paths as $path) {
@@ -244,7 +244,7 @@ class SaveFile
     private function saveJsonOrigin(string $path,int $id,  string $page, array $json)
     {
 
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/consultarDatos/jsonOrinResponse.json";
+        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/jsonOrinResponse.json";
         file_put_contents($path, json_encode($json));
     }
 }
