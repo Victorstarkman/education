@@ -43,12 +43,6 @@
                 </div>
                 <div class="pt-0 col-lg-4 col-sm-12">
                     <div class="form-group">
-				        <?= $this->Form->control('patient.address', ['label' => 'Domicilio',
-					        'class' => 'form-control form-control-blue m-0 col-12']); ?>
-                    </div>
-                </div>
-                <div class="pt-0 col-lg-4 col-sm-12">
-                    <div class="form-group">
 				        <?= $this->Form->control('patient.phone', ['label' => 'Telefono',
 					        'class' => 'form-control form-control-blue m-0 col-12']); ?>
                     </div>

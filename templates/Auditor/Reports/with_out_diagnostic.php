@@ -34,19 +34,7 @@
 
             </div>
         </div>
-        <div class="pt-0 col-lg-3 col-sm-12">
-            <div class="form-group">
-                <?= $this->Form->control(
-                    'company_id',
-                    [
-                        'options' => $companies,
-                        'label' => 'Empresa',
-                        'empty' => 'Todas',
-                        'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['company_id'] ?? '']
-                ); ?>
-            </div>
-        </div>
+        
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
@@ -87,12 +75,13 @@
             <thead>
             <tr>
                 <th><?= $this->Paginator->sort('id', '#') ?></th>
+                <th><?= $this->Paginator->sort('externalID', 'id Ministerio') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
-                <th><?= $this->Paginator->sort('company','Empresa')?></th>
+                <th><?= $this->Paginator->sort('cuil', 'Cuil') ?></th>
                 <th><?= $this->Paginator->sort('created', 'fecha de Creación') ?></th>
+                <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th><?= $this->Paginator->sort('mode','Tipo de Servicio')?></th>
                 <th><?= $this->Paginator->sort('area', 'Especialidad') ?></th>
-                <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
             </thead>
@@ -100,12 +89,13 @@
             <?php foreach ($reports as $report) : ?>
                 <tr>
                     <td><?= $this->Number->format($report->id) ?></td>
+                    <td><?= $this->Number->format($report->externalID) ?></td>
                     <td><?= h($report->patient->name) ?></td>
-                    <td><?= h($report->patient->company->name)?></td>
+                    <td><?= $report->patient->cuil; ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
+                    <td><?= $report->askedDays; ?></td>
                     <td><?= !empty($report->mode->name)?h($report->mode->name):''?></td>
                     <td><?= $report->getSpeciality(); ?></td>
-                    <td><?= $report->askedDays; ?></td>
                     <td class="actions">
                         <?= $this->Html->link('Tomar', $redirectPrefix . '/licencias/diagnosticar/' . $report->id, ['fullBase' => true]); ?>
                     </td>
