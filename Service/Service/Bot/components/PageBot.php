@@ -89,7 +89,7 @@ class PageBot
             $this->retry++;
             if ($this->retry >= $this->maxRetry) {
                 $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
-                throw new \Exception('pageEmpty');
+                throw new \Exception('scraping pageEmpt');
             } else {
                 echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
                 sleep($this->retrySleep);
