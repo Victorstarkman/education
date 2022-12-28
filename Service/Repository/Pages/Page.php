@@ -79,12 +79,31 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateEnd(int $id): bool
+    public function updateTermino(): bool
     {
         $this->setFromLogs('Logs_Pages');
         $pages = [
-            'end' => true,
             'termino' => true,
+            'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
+        ];
+
+        if ($this->updateColumn($pages)) {
+            //save on database juli
+            $this->saveOnDatabase();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateEnd()
+    {
+
+        $this->setFromLogs('Logs_Pages');
+        $pages = [
+            'end' => true,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
@@ -123,13 +142,13 @@ class Page extends RepositoryBase
 
     public function updateFileDownload(int $id, int $totalDownload): bool
     {
-        $processedPage = (($totalDownload/20) > 0)? (int)($totalDownload/20) : 1;
+        $processedPage = (($totalDownload / 20) > 0) ? (int)($totalDownload / 20) : 1;
 
         $this->setFromLogs('Logs_Pages');
         $pages = [
             'total_file_downloaded' => $totalDownload,
             'processedRecord' => $totalDownload,
-            'processedPage' => $processedPage ,
+            'processedPage' => $processedPage,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
@@ -189,7 +208,8 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateError($message){
+    public function updateError($message)
+    {
         $this->setFromLogs('Logs_Pages');
         $pages = [
             'updated_at' => date('Y-m-d H:i:s'),
@@ -208,14 +228,14 @@ class Page extends RepositoryBase
 
     private function saveOnDatabase()
     {
-        if (!file_exists(__DIR__.'/config.php')) {
+        if (!file_exists(__DIR__ . '/config.php')) {
             return;
         }
         $this->setFromLogs('Logs_Pages');
         $this->select();
         $json = $this->getSelect()[0] ?? [];
 
-        $config = include __DIR__.'/config.php';
+        $config = include __DIR__ . '/config.php';
         $mysqli = mysqli_connect($config['hostname'], $config['user'], $config['password'], $config['database'])
             or die('No se pudo conectar: ' . mysqli_error());
         $sql = "SELECT * FROM jobs WHERE name ='scrapperInit' and status = 1 order by id DESC LIMIT 1";
