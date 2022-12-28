@@ -84,6 +84,8 @@ class SolicitudBot
                 }
             }
         }
+
+        $this->page->updateEnd();
     }
 
     private function startScaping(int $page, $files)
