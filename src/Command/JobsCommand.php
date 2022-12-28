@@ -94,7 +94,7 @@ class JobsCommand extends Command
 			'user_id' => 1,
 		]);
 
-		exec("cd ..;php Service/Bot.php");
+		exec("cd ..;php Service/Service/Bot/Bot.php");
 	}
 
 	private function checkInitCommand() {
