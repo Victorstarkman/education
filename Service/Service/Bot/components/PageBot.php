@@ -86,10 +86,18 @@ class PageBot
     {
         $data = json_decode($this->requestPages(0, false), true);
         if (empty($data)) {
-            $this->logFailure->prepareLog('newScraping pageEmpty', __FILE__, __LINE__);
-
-            throw new \Exception('it was not possible to insert the pages in the database');
+            $this->retry++;
+            if ($this->retry >= $this->maxRetry) {
+                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
+                throw new \Exception('pageEmpty');
+            } else {
+                echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
+                sleep($this->retrySleep);
+                $this->newScraping();
+                die;
+            }
         }
+        $this->retry = 0;
         $this->page->insertPage($data['totalPages'], $data['number'], 0, $data['totalElements']);
     }
 
