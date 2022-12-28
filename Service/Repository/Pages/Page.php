@@ -59,11 +59,13 @@ class Page extends RepositoryBase
     public function updateCurrentPage(int $id, int $currentPage, int $totalFileDownloaded): bool
     {
         $this->setFromLogs('Logs_Pages');
+
         $pages = [
             'current_page' => $currentPage,
             'total_file_downloaded' => $totalFileDownloaded,
             'actualPage' => $currentPage,
             'processedRecord' => $totalFileDownloaded,
+            'processedPage' => ($currentPage > 1) ? $currentPage - 1: $currentPage,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
