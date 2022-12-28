@@ -79,11 +79,11 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateTermino(): bool
+    public function updateTermino(bool $status): bool
     {
         $this->setFromLogs('Logs_Pages');
         $pages = [
-            'termino' => true,
+            'termino' => $status,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',

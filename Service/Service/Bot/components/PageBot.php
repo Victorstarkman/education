@@ -121,9 +121,10 @@ class PageBot
 
     private function startScaping(array $pages)
     {
+        $this->page->updateTermino(false);
         if (!$pages['end']) {
             $this->scraping($pages);
-            $this->page->updateTermino();
+            $this->page->updateTermino(true);
         } else {
             if ($pages['current_page'] == $pages['page_total']) {
                 echo "\r\n No hay mas paginas para descargar \r\n";
@@ -178,6 +179,7 @@ class PageBot
                 $this->page->updateCurrentPage($pages['id'], $actualPage, $pages['total_file_downloaded']);
             }
         }
+        $this->page->updateTermino(true);
     }
 
     private function scraping(array $pages)
