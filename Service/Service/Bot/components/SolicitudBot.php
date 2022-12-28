@@ -97,6 +97,7 @@ class SolicitudBot
             $this->retry++;
             if ($this->retry > $this->maxRetry) {
                 $this->Failure->prepareLog('No se encontro el archivo page: ' . $page, __FILE__, __LINE__);
+                $this->Handlers->deletLogToken();
                 $this->Files->deletePathAndFilies($page);
 
                 throw new \Exception('No se encontro el archivo page: ' . $page);
@@ -132,6 +133,7 @@ class SolicitudBot
                     $this->retry++;
                     if ($this->retry >= $this->maxRetry) {
                         $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
+                        $this->Handlers->deletLogToken();
                         throw new \Exception('No se encontro la solicitud de licencia page: ' . $page);
                     }else{
                         echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";

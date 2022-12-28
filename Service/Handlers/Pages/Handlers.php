@@ -52,4 +52,13 @@ class Handlers
 
         return $string;
     }
+
+    public function deletLogToken()
+    {
+        $file = getEnv('PATHFBOOT') . 'token/user/log.json';
+        if (file_exists($file)) {
+            unlink($file);
+        }
+
+    }
 }
