@@ -248,7 +248,7 @@ class Page extends RepositoryBase
 
         if (!is_null($id)) {
             $extraSQL = '';
-            if ($json['termino']) {
+            if ($json['termino'] && $json['end']) {
                 $extraSQL = ' , status=2';
             }
 
