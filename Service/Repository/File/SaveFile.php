@@ -108,7 +108,6 @@ class SaveFile
 
         $paths = [
             "Treatment/$date/$page/$idReg",
-            "Treatment/$date/$page/$idReg/consultarDatos",
             "Treatment/$date/$page/$idReg/json/consultarDatos",
             "Treatment/$date/$page/$idReg/img"
         ];
@@ -162,14 +161,14 @@ class SaveFile
                 $this->deleteAndMovePathAndFilies($path . "/" . $file,$IDS);
             } else {
                 //move file
-                $path = $this->pathDefault . 'Treatment/' . date('Y-m-d') . '/' . $page . '/' . basename($file);
-                rename($file, $path);
-                $this->setJsonOrigin($path,$page,$IDS);
+                $pathFile = $this->pathDefault . 'Treatment/' . date('Y-m-d') . '/' . $page . '/' . basename($file);
+                rename($file, $pathFile);
+                $this->setJsonOrigin($pathFile,$page,$IDS);
             }
         }
 
         if ($this->checkEmptyPath($path)) {
-            echo "delete path: " . $path . PHP_EOL;
+            echo "deleteAndMovePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
             $this->deleteAndMovePathAndFilies($path,$IDS);
@@ -190,7 +189,7 @@ class SaveFile
         }
 
         if ($this->checkEmptyPath($path)) {
-            echo "delete path: " . $path . PHP_EOL;
+            echo "deletePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
             $this->deleteAndMovePathAndFilies($path);
@@ -210,7 +209,7 @@ class SaveFile
         }
 
         if ($this->checkEmptyPath($path)) {
-            echo "delete path: " . $path . PHP_EOL;
+            echo "movePathUsersForSolicited : " . $path . PHP_EOL;
             rmdir($path);
         } else {
             $this->movePathUsersForSolicited($path);
