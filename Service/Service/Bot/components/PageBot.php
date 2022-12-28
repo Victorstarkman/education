@@ -89,7 +89,7 @@ class PageBot
             $this->retry++;
             if ($this->retry >= $this->maxRetry) {
                 $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
-                $this->Handlers->deletLogToken();
+                $this->Handlers->deletLogToken('scraping pageEmpty');
                 throw new \Exception('scraping pageEmpt');
             } else {
                 echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
@@ -189,7 +189,7 @@ class PageBot
                 $this->retry++;
                 if ($this->retry >= $this->maxRetry) {
                     $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
-                    $this->Handlers->deletLogToken();
+                    $this->Handlers->deletLogToken('scraping pageEmpty');
                     throw new \Exception('pageEmpty');
                 } else {
                     echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
