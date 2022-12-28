@@ -123,15 +123,13 @@ class Page extends RepositoryBase
 
     public function updateFileDownload(int $id, int $totalDownload): bool
     {
-        $this->setFromLogs('Logs_Pages');
-        $this->select();
-        $json = $this->getSelect()[0] ?? [];
+        $processedPage = (($totalDownload/20) > 0)? (int)($totalDownload/20) : 1;
 
         $this->setFromLogs('Logs_Pages');
         $pages = [
             'total_file_downloaded' => $totalDownload,
             'processedRecord' => $totalDownload,
-            'processedPage' => ($json['current_page'] > 1) ? $json['current_page'] - 1: $json['current_page'],
+            'processedPage' => $processedPage ,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
