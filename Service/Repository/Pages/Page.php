@@ -175,11 +175,13 @@ class Page extends RepositoryBase
 
     private function saveOnDatabase()
     {
-
+        if (!file_exists('config.php')) {
+            return;
+        }
         $this->setFromLogs('Logs_Pages');
         $this->select();
         $json = $this->getSelect()[0] ?? [];
-        return;
+
         $config = include 'config.php';
         $mysqli = mysqli_connect($config['hostname'], $config['user'], $config['password'], $config['database'])
             or die('No se pudo conectar: ' . mysqli_error());
