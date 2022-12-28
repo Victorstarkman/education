@@ -175,14 +175,14 @@ class Page extends RepositoryBase
 
     private function saveOnDatabase()
     {
-        if (!file_exists('config.php')) {
+        if (!file_exists(__DIR__.'/config.php')) {
             return;
         }
         $this->setFromLogs('Logs_Pages');
         $this->select();
         $json = $this->getSelect()[0] ?? [];
 
-        $config = include 'config.php';
+        $config = include __DIR__.'/config.php';
         $mysqli = mysqli_connect($config['hostname'], $config['user'], $config['password'], $config['database'])
             or die('No se pudo conectar: ' . mysqli_error());
         $sql = "SELECT * FROM jobs WHERE name ='scrapperInit' and status = 1 order by id DESC LIMIT 1";
