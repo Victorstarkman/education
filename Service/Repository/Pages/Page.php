@@ -65,7 +65,6 @@ class Page extends RepositoryBase
             'total_file_downloaded' => $totalFileDownloaded,
             'actualPage' => $currentPage,
             'processedRecord' => $totalFileDownloaded,
-            'processedPage' => ($currentPage > 1) ? $currentPage - 1: $currentPage,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
@@ -125,9 +124,14 @@ class Page extends RepositoryBase
     public function updateFileDownload(int $id, int $totalDownload): bool
     {
         $this->setFromLogs('Logs_Pages');
+        $this->select();
+        $json = $this->getSelect()[0] ?? [];
+
+        $this->setFromLogs('Logs_Pages');
         $pages = [
             'total_file_downloaded' => $totalDownload,
             'processedRecord' => $totalDownload,
+            'processedPage' => ($json['current_page'] > 1) ? $json['current_page'] - 1: $json['current_page'],
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
