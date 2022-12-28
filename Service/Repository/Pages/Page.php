@@ -98,32 +98,12 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateEndTrue()
+    public function updateEnd(bool $status)
     {
 
         $this->setFromLogs('Logs_Pages');
         $pages = [
-            'end' => true,
-            'updated_at' => date('Y-m-d H:i:s'),
-            'error' => false,
-            'message' => '',
-        ];
-
-        if ($this->updateColumn($pages)) {
-            //save on database juli
-            $this->saveOnDatabase();
-            return true;
-        }
-
-        return false;
-    }
-
-    public function updateEndFalse()
-    {
-
-        $this->setFromLogs('Logs_Pages');
-        $pages = [
-            'end' => false,
+            'end' => $status,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',

@@ -62,7 +62,7 @@ class SolicitudBot
             $this->Failure->prepareLog('No se encontro la paginas', __FILE__, __LINE__, $this->pages);
             die('No se encontro la paginas.');
         }
-        $this->page->updateEndFalse();
+        $this->page->updateEnd(false);
 
         foreach ($paths as $path) {
             $path = explode('/', $path);
@@ -86,7 +86,7 @@ class SolicitudBot
             }
         }
 
-        $this->page->updateEndTrue();
+        $this->page->updateEnd(true);
     }
 
     private function startScaping(int $page, $files)
