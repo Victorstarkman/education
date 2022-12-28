@@ -10,6 +10,10 @@ use Repository\Log\Failure;
 
 class PageBot
 {
+    private $retry = 0;
+    private $maxRetry = 10;
+    private $retrySleep = 10;
+
     public const HEADER_DEFAULT = [
         "Accept" => "application/json, text/plain, */*",
         "Host" => "misaplicaciones5.abc.gob.ar",
@@ -81,11 +85,20 @@ class PageBot
     private function newScraping()
     {
         $data = json_decode($this->requestPages(0, false), true);
-        if(empty($data)){
-            $this->logFailure->prepareLog('newScraping pageEmpty', __FILE__, __LINE__);
-
-            throw new \Exception('it was not possible to insert the pages in the database');
+        if (empty($data)) {
+            $this->retry++;
+            if ($this->retry >= $this->maxRetry) {
+                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
+                $this->Handlers->deletLogToken('scraping pageEmpty');
+                throw new \Exception('scraping pageEmpt');
+            } else {
+                echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
+                sleep($this->retrySleep);
+                $this->newScraping();
+                die;
+            }
         }
+        $this->retry = 0;
         $this->page->insertPage($data['totalPages'], $data['number'], 0, $data['totalElements']);
     }
 
@@ -108,9 +121,10 @@ class PageBot
 
     private function startScaping(array $pages)
     {
+        $this->page->updateTermino(false);
         if (!$pages['end']) {
             $this->scraping($pages);
-            $this->page->updateEnd($pages['id']);
+            $this->page->updateTermino(true);
         } else {
             if ($pages['current_page'] == $pages['page_total']) {
                 echo "\r\n No hay mas paginas para descargar \r\n";
@@ -165,16 +179,30 @@ class PageBot
                 $this->page->updateCurrentPage($pages['id'], $actualPage, $pages['total_file_downloaded']);
             }
         }
+        $this->page->updateTermino(true);
     }
 
     private function scraping(array $pages)
     {
         for ($i = $pages['current_page']; $i <= $pages['page_total']; $i++) {
             $data = json_decode($this->requestPages($i, false), true)['content'] ?? [];
-            if(empty($data)){
-                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
-                throw new \Exception('pageEmpty');
+
+            if (empty($data)) {
+                $this->retry++;
+                if ($this->retry >= $this->maxRetry) {
+                    $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
+                    $this->Handlers->deletLogToken('scraping pageEmpty');
+                    throw new \Exception('pageEmpty');
+                } else {
+                    echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
+                    sleep($this->retrySleep);
+                    $this->scraping($pages);
+                    die;
+                }
             }
+
+            $this->retry = 0;
+
             $newData = $this->standardizeData($data);
             $this->SaveFile->createFilesPages($i, json_encode($newData, JSON_PRETTY_PRINT));
             if ($pages['end']) {

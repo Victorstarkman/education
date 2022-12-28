@@ -27,11 +27,11 @@ class Bot
     public function __construct()
     {
         //set environment in php 7.4
-        putenv('PATHFBOOT=/home/romulo/job/bot/src3/education/Service/File/');
-        putenv('PATHFLOG=/home/romulo/job/bot/src3/education/Service/');
-        putenv('SLEEP=true');
-        putenv('APP_VERSION=1.4.4');
+        $config = __DIR__ . '/Config/ConfigEnv.php';
+        if(!file_exists($config))
+            die('Config file Env not found');
 
+        include_once $config;
 
         $this->token = new Token();
         $this->user = new User();

@@ -90,7 +90,7 @@ class SaveFile
 
     private function createJsonFile(int $page, int $id, int $idReg, string $json)
     {
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/$idReg.json";
+        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/consultarDatos/$idReg.json";
         file_put_contents($path, $json);
     }
 
@@ -108,7 +108,7 @@ class SaveFile
 
         $paths = [
             "Treatment/$date/$page/$idReg",
-            "Treatment/$date/$page/$idReg/json",
+            "Treatment/$date/$page/$idReg/json/consultarDatos",
             "Treatment/$date/$page/$idReg/img"
         ];
 
@@ -152,24 +152,26 @@ class SaveFile
         }
     }
 
-    public function deleteAndMovePathAndFilies(int $page)
+    public function deleteAndMovePathAndFilies(int $page, $IDS= [])
     {
         $path = $this->pathDefault . 'pages/' . $page;
         $files = glob($path . '/*'); // get all file names
         foreach ($files as $file) { // iterate files
             if (!is_file($file)) {
-                $this->deleteAndMovePathAndFilies($path . "/" . $file);
+                $this->deleteAndMovePathAndFilies($path . "/" . $file,$IDS);
             } else {
                 //move file
-                rename($file, $this->pathDefault . 'Treatment/' . date('Y-m-d') . '/' . $page . '/' . basename($file));
+                $pathFile = $this->pathDefault . 'Treatment/' . date('Y-m-d') . '/' . $page . '/' . basename($file);
+                rename($file, $pathFile);
+                $this->setJsonOrigin($pathFile,$page,$IDS);
             }
         }
 
         if ($this->checkEmptyPath($path)) {
-            echo "delete path: " . $path . PHP_EOL;
+            echo "deleteAndMovePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
-            $this->deleteAndMovePathAndFilies($path);
+            $this->deleteAndMovePathAndFilies($path,$IDS);
         }
     }
 
@@ -187,7 +189,7 @@ class SaveFile
         }
 
         if ($this->checkEmptyPath($path)) {
-            echo "delete path: " . $path . PHP_EOL;
+            echo "deletePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
             $this->deleteAndMovePathAndFilies($path);
@@ -207,7 +209,7 @@ class SaveFile
         }
 
         if ($this->checkEmptyPath($path)) {
-            echo "delete path: " . $path . PHP_EOL;
+            echo "movePathUsersForSolicited : " . $path . PHP_EOL;
             rmdir($path);
         } else {
             $this->movePathUsersForSolicited($path);
@@ -226,5 +228,22 @@ class SaveFile
         }
 
         return true;
+    }
+
+    public function setJsonOrigin(string $path, string $page, array $IDS): void
+    {
+        $json = json_decode(file_get_contents($path), true);
+        foreach ($json as $key => $value) {
+            $id = $IDS[$key];
+            echo "\ncreating jsonOrigin: $id \n";
+            $this->saveJsonOrigin($path,$id,$page, $value);
+        }
+    }
+
+    private function saveJsonOrigin(string $path,int $id,  string $page, array $json)
+    {
+
+        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/jsonOrinResponse.json";
+        file_put_contents($path, json_encode($json));
     }
 }
