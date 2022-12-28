@@ -30,7 +30,8 @@ class ReportsController extends AppController
                     'Modes',
             ],
         ];
-        $reports = $this->Reports->find(); 
+        $reports = $this->Reports->find();
+       
         $searchByStatus = false;
         if (!empty($search)) {
             $patientsWhere = [];
@@ -89,13 +90,14 @@ class ReportsController extends AppController
             }
         }
         $reports
-        ->where(['doctor_id' => $this->Authentication->getIdentity()->id]);
+        ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
 
         $settings = [
             'order' => ['created' => 'desc'],
             'limit' => 10,
         ];
-
+        /* debug($reports->toArray());
+        die(); */
         $reports = $this->paginate($reports, $settings);
         $getLicenses = $this->Reports->getLicenses();
         $getStatuses = $this->Reports->getAllStatuses();
@@ -173,8 +175,8 @@ class ReportsController extends AppController
 
         $reports
             ->where(['Reports.status IN' => $this->Reports::ACTIVE])
-            ->where(['doctor_id' => $this->Authentication->getIdentity()->id]);
-
+            ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+            
         $settings = [
             'order' => ['created' => 'desc'],
             'limit' => 10,

@@ -48,8 +48,8 @@ class UsersController extends AppController
             }
         }
         $groups = $this->Users->getGroupList();
-
-        $this->set(compact('user', 'groups'));
+        $centermedicals = $this->fetchTable('MedicalCenters')->find()->all()->combine('id','district')->toArray();
+        $this->set(compact('user', 'groups','centermedicals'));
     }
 
     /**
@@ -73,6 +73,7 @@ class UsersController extends AppController
                     $data['password'] = $data['password_one'];
                 }
                 $user = $this->Users->patchEntity($user, $data);
+
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('Se creo con exito el nuevo usuario.'));
 
@@ -82,8 +83,8 @@ class UsersController extends AppController
             }
         }
         $groups = $this->Users->getGroupList();
-
-        $this->set(compact('user', 'groups'));
+        $centermedicals = $this->fetchTable('MedicalCenters')->find()->all()->combine('id','district')->toArray();
+        $this->set(compact('user', 'groups','centermedicals'));
     }
 
     /**

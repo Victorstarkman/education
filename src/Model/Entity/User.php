@@ -54,6 +54,7 @@ class User extends Entity
         'reports' => true,
         'city_id' => true,
         'signature' => true,
+        'centermedical_id'=> true
     ];
 
     /**

@@ -46,6 +46,11 @@
 					<?= $this->Form->control('password_two', ['label'=> 'Repetir Contraseña', 'class' => 'form-control form-control-blue m-0 col-12']); ?>
                 </div>
             </div>
+            <div class="pt-0 col-lg-6 col-sm-12">
+                <div class="form-group">
+					<?= $this->Form->control('centermedical_id', ['label'=> 'Asignado', 'empty' => __('Seleccione'), 'require' => true, 'class' => 'form-control form-control-blue m-0 col-12']); ?>
+                </div>
+            </div>
             <div class="extraFields mx-auto row">
                 <div class="col-12">
                     <p class="title-results"></p>

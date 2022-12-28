@@ -137,13 +137,13 @@
                             'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'hidden' , 'value' => 1]); ?>
                     </div>
                 </div>
-                <div class="pt-0 col-lg-12 col-sm-12">
+               <!--  <div class="pt-0 col-lg-12 col-sm-12">
                     <div class="form-group">
-                        <?= $this->Form->control('doctor_id', ['label' => 'Auditor*',
-                            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $doctors,
-                            'empty' => 'Seleccione', 'required' => true]); ?>
+                        <?//= $this->Form->control('doctor_id', ['label' => 'Auditor*',
+                            //'class' => 'form-control form-control-blue m-0 col-12', 'options' => $doctors,
+                            //'empty' => 'Seleccione', 'required' => true]); ?>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-12">
                     <p class="title-results">Archivos e imagenes (Máx. 10 Archivos hasta 10MB cada uno)</p>
                 </div>

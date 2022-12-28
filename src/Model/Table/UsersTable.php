@@ -95,6 +95,9 @@ class UsersTable extends Table
             'className' => 'Reports',
             'foreignKey' => 'doctor_id',
         ]);
+        $this->hasMany('MedicalCenters',[
+            'foreignKey' => 'medicalCenter',
+        ]);
     }
 
     /**
