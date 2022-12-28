@@ -123,7 +123,7 @@ class PageBot
     {
         if (!$pages['end']) {
             $this->scraping($pages);
-            $this->page->updateEnd($pages['id']);
+            $this->page->updateTermino();
         } else {
             if ($pages['current_page'] == $pages['page_total']) {
                 echo "\r\n No hay mas paginas para descargar \r\n";
