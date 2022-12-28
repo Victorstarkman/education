@@ -34,7 +34,7 @@ class Page extends RepositoryBase
             'actualPage' => $currentPage,
             'processedPage' => $currentPage,
             'processedRecord' => $totalFileDownloaded,
-            'error' => '',
+            'error' => false,
             'message' => '',
             'termino' => false,
             'recordsSalteados' => 0,
@@ -65,6 +65,8 @@ class Page extends RepositoryBase
             'actualPage' => $currentPage,
             'processedRecord' => $totalFileDownloaded,
             'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
         ];
 
         if ($this->updateColumn($pages)) {
@@ -83,6 +85,8 @@ class Page extends RepositoryBase
             'end' => true,
             'termino' => true,
             'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
         ];
 
         if ($this->updateColumn($pages)) {
@@ -103,6 +107,8 @@ class Page extends RepositoryBase
             'totalPages' => $totalPage,
             'totalRecords' => $totalFile,
             'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
         ];
 
         if ($this->updateColumn($pages)) {
@@ -121,6 +127,8 @@ class Page extends RepositoryBase
             'total_file_downloaded' => $totalDownload,
             'processedRecord' => $totalDownload,
             'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
         ];
 
         if ($this->updateColumn($pages)) {
@@ -144,6 +152,8 @@ class Page extends RepositoryBase
             'totalRecords' => $totalFile,
             'processedRecord' => $totalDownload,
             'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
         ];
 
         if ($this->updateColumn($pages)) {
@@ -162,6 +172,25 @@ class Page extends RepositoryBase
             'page_total' => $totalPage,
             'totalPages' => $totalPage,
             'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
+        ];
+
+        if ($this->updateColumn($pages)) {
+            //save on database juli
+            $this->saveOnDatabase();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateError($message){
+        $this->setFromLogs('Logs_Pages');
+        $pages = [
+            'updated_at' => date('Y-m-d H:i:s'),
+            'error' => true,
+            'message' => $message,
         ];
 
         if ($this->updateColumn($pages)) {

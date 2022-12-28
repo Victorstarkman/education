@@ -2,8 +2,17 @@
 
 namespace Handlers\Pages;
 
+use Repository\Pages\Page;
+
 class Handlers
 {
+    private Page $page;
+
+    public function __construct()
+    {
+        $this->page = new Page();
+    }
+
     public function removeSpace(string $string): string
     {
         return preg_replace('/\s+\s+\s*?/', '', $string);
@@ -53,12 +62,14 @@ class Handlers
         return $string;
     }
 
-    public function deletLogToken()
+    public function deletLogToken(string $menssage)
     {
         $file = getEnv('PATHFBOOT') . 'token/user/log.json';
         if (file_exists($file)) {
             unlink($file);
         }
+
+        $this->page->updateError($menssage);
 
     }
 }
