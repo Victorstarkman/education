@@ -24,6 +24,9 @@ class SolicitudBot
         "Sec-Fetch-Site" => "same-origin"
     ];
 
+    private $retry = 0;
+    private $maxRetry = 10;
+    private $retrySleep = 10;
     private string $token = 'Bearer ';
     private string $APP_VERSION;
     private array $pages = [];
@@ -55,7 +58,7 @@ class SolicitudBot
         $this->pages = $this->page->getPage();
 
 
-        if(empty($this->pages)) {
+        if (empty($this->pages)) {
             $this->Failure->prepareLog('No se encontro la paginas', __FILE__, __LINE__, $this->pages);
             die('No se encontro la paginas.');
         }
@@ -90,11 +93,22 @@ class SolicitudBot
             $files = json_decode($files, true);
             $this->startScaping($page, $files);
             return;
-        }elseif(empty($files)) {
-            $this->Failure->prepareLog('No se encontro el archivo page: ' . $page, __FILE__, __LINE__);
-            $this->Files->deletePathAndFilies($page);
-            return;
+        } elseif (empty($files)) {
+            $this->retry++;
+            if ($this->retry > $this->maxRetry) {
+                $this->Failure->prepareLog('No se encontro el archivo page: ' . $page, __FILE__, __LINE__);
+                $this->Files->deletePathAndFilies($page);
+
+                throw new \Exception('No se encontro el archivo page: ' . $page);
+            } else {
+                echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
+                sleep($this->retrySleep);
+                $this->startScaping($page, $files);
+                die;
+            }
         }
+
+        $this->retry = 0;
         $IDSjSONoRIGIN = [];
         foreach ($files as $file) {
 
@@ -114,10 +128,20 @@ class SolicitudBot
                         $jsonFile = json_decode($jsonFile, true);
                     }
                 }
-                if(!is_array($jsonFile)) {
-                    $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
-                    continue;
+                if (!is_array($jsonFile)) {
+                    $this->retry++;
+                    if ($this->retry >= $this->maxRetry) {
+                        $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
+                        throw new \Exception('No se encontro la solicitud de licencia page: ' . $page);
+                    }else{
+                        echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
+                        sleep($this->retrySleep);
+                        $this->startScaping($page, $files);
+                        die;
+                    }
                 }
+
+                $this->retry = 0;
 
                 $data = $this->standardizeData($jsonFile);
                 $dataEncode = json_encode($data);
@@ -128,12 +152,9 @@ class SolicitudBot
                     $nameImg = $data[0]['id'] . '_' . $key . '.jpg';
                     $this->Files->createImgFile($page, $nameImg, $data[0]['id'], $image);
                 }
-
-
             }
-
         }
-        $this->Files->deleteAndMovePathAndFilies($page,$IDSjSONoRIGIN);
+        $this->Files->deleteAndMovePathAndFilies($page, $IDSjSONoRIGIN);
         $this->Files->movePathUsersForSolicited();
         $totalDownload = $this->pages['total_file_downloaded'] + $this->size;
         $this->pages['total_file_downloaded'] = $totalDownload;
