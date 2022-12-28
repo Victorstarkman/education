@@ -30,20 +30,20 @@ class ReportsController extends AppController
                     'Modes',
             ],
         ];
-        $reports = $this->Reports->find();
+        $reports = $this->Reports->find(); 
         $searchByStatus = false;
         if (!empty($search)) {
             $patientsWhere = [];
             $errorPatient = '';
-            if (!empty($search['document'])) {
-                $coincide = preg_match('/@/', $search['document']);
+            if (!empty($search['cuil'])) {
+                $coincide = preg_match('/@/', $search['cuil']);
 
                 if ($coincide > 0) {
-                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
-                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['cuil'];
+                    $patientsWhere['email LIKE'] = '%' . $search['cuil'] . '%';
                 } else {
-                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
-                    $patientsWhere['document'] = $search['document'];
+                    $errorPatient = 'No se encontro persona con el CUIL: ' . $search['cuil'];
+                    $patientsWhere['cuil'] = $search['cuil'];
                 }
             }
             if (!empty($search['company_id'])) {
@@ -70,7 +70,7 @@ class ReportsController extends AppController
 
             if (!empty($search['status'])) {
                 $searchByStatus = true;
-                $reports->where(['status' => $search['status']]);
+                $reports->where(['Reports.status' => $search['status']]);
             }
 
             if (!empty($search['start_date'])) {
@@ -126,15 +126,15 @@ class ReportsController extends AppController
         if (!empty($search)) {
             $patientsWhere = [];
             $errorPatient = '';
-            if (!empty($search['document'])) {
-                $coincide = preg_match('/@/', $search['document']);
+            if (!empty($search['cuil'])) {
+                $coincide = preg_match('/@/', $search['cuil']);
 
                 if ($coincide > 0) {
-                    $errorPatient = 'No se encontro persona con el email: ' . $search['document'];
-                    $patientsWhere['email LIKE'] = '%' . $search['document'] . '%';
+                    $errorPatient = 'No se encontro persona con el email: ' . $search['cuil'];
+                    $patientsWhere['email LIKE'] = '%' . $search['cuil'] . '%';
                 } else {
-                    $errorPatient = 'No se encontro persona con el documento: ' . $search['document'];
-                    $patientsWhere['document'] = $search['document'];
+                    $errorPatient = 'No se encontro persona con el CUIL: ' . $search['cuil'];
+                    $patientsWhere['cuil'] = $search['cuil'];
                 }
             }
             if (!empty($search['company_id'])) {

@@ -15,11 +15,11 @@
         <?= $this->Form->create(null, ['type' => 'GET', 'class' => 'col-lg-12 col-md-12 row p-0 m-0']) ?>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
-                <?= $this->Form->control('document', [
+                <?= $this->Form->control('cuil', [
                     'label' => 'Buscar',
-                    'placeholder' => 'Buscar por DNI o Email',
+                    'placeholder' => 'Buscar por CUIL o Email',
                     'class' => 'form-control form-control-blue m-0 col-12',
-                    'value' => $search['document'] ?? '']); ?>
+                    'value' => $search['cuil'] ?? '']); ?>
             </div>
         </div>
         <div class="pt-0 col-lg-2 col-sm-12">
@@ -27,7 +27,7 @@
                 <?= $this->Form->control('modes_id', [
                                 'label' => 'Tipo de Servicio',
                                 'class' => 'form-control form-control-blue m-0 col-12',
-                                'required' => true,
+                                'required' => false,
                                 'empty' => 'Seleccione',
                                 'value' => $search['modes']?? '']);
                                 ?>
@@ -74,7 +74,7 @@
         <div class="col-6 mb-3">
             <?php echo $this->Html->link(
                 'Reiniciar',
-                $redirectPrefix . '/listado/',
+                $redirectPrefix . '/listado',
                 ['fullBase' => true, 'class' => 'btn btn-outline-secondary col-12']
             );
 ?>
