@@ -18,7 +18,7 @@ class Page extends RepositoryBase
         $this->select();
         $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded']);
         $this->setLimit(1);
-
+        print_r($this->getSelect());
         return $this->getSelect()[0] ?? [];
     }
 
