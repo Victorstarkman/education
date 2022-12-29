@@ -14,10 +14,15 @@ class Page extends RepositoryBase
 
     public function getPage(): array
     {
+        echo "\n slect from page";
         $this->setFromLogs('Logs_Pages');
+        echo "\n execult select";
         $this->select();
+        echo "\n filter columns";
         $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded']);
+        echo "\n set limit";
         $this->setLimit(1);
+        echo "\n get select";
         return $this->getSelect()[0] ?? [];
     }
 

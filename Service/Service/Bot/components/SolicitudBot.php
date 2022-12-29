@@ -57,7 +57,6 @@ class SolicitudBot
 
         echo "\r\n get paths \r\n";
         $paths = $this->Files->getPathPageDate();
-        print_r($paths);die;
         echo "\r\n get pages \r\n";
         $this->pages = $this->page->getPage();
 
