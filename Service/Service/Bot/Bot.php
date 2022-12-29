@@ -46,8 +46,6 @@ class Bot
 
     public function start(): void
     {
-        $this->page->updateJuli();
-        die;
         try{
             $token = $this->token();
 

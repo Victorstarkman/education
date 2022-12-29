@@ -226,10 +226,6 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateJuli()
-    {
-        $this->saveOnDatabase();
-    }
 
     private function saveOnDatabase()
     {
