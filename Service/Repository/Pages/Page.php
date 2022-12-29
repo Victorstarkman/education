@@ -23,6 +23,8 @@ class Page extends RepositoryBase
         echo "\n set limit";
         $this->setLimit(1);
         echo "\n get select";
+        print_r($this->getSelect());
+        echo "\n return";
         return $this->getSelect()[0] ?? [];
     }
 
