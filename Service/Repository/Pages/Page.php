@@ -3,13 +3,16 @@
 namespace Repository\Pages;
 
 use Repository\RepositoryBase;
+use Repository\Log\Failure;
 
 class Page extends RepositoryBase
 {
+    private $failure;
 
     public function __construct()
     {
         parent::__construct();
+        $this->failure = new Failure();
     }
 
     public function getPage(): array
@@ -23,7 +26,13 @@ class Page extends RepositoryBase
         echo "\n set limit";
         $this->setLimit(1);
         echo "\n get select";
-        print_r($this->getSelect());
+        try{
+
+            print_r($this->getSelect());
+        }catch(\Exception $e){
+            echo "\n error";
+            $this->failure->prepareLog($e->getMessage(), __FILE__, __LINE__);
+        }
         echo "\n return";
         return $this->getSelect()[0] ?? [];
     }
