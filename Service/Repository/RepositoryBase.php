@@ -75,7 +75,6 @@ class RepositoryBase
     public function select($nameFile = 'log.json')
     {
         $path = $this->path . '/' . $nameFile;
-        echo "Page path: $path \n";
         $this->select = [];
         if (file_exists($path)) {
             $file = file_get_contents($path);
