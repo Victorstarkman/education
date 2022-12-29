@@ -52,10 +52,8 @@ class SolicitudBot
 
     public function scrapingSolicitud($token)
     {
-        echo "\r\n set token \r\n";
+        echo "\r\n set token in solicitudBot\r\n";
         $this->token .= $token;
-
-        echo "\r\n get paths \r\n";
         $paths = $this->Files->getPathPageDate();
         echo "\r\n get pages \r\n";
         $this->pages = $this->page->getPage();
