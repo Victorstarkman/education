@@ -63,8 +63,7 @@ class PageBot
         } elseif ($this->isNewScraping && $stop) {
             throw new \Exception('it was not possible to insert the pages in the database');
         }
-        $pages = $this->page->getPage();
-        $this->size = $pages['total_file'];
+
         $this->startScaping($pages);
     }
 
@@ -215,7 +214,6 @@ class PageBot
             }
             $this->page->updateCurrentPage($pages['id'], $page, $pages['total_file_downloaded']);
             echo "\r\n Actual_page: {$i}, next_page: {$page} \r\n";
-            break;
         }
     }
 
