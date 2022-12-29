@@ -46,10 +46,14 @@ class Bot
     public function start(): void
     {
         try{
+            echo "\n Start \n";
             $token = $this->token();
 
+            echo "\r\n check if it has content to be processed \r\n";
             if ($this->checkIfItHasContentToBeProcessed()) {
+                echo "\r\n scraping Solicitud \r\n";
                 $this->solicitudBot->scrapingSolicitud($token);
+                echo "\r\n restart scraping \r\n";
                 $this->start();
                 return;
             }
@@ -67,6 +71,7 @@ class Bot
 
     private function token(): string
     {
+        echo "\r\n get token and get user \r\n";
         $dfataToken = $token = $this->token->getToken();
         $users = $this->user->getUser();
 
@@ -82,20 +87,30 @@ class Bot
             $this->token->setToken($token);
             $idToken = $this->token->getToken()['id'];
         } else {
+            echo "\r\n token exist \r\n";
+            echo "\r\n set idToken \r\n";
             $idToken = $dfataToken['id'];
+            echo "\r\n set token \r\n";
             $token = $dfataToken['token'];
-
+            echo "\r\n check token \r\n";
             if (!checkToken($token)) {
+                echo "\r\n delete token \r\n";
                 $this->token->deleteToken($idToken);
+                echo "\r\n get user \r\n";
                 $token = $this->login($users);
+                echo "\r\n set token \r\n";
                 $this->token->setToken($token);
+                echo "\r\n set idToken \r\n";
                 $idToken = $this->token->getToken()['id'];
             }
         }
 
+        echo "\r\n check token \r\n";
         if (!checkToken($token)) {
+            echo "\r\n delete token \r\n";
             $this->token->deleteToken($idToken);
-            $this->logFailure->prepareLog('Token is invalid', __FILE__, __LINE__);
+            echo "\r\n set log \r\n";
+            $this->logFailure->prepareLog('Token is invalid', __FILE__, __LINE__, $token);
             die;
         }
 
