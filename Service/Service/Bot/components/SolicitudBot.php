@@ -69,7 +69,7 @@ class SolicitudBot
 
         echo "\r\n update scraping solicited end para false \r\n";
         $this->page->updateEnd(false);
-        eprint_r($paths);die;
+        print_r($paths);die;
         foreach ($paths as $path) {
             $path = explode('/', $path);
             if (empty($path[end($path)])) {
