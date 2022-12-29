@@ -120,7 +120,7 @@ class RepositoryBase
 
     public function getSelect(): array
     {
-        return $this->select;
+        return $this->select ?? [];
     }
 
     public function updateColumn(array $columnAndValue, $nameFile = 'log.json'): bool
