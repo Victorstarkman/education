@@ -12,7 +12,6 @@ use Service\Bot\components\Login;
 use Service\Bot\components\PageBot;
 use Service\Bot\components\SolicitudBot;
 use Repository\File\SaveFile;
-use Repository\Pages\Page;
 class Bot
 {
 
