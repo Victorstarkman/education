@@ -2,16 +2,21 @@
 
 namespace Repository;
 
+use Repository\Log\Failure;
+
 class RepositoryBase
 {
     private $path;
     private $defaultPath;
     private $select = [];
 
+    private Failure $Failure;
+
     public function __construct()
     {
         $this->path = getenv('PATHFBOOT', '/var/www/filesBot/');
         $this->defaultPath = $this->path;
+        $this->Failure = new Failure();
     }
 
     public function setFrom($place)
@@ -120,7 +125,13 @@ class RepositoryBase
 
     public function getSelect(): array
     {
-        return $this->select;
+        try{
+
+            return $this->select;
+        }catch(\Exception $e){
+            $this->Failure->prepareLog($e->getMessage(), __FILE__, __LINE__);
+            return [];
+        }
     }
 
     public function updateColumn(array $columnAndValue, $nameFile = 'log.json'): bool
