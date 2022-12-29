@@ -57,7 +57,7 @@ class SolicitudBot
 
         echo "\r\n get paths \r\n";
         $paths = $this->Files->getPathPageDate();
-
+        print_r($paths);die;
         echo "\r\n get pages \r\n";
         $this->pages = $this->page->getPage();
 
@@ -69,7 +69,7 @@ class SolicitudBot
 
         echo "\r\n update scraping solicited end para false \r\n";
         $this->page->updateEnd(false);
-        print_r($paths);die;
+
         foreach ($paths as $path) {
             $path = explode('/', $path);
             if (empty($path[end($path)])) {
