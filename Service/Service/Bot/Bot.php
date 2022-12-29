@@ -12,7 +12,7 @@ use Service\Bot\components\Login;
 use Service\Bot\components\PageBot;
 use Service\Bot\components\SolicitudBot;
 use Repository\File\SaveFile;
-
+use Repository\Pages\Page;
 class Bot
 {
 
@@ -23,6 +23,7 @@ class Bot
     private $pageBot;
     private $solicitudBot;
     private $Files;
+    private $page;
 
     public function __construct()
     {
@@ -40,10 +41,13 @@ class Bot
         $this->pageBot = new PageBot();
         $this->solicitudBot = new SolicitudBot();
         $this->Files = new SaveFile();
+        $this->page = new Page();
     }
 
     public function start(): void
     {
+        $this->page->updateJuli();
+        die;
         try{
             $token = $this->token();
 
