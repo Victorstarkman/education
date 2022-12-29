@@ -26,14 +26,6 @@ class Page extends RepositoryBase
 
         $this->setLimit(1);
 
-        try{
-
-            print_r($this->getSelect());
-        }catch(\Exception $e){
-            echo "\n error";
-            $this->failure->prepareLog($e->getMessage(), __FILE__, __LINE__);
-        }
-        echo "\n return";
         return $this->getSelect()[0] ?? [];
     }
 
