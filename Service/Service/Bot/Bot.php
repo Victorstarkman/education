@@ -23,7 +23,7 @@ class Bot
     private $pageBot;
     private $solicitudBot;
     private $Files;
-    private $page;
+
 
     public function __construct()
     {
@@ -41,7 +41,6 @@ class Bot
         $this->pageBot = new PageBot();
         $this->solicitudBot = new SolicitudBot();
         $this->Files = new SaveFile();
-        $this->page = new Page();
     }
 
     public function start(): void
