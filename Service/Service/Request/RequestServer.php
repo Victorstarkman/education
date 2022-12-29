@@ -90,6 +90,7 @@ class RequestServer
                 if($this->isSleep){
                     //sleep de 1 a 3 minutos
                     $randoSleep = rand(60, 180);
+                    echo "Sleeping for $randoSleep seconds... \n";
                     sleep($randoSleep);
                 }
                 $res = $this->client->request($metodo, $url, $a_param);
