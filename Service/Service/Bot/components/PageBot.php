@@ -63,7 +63,8 @@ class PageBot
         } elseif ($this->isNewScraping && $stop) {
             throw new \Exception('it was not possible to insert the pages in the database');
         }
-
+        $pages = $this->page->getPage();
+        $this->size = $pages['total_file'];
         $this->startScaping($pages);
     }
 
@@ -105,7 +106,7 @@ class PageBot
     private function requestPages(int $page = 0, bool $sleep = true)
     {
         $numPerPage = $this->size;
-        echo "\r\n Request page {$page} \r\n";
+        echo "\r\n Request page {$page} numPersPage {$numPerPage} \r\n";
 
         return $this->Request->request(
             "https://misaplicaciones5.abc.gob.ar/wsLicenciasMedicas/solicitudestado/noAprobadas?&page={$page}&numPerPage={$numPerPage}&sortField=solicitudLicencia.fechaCreacion&sortDir=DESC&filterType=&filterData=&version=PRESTADORA",
@@ -188,12 +189,14 @@ class PageBot
             $data = json_decode($this->requestPages($i, false), true)['content'] ?? [];
 
             if (empty($data)) {
+                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__,$data);
                 $this->retry++;
                 if ($this->retry >= $this->maxRetry) {
                     $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
                     $this->Handlers->deletLogToken('scraping pageEmpty');
                     throw new \Exception('pageEmpty');
                 } else {
+
                     echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
                     sleep($this->retrySleep);
                     $this->scraping($pages);
@@ -212,6 +215,7 @@ class PageBot
             }
             $this->page->updateCurrentPage($pages['id'], $page, $pages['total_file_downloaded']);
             echo "\r\n Actual_page: {$i}, next_page: {$page} \r\n";
+            break;
         }
     }
 

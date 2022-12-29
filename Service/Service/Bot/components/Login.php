@@ -2,6 +2,7 @@
 namespace Service\Bot\components;
 
 use Service\Request\RequestServer;
+use Repository\Log\Failure;
 
 class Login extends RequestServer
 {
@@ -29,10 +30,13 @@ class Login extends RequestServer
      */
     private $Request;
 
+    private Failure $Failure;
+
     public function __construct()
     {
         parent::__construct();
         $this->Request = new RequestServer();
+        $this->Failure = new Failure();
         $this->APP_VERSION = getenv('APP_VERSION', '1.4.4');
     }
 
@@ -106,12 +110,7 @@ class Login extends RequestServer
 
             return $TokenSAML;
         }
-
-        $this->LogService->setLog([
-            'message' => 'No se puede obtener el token de respuesta SAML',
-            'function' => 'requestGetLicenciasMedicasWeb',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se puede obtener el token de respuesta SAML', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se puede obtener el token de respuesta SAML ');
     }
@@ -181,12 +180,7 @@ class Login extends RequestServer
             ], false);
             return;
         }
-
-        $this->LogService->setLog([
-            'message' => 'No se pudo realizar la devolución de llamada',
-            'function' => 'requestGetLoginCallback',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se pudo realizar la devolución de llamada', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se pudo realizar la devolución de llamada ');
     }
@@ -207,11 +201,7 @@ class Login extends RequestServer
            return true;
         }
 
-        $this->LogService->setLog([
-            'message' => 'No se pudo obtener el usuario o el usuario no es un proveedor',
-            'function' => 'requestGetUser',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se pudo obtener el usuario o el usuario no es un proveedor', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se pudo obtener el usuario o el usuario no es un proveedor ');
     }
@@ -224,11 +214,7 @@ class Login extends RequestServer
            return $matches[1][0];
         }
 
-        $this->LogService->setLog([
-            'message' => 'No se pudo obtener el SAMLResponse',
-            'function' => 'getTokenSAMLResponse',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se pudo obtener el SAMLResponse', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se pudo obtener el SAMLResponse');
     }
@@ -239,23 +225,14 @@ class Login extends RequestServer
             $json = json_decode($body);
 
             if (empty($json) || !isset($json->token)) {
-                $this->LogService->setLog([
-                    'message' => 'No se pudo obtener el user Token',
-                    'function' => 'checkIfItHasToken',
-                    'body' => $body
-                ], 'Failure', 'Login');
+                $this->Failure->prepareLog('No se pudo obtener el user Token', __FILE__, __LINE__, $body);
 
                 throw new \Exception('No se pudo obtener el user Token');
             }
 
             return $json->token ;
         }catch(\Exception $e){
-            $this->LogService->setLog([
-                'message' => 'No se pudo obtener el user Token',
-                'function' => 'checkIfItHasToken',
-                'body' => $body,
-                'exception' => $e->getMessage()
-            ], 'Failure', 'Login');
+            $this->Failure->prepareLog('No se pudo obtener el user Token', __FILE__, __LINE__, $body);
 
             throw new \Exception('No se pudo obtener el user Token');
         }
