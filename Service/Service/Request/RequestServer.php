@@ -90,8 +90,8 @@ class RequestServer
                 if($this->isSleep){
                     //sleep de 1 a 3 minutos
                     //$randoSleep = rand(60, 180);
-                    //sleep de 10 segundos a 1 minuto
-                    $randoSleep = rand(10, 60);
+                    //set sleep 1 secundo
+                    $randoSleep = 1;
                     echo "Sleeping for $randoSleep seconds... \n";
                     sleep($randoSleep);
                 }
