@@ -30,15 +30,22 @@ class Bot
         $config = __DIR__ . '/Config/ConfigEnv.php';
         if(!file_exists($config))
             die('Config file Env not found');
-
+        echo "set config file Env \r\n";
         include_once $config;
 
+        echo "set repository token  \r\n";
         $this->token = new Token();
+        echo "set repository User  \r\n";
         $this->user = new User();
+        echo "set Login  \r\n";
         $this->login = new Login();
+        echo "set repository Failure  \r\n";
         $this->logFailure = new Failure();
+        echo "set PageBot  \r\n";
         $this->pageBot = new PageBot();
+        echo "set  SolicitudBot  \r\n";
         $this->solicitudBot = new SolicitudBot();
+        echo "set repository SaveFile  \r\n";
         $this->Files = new SaveFile();
     }
 
