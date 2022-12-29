@@ -33,17 +33,17 @@ class Bot
         echo "set config file Env \r\n";
         include_once $config;
 
-        echo "set repository token  \r\n";
+        echo "set repository token __construct  \r\n";
         $this->token = new Token();
-        echo "set repository User  \r\n";
+        echo "set repository User __construct \r\n";
         $this->user = new User();
         echo "set Login  \r\n";
         $this->login = new Login();
-        echo "set repository Failure  \r\n";
+        echo "set repository Failure __construct \r\n";
         $this->logFailure = new Failure();
-        echo "set PageBot  \r\n";
+        echo "set PageBot  __construct \r\n";
         $this->pageBot = new PageBot();
-        echo "set  SolicitudBot  \r\n";
+        echo "set  SolicitudBot __construct \r\n";
         $this->solicitudBot = new SolicitudBot();
         echo "set repository SaveFile  \r\n";
         $this->Files = new SaveFile();
@@ -55,11 +55,11 @@ class Bot
             echo "\n Start \n";
             $token = $this->token();
 
-            echo "\r\n check if it has content to be processed \r\n";
+            echo "check if it has content to be processed \r\n";
             if ($this->checkIfItHasContentToBeProcessed()) {
-                echo "\r\n scraping Solicitud \r\n";
+                echo "scraping Solicitud \r\n";
                 $this->solicitudBot->scrapingSolicitud($token);
-                echo "\r\n restart scraping \r\n";
+                echo "\restart scraping \r\n";
                 $this->start();
                 return;
             }
@@ -77,7 +77,7 @@ class Bot
 
     private function token(): string
     {
-        echo "\r\n get token and get user \r\n";
+        echo "get token and get user \r\n";
         $dfataToken = $token = $this->token->getToken();
         $users = $this->user->getUser();
 
@@ -87,35 +87,35 @@ class Bot
                 $this->logFailure->prepareLog('There is no registered user or no user active', __FILE__, __LINE__);
                 die;
             }
-            echo "\n get token \n";
+            echo "get token \n";
             $token = $this->login($users);
-            echo "\n set token \n";
+            echo "set token \n";
             $this->token->setToken($token);
             $idToken = $this->token->getToken()['id'];
         } else {
-            echo "\r\n token exist \r\n";
-            echo "\r\n set idToken \r\n";
+            echo "token exist \r\n";
+            echo "set idToken \r\n";
             $idToken = $dfataToken['id'];
-            echo "\r\n set token \r\n";
+            echo "set token \r\n";
             $token = $dfataToken['token'];
-            echo "\r\n check token \r\n";
+            echo "check token \r\n";
             if (!checkToken($token)) {
-                echo "\r\n delete token \r\n";
+                echo "delete token \r\n";
                 $this->token->deleteToken($idToken);
-                echo "\r\n get user \r\n";
+                echo "get user \r\n";
                 $token = $this->login($users);
-                echo "\r\n set token \r\n";
+                echo "set token \r\n";
                 $this->token->setToken($token);
-                echo "\r\n set idToken \r\n";
+                echo "set idToken \r\n";
                 $idToken = $this->token->getToken()['id'];
             }
         }
 
-        echo "\r\n check token \r\n";
+        echo "check token \r\n";
         if (!checkToken($token)) {
-            echo "\r\n delete token \r\n";
+            echo "delete token \r\n";
             $this->token->deleteToken($idToken);
-            echo "\r\n set log \r\n";
+            echo "set log \r\n";
             $this->logFailure->prepareLog('Token is invalid', __FILE__, __LINE__, $token);
             die;
         }
