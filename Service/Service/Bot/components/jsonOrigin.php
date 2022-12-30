@@ -31,7 +31,7 @@ foreach($pathTreatment as $vt) {
                 $filepath = getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/consultarDatos/'.$file;
                 $json = json_decode(file_get_contents($filepath), true);
                 foreach($josnPages['content'] as $key => $value) {
-                    die(var_dump($json[0]));
+                    die(var_dump($json[0]['solicitudLicencia']['id']));
                      //if($value['solicitudLicencia']['id'] == )
                 }
 
