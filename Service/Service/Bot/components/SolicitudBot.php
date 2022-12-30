@@ -120,7 +120,7 @@ class SolicitudBot
         $IDSjSONoRIGIN = [];
         foreach ($files as $key => $file) {
             echo "key:{$key} \n";
-            if($key < 1531){
+            if($key < 1552){
                 echo "pulando pois ja foi feito downloado\n";
                 continue;
             }
