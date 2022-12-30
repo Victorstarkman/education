@@ -4,6 +4,10 @@ include __DIR__."/../Config/ConfigEnv.php";
 
 $pathTreatment = getenv('PATHFBOOT')."Treatment/";
 $pathPages = getenv('PATHFBOOT')."pages/0";
+$josnPages = scandir($pathPages);
+$josnPages = array_diff($josnPages, array('.', '..'));
+$josnPages = end($josnPages);
+die($josnPages);
 
 $pathTreatment = scandir($pathTreatment);
 $pathTreatment = array_diff($pathTreatment, array('.', '..'));
@@ -25,8 +29,6 @@ foreach($pathTreatment as $vt) {
             foreach($pathTreatmentDataPageJson as $file) {
                 $filepath = getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/consultarDatos/'.$file;
                 $json = json_decode(file_get_contents($filepath), true);
-                die(var_dump($json));
-                echo $filepath."\n";
 
             }
         }
