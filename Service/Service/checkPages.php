@@ -1,10 +1,10 @@
 <?php
-$config = __DIR__ . '/Bot/Config/ConfigEnv.php';
-include $config;
 $path = getenv('PATHFBOOT')."Treatment/";
 $paths = scandir($path);
 $paths = array_diff($paths, array('.', '..'));
 $count = 0;
+$pathjsonAll = getenv('PATHFBOOT')."pages/0";
+$fileJson = fopen($pathjsonAll, "w");
 foreach ($paths as $key => $value) {
     $newpath = getenv('PATHFBOOT')."Treatment/".$value."/";
     $newpath = scandir($newpath);
@@ -13,9 +13,7 @@ foreach ($paths as $key => $value) {
         $vn = getenv('PATHFBOOT')."Treatment/".$value."/".$v;
         $vn = scandir($vn);
         $vn = array_diff($vn, array('.', '..'));
-        foreach($vn as $keyFile=>$file){
-            echo  getenv('PATHFBOOT')."Treatment/".$value."/".$v."\n";die;
-        }
+
         $count = $count + count($vn);
     }
 }
