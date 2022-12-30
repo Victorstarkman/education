@@ -155,7 +155,8 @@ class Page extends RepositoryBase
         $this->select();
         $oldPages = $this->getSelect()[0] ?? [];
         $totalDownload = ($oldPages['total_file_downloaded'] ?? 0) + 1;
-        $processedPage = ($oldPages['processedPage'] ?? 0) + 1;
+        $processedPage = $totalDownload/20;
+        $processedPage = $processedPage;
 
         $pages = [
             'total_file_downloaded' => $totalDownload,
