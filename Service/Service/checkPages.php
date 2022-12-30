@@ -1,6 +1,7 @@
 <?php
+$config = __DIR__ . '/Bot/Config/ConfigEnv.php';
+include $config;
 $path = getenv('PATHFBOOT')."Treatment/";
-
 $paths = scandir($path);
 $paths = array_diff($paths, array('.', '..'));
 $count = 0;
