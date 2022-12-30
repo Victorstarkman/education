@@ -12,7 +12,6 @@ use Service\Bot\components\Login;
 use Service\Bot\components\PageBot;
 use Service\Bot\components\SolicitudBot;
 use Repository\File\SaveFile;
-use Repository\Pages\Page;
 class Bot
 {
 
@@ -48,9 +47,6 @@ class Bot
         $this->solicitudBot = new SolicitudBot();
         echo "set repository SaveFile  \r\n";
         $this->Files = new SaveFile();
-        $update = new Page();
-        $update->updateByJuli();
-        die;
     }
 
     public function start(): void

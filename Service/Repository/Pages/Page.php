@@ -261,10 +261,6 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateByJuli(){
-        echo "update db\n";
-        $this->saveOnDatabase();
-    }
     private function saveOnDatabase()
     {
         if (!file_exists(__DIR__ . '/config.php')) {
