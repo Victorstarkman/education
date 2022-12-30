@@ -1,9 +1,18 @@
 <?php
+$path = getenv('PATHFBOOT')."Treatment/";
 
-//contar a quantidade de pasta no diretorio
-$dir=__DIR__.'/../File/Treatment/2022-12-29/0';
-$dir = scandir($dir);
-$dir = array_diff($dir, array('..', '.'));
-$dir = count($dir);
-
-echo "Quantidade de pastas: ".$dir. "\n";
+$paths = scandir($path);
+$paths = array_diff($paths, array('.', '..'));
+$count = 0;
+foreach ($paths as $key => $value) {
+    $newpath = getenv('PATHFBOOT')."Treatment/".$value."/";
+    $newpath = scandir($newpath);
+    $newpath = array_diff($newpath, array('.', '..'));
+    foreach($newpath as $k=>$v){
+        $vn = getenv('PATHFBOOT')."Treatment/".$value."/".$v;
+        $vn = scandir($vn);
+        $vn = array_diff($vn, array('.', '..'));
+        $count++;
+    }
+}
+echo "Total Pages: ".$count."\n";
