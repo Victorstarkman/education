@@ -191,9 +191,9 @@ class SolicitudBot
                 $vn = scandir($vn);
                 $vn = array_diff($vn, array('.', '..'));
 
-                var_dump($vn);die;
 
-                if($value == $v){
+
+                if(in_array($v,$vn)){
                     return true;
                 }
             }
