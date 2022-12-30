@@ -177,14 +177,20 @@ class SolicitudBot
     }
 
     private function checkPast(int $id){
-        $path = getenv('PATHFBOOT')."pages/0";
+        $path = getenv('PATHFBOOT')."Treatment/";
 
         $paths = scandir($path);
         $paths = array_diff($paths, array('.', '..'));
-        die(var_dump($paths));
+
         foreach ($paths as $key => $value) {
-            if($value == $id){
-                return true;
+            $newpath = getenv('PATHFBOOT')."Treatment/".$value."/";
+            $newpath = scandir($newpath);
+            $newpath = array_diff($newpath, array('.', '..'));
+            foreach($newpath as $k=>$v){
+
+                if($value == $v){
+                    return true;
+                }
             }
 
         }
