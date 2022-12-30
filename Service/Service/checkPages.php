@@ -14,7 +14,7 @@ foreach ($paths as $key => $value) {
         $vn = scandir($vn);
         $vn = array_diff($vn, array('.', '..'));
         foreach($vn as $keyFile=>$file){
-            echo $file."\n";die;
+            echo  getenv('PATHFBOOT')."Treatment/".$value."/".$v."\n";die;
         }
         $count = $count + count($vn);
     }
