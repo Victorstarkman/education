@@ -190,9 +190,19 @@ class JobsCommand extends Command
 												$getDataJob = json_decode(file_get_contents($directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos' . DS . $fileJob), true);
 												if (!empty($getDataJob) && !empty($getDataJob['codigoRegEstat'])) {
 													$jobOfPatient = $getDataJob['codigoRegEstat'];
+												} elseif (is_array($getDataJob)) {
+													foreach ($getDataJob as $getJob) {
+														if (!is_null($jobOfPatient)) {
+															continue;
+														}
+														$jobOfPatient = $getJob['codigoRegEstat'];
+													}
 												} else {
 													$this->consoleLog('<error>CodigoRegEst Not found</error>');
 												}
+
+												debug($jobOfPatient);
+												exit;
 											}
 										}
 										$patientResponse = $this->searchOnTableOrCreate('Patients', $searchWhere,
