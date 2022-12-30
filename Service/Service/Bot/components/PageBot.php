@@ -66,7 +66,7 @@ class PageBot
         echo "request all \n";
         $requestPage = $this->requestPages(0, false);
         $json = json_decode($requestPage, true);
-        die(var_dump($json));
+
         $newData = $this->standardizeData($json);
         $this->SaveFile->createFilesPages(0, json_encode($newData, JSON_PRETTY_PRINT));
         die;
