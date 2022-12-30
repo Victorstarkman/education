@@ -30,11 +30,10 @@ foreach($pathTreatment as $vt) {
             foreach($pathTreatmentDataPageJson as $file) {
                 $filepath = getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/consultarDatos/'.$file;
                 $json = json_decode(file_get_contents($filepath), true);
-                die(var_dump($json));
-                // foreach($josnPages['content'] as $key => $value) {
-
-                //     if($value['solicitudLicencia']['id'] == )
-                // }
+                foreach($josnPages['content'] as $key => $value) {
+                    die(var_dump($json[0]));
+                     //if($value['solicitudLicencia']['id'] == )
+                }
 
             }
         }
