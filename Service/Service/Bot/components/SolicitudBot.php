@@ -90,6 +90,7 @@ class SolicitudBot
         }
 
         $this->page->updateEnd(true);
+        die('scrapingSolicitud end');
     }
 
     private function startScaping(int $page, $files)
