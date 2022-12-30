@@ -22,7 +22,11 @@ foreach($pathTreatment as $vt) {
             //get file in path
             $pathTreatmentDataPageJson = scandir($pathTreatmentDataPageJson);
             $pathTreatmentDataPageJson = array_diff($pathTreatmentDataPageJson, array('.', '..'));
-            die(var_dump($pathTreatmentDataPageJson));
+            foreach($pathTreatmentDataPageJson as $file) {
+                $filepath = getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/consultarDatos/'.$file;
+                $fileJson = fopen($pathPages, "a");
+                die($filepath);
+            }
         }
     }
 
