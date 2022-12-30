@@ -135,6 +135,7 @@ class SolicitudBot
             }
 
             if (!empty($jsonFile)) {
+                echo "Não esta vazio \n";
                 if (is_string($jsonFile) || is_object($jsonFile)) {
                     if (is_object($jsonFile)) {
                         $jsonFile = json_decode(json_encode($jsonFile), true);
