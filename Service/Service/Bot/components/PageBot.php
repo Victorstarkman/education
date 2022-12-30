@@ -63,16 +63,7 @@ class PageBot
         } elseif ($this->isNewScraping && $stop) {
             throw new \Exception('it was not possible to insert the pages in the database');
         }
-        echo "request all \n";
-        $requestPage = $this->requestPages(0, false);
-        $json = json_decode($requestPage, true);
-        echo "standardizeData \n";
-        $newData = $this->standardizeData($json);
-        echo "createFilesPages \n";
-        $json = json_encode($newData);
-        echo "saveFile \n";
-        $this->SaveFile->createFilesPages(0, $json);
-        die;
+
         $this->startScaping($pages);
     }
 
