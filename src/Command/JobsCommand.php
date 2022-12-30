@@ -178,6 +178,7 @@ class JobsCommand extends Command
 											$searchWhere = ['document' => $this->trim($userFile['solicitudLicencia']['agente']['documento'])];
 										}
 										$dirJob = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos');
+										$this->consoleLog('Getting Reg Estat:' . $dirJob);
 										$filesJob = $dirJob->read(true);
 										$jobOfPatient = null;
 										if (!empty($filesJob[1])) {
@@ -186,7 +187,9 @@ class JobsCommand extends Command
 													continue;
 												}
 												$getDataJob = json_decode(file_get_contents($directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos' . DS . $fileJob), true);
-												$jobOfPatient = $getDataJob['codigoRegEstat'];
+												if (!empty($getDataJob) && !empty($getDataJob['codigoRegEstat'])) {
+													$jobOfPatient = $getDataJob['codigoRegEstat'];
+												}
 											}
 										}
 										$patientResponse = $this->searchOnTableOrCreate('Patients', $searchWhere,
