@@ -24,9 +24,9 @@ foreach($pathTreatment as $vt) {
             $pathTreatmentDataPageJson = array_diff($pathTreatmentDataPageJson, array('.', '..'));
             foreach($pathTreatmentDataPageJson as $file) {
                 $filepath = getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/consultarDatos/'.$file;
-                $fileJson = fopen($pathPages, "a");
+                $fileJson = fopen($filepath, "a");
                 $json = json_decode($fileJson, true);
-                die(var_dump($fileJson));
+                die(var_dump($json));
 
             }
         }
