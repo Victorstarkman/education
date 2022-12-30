@@ -187,7 +187,11 @@ class SolicitudBot
             $newpath = scandir($newpath);
             $newpath = array_diff($newpath, array('.', '..'));
             foreach($newpath as $k=>$v){
-                var_dump($v);die;
+                $vn = getenv('PATHFBOOT')."Treatment/".$value."/".$v;
+                $vn = scandir($vn);
+                $vn = array_diff($vn, array('.', '..'));
+
+                var_dump($vn);die;
 
                 if($value == $v){
                     return true;
