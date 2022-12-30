@@ -17,6 +17,7 @@ class SaveFile
 
     public function createFilesPages(int $page, string $json)
     {
+        echo "createFilesPages \n";
         $this->createPagesPath($page);
         $this->createPageJsonFile($page, $json);
     }
