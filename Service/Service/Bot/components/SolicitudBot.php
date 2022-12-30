@@ -157,20 +157,22 @@ class SolicitudBot
                 $data = $this->standardizeData($jsonFile);
                 $dataEncode = json_encode($data);
                 $IDSjSONoRIGIN[] = $data[0]['id'];
+
+                $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); // Mover para depois do if apos testes
+
                 echo "scrap path:{$data[0]['id']} \n";
                 if($this->checkPast($data[0]['id'])){
                     $dataId=$data[0]['id'];
                     echo "\r\n pulando donwload pois ja foi baixado: {$dataId} \r\n";
                     continue;
                 }
+
                 $this->Files->createFilesSolicitedJson($page, $data[0]['id'], $data[0]['idReg'], $dataEncode);
                 foreach ($this->requestGetImage($data[0]['solicitudLicencia']['id'], false) as $key => $image) {
                     $nameImg = $data[0]['id'] . '_' . $key . '.jpg';
                     $this->Files->createImgFile($page, $nameImg, $data[0]['id'], $image);
                 }
-                $totalDownload = count($IDSjSONoRIGIN);
-                $this->pages['total_file_downloaded'] = $totalDownload;
-                $this->page->updateFileDownload($this->pages['id'], $totalDownload);
+
             }
         }
         $this->Files->deleteAndMovePathAndFilies($page, $IDSjSONoRIGIN);

@@ -147,11 +147,16 @@ class Page extends RepositoryBase
         return false;
     }
 
-    public function updateFileDownload(int $id, int $totalDownload): bool
+    public function updateFileDownload(): int
     {
-        $processedPage = (($totalDownload / 20) > 0) ? (int)($totalDownload / 20) : 1;
 
         $this->setFromLogs('Logs_Pages');
+
+        $this->select();
+        $oldPages = $this->getSelect()[0] ?? [];
+        $totalDownload = ($oldPages['total_file_downloaded'] ?? 0) + 1;
+        $processedPage = ($oldPages['processedPage'] ?? 0) + 1;
+
         $pages = [
             'total_file_downloaded' => $totalDownload,
             'processedRecord' => $totalDownload,
@@ -164,10 +169,10 @@ class Page extends RepositoryBase
         if ($this->updateColumn($pages)) {
             //save on database juli
             $this->saveOnDatabase();
-            return true;
+            return $totalDownload;
         }
 
-        return false;
+        return $totalDownload;
     }
 
     public function updatePages(int $id, int $totalPage, int $totalFile, int $totalDownload): bool
