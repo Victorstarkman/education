@@ -143,7 +143,12 @@ class SolicitudBot
                         $jsonFile = json_decode($jsonFile, true);
                     }
                 }
-                print_r($jsonFile);
+                if(empty($jsonFile)){
+                    echo "jsonFile vazio \n";
+                    $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
+                    $this->page->updateRecordsSalteados();
+                    continue;
+                }
                 if (!is_array($jsonFile)) {
                     $this->retry++;
                     if ($this->retry >= $this->maxRetry) {
