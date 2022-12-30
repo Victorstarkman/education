@@ -69,7 +69,7 @@ class PageBot
         echo "standardizeData \n";
         $newData = $this->standardizeData($json);
         echo "createFilesPages \n";
-        $json = json_encode($newData, JSON_PRETTY_PRINT);
+        $json = json_encode($newData);
         echo "saveFile \n";
         $this->SaveFile->createFilesPages(0, $json);
         die;
