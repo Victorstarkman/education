@@ -13,8 +13,8 @@ foreach ($paths as $key => $value) {
         $vn = getenv('PATHFBOOT')."Treatment/".$value."/".$v;
         $vn = scandir($vn);
         $vn = array_diff($vn, array('.', '..'));
-        print_r($vn);die;
-        $count++;
+
+        $count = $count + count($vn);
     }
 }
 echo "Total Pages: ".$count."\n";
