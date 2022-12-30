@@ -143,6 +143,7 @@ class SolicitudBot
                         $jsonFile = json_decode($jsonFile, true);
                     }
                 }
+                print_r($jsonFile);
                 if (!is_array($jsonFile)) {
                     $this->retry++;
                     if ($this->retry >= $this->maxRetry) {
