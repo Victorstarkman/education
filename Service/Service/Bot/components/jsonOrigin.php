@@ -31,12 +31,23 @@ foreach($pathTreatment as $vt) {
                 $filepath = getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/consultarDatos/'.$file;
                 $json = json_decode(file_get_contents($filepath), true);
                 foreach($josnPages['content'] as $key => $value) {
-                    die(var_dump($json[0]['solicitudLicencia']['id']));
-                     //if($value['solicitudLicencia']['id'] == )
+
+                    if($value['solicitudLicencia']['id'] == $json[0]['solicitudLicencia']['id']){
+                        $patJsonOriginDist=getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/';
+                        savejsonOrinResponse($value,$patJsonOriginDist);
+                        die($patJsonOriginDist);
+                        break;
+                    }
                 }
 
             }
         }
     }
 
+}
+
+function savejsonOrinResponse($jsonOrigin, $caminho){
+    $file = fopen($caminho."jsonOrinResponse.json", "w");
+    fwrite($file, json_encode($jsonOrigin));
+    fclose($file);
 }
