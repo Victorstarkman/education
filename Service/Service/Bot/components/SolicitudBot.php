@@ -118,8 +118,8 @@ class SolicitudBot
 
         $this->retry = 0;
         $IDSjSONoRIGIN = [];
-        foreach ($files as $file) {
-
+        foreach ($files as $key => $file) {
+            print_r($key);die;
             if (isset($file['solicitudLicencia'])) {
                 $id = $file['solicitudLicencia']['id'];
                 echo "scrap path:{$id} \n";
@@ -158,7 +158,6 @@ class SolicitudBot
                 $dataEncode = json_encode($data);
                 $IDSjSONoRIGIN[] = $data[0]['id'];
 
-                $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); // Mover para depois do if apos testes
 
                 echo "scrap path:{$data[0]['id']} \n";
                 if($this->checkPast($data[0]['id'])){
@@ -172,6 +171,7 @@ class SolicitudBot
                     $nameImg = $data[0]['id'] . '_' . $key . '.jpg';
                     $this->Files->createImgFile($page, $nameImg, $data[0]['id'], $image);
                 }
+                $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); //atualiza o total de arquivos baixados
 
             }
         }
