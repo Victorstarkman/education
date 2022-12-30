@@ -13,6 +13,12 @@ $josnPages = json_decode(file_get_contents($filejosnPages), true);
 $pathTreatment = scandir($pathTreatment);
 $pathTreatment = array_diff($pathTreatment, array('.', '..'));
 
+function savejsonOrinResponse($jsonOrigin, $caminho){
+    $file = fopen($caminho."jsonOrinResponse.json", "w");
+    fwrite($file, json_encode($jsonOrigin));
+    fclose($file);
+}
+
 foreach($pathTreatment as $vt) {
     $pathTreatmentData = getenv('PATHFBOOT')."Treatment/".$vt;
     $pathTreatmentData = scandir($pathTreatmentData);
@@ -35,7 +41,7 @@ foreach($pathTreatment as $vt) {
                     if($value['solicitudLicencia']['id'] == $json[0]['solicitudLicencia']['id']){
                         $patJsonOriginDist=getenv('PATHFBOOT')."Treatment/".$vt."/".$vp.'/'.$vj.'/json/';
                         savejsonOrinResponse($value,$patJsonOriginDist);
-                        die($patJsonOriginDist);
+                        echo "Save jsonOrigin in: ".$patJsonOriginDist."\n";
                         break;
                     }
                 }
@@ -44,10 +50,8 @@ foreach($pathTreatment as $vt) {
         }
     }
 
-}
 
-function savejsonOrinResponse($jsonOrigin, $caminho){
-    $file = fopen($caminho."jsonOrinResponse.json", "w");
-    fwrite($file, json_encode($jsonOrigin));
-    fclose($file);
 }
+echo "Finish Treatment \n";
+
+
