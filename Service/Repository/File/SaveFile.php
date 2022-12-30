@@ -26,7 +26,7 @@ class SaveFile
         $date = date('Y-m-d');
 
         $file = $this->pathDefault . "pages/" . "/$page/" . $date . '_' . uniqid(rand(0, 1000)) . ".json";
-
+        echo $file."\n";
         file_put_contents($file, $json);
     }
 
