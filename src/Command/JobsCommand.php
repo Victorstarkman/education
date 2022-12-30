@@ -182,7 +182,6 @@ class JobsCommand extends Command
 										$filesJob = $dirJob->read(true);
 										$jobOfPatient = null;
 										if (!empty($filesJob[1])) {
-											debug($filesJob);
 											foreach ($filesJob[1] as $fileJob) {
 												if (!is_null($jobOfPatient)) {
 													continue;
@@ -200,9 +199,6 @@ class JobsCommand extends Command
 												} else {
 													$this->consoleLog('<error>CodigoRegEst Not found</error>');
 												}
-
-												debug($jobOfPatient);
-												exit;
 											}
 										}
 										$patientResponse = $this->searchOnTableOrCreate('Patients', $searchWhere,
