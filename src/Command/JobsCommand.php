@@ -178,7 +178,7 @@ class JobsCommand extends Command
 											$searchWhere = ['document' => $this->trim($userFile['solicitudLicencia']['agente']['documento'])];
 										}
 										$dirJob = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos');
-										$this->consoleLog('Getting Reg Estat:' . $dirJob);
+										$this->consoleLog('Getting Reg Estat:' . $directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos');
 										$filesJob = $dirJob->read(true);
 										$jobOfPatient = null;
 										if (!empty($filesJob[1])) {
