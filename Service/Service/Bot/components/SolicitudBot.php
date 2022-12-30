@@ -157,6 +157,7 @@ class SolicitudBot
                 $data = $this->standardizeData($jsonFile);
                 $dataEncode = json_encode($data);
                 $IDSjSONoRIGIN[] = $data[0]['id'];
+                echo "scrap path:{$data[0]['id']} \n";
                 if($this->checkPast($data[0]['idReg'])){
                     $dataId=$data[0]['id'];
                     echo "\r\n pulando donwload pois ja foi baixado: {$dataId} \r\n";
