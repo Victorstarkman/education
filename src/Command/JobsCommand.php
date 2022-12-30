@@ -177,7 +177,7 @@ class JobsCommand extends Command
 										} elseif (!empty($document)) {
 											$searchWhere = ['document' => $this->trim($userFile['solicitudLicencia']['agente']['documento'])];
 										}
-										$dirJob = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . . 'json' . DS  . 'consultarDatos');
+										$dirJob = new Folder($directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos');
 										$filesJob = $dirJob->read(true);
 										$jobOfPatient = null;
 										if (!empty($filesJob[1])) {
