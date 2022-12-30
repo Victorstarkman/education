@@ -120,6 +120,8 @@ class SolicitudBot
         foreach ($files as $file) {
 
             if (isset($file['solicitudLicencia'])) {
+                $id = $file['solicitudLicencia']['id'];
+                echo "scrap path:{$id} \n";
                 $jsonFile = $this->requestDataSolictud($file['solicitudLicencia']['id'], true);
             } else {
                 $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, $file);
@@ -179,6 +181,7 @@ class SolicitudBot
 
         $paths = scandir($path);
         $paths = array_diff($paths, array('.', '..'));
+        die(var_dump($paths));
         foreach ($paths as $key => $value) {
             if($value == $id){
                 return true;
