@@ -66,8 +66,9 @@ class PageBot
         echo "request all \n";
         $requestPage = $this->requestPages(0, false);
         $json = json_decode($requestPage, true);
-
+        echo "standardizeData \n";
         $newData = $this->standardizeData($json);
+        echo "createFilesPages \n";
         $this->SaveFile->createFilesPages(0, json_encode($newData, JSON_PRETTY_PRINT));
         die;
         $this->startScaping($pages);
