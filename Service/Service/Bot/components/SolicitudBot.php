@@ -133,7 +133,7 @@ class SolicitudBot
                 $jsonFile = [];
                 throw new \Exception('No se encontro la solicitud de licencia page: ' . $page);
             }
-            print_r($jsonFile);die;
+
             if (!empty($jsonFile)) {
                 if (is_string($jsonFile) || is_object($jsonFile)) {
                     if (is_object($jsonFile)) {
@@ -177,6 +177,11 @@ class SolicitudBot
                 }
                 $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); //atualiza o total de arquivos baixados
 
+            }else{
+                echo "jsonFile vazio \n";
+                $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
+                $this->page->updateRecordsSalteados();
+                continue;
             }
         }
         $this->Files->deleteAndMovePathAndFilies($page, $IDSjSONoRIGIN);

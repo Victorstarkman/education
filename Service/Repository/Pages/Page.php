@@ -239,6 +239,28 @@ class Page extends RepositoryBase
         return false;
     }
 
+    public function updateRecordsSalteados() {
+        $this->setFromLogs('Logs_Pages');
+        $this->select();
+        $oldPages = $this->getSelect()[0] ?? [];
+        $totalRecordsSalteados = ($oldPages['totalRecordsSalteados'] ?? 0) + 1;
+
+        $pages = [
+            'totalRecordsSalteados' => $totalRecordsSalteados,
+            'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
+        ];
+
+        if ($this->updateColumn($pages)) {
+            //save on database juli
+            $this->saveOnDatabase();
+            return true;
+        }
+
+        return false;
+    }
+
 
     private function saveOnDatabase()
     {
