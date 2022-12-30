@@ -182,6 +182,7 @@ class JobsCommand extends Command
 										$filesJob = $dirJob->read(true);
 										$jobOfPatient = null;
 										if (!empty($filesJob[1])) {
+											debug($filesJob);
 											foreach ($filesJob[1] as $fileJob) {
 												if (!is_null($jobOfPatient)) {
 													continue;
@@ -189,6 +190,8 @@ class JobsCommand extends Command
 												$getDataJob = json_decode(file_get_contents($directoryFiles . DS . $file . DS . $file2 . DS . 'json' . DS  . 'consultarDatos' . DS . $fileJob), true);
 												if (!empty($getDataJob) && !empty($getDataJob['codigoRegEstat'])) {
 													$jobOfPatient = $getDataJob['codigoRegEstat'];
+												} else {
+													$this->consoleLog('<error>CodigoRegEst Not found</error>');
 												}
 											}
 										}
