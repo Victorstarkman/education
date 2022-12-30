@@ -120,10 +120,7 @@ class SolicitudBot
         $IDSjSONoRIGIN = [];
         foreach ($files as $key => $file) {
             echo "key:{$key} \n";
-            if($key < 1552){
-                echo "pulando pois ja foi feito downloado\n";
-                continue;
-            }
+
             if (isset($file['solicitudLicencia'])) {
                 $id = $file['solicitudLicencia']['id'];
                 echo "scrap path:{$id} \n";
