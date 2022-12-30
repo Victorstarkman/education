@@ -133,7 +133,7 @@ class SolicitudBot
                 $jsonFile = [];
                 throw new \Exception('No se encontro la solicitud de licencia page: ' . $page);
             }
-
+            print_r($jsonFile);die;
             if (!empty($jsonFile)) {
                 if (is_string($jsonFile) || is_object($jsonFile)) {
                     if (is_object($jsonFile)) {
