@@ -153,20 +153,39 @@ class SolicitudBot
 
                 $data = $this->standardizeData($jsonFile);
                 $dataEncode = json_encode($data);
-                $this->Files->createFilesSolicitedJson($page, $data[0]['id'], $data[0]['idReg'], $dataEncode);
                 $IDSjSONoRIGIN[] = $data[0]['id'];
-
+                if($this->checkPast($data[0]['id'])){
+                    $dataId=$data[0]['id'];
+                    echo "\r\n pulando donwload pois ja foi baixado: {$dataId} \r\n";
+                    continue;
+                }
+                $this->Files->createFilesSolicitedJson($page, $data[0]['id'], $data[0]['idReg'], $dataEncode);
                 foreach ($this->requestGetImage($data[0]['solicitudLicencia']['id'], false) as $key => $image) {
                     $nameImg = $data[0]['id'] . '_' . $key . '.jpg';
                     $this->Files->createImgFile($page, $nameImg, $data[0]['id'], $image);
                 }
+                $totalDownload = count($IDSjSONoRIGIN);
+                $this->pages['total_file_downloaded'] = $totalDownload;
+                $this->page->updateFileDownload($this->pages['id'], $totalDownload);
             }
         }
         $this->Files->deleteAndMovePathAndFilies($page, $IDSjSONoRIGIN);
         $this->Files->movePathUsersForSolicited();
-        $totalDownload = $this->pages['total_file_downloaded'] + $this->size;
-        $this->pages['total_file_downloaded'] = $totalDownload;
-        $this->page->updateFileDownload($this->pages['id'], $totalDownload);
+
+    }
+
+    private function checkPast(int $id){
+        $path = getenv('PATHFBOOT')."pages/0";
+
+        $paths = scandir($path);
+        $paths = array_diff($paths, array('.', '..'));
+        foreach ($paths as $key => $value) {
+            if($value == $id){
+                return true;
+            }
+
+        }
+        return false;
     }
 
     private function standardizeData(array $data)
