@@ -158,7 +158,7 @@ class SolicitudBot
                 $dataEncode = json_encode($data);
                 $IDSjSONoRIGIN[] = $data[0]['id'];
                 echo "scrap path:{$data[0]['id']} \n";
-                if($this->checkPast($data[0]['idReg'])){
+                if($this->checkPast($data[0]['id'])){
                     $dataId=$data[0]['id'];
                     echo "\r\n pulando donwload pois ja foi baixado: {$dataId} \r\n";
                     continue;
@@ -192,9 +192,7 @@ class SolicitudBot
                 $vn = scandir($vn);
                 $vn = array_diff($vn, array('.', '..'));
 
-
-
-                if(in_array($v,$vn)){
+                if(in_array($id,$vn)){
                     return true;
                 }
             }
