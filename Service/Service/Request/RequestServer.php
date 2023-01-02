@@ -60,8 +60,6 @@ class RequestServer
 
             if (!is_null($ref)) {
                 $a_param = array_replace_recursive([
-                    'timeout' => 120,
-                    'connect_timeout' => 120,
                     'verify' => false,
                     'track_redirects' => true,
                     'headers' => [
@@ -73,8 +71,6 @@ class RequestServer
 
             } else {
                 $a_param = array_replace_recursive([
-                    'timeout' => 120,
-                    'connect_timeout' => 120,
                     'verify' => false,
                     'track_redirects' => true,
                     'headers' => [
@@ -93,7 +89,7 @@ class RequestServer
                     //set sleep 1 secundo
                     $randoSleep = 1;
                     echo "Sleeping for $randoSleep seconds... \n";
-                   // sleep($randoSleep);
+                   sleep($randoSleep);
                 }
                 $res = $this->client->request($metodo, $url, $a_param);
             }catch (\Exception $e) {
