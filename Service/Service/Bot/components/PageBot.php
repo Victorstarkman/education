@@ -109,6 +109,7 @@ class PageBot
             $numPerPage = 20;
         }else{
             $numPerPage = $this->page->getTotalElements();
+            $page = 0;
         }
 
         echo "\r\n Request page {$page} numPersPage {$numPerPage} \r\n";
@@ -212,7 +213,7 @@ class PageBot
 
             $this->retry = 0;
             echo "\r\n Save page: {$i} \r\n";
-            $this->SaveFile->createFilesPages($i, json_encode($newData, JSON_PRETTY_PRINT));
+            $this->SaveFile->createFilesPages($i, json_encode($data, JSON_PRETTY_PRINT));
             if ($pages['termino']) {
                 $page = $pages['page_total'] - 1;
             } else {
