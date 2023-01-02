@@ -83,7 +83,7 @@ class RequestServer
 
 
             try{
-                if($this->isSleep){
+                if($this->isSleep == 'true'){
                     //sleep de 1 a 3 minutos
                     //$randoSleep = rand(60, 180);
                     //set sleep 1 secundo
