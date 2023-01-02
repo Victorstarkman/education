@@ -264,7 +264,7 @@ class SaveFile
 
     public function saveJsonOrigin(int $id,  string $page, array $json, string  $dataPageFile)
     {
-
+        echo "saveJsonOrigin: " . $id . PHP_EOL;
         $path = $this->pathDefault . "Treatment/" . $dataPageFile . "/$page/$id/json/jsonOrinResponse.json";
         $json = $this->standardizeData($json);
         file_put_contents($path, json_encode($json));
