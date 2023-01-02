@@ -192,7 +192,7 @@ class PageBot
     private function scraping(array $pages)
     {
         for ($i = $pages['current_page']; $i <= $pages['page_total']; $i++) {
-            $data = json_decode($this->requestPages($i, false), true)['content'] ?? [];
+            $data = json_decode($this->requestPages($i, true), true)['content'] ?? [];
 
             if (empty($data)) {
                 $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__,$data);
@@ -222,7 +222,7 @@ class PageBot
             $this->page->updateCurrentPage($pages['id'], $page, $pages['total_file_downloaded']);
 
 
-            if(getenv('REQUEST_ALL')){
+            if(getenv('REQUEST_ALL') == 'true'){
                 echo "\r\n REQUEST_ALL \r\n";
                 break;
             }
