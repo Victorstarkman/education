@@ -193,6 +193,10 @@ class PageBot
     private function scraping(array $pages)
     {
         for ($i = $pages['current_page']; $i <= $pages['page_total']; $i++) {
+            if(getenv('REQUEST_ALL') == 'true'){
+                $i = 0;
+            }
+
             $data = json_decode($this->requestPages($i, true), true)['content'] ?? [];
 
             if (empty($data)) {
