@@ -247,8 +247,11 @@ class PageBot
                     if (is_array($isJson)) {
                         $newData[$key] = $this->standardizeData($isJson);
                     } else {
+                        echo "\r\n removeSpace \r\n";
                         $newData[$key] = $this->Handlers->removeSpace($value);
+                        echo "\r\n convetDate \r\n";
                         $newData[$key] = $this->Handlers->convetDate($key, $newData[$key]);
+                        echo "\r\n convertCodigoRegEstat \r\n";
                         $newData[$key] = $this->Handlers->convertCodigoRegEstat($key, $newData[$key]);
                     }
                 } else {
