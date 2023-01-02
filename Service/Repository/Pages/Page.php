@@ -4,18 +4,15 @@ namespace Repository\Pages;
 
 use Repository\RepositoryBase;
 use Repository\Log\Failure;
-use Handlers\Pages\Handlers;
 
 class Page extends RepositoryBase
 {
     private $failure;
-    private Handlers $Handlers;
 
     public function __construct()
     {
         parent::__construct();
         $this->failure = new Failure();
-        $this->Handlers = new Handlers();
     }
 
     public function getPage(): array
@@ -318,31 +315,5 @@ class Page extends RepositoryBase
         $oldPages = $this->getSelect()[0] ?? [];
 
         return $oldPages['total_file'] ?? 20;
-    }
-
-    private function standardizeData(array $data)
-    {
-        $newData = $data;
-        foreach ($data as $key => $value) {
-
-            if (is_array($value)) {
-                $newData[$key] = $this->standardizeData($value);
-            } else {
-                if ($value) {
-                    $isJson = json_encode($value, true);
-                    if (is_array($isJson)) {
-                        $newData[$key] = $this->standardizeData($isJson);
-                    } else {
-                        $newData[$key] = $this->Handlers->removeSpace($value);
-                        $newData[$key] = $this->Handlers->convetDate($key, $newData[$key]);
-                        $newData[$key] = $this->Handlers->convertCodigoRegEstat($key, $newData[$key]);
-                    }
-                } else {
-                    $newData[$key] = $value;
-                }
-            }
-        }
-
-        return $newData;
     }
 }
