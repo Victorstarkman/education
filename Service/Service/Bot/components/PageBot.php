@@ -211,8 +211,6 @@ class PageBot
             }
 
             $this->retry = 0;
-            echo "\r\n standardizeData page: {$i} \r\n";
-            $newData = $this->standardizeData($data);
             echo "\r\n Save page: {$i} \r\n";
             $this->SaveFile->createFilesPages($i, json_encode($newData, JSON_PRETTY_PRINT));
             if ($pages['termino']) {
@@ -235,32 +233,5 @@ class PageBot
         }
     }
 
-    private function standardizeData(array $data)
-    {
-        $newData = $data;
-        foreach ($data as $key => $value) {
-            echo "\r\n key: {$key} \r\n";
-            if (is_array($value)) {
-                $newData[$key] = $this->standardizeData($value);
-            } else {
-                if ($value) {
-                    $isJson = json_encode($value, true);
-                    if (is_array($isJson)) {
-                        $newData[$key] = $this->standardizeData($isJson);
-                    } else {
-                        echo "\r\n removeSpace \r\n";
-                        $newData[$key] = $this->Handlers->removeSpace($value);
-                        echo "\r\n convetDate \r\n";
-                        $newData[$key] = $this->Handlers->convetDate($key, $newData[$key]);
-                        echo "\r\n convertCodigoRegEstat \r\n";
-                        $newData[$key] = $this->Handlers->convertCodigoRegEstat($key, $newData[$key]);
-                    }
-                } else {
-                    $newData[$key] = $value;
-                }
-            }
-        }
 
-        return $newData;
-    }
 }
