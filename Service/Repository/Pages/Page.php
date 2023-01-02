@@ -22,7 +22,7 @@ class Page extends RepositoryBase
 
         $this->select();
 
-        $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded']);
+        $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded', 'termino']);
 
         $this->setLimit(1);
 
@@ -176,6 +176,18 @@ class Page extends RepositoryBase
         return $totalDownload;
     }
 
+    public function updateFileDownloadCheck(): void{
+        $this->setFromLogs('Logs_Pages');
+
+        $this->select();
+        $oldPages = $this->getSelect()[0] ?? [];
+
+        if(isset($oldPages['total_file_downloaded'])){
+            $total_file_downloaded = $oldPages['total_file_downloaded'];
+
+        }
+    }
+
     public function updatePages(int $id, int $totalPage, int $totalFile, int $totalDownload): bool
     {
         $this->setFromLogs('Logs_Pages');
@@ -295,5 +307,13 @@ class Page extends RepositoryBase
             $sql = "UPDATE jobs SET modified=CONVERT_TZ(NOW(),'SYSTEM','UTC'), message= '" . $message . "'" . $extraSQL . " WHERE id=" . $id . ";";
             $result = $mysqli->query($sql);
         }
+    }
+
+    public function getTotalElements(){
+        $this->setFromLogs('Logs_Pages');
+        $this->select();
+        $oldPages = $this->getSelect()[0] ?? [];
+
+        return $oldPages['total_file'] ?? 20;
     }
 }

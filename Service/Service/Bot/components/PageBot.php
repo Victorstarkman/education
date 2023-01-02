@@ -64,7 +64,7 @@ class PageBot
             throw new \Exception('it was not possible to insert the pages in the database');
         }
 
-        $this->startScaping($pages);
+        $this->startScaping();
     }
 
     private function getPage(): array
@@ -84,7 +84,8 @@ class PageBot
 
     private function newScraping()
     {
-        $data = json_decode($this->requestPages(0, false), true);
+        echo "\n Start new scraping \n";
+        $data = json_decode($this->requestPages(0, true), true);
         if (empty($data)) {
             $this->retry++;
             if ($this->retry >= $this->maxRetry) {
@@ -102,9 +103,14 @@ class PageBot
         $this->page->insertPage($data['totalPages'], $data['number'], 0, $data['totalElements']);
     }
 
-    private function requestPages(int $page = 0, bool $sleep = true)
+    private function requestPages(int $page = 0, bool $isNewScraping = false)
     {
-        $numPerPage = $this->size;
+        if(!getenv('REQUEST_ALL') && $isNewScraping){
+            $numPerPage = 20;
+        }else{
+            $numPerPage = $this->page->getTotalElements();
+        }
+
         echo "\r\n Request page {$page} numPersPage {$numPerPage} \r\n";
 
         return $this->Request->request(
@@ -114,18 +120,19 @@ class PageBot
             [
                 'headers' => array_merge(self::HEADER_DEFAULT, ['Authorization' => $this->token, 'app-version' => $this->APP_VERSION]),
 
-            ],
-            $sleep
+            ]
         );
     }
 
-    private function startScaping(array $pages)
+    private function startScaping()
     {
         $this->page->updateTermino(false);
-        if (!$pages['end']) {
+        $pages = $this->getPage();
+        if (!$pages['termino']) {
             $this->scraping($pages);
             $this->page->updateTermino(true);
         } else {
+            echo "\r\n Start scraping terminou: ". $pages['termino'] . " \r\n";
             if ($pages['current_page'] == $pages['page_total']) {
                 echo "\r\n No hay mas paginas para descargar \r\n";
                 $requestPage = $this->requestPages(0, false);
@@ -207,20 +214,21 @@ class PageBot
 
             $newData = $this->standardizeData($data);
             $this->SaveFile->createFilesPages($i, json_encode($newData, JSON_PRETTY_PRINT));
-            if ($pages['end']) {
+            if ($pages['termino']) {
                 $page = $pages['page_total'] - 1;
             } else {
                 $page = $i + 1;
             }
             $this->page->updateCurrentPage($pages['id'], $page, $pages['total_file_downloaded']);
+
+
+            if(getenv('REQUEST_ALL')){
+                echo "\r\n REQUEST_ALL \r\n";
+                break;
+            }
+
             echo "\r\n Actual_page: {$i}, next_page: {$page} \r\n";
         }
-    }
-
-    private function updateScraping(array $pages)
-    {
-        $data = json_decode($this->requestPages(0, false), true);
-        $this->page->updateTotalPageAndTotalFiles($pages['id'], $data['totalPages'], $data['totalElements']);
     }
 
     private function standardizeData(array $data)

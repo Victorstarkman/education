@@ -82,10 +82,14 @@ class SolicitudBot
                     array_pop($page);
                 }
                 $page = end($page);
+                $file = $this->Files->getPathFilesPage($pagePath);
+                $file = end($file);
+                $explodeNameFile = explode($pagePath, $file);
+                $explodeNameFileData = explode('_', end($explodeNameFile));
 
-                foreach ($this->Files->getPathFilesPage($pagePath) as $file) {
-                    $this->startScaping($page, $this->Files->getFile($file));
-                }
+                $dataPageFile = $explodeNameFileData[0];
+
+                $this->startScaping($page, $this->Files->getFile($file), $dataPageFile);
             }
         }
 
@@ -93,37 +97,43 @@ class SolicitudBot
         die('scrapingSolicitud end');
     }
 
-    private function startScaping(int $page, $files)
+    private function startScaping(int $page, $files, string $dataPageFile)
     {
         echo 'Tratameto Page: ' . $page . PHP_EOL;
         if (is_string($files)) {
             $files = json_decode($files, true);
-            $this->startScaping($page, $files);
+            $this->startScaping($page, $files, $dataPageFile);
             return;
         } elseif (empty($files)) {
             $this->retry++;
             if ($this->retry > $this->maxRetry) {
                 $this->Failure->prepareLog('No se encontro el archivo page: ' . $page, __FILE__, __LINE__);
                 $this->Handlers->deletLogToken('No se encontro el archivo page: ' . $page);
-                $this->Files->deletePathAndFilies($page);
+                $this->Files->deletePathAndFilies($page, $dataPageFile);
 
                 throw new \Exception('No se encontro el archivo page: ' . $page);
             } else {
                 echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
                 sleep($this->retrySleep);
-                $this->startScaping($page, $files);
+                $this->startScaping($page, $files, $dataPageFile);
                 die;
             }
         }
 
         $this->retry = 0;
         $IDSjSONoRIGIN = [];
+
         foreach ($files as $key => $file) {
-            echo "key:{$key} \n";
+            $idPathFile = $file['id'];
+            $IDSjSONoRIGIN[] = $idPathFile;
+
+            if($this->Files->checkPastTreatment($idPathFile)){
+                echo "\r\n pulando donwload pois ja foi baixado: {$idPathFile} \r\n";
+                continue;
+            }
 
             if (isset($file['solicitudLicencia'])) {
-                $id = $file['solicitudLicencia']['id'];
-                echo "scrap path:{$id} \n";
+                echo "scrap path:{$idPathFile} \n";
                 $jsonFile = $this->requestDataSolictud($file['solicitudLicencia']['id'], true);
             } else {
                 $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, $file);
@@ -132,7 +142,7 @@ class SolicitudBot
             }
 
             if (!empty($jsonFile)) {
-                echo "Não esta vazio \n";
+                //verificar se o json e uma string  ou objeto para converter em array
                 if (is_string($jsonFile) || is_object($jsonFile)) {
                     if (is_object($jsonFile)) {
                         $jsonFile = json_decode(json_encode($jsonFile), true);
@@ -140,23 +150,37 @@ class SolicitudBot
                         $jsonFile = json_decode($jsonFile, true);
                     }
                 }
+
                 if(empty($jsonFile)){
                     echo "jsonFile vazio \n";
                     $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
                     $this->page->updateRecordsSalteados();
                     continue;
                 }
+
                 if (!is_array($jsonFile)) {
                     $this->retry++;
+                    $logError = [
+                        "jsonFile" => $jsonFile,
+                        "filePath" => $idPathFile,
+                        "date" => date('Y-m-d H:i:s'),
+                        "token" => $this->token,
+                        "page" => $page,
+                        "file" => $file,
+                        "solictudId" => $file['solicitudLicencia']['id'],
+                        "retry" => $this->retry,
+                    ];
+                    $hashError = md5(json_encode($logError));
+                    $this->Failure->prepareLog("HASHERROR:{$hashError} No se encontro la file.", __FILE__, __LINE__, $logError);
+
                     if ($this->retry >= $this->maxRetry) {
-                        $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
-                        $this->Handlers->deletLogToken('No se encontro la solicitud de licencia page: ' . $page);
-                        throw new \Exception('No se encontro la solicitud de licencia page: ' . $page);
+                        $this->Handlers->deletLogToken("HASHERROR:{$hashError} No se encontro la file.");
+                        throw new \Exception("HASHERROR:{$hashError} No se encontro la file.");
                     }else{
-                        echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
+                        echo "\r\n HASHERROR:{$hashError} No se encontro la file. \r\n";
+                        $this->page->updateRecordsSalteados();
                         sleep($this->retrySleep);
-                        $this->startScaping($page, $files);
-                        die;
+                        continue;
                     }
                 }
 
@@ -164,21 +188,16 @@ class SolicitudBot
 
                 $data = $this->standardizeData($jsonFile);
                 $dataEncode = json_encode($data);
-                $IDSjSONoRIGIN[] = $data[0]['id'];
 
 
-                echo "scrap path:{$data[0]['id']} \n";
-                if($this->checkPast($data[0]['id'])){
-                    $dataId=$data[0]['id'];
-                    echo "\r\n pulando donwload pois ja foi baixado: {$dataId} \r\n";
-                    continue;
-                }
 
-                $this->Files->createFilesSolicitedJson($page, $data[0]['id'], $data[0]['idReg'], $dataEncode);
+
+                $this->Files->createFilesSolicitedJson($page, $idPathFile, $data[0]['idReg'], $dataEncode, $dataPageFile);
                 foreach ($this->requestGetImage($data[0]['solicitudLicencia']['id'], false) as $key => $image) {
                     $nameImg = $data[0]['id'] . '_' . $key . '.jpg';
-                    $this->Files->createImgFile($page, $nameImg, $data[0]['id'], $image);
+                    $this->Files->createImgFile($page, $nameImg, $idPathFile, $image, $dataPageFile);
                 }
+
                 $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); //atualiza o total de arquivos baixados
 
             }else{
@@ -188,33 +207,12 @@ class SolicitudBot
                 continue;
             }
         }
-        $this->Files->deleteAndMovePathAndFilies($page, $IDSjSONoRIGIN);
-        $this->Files->movePathUsersForSolicited();
+        $this->Files->deleteAndMovePathAndFilies($page, $dataPageFile, $IDSjSONoRIGIN);
+        $this->Files->movePathUsersForSolicited($dataPageFile);
 
     }
 
-    private function checkPast(int $id){
-        $path = getenv('PATHFBOOT')."Treatment/";
 
-        $paths = scandir($path);
-        $paths = array_diff($paths, array('.', '..'));
-        foreach ($paths as $key => $value) {
-            $newpath = getenv('PATHFBOOT')."Treatment/".$value."/";
-            $newpath = scandir($newpath);
-            $newpath = array_diff($newpath, array('.', '..'));
-            foreach($newpath as $k=>$v){
-                $vn = getenv('PATHFBOOT')."Treatment/".$value."/".$v;
-                $vn = scandir($vn);
-                $vn = array_diff($vn, array('.', '..'));
-
-                if(in_array($id,$vn)){
-                    return true;
-                }
-            }
-
-        }
-        return false;
-    }
 
     private function standardizeData(array $data)
     {

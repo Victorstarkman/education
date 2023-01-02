@@ -80,7 +80,6 @@ class Bot
         echo "get token and get user \r\n";
         $dfataToken = $token = $this->token->getToken();
         $users = $this->user->getUser();
-
         if (empty($dfataToken)) {
 
             if (empty($users)) {

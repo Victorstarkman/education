@@ -27,14 +27,14 @@ class SaveFile
         $date = date('Y-m-d');
 
         $file = $this->pathDefault . "pages/" . "/$page/" . $date . '_' . uniqid(rand(0, 1000)) . ".json";
-        echo $file."\n";
+        echo $file . "\n";
         file_put_contents($file, $json);
     }
 
-    public function createFilesSolicitedJson(int $page, int $id, int $idReg, string $json)
+    public function createFilesSolicitedJson(int $page, int $id, int $idReg, string $json, string $dataPageFile)
     {
-        $this->createUserPath($page, $id, $idReg);
-        $this->createJsonFile($page, $id, $idReg, $json);
+        $this->createUserPath($page, $id, $dataPageFile);
+        $this->createJsonFile($page, $id, $idReg, $json, $dataPageFile);
     }
 
     public function getPathPageDate()
@@ -49,6 +49,7 @@ class SaveFile
         array_walk($paths, function (&$value, $key) {
             $value = $this->pathDefault . 'pages/' . $value . '/';
         });
+
         return $paths;
     }
 
@@ -89,28 +90,33 @@ class SaveFile
         return file_get_contents($path);
     }
 
-    private function createJsonFile(int $page, int $id, int $idReg, string $json)
+    private function createJsonFile(int $page, int $id, int $idReg, string $json, string $date)
     {
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/consultarDatos/$idReg.json";
-        file_put_contents($path, $json);
+        $file = $this->pathDefault . "Treatment/" . $date . "/$page/$id/json/consultarDatos/$idReg.json";
+
+        file_put_contents($file, $json);
     }
 
-    public function createImgFile(int $page, string $nameImg, int $idReg, string $img)
+    public function createImgFile(int $page, string $nameImg, int $idReg, string $img, string $dataPageFile)
     {
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$idReg/img/$nameImg.jpg";
+        $path = $this->pathDefault . "Treatment/" . $dataPageFile . "/$page/$idReg/img/";
 
-        file_put_contents($path, $img);
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $file = $path . $nameImg . '.jpg';
+
+        file_put_contents($file, $img);
     }
 
-    private function createUserPath(int $page, int $idReg)
+    private function createUserPath(int $page, int $id, string $date)
     {
-
-        $date = date('Y-m-d');
-
         $paths = [
-            "Treatment/$date/$page/$idReg",
-            "Treatment/$date/$page/$idReg/json/consultarDatos",
-            "Treatment/$date/$page/$idReg/img"
+            "Treatment/$date",
+            "Treatment/$date/$page",
+            "Treatment/$date/$page/$id",
+            "Treatment/$date/$page/$id/json/consultarDatos",
+            "Treatment/$date/$page/$id/img"
         ];
 
         foreach ($paths as $path) {
@@ -153,18 +159,18 @@ class SaveFile
         }
     }
 
-    public function deleteAndMovePathAndFilies(int $page, $IDS= [])
+    public function deleteAndMovePathAndFilies(int $page,string  $dataPageFile, array $IDS = [])
     {
         $path = $this->pathDefault . 'pages/' . $page;
         $files = glob($path . '/*'); // get all file names
         foreach ($files as $file) { // iterate files
             if (!is_file($file)) {
-                $this->deleteAndMovePathAndFilies($path . "/" . $file,$IDS);
+                $this->deleteAndMovePathAndFilies($path . "/" . $file, $dataPageFile, $IDS);
             } else {
                 //move file
-                $pathFile = $this->pathDefault . 'Treatment/' . date('Y-m-d') . '/' . $page . '/' . basename($file);
+                $pathFile = $this->pathDefault . 'Treatment/' . $dataPageFile . '/' . $page . '/' . basename($file);
                 rename($file, $pathFile);
-                $this->setJsonOrigin($pathFile,$page,$IDS);
+                $this->setJsonOrigin($pathFile, $page, $IDS,$dataPageFile);
             }
         }
 
@@ -172,17 +178,17 @@ class SaveFile
             echo "deleteAndMovePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
-            $this->deleteAndMovePathAndFilies($path,$IDS);
+            $this->deleteAndMovePathAndFilies($path, $dataPageFile, $IDS);
         }
     }
 
-    public function deletePathAndFilies(int $page)
+    public function deletePathAndFilies(int $page, string $dataPageFile)
     {
         $path = $this->pathDefault . 'pages/' . $page;
         $files = glob($path . '/*'); // get all file names
         foreach ($files as $file) { // iterate files
             if (!is_file($file)) {
-                $this->deleteAndMovePathAndFilies($path . "/" . $file);
+                $this->deleteAndMovePathAndFilies($path . "/" . $file, $dataPageFile);
             } else {
                 //delete file
                 unlink($file);
@@ -193,27 +199,27 @@ class SaveFile
             echo "deletePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
-            $this->deleteAndMovePathAndFilies($path);
+            $this->deleteAndMovePathAndFilies($path, $dataPageFile);
         }
     }
-    public function movePathUsersForSolicited()
+    public function movePathUsersForSolicited(string $data)
     {
-        $path = $this->pathDefault . 'Treatment/' . date('Y-m-d') . '/';
+        $path = $this->pathDefault . 'Treatment/' . $data . '/';
         $files = glob($path . '/*'); // get all file names
         //$time = $this->time;
         foreach ($files as $file) { // iterate files
-            if (!file_exists($this->pathDefault . 'Users/' . date('Y-m-d') . '/'  )) {
-                mkdir($this->pathDefault . 'Users/' . date('Y-m-d') . '/' , 0777, true);
+            if (!file_exists($this->pathDefault . 'Users/' . $data . '/')) {
+                mkdir($this->pathDefault . 'Users/' . $data . '/', 0777, true);
             }
 
-            rename($file, $this->pathDefault . 'Users/' . date('Y-m-d') . '/' . basename($file));
+            rename($file, $this->pathDefault . 'Users/' . $data . '/' . basename($file));
         }
 
         if ($this->checkEmptyPath($path)) {
             echo "movePathUsersForSolicited : " . $path . PHP_EOL;
             rmdir($path);
         } else {
-            $this->movePathUsersForSolicited($path);
+            $this->movePathUsersForSolicited($data);
         }
     }
 
@@ -231,20 +237,43 @@ class SaveFile
         return true;
     }
 
-    public function setJsonOrigin(string $path, string $page, array $IDS): void
+    public function setJsonOrigin(string $path, string $page, array $IDS, string  $dataPageFile): void
     {
         $json = json_decode(file_get_contents($path), true);
         foreach ($json as $key => $value) {
             $id = $IDS[$key];
             echo "\ncreating jsonOrigin: $id \n";
-            $this->saveJsonOrigin($path,$id,$page, $value);
+            $this->saveJsonOrigin($path, $id, $page, $value, $dataPageFile);
         }
     }
 
-    private function saveJsonOrigin(string $path,int $id,  string $page, array $json)
+    public function checkPastTreatment(int $id)
+    {
+        $path = getenv('PATHFBOOT') . "Treatment/";
+
+        $paths = scandir($path);
+        $paths = array_diff($paths, array('.', '..'));
+        foreach ($paths as $key => $value) {
+            $newpath = getenv('PATHFBOOT') . "Treatment/" . $value . "/";
+            $newpath = scandir($newpath);
+            $newpath = array_diff($newpath, array('.', '..'));
+            foreach ($newpath as $k => $v) {
+                $vn = getenv('PATHFBOOT') . "Treatment/" . $value . "/" . $v;
+                $vn = scandir($vn);
+                $vn = array_diff($vn, array('.', '..'));
+
+                if (in_array($id, $vn)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private function saveJsonOrigin(string $path, int $id,  string $page, array $json, string  $dataPageFile)
     {
 
-        $path = $this->pathDefault . "Treatment/" . date('Y-m-d') . "/$page/$id/json/jsonOrinResponse.json";
+        $path = $this->pathDefault . "Treatment/" . $dataPageFile . "/$page/$id/json/jsonOrinResponse.json";
         file_put_contents($path, json_encode($json));
     }
 }
