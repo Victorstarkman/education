@@ -171,8 +171,8 @@ class SaveFile
             } else {
                 //move file
                 $pathFile = $this->pathDefault . 'Treatment/' . $dataPageFile . '/' . $page . '/' . basename($file);
-                rename($file, $pathFile);
                 $this->setJsonOrigin($pathFile, $page, $IDS,$dataPageFile);
+                rename($file, $pathFile);
             }
         }
 
