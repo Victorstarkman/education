@@ -211,22 +211,26 @@ class PageBot
             }
 
             $this->retry = 0;
-
+            echo "\r\n standardizeData page: {$i} \r\n";
             $newData = $this->standardizeData($data);
+            echo "\r\n Save page: {$i} \r\n";
             $this->SaveFile->createFilesPages($i, json_encode($newData, JSON_PRETTY_PRINT));
             if ($pages['termino']) {
                 $page = $pages['page_total'] - 1;
             } else {
                 $page = $i + 1;
             }
-            $this->page->updateCurrentPage($pages['id'], $page, $pages['total_file_downloaded']);
+
+
 
 
             if(getenv('REQUEST_ALL') == 'true'){
                 echo "\r\n REQUEST_ALL \r\n";
+                $this->page->updateCurrentPage($pages['id'], $pages['page_total'], $pages['total_file_downloaded']);
                 break;
             }
 
+            $this->page->updateCurrentPage($pages['id'], $page, $pages['total_file_downloaded']);
             echo "\r\n Actual_page: {$i}, next_page: {$page} \r\n";
         }
     }
