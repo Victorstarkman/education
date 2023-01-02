@@ -127,7 +127,7 @@ class SolicitudBot
             $idPathFile = $file['id'];
             $IDSjSONoRIGIN[] = $idPathFile;
             //calcular o percentual de progresso do processo usando count($files) - IDSjSONoRIGIN
-            $proceco = (count($IDSjSONoRIGIN)) / count($files) * 100;
+            $proceco = round(((count($IDSjSONoRIGIN)) / count($files) * 100), 2);
 
             echo "\r ---- progresso: {$proceco}% ---- \r\n";
 
