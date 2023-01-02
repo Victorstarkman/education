@@ -106,6 +106,7 @@ class PageBot
     private function requestPages(int $page = 0, bool $isNewScraping = false)
     {
         if(!getenv('REQUEST_ALL') && $isNewScraping){
+            echo "\r\n Request all off \r\n";
             $numPerPage = 20;
         }else{
             $numPerPage = $this->page->getTotalElements();
