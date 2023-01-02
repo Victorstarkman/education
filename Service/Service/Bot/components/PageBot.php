@@ -239,6 +239,7 @@ class PageBot
     {
         $newData = $data;
         foreach ($data as $key => $value) {
+            echo "\r\n key: {$key} \r\n";
             if (is_array($value)) {
                 $newData[$key] = $this->standardizeData($value);
             } else {
