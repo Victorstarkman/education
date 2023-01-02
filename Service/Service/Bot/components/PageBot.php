@@ -108,7 +108,7 @@ class PageBot
         if(!getenv('REQUEST_ALL') && $isNewScraping){
             echo "\r\n Request all off \r\n";
             $numPerPage = 20;
-        }elseif(!getenv('REQUEST_ALL')){
+        }elseif(getenv('REQUEST_ALL') == 'false'){
             $numPerPage = $this->size;
         }else{
             $numPerPage = $this->page->getTotalElements();
