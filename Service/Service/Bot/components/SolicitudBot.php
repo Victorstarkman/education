@@ -122,10 +122,14 @@ class SolicitudBot
 
         $this->retry = 0;
         $IDSjSONoRIGIN = [];
-
+        $proceco = 0;
         foreach ($files as $key => $file) {
             $idPathFile = $file['id'];
             $IDSjSONoRIGIN[] = $idPathFile;
+            //calcular o percentual de progresso do processo usando count($files) - IDSjSONoRIGIN
+            $proceco = (count($IDSjSONoRIGIN)) / count($files) * 100;
+
+            echo "\r ---- progresso: {$proceco}% ---- \r\n";
 
             if($this->Files->checkPastTreatment($idPathFile)){
                 echo "\r\n pulando donwload pois ja foi baixado: {$idPathFile} \r\n";
