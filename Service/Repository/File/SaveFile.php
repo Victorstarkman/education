@@ -242,6 +242,7 @@ class SaveFile
     public function setJsonOrigin(string $path, string $page, array $IDS, string  $dataPageFile): void
     {
         $json = json_decode(file_get_contents($path), true);
+        die(var_dump($json));
         foreach ($json as $key => $value) {
             $id = $IDS[$key];
             echo "\ncreating jsonOrigin: $id \n";
