@@ -1,18 +1,20 @@
 <?php
 
 namespace Repository\File;
-
+use Handlers\Pages\Handlers;
 
 class SaveFile
 {
     private $time;
     private $pathDefault;
+    private Handlers $Handlers;
 
     public function __construct()
     {
         $this->pathDefault = getenv('PATHFBOOT', '/var/www/filesBot/');
         $this->time = date('H_i_s');
         $this->createDefaultsPath();
+        $this->Handlers = new Handlers();
     }
 
     public function createFilesPages(int $page, string $json)
@@ -274,6 +276,34 @@ class SaveFile
     {
 
         $path = $this->pathDefault . "Treatment/" . $dataPageFile . "/$page/$id/json/jsonOrinResponse.json";
+        $json = $this->standardizeData($json);
         file_put_contents($path, json_encode($json));
+    }
+
+
+    private function standardizeData(array $data)
+    {
+        $newData = $data;
+        foreach ($data as $key => $value) {
+
+            if (is_array($value)) {
+                $newData[$key] = $this->standardizeData($value);
+            } else {
+                if ($value) {
+                    $isJson = json_encode($value, true);
+                    if (is_array($isJson)) {
+                        $newData[$key] = $this->standardizeData($isJson);
+                    } else {
+                        $newData[$key] = $this->Handlers->removeSpace($value);
+                        $newData[$key] = $this->Handlers->convetDate($key, $newData[$key]);
+                        $newData[$key] = $this->Handlers->convertCodigoRegEstat($key, $newData[$key]);
+                    }
+                } else {
+                    $newData[$key] = $value;
+                }
+            }
+        }
+
+        return $newData;
     }
 }
