@@ -90,6 +90,8 @@ class RequestServer
                     $randoSleep = 1;
                     echo "Sleeping for $randoSleep seconds... \n";
                    sleep($randoSleep);
+                }else{
+                    echo "Sleeping is disabled... \n";
                 }
                 $res = $this->client->request($metodo, $url, $a_param);
             }catch (\Exception $e) {
