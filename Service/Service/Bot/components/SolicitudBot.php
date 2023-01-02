@@ -31,6 +31,7 @@ class SolicitudBot
     private string $APP_VERSION;
     private array $pages = [];
     private int $size;
+    private string $pathDefault;
 
     private RequestServer $Request;
     private Handlers $Handlers;
@@ -48,6 +49,7 @@ class SolicitudBot
 
         $this->APP_VERSION = getenv('APP_VERSION', '1.4.4');
         $this->size = $size;
+        $this->pathDefault = getenv('PATHFBOOT', '/var/www/filesBot/');
     }
 
     public function scrapingSolicitud($token)
@@ -123,6 +125,7 @@ class SolicitudBot
         $this->retry = 0;
         $IDSjSONoRIGIN = [];
         $proceco = 0;
+
         foreach ($files as $key => $file) {
             $idPathFile = $file['id'];
             $IDSjSONoRIGIN[] = $idPathFile;
@@ -132,6 +135,7 @@ class SolicitudBot
             echo "\r ---- progresso: {$proceco}% ---- \r\n";
 
             if($this->Files->checkPastTreatment($idPathFile)){
+                $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
                 echo "\r\n pulando donwload pois ja foi baixado: {$idPathFile} \r\n";
                 continue;
             }
@@ -203,7 +207,7 @@ class SolicitudBot
                 }
 
                 $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); //atualiza o total de arquivos baixados
-
+                $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
             }else{
                 echo "jsonFile vazio \n";
                 $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
@@ -211,7 +215,7 @@ class SolicitudBot
                 continue;
             }
         }
-        $this->Files->deleteAndMovePathAndFilies($page, $dataPageFile, $IDSjSONoRIGIN);
+        $this->Files->deleteAndMovePathAndFilies($page, $dataPageFile);
         $this->Files->movePathUsersForSolicited($dataPageFile);
 
     }

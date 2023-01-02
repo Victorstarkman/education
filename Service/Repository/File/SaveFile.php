@@ -161,17 +161,17 @@ class SaveFile
         }
     }
 
-    public function deleteAndMovePathAndFilies(int $page,string  $dataPageFile, array $IDS = [])
+    public function deleteAndMovePathAndFilies(int $page,string  $dataPageFile)
     {
         $path = $this->pathDefault . 'pages/' . $page;
         $files = glob($path . '/*'); // get all file names
         foreach ($files as $file) { // iterate files
             if (!is_file($file)) {
-                $this->deleteAndMovePathAndFilies($path . "/" . $file, $dataPageFile, $IDS);
+                $this->deleteAndMovePathAndFilies($path . "/" . $file, $dataPageFile);
             } else {
                 //move file
                 $pathFile = $this->pathDefault . 'Treatment/' . $dataPageFile . '/' . $page . '/' . basename($file);
-                $this->setJsonOrigin($pathFile, $page, $IDS,$dataPageFile);
+
                 rename($file, $pathFile);
             }
         }
@@ -180,7 +180,7 @@ class SaveFile
             echo "deleteAndMovePathAndFilies: " . $path . PHP_EOL;
             rmdir($path);
         } else {
-            $this->deleteAndMovePathAndFilies($path, $dataPageFile, $IDS);
+            $this->deleteAndMovePathAndFilies($path, $dataPageFile);
         }
     }
 
@@ -239,17 +239,6 @@ class SaveFile
         return true;
     }
 
-    public function setJsonOrigin(string $path, string $page, array $IDS, string  $dataPageFile): void
-    {
-        $json = json_decode(file_get_contents($path), true);
-        die(var_dump($json));
-        foreach ($json as $key => $value) {
-            $id = $IDS[$key];
-            echo "\ncreating jsonOrigin: $id \n";
-            $this->saveJsonOrigin($path, $id, $page, $value, $dataPageFile);
-        }
-    }
-
     public function checkPastTreatment(int $id)
     {
         $path = getenv('PATHFBOOT') . "Treatment/";
@@ -273,7 +262,7 @@ class SaveFile
         return false;
     }
 
-    private function saveJsonOrigin(string $path, int $id,  string $page, array $json, string  $dataPageFile)
+    public function saveJsonOrigin(int $id,  string $page, array $json, string  $dataPageFile)
     {
 
         $path = $this->pathDefault . "Treatment/" . $dataPageFile . "/$page/$id/json/jsonOrinResponse.json";
