@@ -33,6 +33,23 @@ class HtmltopdfComponent extends Component
             echo $formatter->getHtmlMessage();
         }
     }
+    public function createReport_juntas($dataToShow)
+    {
+        try {
+            /* debug($dataToShow);
+            die(); */
+            ob_start();
+            include 'reportTemplates/reportToCompanies_juntas.php';
+            $content = ob_get_clean();
+            $html2pdf = new Html2Pdf('P', 'A4', 'es', true, 'UTF-8', [0, 0, 0, 0]);
+            $html2pdf->writeHTML($content);
+            $html2pdf->output('auditoria-' . strtolower($dataToShow->patient->lastname . '-' . $dataToShow->patient->name) . '.pdf');
+        } catch (Html2PdfException $e) {
+            $html2pdf->clean();
+            $formatter = new ExceptionFormatter($e);
+            echo $formatter->getHtmlMessage();
+        }
+    }
 
 
 }

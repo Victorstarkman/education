@@ -86,6 +86,10 @@ class Report extends Entity
         'privatedoctor' => true,
         'externalID' => true,
         'files' => true,
+        'licence_reason'=> true,
+        'retirement'=> true,
+        'reinstatement'=>true,
+        'interdiction' => true,
     ];
     public function getNameStatus()
     {
@@ -95,6 +99,11 @@ class Report extends Entity
             $status .= $this->fraud == 1 ? 'Si' : 'No';
         }
 
+        return $status;
+    }
+    public function getLicenceReason()
+    {
+        $status = ReportsTable::LICENSE_REASON[$this->licence_reason]['name'];
         return $status;
     }
 

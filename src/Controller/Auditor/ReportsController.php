@@ -130,7 +130,6 @@ class ReportsController extends AppController
             $errorPatient = '';
             if (!empty($search['cuil'])) {
                 $coincide = preg_match('/@/', $search['cuil']);
-
                 if ($coincide > 0) {
                     $errorPatient = 'No se encontro persona con el email: ' . $search['cuil'];
                     $patientsWhere['email LIKE'] = '%' . $search['cuil'] . '%';
@@ -205,7 +204,7 @@ class ReportsController extends AppController
                 throw new RecordNotFoundException('No se encontro el ID.');
             }
 
-            if ($report->doctor_id != $this->Authentication->getIdentity()->id) {
+            if ($report->doctor_id != $this->Authentication->getIdentity()->centermedical_id) {
                 throw new RecordNotFoundException('El doctor Auditor no corresponde.');
             }
 
@@ -298,7 +297,7 @@ class ReportsController extends AppController
 	        ->combine('id', function ($entity) {
             return $entity->name . ' (' . $entity->code . ')';
         });
-
+        
         $this->set(compact(
             'report',
             'getStatuses',
@@ -360,14 +359,24 @@ class ReportsController extends AppController
 
             $this->loadComponent('Htmltopdf');
             $report = $this->Reports->get($id, [
-                'contain' => ['doctor', 'Patients' => ['Companies']],
+                'contain' => ['doctor', 'Patients' => ['Companies'],'MedicalCenters'],
             ]);
-            if (!in_array($report->status, $this->Reports->getActiveStatuses())) {
-                $this->Htmltopdf->createReport($report);
-            } else {
-                throw new RecordNotFoundException('El reporte no esta listo');
-                $this->Flash->error(__('El reporte no esta listo.'));
+            if($report->mode_id==4){
+                if (!in_array($report->status, $this->Reports->getActiveStatuses())) {
+                    $this->Htmltopdf->createReport_juntas($report);
+                } else {
+                    throw new RecordNotFoundException('El reporte no esta listo');
+                    $this->Flash->error(__('El reporte no esta listo.'));
+                }
+            }else{
+                if (!in_array($report->status, $this->Reports->getActiveStatuses())) {
+                    $this->Htmltopdf->createReport($report);
+                } else {
+                    throw new RecordNotFoundException('El reporte no esta listo');
+                    $this->Flash->error(__('El reporte no esta listo.'));
+                }
             }
+           
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage(), ['escape' => false]);
             if (stripos(get_class($e), 'RecordNotFoundException')) {

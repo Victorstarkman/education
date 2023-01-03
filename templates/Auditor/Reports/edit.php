@@ -379,6 +379,21 @@
             <div class="alert alert-secondary col-lg-12 text-center mt-5" role="alert">
                 <div class="message error">Dictamen</div>
             </div>
+            <?php if($report->mode_id==4):?>
+                <div class="pt-0 col-lg-12 col-sm-12 my-4 border" >
+                    <div class="pt-2">Razones</div>
+                    <div class="form-check form-switch form-check-inline my-4 reasons">
+                        <input class="form-check-input reason" type="radio" value=1 id="licence" name="licence_reason" checked>
+                        <label class="form-check-label " for="licence">Licencia</label>
+                        <input class="form-check-input reason ml-4" type="radio" value=2 id="change" name="licence_reason">
+                        <label class="form-check-label" for="change">Cambio de funciones/Reasignaci&oacute;n de tareas </label>
+                        <input class="form-check-input ml-2 reason" type="radio" value=3 id="profilaxis" name="licence_reason">
+                        <label class="form-check-label" for="profilaxi">Razones de Profilaxis</label>
+                        <input class="form-check-input ml-2 reason" type="radio" value=4 id="health" name="licence_reason">
+                        <label class="form-check-label" for="health">Servicios Provisorios por Razones de Enfermedad/Reubicaci&oacute;n laboral</label>
+                    </div>
+                </div>
+            <?php endif;?>
             <div class="pt-0 col-lg-12 col-sm-12">
                 <div class="form-group">
                     <?= $this->Form->control('id', ['label' => 'id',
@@ -392,6 +407,18 @@
                         'options' => $getStatuses, 'required' => true]); ?>
                 </div>
             </div>
+            <div class="pt-0 col-lg-12 col-sm-12">
+                <div class="form-group interdictions d-none">
+                    <?= $this->Form->control('interdiction', ['label' => 'El Agente NO debe',
+                        'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea','rows'=>'2']); ?>
+            </div>
+            <div class="pt-0 col-lg-12 col-sm-12">
+                <div class="form-group reinstatement d-none">
+                    <?= $this->Form->control('reinstatement', ['label' => 'Reintegro a Tareas Habituales (desde)',
+                        'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'date']); ?>
+                </div>
+            </div> 
+
             <div id="inputs-3" class="inputs-to-show" style="display: none;">
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" value="1" id="fraud" name="fraud">
@@ -419,12 +446,13 @@
                                     'options' => $cie10]); ?>
                             </div>
                         </div>
-                        <div class="form-check form-switch">
+                        <div class="form-check form-switch ">
                             <input class="form-check-input" type="checkbox" value="1" id="otherDiag" name="otherDiag">
                             <label class="form-check-label" for="otherDiag">Otro Diagnóstico</label>
+                            
                         </div>
                 </div>
-                <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none;">
+                <div class="pt-0 col-lg-12 col-sm-12 otroDiagnostico" style="display: none">
                     <div class="form-group">
                         <?=  $this->Form->control('pathology', ['label' => 'Diagnóstico',
                             'class' => 'form-control form-control-blue m-0 col-12']); ?>
@@ -435,6 +463,12 @@
                 <div class="form-group">
                     <?= $this->Form->control('observations', ['label' => 'Observaciones',
                         'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
+                </div>
+            </div>
+            <div class="pt-0 col-lg-12 col-sm-12">
+                <div class="form-check form-switch ">
+                    <input class="form-check-input " type="checkbox" value="1" id="retirement" name="retirement">
+                    <label class="form-check-label" for="retirement">Jubilaci&oacute;n por Incapacidad</label>
                 </div>
             </div>
             <div class="col-12">
@@ -567,8 +601,13 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                 }
             });
         }
-
         $(document).ready(function() {
+            if(!($('.interdictions').hasClass('d-none'))){
+            $('.interdictions').addClass('d-none');
+            }
+            if(!($('.reinstatement').hasClass('d-none'))){
+            $('.reinstatement').addClass('d-none');
+        }
             var $reportID = $("#id").val();
             $("#fileuploader").uploadFile({
                 url: '<?php echo $this->Url->build(['controller' => 'Files','action' => 'addFile', $report->id]); ?>',
@@ -756,5 +795,32 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
                 }
             });
         })
+        /* 
+        cuando dictamen es otorgado en juntas y estoy en cambio de funciones o en servicios provisorios habiltar interdicciones
+        */
+       $('#status').change(function(){
+        if(!($('.interdictions').hasClass('d-none'))){
+            $('.interdictions').addClass('d-none');
+        }
+        if(!($('.reinstatement').hasClass('d-none'))){
+            $('.reinstatement').addClass('d-none');
+        }
+        if(($('#status').val()==4) && $('#mode-id').val()==4){ 
+            if($('#change').prop('checked') || $('#health').prop('checked') ){
+                     if($('.interdictions').hasClass('d-none')){
+                        $('.interdictions').removeClass('d-none');
+                     }
+                }
+            }
+        if((($('#status').val()==3) && $('#mode-id').val()==4)){
+            if($('#change').prop('checked')){
+                if($('.reinstatement').hasClass('d-none')){
+                        $('.reinstatement').removeClass('d-none');
+                     }
+            }
+        }
+
+       })
+
     </script>
 <?php $this->end(); ?>

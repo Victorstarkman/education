@@ -128,6 +128,9 @@
                 <thead>
                 <tr>
                     <th><?= __('Diagnóstico')?></th>
+                    <?php if($report->mode_id==4):?>
+                        <th><?=__('Motivo de Sol.')?></th>
+                    <?php endif;?>
                     <th><?= __('Dictamen')?></th>
                     <th><?= __('Duración') ?></th>
                     <th><?= __('Desde (Fecha)') ?></th>
@@ -136,6 +139,9 @@
                 <tbody>
                 <tr>
                     <td><?= h($report->getPathology()) ?></td>
+                    <?php if($report->mode_id==4):?>
+                        <th><?= $report->getLicenceReason()?></th>
+                    <?php endif;?>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= h($report->recommendedDays) ?></td>
                     <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense->i18nFormat('dd/MM/yyyy'); ?></td>

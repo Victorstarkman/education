@@ -50,7 +50,20 @@ class ReportsTable extends Table
             'extra' => true,
         ],
     ];
-
+    public const LICENSE_REASON = [
+        1 =>[ 
+            'name' => 'Licencia',
+        ],
+        2 =>[ 
+            'name' => 'Cambio de funciones/Reasignacion de tareas',
+        ],
+        3 =>[ 
+            'name' => 'Razones de Profilaxis',
+        ],
+        4 =>[ 
+            'name' => 'Servicios provisorios por razones de enfermedad/Reubicacion laboral',
+        ],
+    ];
     public const ACTIVE = 1;
     public const NRLL = 2;
     public const DENIED = 3;
@@ -232,6 +245,17 @@ class ReportsTable extends Table
         }
 
         return $licenseArray;
+    }
+    public function getLicenseReason($reason=null){
+        $license_reason =[];
+        foreach(self::LICENSE_REASON as $key =>$reason){
+            if($reason==null){
+                $license_reason[$key] = $license_reason['name'];
+            } else{
+                $license_reason[$key] = $license_reason['name'];
+            }
+        }
+        return $license_reason;
     }
 
     public function getActiveStatuses()
