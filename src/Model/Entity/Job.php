@@ -81,10 +81,7 @@ class Job extends Entity
 				switch ($this->name) {
 					case 'scrapperInit':
 						if ($msg['totalPages'] > 0) {
-							$show['Leyendo sitio']= number_format(($msg['current_page']*100)/$msg['totalPages'], 2);
-						}
-						if ($msg['totalPages'] > 0) {
-							$show['Paginas procesadas']= number_format(($msg['processedPage']*100)/$msg['totalPages'], 2);
+							$show[]= number_format($msg['percentage'], 2);
 						}
 						break;
 					case 'scrapperProcessor':
