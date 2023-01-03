@@ -269,24 +269,18 @@ class SaveFile extends RepositoryBase
 
         $this->setFromLogs('Logs_Status_Pages');
         $this->select();
+        $this->where(['id' => $id]);
+
+        $keyPosition = array_keys($this->getSelect());
+
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
         $oldFile = $this->getSelect();
 
-        foreach ($oldFile as $key => $item) {
-            $checkBreak = 0;
-            foreach($item as $value){
-              if($value == $id){
-                $checkBreak = 1;
-                $oldFile[$key] = $jsonSucess;
-                break;
-              }
-            }
-            if($checkBreak == 1){
-              break;
-            }
-        }
+        $oldFile[$keyPosition[0]] = $jsonSucess;
 
         $this->delete();
-        //mover o array 1 casa para tras
+
         foreach ($oldFile as $key => $item) {
             $this->insert($item);
         }
