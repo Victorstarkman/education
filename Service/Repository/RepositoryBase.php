@@ -72,6 +72,23 @@ class RepositoryBase
         }
     }
 
+    public function insetDirect(array $array = [], $nameFile = 'log.json'): bool
+    {
+        try {
+
+            $path = $this->path . '/' . $nameFile;
+            $oldFile = $array;
+            $file = fopen($path, 'w');
+            fwrite($file, json_encode($oldFile));
+            fclose($file);
+
+            return true;
+        } catch (\Exception $e) {
+
+            return false;
+        }
+    }
+
     public function select($nameFile = 'log.json')
     {
         $path = $this->path . '/' . $nameFile;

@@ -281,9 +281,8 @@ class SaveFile extends RepositoryBase
 
         $this->delete();
 
-        foreach ($oldFile as $key => $item) {
-            $this->insert($item);
-        }
+        $this->insetDirect($oldFile);
+
 
         return true;
     }
