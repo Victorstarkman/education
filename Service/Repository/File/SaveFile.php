@@ -272,14 +272,17 @@ class SaveFile extends RepositoryBase
         $oldFile = $this->getSelect();
 
         foreach ($oldFile as $key => $item) {
+            $checkBreak = 0;
             foreach($item as $value){
               if($value == $id){
-
+                $checkBreak = 1;
                 $oldFile[$key] = $jsonSucess;
-                //array_push($oldFile, $jsonSucess);
+                break;
               }
             }
-
+            if($checkBreak == 1){
+              break;
+            }
         }
 
         $this->delete();
