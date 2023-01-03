@@ -13,6 +13,8 @@ class PageBot
     private $retry = 0;
     private $maxRetry = 10;
     private $retrySleep = 10;
+    private $saltPage = 0;
+    private $maxSaltPage = 10;
 
     public const HEADER_DEFAULT = [
         "Accept" => "application/json, text/plain, */*",
@@ -105,12 +107,12 @@ class PageBot
 
     private function requestPages(int $page = 0, bool $isNewScraping = false)
     {
-        if(!getenv('REQUEST_ALL') && $isNewScraping){
+        if (!getenv('REQUEST_ALL') && $isNewScraping) {
             echo "\r\n Request all off \r\n";
             $numPerPage = 20;
-        }elseif(getenv('REQUEST_ALL') == 'false'){
+        } elseif (getenv('REQUEST_ALL') == 'false') {
             $numPerPage = $this->size;
-        }else{
+        } else {
             $numPerPage = $this->page->getTotalElements();
             $page = 0;
         }
@@ -132,78 +134,27 @@ class PageBot
     {
         $this->page->updateTermino(false);
         $pages = $this->getPage();
-        if (!$pages['termino']) {
-            $this->scraping($pages);
-            $this->page->updateTermino(true);
-        } else {
-            echo "\r\n Start scraping terminou: ". $pages['termino'] . " \r\n";
-            if ($pages['current_page'] == $pages['page_total']) {
-                echo "\r\n No hay mas paginas para descargar \r\n";
-                $requestPage = $this->requestPages(0, false);
-                $json = json_decode($requestPage, true);
-                if ($json['totalElements'] == $pages['total_file_downloaded']) {
-                    echo "\r\n No hay mas archivos para descargar \r\n";
-                    return;
-                } else {
-                    if ($pages['current_page'] >= $json['totalPages']) {
-                        $this->page->updatePages($pages['id'], $json['totalPages'], $json['totalElements'], $json['totalElements']);
-                        $this->scrapingPages($this->token, true);
-                        return;
-                    } else {
-                        $this->page->updatePageTotal($pages['id'], $json['totalPages']);
-                        $this->scrapingPages($this->token, true);
-                        return;
-                    }
-                }
-            } else {
-                $countFiles = $pages['total_file'] - $pages['total_file_downloaded'];
-
-                if ($countFiles <= 0) {
-                    $requestPage = $this->requestPages(0, false);
-                    $json = json_decode($requestPage, true);
-                    if ($json['totalElements'] == $pages['total_file_downloaded']) {
-                        echo "\r\n No hay mas archivos para descargar \r\n";
-                        return;
-                    } else {
-                        if ($pages['current_page'] >= $json['totalPages']) {
-                            $this->page->updatePages($pages['id'], $json['totalPages'], $json['totalElements'], $json['totalElements']);
-                            return;
-                        } else {
-                            $this->page->updatePageTotal($pages['id'], $json['totalPages']);
-                            $this->scrapingPages($this->token, true);
-                            return;
-                        }
-                    }
-                    echo "\r\n No hay mas archivos para descargar \r\n";
-                    return;
-                }
-
-                $newTotalPage = $countFiles / $this->size;
-                $pages['old_page_total'] = $pages['page_total'];
-                $pages['old_current_page'] = $pages['current_page'];
-                $pages['page_total'] = ceil($newTotalPage);
-                $pages['current_page'] = 0;
-                $this->scraping($pages);
-
-                //update current page
-                $actualPage = $pages['old_current_page'] + $pages['page_total'];
-                $this->page->updateCurrentPage($pages['id'], $actualPage, $pages['total_file_downloaded']);
-            }
-        }
+        $pages['current_page'] = 0;
+        $this->scraping($pages);
         $this->page->updateTermino(true);
     }
 
     private function scraping(array $pages)
     {
         for ($i = $pages['current_page']; $i <= $pages['page_total']; $i++) {
-            if(getenv('REQUEST_ALL') == 'true'){
+
+            if ($this->saltPage >= $this->maxSaltPage) {
+                break;
+            }
+
+            if (getenv('REQUEST_ALL') == 'true') {
                 $i = 0;
             }
 
             $data = json_decode($this->requestPages($i, true), true)['content'] ?? [];
 
             if (empty($data)) {
-                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__,$data);
+                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__, $data);
                 $this->retry++;
                 if ($this->retry >= $this->maxRetry) {
                     $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
@@ -219,18 +170,31 @@ class PageBot
             }
 
             $this->retry = 0;
-            echo "\r\n Save page: {$i} \r\n";
+            echo "Limpiando datos \r\n";
+            foreach ($data as $key => $value) {
+                if ($this->SaveFile->checkPagesAll($value['id'])) {
+                    unset($data[$key]);
+                }
+            }
+
+            if (empty($data)) {
+                echo "No hay datos para descargar \r\n";
+                $this->saltPage++;
+                continue;
+            }
+
+            $this->saltPage = 0;
+            echo "\r\n Save page: {$i} new conteudo:" . count($data) . " \r\n";
             $this->SaveFile->createFilesPages($i, json_encode($data, JSON_PRETTY_PRINT));
+            $this->SaveFile->saveJsonPagePendente($data);
+            $this->page->insertPercentageOfProgress();
             if ($pages['termino']) {
                 $page = $pages['page_total'] - 1;
             } else {
                 $page = $i + 1;
             }
 
-
-
-
-            if(getenv('REQUEST_ALL') == 'true'){
+            if (getenv('REQUEST_ALL') == 'true') {
                 echo "\r\n REQUEST_ALL \r\n";
                 $this->page->updateCurrentPage($pages['id'], $pages['page_total'], $pages['total_file_downloaded']);
                 break;
@@ -240,6 +204,4 @@ class PageBot
             echo "\r\n Actual_page: {$i}, next_page: {$page} \r\n";
         }
     }
-
-
 }

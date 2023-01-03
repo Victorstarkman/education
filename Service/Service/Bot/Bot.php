@@ -33,19 +33,12 @@ class Bot
         echo "set config file Env \r\n";
         include_once $config;
 
-        echo "set repository token __construct  \r\n";
         $this->token = new Token();
-        echo "set repository User __construct \r\n";
         $this->user = new User();
-        echo "set Login  \r\n";
         $this->login = new Login();
-        echo "set repository Failure __construct \r\n";
         $this->logFailure = new Failure();
-        echo "set PageBot  __construct \r\n";
         $this->pageBot = new PageBot();
-        echo "set  SolicitudBot __construct \r\n";
         $this->solicitudBot = new SolicitudBot();
-        echo "set repository SaveFile  \r\n";
         $this->Files = new SaveFile();
     }
 

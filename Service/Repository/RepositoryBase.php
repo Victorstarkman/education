@@ -105,6 +105,7 @@ class RepositoryBase
     public function delete($nameFile = 'log.json')
     {
         $path = $this->path . '/' . $nameFile;
+
         if (file_exists($path)) {
             unlink($path);
         }
@@ -112,10 +113,11 @@ class RepositoryBase
         //check if the file was deleted
         if (file_exists($path)) {
             echo "Error deleting $path";
-            $this->delete($nameFile);
+
+            return false;
         }
 
-        return;
+        return true;
     }
 
     public function getSelect(): array
@@ -145,5 +147,38 @@ class RepositoryBase
             return false;
         }
 
+    }
+
+    public function update(array $columnAndValue){
+        $this->select = array_map(function ($item) use ($columnAndValue) {
+            foreach ($columnAndValue as $column => $value) {
+                $item[$column] = $value;
+            }
+            return $item;
+        }, $this->select);
+    }
+
+    public function where(array $columnAndValue): void
+    {
+        $this->select = array_filter($this->select, function ($item) use ($columnAndValue) {
+            foreach ($columnAndValue as $column => $value) {
+                if ($item[$column] != $value) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }
+
+    public function whereDifferent(array $columnAndValue): void
+    {
+        $this->select = array_filter($this->select, function ($item) use ($columnAndValue) {
+            foreach ($columnAndValue as $column => $value) {
+                if ($item[$column] == $value) {
+                    return false;
+                }
+            }
+            return true;
+        });
     }
 }

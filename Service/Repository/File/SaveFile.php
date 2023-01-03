@@ -1,9 +1,11 @@
 <?php
 
 namespace Repository\File;
-use Handlers\Pages\Handlers;
 
-class SaveFile
+use Handlers\Pages\Handlers;
+use Repository\RepositoryBase;
+
+class SaveFile extends RepositoryBase
 {
     private $time;
     private $pathDefault;
@@ -161,7 +163,7 @@ class SaveFile
         }
     }
 
-    public function deleteAndMovePathAndFilies(int $page,string  $dataPageFile)
+    public function deleteAndMovePathAndFilies(int $page, string  $dataPageFile)
     {
         $path = $this->pathDefault . 'pages/' . $page;
         $files = glob($path . '/*'); // get all file names
@@ -239,27 +241,9 @@ class SaveFile
         return true;
     }
 
-    public function checkPastTreatment(int $id)
+    public function checkPastTreatment(int $id): bool
     {
-        $path = getenv('PATHFBOOT') . "Treatment/";
-
-        $paths = scandir($path);
-        $paths = array_diff($paths, array('.', '..'));
-        foreach ($paths as $key => $value) {
-            $newpath = getenv('PATHFBOOT') . "Treatment/" . $value . "/";
-            $newpath = scandir($newpath);
-            $newpath = array_diff($newpath, array('.', '..'));
-            foreach ($newpath as $k => $v) {
-                $vn = getenv('PATHFBOOT') . "Treatment/" . $value . "/" . $v;
-                $vn = scandir($vn);
-                $vn = array_diff($vn, array('.', '..'));
-
-                if (in_array($id, $vn)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return empty($this->getJsonSucess($id)) ? false : true;
     }
 
     public function saveJsonOrigin(int $id,  string $page, array $json, string  $dataPageFile)
@@ -270,6 +254,94 @@ class SaveFile
         file_put_contents($path, json_encode($json));
     }
 
+    public function saveJsonSucess(int $id): bool
+    {
+        echo "saveJsonSucess: " . $id . PHP_EOL;
+
+        $this->setFromLogs('Logs_Status_Pages');
+
+        //update
+        $jsonSucess = [
+            'id' => $id,
+            'status' => 'sucess',
+            'date' => date('Y-m-d H:i:s'),
+        ];
+
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
+        $oldFile = $this->getSelect();
+
+        foreach ($oldFile as $key => $item) {
+            foreach($item as $value){
+              if($value == $id){
+
+                $oldFile[$key] = $jsonSucess;
+                //array_push($oldFile, $jsonSucess);
+              }
+            }
+
+        }
+
+        $this->delete();
+        //mover o array 1 casa para tras
+        foreach ($oldFile as $key => $item) {
+            $this->insert($item);
+        }
+
+        return true;
+    }
+
+    public function getJsonSucess(int $id)
+    {
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
+        $this->where(['status' => 'sucess']);
+        $this->where(['id' => $id]);
+
+        return $this->getSelect();
+    }
+
+    public function getJsonById(int $id)
+    {
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
+        $this->where(['id' => $id]);
+
+        return $this->getSelect();
+    }
+
+    public function saveJsonPagePendente(array $jsonDataPages): bool
+    {
+        $this->setFromLogs('Logs_Status_Pages');
+        echo "saveJsonPagePendentes";
+        foreach ($jsonDataPages as $key=> $pages) {
+
+            $this->select();
+
+            $jsonPendente = [
+                'id' => $pages['id'],
+                'status' => 'pendente',
+                'date' => date('Y-m-d H:i:s'),
+            ];
+
+            $this->select();
+            $this->where(['id' => $pages['id']]);
+
+            if(!empty($this->getSelect())){
+                continue;
+            }
+
+
+
+            $this->insert($jsonPendente);
+        }
+        return true;
+    }
+
+    public function checkPagesAll(int $id): bool
+    {
+        return empty($this->getJsonPagePendente($id)) ? false : true;
+    }
 
     private function standardizeData(array $data)
     {
@@ -295,5 +367,15 @@ class SaveFile
         }
 
         return $newData;
+    }
+
+
+    private function getJsonPagePendente(int $id)
+    {
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
+        $this->where(['id' => $id]);
+
+        return $this->getSelect();
     }
 }

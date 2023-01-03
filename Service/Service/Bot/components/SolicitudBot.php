@@ -60,6 +60,7 @@ class SolicitudBot
         echo "\r\n get pages \r\n";
         $this->pages = $this->page->getPage();
 
+        $this->page->insertPercentageOfProgress();
 
         if (empty($this->pages)) {
             $this->Failure->prepareLog('No se encontro la paginas', __FILE__, __LINE__, $this->pages);
@@ -133,10 +134,9 @@ class SolicitudBot
             $proceco = round(((count($IDSjSONoRIGIN)) / count($files) * 100), 2);
 
             echo "\r ---- progresso: {$proceco}% ---- \r\n";
-
             if($this->Files->checkPastTreatment($idPathFile)){
-                $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
                 echo "\r\n pulando donwload pois ja foi baixado: {$idPathFile} \r\n";
+                $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
                 continue;
             }
 
@@ -208,6 +208,8 @@ class SolicitudBot
 
                 $this->pages['total_file_downloaded'] = $this->page->updateFileDownload(); //atualiza o total de arquivos baixados
                 $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
+                $this->Files->saveJsonSucess($idPathFile);
+                $this->page->insertPercentageOfProgress();
             }else{
                 echo "jsonFile vazio \n";
                 $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);

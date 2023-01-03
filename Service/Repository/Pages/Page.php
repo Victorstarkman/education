@@ -22,7 +22,7 @@ class Page extends RepositoryBase
 
         $this->select();
 
-        $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded', 'termino']);
+        $this->setColumns(['id', 'current_page', 'page_total', 'end', 'total_file', 'total_file_downloaded', 'termino', 'percentage']);
 
         $this->setLimit(1);
 
@@ -50,6 +50,7 @@ class Page extends RepositoryBase
             'total_file_downloaded' => $totalFileDownloaded,
             'total_file' => $total_file,
             'end' => false,
+            'percentage' => '0%',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
@@ -273,6 +274,44 @@ class Page extends RepositoryBase
         return false;
     }
 
+    public function getTotalElements(){
+        $this->setFromLogs('Logs_Pages');
+        $this->select();
+        $oldPages = $this->getSelect()[0] ?? [];
+
+        return $oldPages['total_file'] ?? 20;
+    }
+
+    public function insertPercentageOfProgress(){
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
+        $allPages = $this->getSelect() ?? [];
+
+
+        $this->setFromLogs('Logs_Status_Pages');
+        $this->select();
+        $this->where(['status' => 'sucess']);
+        $sucessPages = $this->getSelect() ?? [];
+        //calculate percentage
+        $percentage = count($sucessPages) / count($allPages) * 100;
+        $percentage = round($percentage, 2);
+
+        $this->setFromLogs('Logs_Pages');
+        $pages = [
+            'percentage' => $percentage . '%',
+            'updated_at' => date('Y-m-d H:i:s'),
+            'error' => false,
+            'message' => '',
+        ];
+
+        if ($this->updateColumn($pages)) {
+            //save on database juli
+            $this->saveOnDatabase();
+            return true;
+        }
+
+    }
+
     private function saveOnDatabase()
     {
         if (!file_exists(__DIR__ . '/config.php')) {
@@ -307,13 +346,5 @@ class Page extends RepositoryBase
             $sql = "UPDATE jobs SET modified=CONVERT_TZ(NOW(),'SYSTEM','UTC'), message= '" . $message . "'" . $extraSQL . " WHERE id=" . $id . ";";
             $result = $mysqli->query($sql);
         }
-    }
-
-    public function getTotalElements(){
-        $this->setFromLogs('Logs_Pages');
-        $this->select();
-        $oldPages = $this->getSelect()[0] ?? [];
-
-        return $oldPages['total_file'] ?? 20;
     }
 }
