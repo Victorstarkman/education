@@ -97,6 +97,7 @@ class SolicitudBot
         }
 
         $this->page->updateEnd(true);
+        $this->page->insertPercentageOfProgress();
         die('scrapingSolicitud end');
     }
 
