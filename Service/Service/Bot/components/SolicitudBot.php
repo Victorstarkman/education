@@ -135,7 +135,7 @@ class SolicitudBot
             $proceco = round(((count($IDSjSONoRIGIN)) / count($files) * 100), 2);
 
             echo "\r ---- progresso: {$proceco}% ---- \r\n";
-            if($this->Files->checkPastTreatment($idPathFile)){
+            if ($this->Files->checkPastTreatment($idPathFile)) {
                 echo "\r\n pulando donwload pois ja foi baixado: {$idPathFile} \r\n";
                 $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
                 continue;
@@ -160,9 +160,10 @@ class SolicitudBot
                     }
                 }
 
-                if(empty($jsonFile)){
+                if (empty($jsonFile)) {
                     echo "jsonFile vazio \n";
                     $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
+                    $this->Files->saveJsonSucess($idPathFile);
                     $this->page->updateRecordsSalteados();
                     continue;
                 }
@@ -185,7 +186,7 @@ class SolicitudBot
                     if ($this->retry >= $this->maxRetry) {
                         $this->Handlers->deletLogToken("HASHERROR:{$hashError} No se encontro la file.");
                         throw new \Exception("HASHERROR:{$hashError} No se encontro la file.");
-                    }else{
+                    } else {
                         echo "\r\n HASHERROR:{$hashError} No se encontro la file. \r\n";
                         $this->page->updateRecordsSalteados();
                         sleep($this->retrySleep);
@@ -211,7 +212,7 @@ class SolicitudBot
                 $this->Files->saveJsonOrigin($idPathFile, $page, $file, $dataPageFile);
                 $this->Files->saveJsonSucess($idPathFile);
                 $this->page->insertPercentageOfProgress();
-            }else{
+            } else {
                 echo "jsonFile vazio \n";
                 $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, [$jsonFile]);
                 $this->page->updateRecordsSalteados();
@@ -220,7 +221,6 @@ class SolicitudBot
         }
         $this->Files->deleteAndMovePathAndFilies($page, $dataPageFile);
         $this->Files->movePathUsersForSolicited($dataPageFile);
-
     }
 
 

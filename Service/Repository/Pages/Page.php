@@ -50,7 +50,7 @@ class Page extends RepositoryBase
             'total_file_downloaded' => $totalFileDownloaded,
             'total_file' => $total_file,
             'end' => false,
-            'percentage' => '0%',
+            'percentage' => '0',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
@@ -298,7 +298,7 @@ class Page extends RepositoryBase
 
         $this->setFromLogs('Logs_Pages');
         $pages = [
-            'percentage' => $percentage . '%',
+            'percentage' => $percentage,
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
