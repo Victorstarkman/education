@@ -1,14 +1,12 @@
 <?php
-
-namespace Service\Bot;
+namespace Service\Bot\components;
 
 use Service\Request\RequestServer;
-use Service\LogService;
+use Repository\Log\Failure;
 
-class Login
+class Login extends RequestServer
 {
-
-    public const DEFAULT_HEADER = [
+    private const DEFAULT_HEADER = [
         "Host" => "login.abc.gob.ar",
         "User-Agent" => "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0",
         "Accept" => "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -25,28 +23,28 @@ class Login
         "Sec-Fetch-User" => "?1"
     ];
 
-    public const APP_VERSION = '1.4.4';
+    private $APP_VERSION;
 
     /**
      * @var RequestServer $Request
      */
     private $Request;
 
-    /**
-     * @var LogService $LogService
-     */
-    private $LogService;
+    private Failure $Failure;
 
-    public function __construct($path)
+    public function __construct()
     {
-        $this->LogService = new LogService($path);
+        parent::__construct();
         $this->Request = new RequestServer();
+        $this->Failure = new Failure();
+        $this->APP_VERSION = getenv('APP_VERSION', '1.4.4');
     }
 
-    public function run()
+    public function login($user, $pass)
     {
+        echo "Iniciando login...\n";
         $this->requestGetLogin();
-        $this->requestPostLogin();
+        $this->requestPostLogin($user, $pass);
         $this->requestGetMisLicencias();
         $this->requestGetLoginCallback();
         $this->requestGetUser();
@@ -65,18 +63,18 @@ class Login
         ], true);
     }
 
-    private function requestPostLogin()
+    private function requestPostLogin(string $user, string $pass)
     {
         $payLoad = [
            'form_params' => [
                 'option' => 'credential',
-                'Ecom_User_ID' => '27240122524',
-                'Ecom_Password' => "24012252"
+                'Ecom_User_ID' => $user,
+                'Ecom_Password' => $pass
            ],
            'headers' => self::DEFAULT_HEADER
         ];
 
-        return $this->Request->request('https://login.abc.gob.ar/nidp/idff/sso?id=ABC-Form&sid=1&option=credential&sid=1&target=https://menu.abc.gob.ar/','https://login.abc.gob.ar/nidp/portal','POST',$payLoad,true);
+        return $this->Request->request('https://login.abc.gob.ar/nidp/idff/sso?id=ABC-Form&sid=1&option=credential&sid=1&target=https://menu.abc.gob.ar/','https://login.abc.gob.ar/nidp/portal','POST',$payLoad,false);
 
     }
 
@@ -87,7 +85,7 @@ class Login
                 'Host' => 'menu.abc.gob.ar',
                 'Origin' => 'https://menu.abc.gob.ar',
             ]
-        ],true);
+        ],false);
     }
 
     private function requestGetLicenciasMedicasWeb()
@@ -97,14 +95,14 @@ class Login
                 'Host' => 'misaplicaciones5.abc.gob.ar',
                 'Origin' => 'https://misaplicaciones5.abc.gob.ar',
             ]
-        ],true);
+        ],false);
 
         $body = $this->Request->request('https://misaplicaciones5.abc.gob.ar/LicenciasMedicasWeb/','https://menu.abc.gob.ar','GET',[
             'headers' => [
                 'Host' => 'misaplicaciones5.abc.gob.ar',
                 'Origin' => 'https://misaplicaciones5.abc.gob.ar',
             ]
-        ],true);
+        ],false);
 
         $TokenSAML = $this->getTokenSAMLResponse($body);
 
@@ -112,12 +110,7 @@ class Login
 
             return $TokenSAML;
         }
-
-        $this->LogService->setLog([
-            'message' => 'No se puede obtener el token de respuesta SAML',
-            'function' => 'requestGetLicenciasMedicasWeb',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se puede obtener el token de respuesta SAML', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se puede obtener el token de respuesta SAML ');
     }
@@ -142,7 +135,7 @@ class Login
                 "Sec-Fetch-Mode" => "navigate",
                 "Sec-Fetch-Site" => "same-site"
             ]
-            ], true) ;
+            ], false) ;
 
 
         return $body;
@@ -155,9 +148,9 @@ class Login
                 "Host" => "misaplicaciones5.abc.gob.ar",
                 'Content-Type' => 'application/json',
                 'ar.gob.abc.slm.perfil' => 'PRESTADORA',
-                'app-version' => self::APP_VERSION,
+                'app-version' => $this->APP_VERSION,
             ]
-            ], true) ;
+            ], false) ;
     }
 
     private function requestGetLoginCallback()
@@ -168,7 +161,7 @@ class Login
                 'Accept' => 'application/json, text/plain, */*',
                 'DNT' => '1',
             ]
-        ], true);
+        ], false);
 
         if (
             preg_match('@enctype=[\'"]application/x-www-form-urlencoded[\'"]\s*action=[\'"](.*?)[\'"]@is', $body,$url) &&
@@ -184,15 +177,10 @@ class Login
                 'form_params' => [
                     'SAMLResponse' => $token[1]
                 ]
-            ], true);
+            ], false);
             return;
         }
-
-        $this->LogService->setLog([
-            'message' => 'No se pudo realizar la devolución de llamada',
-            'function' => 'requestGetLoginCallback',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se pudo realizar la devolución de llamada', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se pudo realizar la devolución de llamada ');
     }
@@ -213,11 +201,7 @@ class Login
            return true;
         }
 
-        $this->LogService->setLog([
-            'message' => 'No se pudo obtener el usuario o el usuario no es un proveedor',
-            'function' => 'requestGetUser',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se pudo obtener el usuario o el usuario no es un proveedor', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se pudo obtener el usuario o el usuario no es un proveedor ');
     }
@@ -230,11 +214,7 @@ class Login
            return $matches[1][0];
         }
 
-        $this->LogService->setLog([
-            'message' => 'No se pudo obtener el SAMLResponse',
-            'function' => 'getTokenSAMLResponse',
-            'body' => $body
-        ], 'Failure', 'Login');
+        $this->Failure->prepareLog('No se pudo obtener el SAMLResponse', __FILE__, __LINE__, $body);
 
         throw new \Exception('No se pudo obtener el SAMLResponse');
     }
@@ -245,27 +225,16 @@ class Login
             $json = json_decode($body);
 
             if (empty($json) || !isset($json->token)) {
-                $this->LogService->setLog([
-                    'message' => 'No se pudo obtener el user Token',
-                    'function' => 'checkIfItHasToken',
-                    'body' => $body
-                ], 'Failure', 'Login');
+                $this->Failure->prepareLog('No se pudo obtener el user Token', __FILE__, __LINE__, $body);
 
                 throw new \Exception('No se pudo obtener el user Token');
             }
 
             return $json->token ;
         }catch(\Exception $e){
-            $this->LogService->setLog([
-                'message' => 'No se pudo obtener el user Token',
-                'function' => 'checkIfItHasToken',
-                'body' => $body,
-                'exception' => $e->getMessage()
-            ], 'Failure', 'Login');
+            $this->Failure->prepareLog('No se pudo obtener el user Token', __FILE__, __LINE__, $body);
 
             throw new \Exception('No se pudo obtener el user Token');
         }
     }
-
-
 }
