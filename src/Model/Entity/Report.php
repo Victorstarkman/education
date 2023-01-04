@@ -110,8 +110,8 @@ class Report extends Entity
     {
         if(!is_null(ReportsTable::LICENSE_REASON[$this->licence_reason]['name'])){
 
-            $status = ReportsTable::LICENSE_REASON[$this->licence_reason]['name'];
-            return $status;
+            $reason = ReportsTable::LICENSE_REASON[$this->licence_reason]['name'];
+            return $reason;
         }else{
             return null;
         }
