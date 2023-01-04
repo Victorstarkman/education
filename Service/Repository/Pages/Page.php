@@ -312,7 +312,7 @@ class Page extends RepositoryBase
 
     }
 
-    private function saveOnDatabase()
+    public function saveOnDatabase()
     {
         if (!file_exists(__DIR__ . '/config.php')) {
             return;
