@@ -145,6 +145,7 @@ class JobsCommand extends Command
 			'newFiles' => 0,
 			'filesProcessed' => 0,
 			'ended' => false,
+			'errorMsg' => []
 		];
 		$this->updateJob('scrapperProcessor', $data);
 		foreach ($files[0] as $file) {
@@ -342,7 +343,9 @@ class JobsCommand extends Command
 											}
 
 											$reportResponse = $this->searchOnTableOrCreate('reports',
-												['externalID' => $userFile['id']],
+												[
+													'externalID' => $userFile['id']
+												],
 												[
 													'patient_id' => $patientID,
 													'medicalCenter' => $medicalCenterID,
@@ -387,6 +390,7 @@ class JobsCommand extends Command
 												}
 											} else {
 												$data['reportsError']++;
+												$data['errorMsg'][] = $reportResponse['msg'];
 												continue;
 											}
 											//Guardo los archivos.
@@ -527,7 +531,7 @@ class JobsCommand extends Command
 				$this->consoleLog( $tableName . ' new record created. ID: ' . $newCreation['creationEntity']->id);
 				$returnData['id'] = $newCreation['creationEntity']->id;
 			} else {
-				$returnData['false'] = true;
+				$returnData['error'] = true;
 				$returnData['msg'] = $newCreation['msg'];
 				$this->consoleLog( $tableName . '  record not created. A problem occurs');
 			}
