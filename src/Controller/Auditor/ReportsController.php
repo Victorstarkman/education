@@ -6,6 +6,7 @@ namespace App\Controller\Auditor;
 use App\Controller\AppController;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
+use GuzzleHttp\Promise\Is;
 
 /**
  * Reports Controller
@@ -89,8 +90,10 @@ class ReportsController extends AppController
                 $reports->where(['Reports.mode_id' => $search['modes_id']]);
             }
         }
-        $reports
-        ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+        if(!is_null($this->Authentication->getIdentity()->centermedical_id )){
+            $reports
+            ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+        }
 
         $settings = [
             'order' => ['created' => 'desc'],
@@ -172,9 +175,11 @@ class ReportsController extends AppController
             }
         }
 
-        $reports
-            ->where(['Reports.status IN' => $this->Reports::ACTIVE])
-            ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+        $reports->where(['Reports.status IN' => $this->Reports::ACTIVE]);
+            if(!is_null($this->Authentication->getIdentity()->centermedical_id)){
+
+               $reports ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+            }
             
         $settings = [
             'order' => ['created' => 'desc'],
