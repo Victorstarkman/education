@@ -141,6 +141,7 @@ class JobsCommand extends Command
 			'newReports' => 0,
 			'reportsProcessed' => 0,
 			'reportsError' => 0,
+			'reportsNull' => 0,
 			'newFiles' => 0,
 			'filesProcessed' => 0,
 			'ended' => false,
@@ -375,6 +376,11 @@ class JobsCommand extends Command
 											if (!$reportResponse['error']) {
 												$reportID = $reportResponse['id'];
 												$data['reportsProcessed']++;
+
+												if (is_null($reportID)) {
+													$data['reportsNull']++;
+													continue;
+												}
 
 												if ($patientResponse['created']) {
 													$data['newReports']++;
