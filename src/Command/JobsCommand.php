@@ -295,7 +295,7 @@ class JobsCommand extends Command
 											$reportTable = $this->fetchTable('Reports');
 											$status = $reportTable::ACTIVE;
 											$modeResponse = $this->searchOnTableOrCreate('modes',
-												['name' => 'Auditoria Medica Ambulatoria'],
+												['name' => 'Auditorías'],
 												[]);
 											if (!$modeResponse['error']) {
 												$modeID = $modeResponse['id'];
@@ -318,7 +318,7 @@ class JobsCommand extends Command
 														break;
 													CASE 'JUNTA':
 														$modeResponse = $this->searchOnTableOrCreate('modes',
-															['name' => 'Juntas Medicas'],
+															['name' => 'Juntas Médicas'],
 															[]);
 														if (!$modeResponse['error']) {
 															$modeID = $modeResponse['id'];
@@ -326,7 +326,7 @@ class JobsCommand extends Command
 														break;
 													CASE 'DOMICILIO':
 														$modeResponse = $this->searchOnTableOrCreate('modes',
-															['name' => 'Auditoria Medica Domiciliaria'],
+															['name' => 'Visita Médica Domiciliaria'],
 															[]);
 														if (!$modeResponse['error']) {
 															$modeID = $modeResponse['id'];
@@ -556,9 +556,9 @@ class JobsCommand extends Command
 			$tableEntity = $table->patchEntity($tableEntity, $data);
 			$response['creationEntity'] = $table->save($tableEntity);
 			if (!$response['creationEntity']) {
-				//debug($tableEntity);
+				debug($tableEntity);
 				$response['error'] = true;
-				$response['msg'] = 'Error al generar: ' . $tableName . 'Data: ' . json_encode($data);
+				$response['msg'] = 'Error al generar: ' . $tableName . 'Data: ' . json_encode($data) . ' Errors:' . json_encode($tableEntity->getErrors());
 			}
 		} catch (\Exception $e) {
 			$response['error'] = true;
