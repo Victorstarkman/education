@@ -32,53 +32,28 @@
         </div>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
-                <?= $this->Form->control('doctor_id', [
-                        'label' => 'Auditor',
-                    'options' => $getAuditors,
-	                'empty' => 'Auditor',
-                    'class' => 'form-control form-control-blue m-0 col-12',
-                    'value' => $search['doctor_id'] ?? '']); ?>
-            </div>
-        </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
-            <div class="form-group">
                 <?= $this->Form->control(
-                    'license_type',
+                    'modes',
                     [
-                         'options' => $getLicenses,
-                        'label' => 'Tipo de licencia',
-                        'empty' => 'Licencia',
-                        'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['license_type'] ?? '']
-                ); ?>
-            </div>
-        </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
-            <div class="form-group">
-			    <?= $this->Form->control(
-				    'company_id',
-				    [
-					    'options' => $companies,
-					    'label' => 'Empresa',
-					    'empty' => 'Todas',
-					    'class' => 'form-control form-control-blue m-0 col-12',
-					    'value' => $search['company_id'] ?? '']
-			    ); ?>
-            </div>
-        </div>
-        <div class="pt-0 col-lg-2 col-sm-12">
-            <div class="form-group">
-                <?= $this->Form->control(
-                    'status',
-                    [
-                         'options' => $getStatuses,
+                         'options' => $getModes,
                         'label' => 'Estado',
                         'empty' => 'Estado',
                         'class' => 'form-control form-control-blue m-0 col-12',
-                        'value' => $search['status'] ?? '']
+                        'value' => $search['mode_id'] ?? '']
                 ); ?>
             </div>
         </div>
+        <div class="pt-0 col-lg-2 col-sm-12">
+            <div class="form-group">
+                <?= $this->Form->control('medical_center', [
+                        'label' => 'Asignado a',
+                    'options' => $getMedicalCenter,
+                    'empty' => 'Asignado a',
+                    'class' => 'form-control form-control-blue m-0 col-12',
+                    'value' => $search['medicalCenter'] ?? '']); ?>
+            </div>
+        </div> 
+        
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
@@ -88,6 +63,18 @@
                         'type' => 'date',
                         'class' => 'form-control form-control-blue m-0 col-12',
                         'value' => $search['start_date'] ?? '']
+                ); ?>
+            </div>
+        </div>
+        <div class="pt-0 col-lg-2 col-sm-12">
+            <div class="form-group">
+                <?= $this->Form->control(
+                    'end_date',
+                    [
+                        'label' => 'Creada hasta',
+                        'type' => 'date',
+                        'class' => 'form-control form-control-blue m-0 col-12',
+                        'value' => $search['end_date'] ?? '']
                 ); ?>
             </div>
         </div>
@@ -101,26 +88,29 @@
         <table class="table table-bordered" id="tabla_actualizaciones">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id', '#') ?></th>
+            <th><?= $this->Paginator->sort('id', '#') ?></th>
+                <th><?= $this->Paginator->sort('externalID', 'id Ministerio') ?></th>
                 <th><?= $this->Paginator->sort('name', 'Nombre') ?></th>
-                <th><?= $this->Paginator->sort('type', 'Licencia') ?></th>
-                <th><?= $this->Paginator->sort('pathology', 'Diagnóstico') ?></th>
+                <th><?= $this->Paginator->sort('cuil', 'Cuil') ?></th>
                 <th><?= $this->Paginator->sort('askedDays', 'Días solicitados') ?></th>
-                <th><?= $this->Paginator->sort('status', 'Dictamen') ?></th>
                 <th><?= $this->Paginator->sort('created', 'Creada') ?></th>
+                <th><?= $this->Paginator->sort('mode', 'Estado') ?></th>
+                <th><?= $this->Paginator->sort('medicalCenter', 'Asignado a') ?></th>
                 <th class="actions"><?= __('Acciones') ?></th>
             </tr>
             </thead>
             <tbody>
             <?php foreach ($reports as $report) : ?>
                 <tr>
-                    <td><?= $this->Number->format($report->id) ?></td>
+                <td><?= $this->Number->format($report->id) ?></td>
+                    <td><?= $this->Number->format($report->externalID) ?></td>
                     <td><?= h($report->patient->name) ?></td>
-                    <td><?= $report->getNameLicense(); ?></td>
-                    <td><?= $report->getPathology(); ?></td>
+                    <td><?= $report->patient->cuil; ?></td>
+                     <!-- <td><?//= $report->getSpeciality(); ?></td>   -->
                     <td><?= $report->askedDays; ?></td>
-                    <td><?= $report->getNameStatus(); ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
+                    <td><?= $report->mode->name; ?></td>
+                    <td><?= $report->medical_center->district; ?></td>
                     <td class="actions">
                         <?php if ($report->isWaitingResults()) :
                             echo $this->Html->link('Edit', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);

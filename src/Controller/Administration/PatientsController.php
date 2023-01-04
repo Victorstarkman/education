@@ -106,23 +106,33 @@ class PatientsController extends AppController
             if (!empty($search['doctor_id'])) {
                 $reports->where(['Reports.doctor_id' => $search['doctor_id']]);
             }
+            if(!empty($search['medical_center'])){
+                $reports->where(['Reports.medicalCenter' => $search['medical_center']]);
+                
+           } 
+           if(!empty($search['modes'])){
+               $reports->where(['Reports.mode_id' => $search['modes']]);
+           }
         }
 
         if (!$searchByStatus) {
-            $reports->where(['Reports.status IN' => $this->Patients->Reports->getStatusesOfDiagnosis()]);
+            $reports->where(['Reports.status IN' => $this->Patients->Reports->getStatusesOfDiagnosis()])->contain(['Modes','MedicalCenters','Patients']);
         }
 
         $settings = [
             'order' => ['created'=> 'desc'],
             'limit' => 10,
         ];
-
         $reports = $this->paginate($reports, $settings);
+        /* debug($reports);
+        die(); */
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getStatuses = $this->Patients->Reports->getStatusForDoctor();
+        $getModes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->all()->combine('id','name');
+        $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies'));
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','getModes','getMedicalCenter'));
     }
 
     /**
@@ -231,7 +241,7 @@ class PatientsController extends AppController
                 'Companies'
             ],
         ]);
-
+       
         $this->set(compact('patient'));
     }
 
@@ -518,13 +528,24 @@ class PatientsController extends AppController
 
             $this->loadComponent('Htmltopdf');
             $report = $this->Patients->Reports->get($id, [
-                'contain' => ['doctor', 'Patients' => ['Companies']],
+                'contain' => ['doctor', 'Patients' => ['Companies'],'MedicalCenters'],
             ]);
-            if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
-                $this->Htmltopdf->createReport($report);
-            } else {
-                throw new RecordNotFoundException('El reporte no esta listo');
-                $this->Flash->error(__('El reporte no esta listo.'));
+            /* debug($report);
+            die(); */  
+            if(($report->mode_id==4) && ($report->status == 4)){
+                if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
+                    $this->Htmltopdf->createReport_juntas($report);
+                } else {
+                    throw new RecordNotFoundException('El reporte no esta listo');
+                    $this->Flash->error(__('El reporte no esta listo.'));
+                }
+            }else{
+                if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
+                    $this->Htmltopdf->createReport($report);
+                } else {
+                    throw new RecordNotFoundException('El reporte no esta listo');
+                    $this->Flash->error(__('El reporte no esta listo.'));
+                }
             }
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage(), ['escape' => false]);

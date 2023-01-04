@@ -12,7 +12,7 @@
                 <thead>
                 <tr>
                     <th><?= __('Nombre')?></th>
-                    <th><?= __('Apellido') ?></th>
+                    <th><?= __('CUIL') ?></th>
                     <th><?= __('DNI') ?></th>
                     <th><?= __('Email') ?></th>
                 </tr>
@@ -20,7 +20,7 @@
                 <tbody>
                 <tr>
                     <td><?= h($report->patient->name) ?></td>
-                    <td><?= h($report->patient->lastname) ?></td>
+                    <td><?= h($report->patient->cuil) ?></td>
                     <td><?= h($report->patient->document) ?></td>
                     <td><?= h($report->patient->email) ?></td>
                 </tr>
@@ -30,28 +30,14 @@
                 <thead>
                 <tr>
                     <th><?= __('Email oficial')?></th>
-                    <th><?= __('cuil') ?></th>
-                    <th><?= __('Domicilio') ?></th>
                     <th><?= __('Telefono') ?></th>
+                    <th><?= __('Puesto de Trabajo') ?></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><?= h($report->patient->oficial_email) ?></td>
-                    <td><?= h($report->patient->cuil) ?></td>
-                    <td><?= h($report->patient->address) ?></td>
+                    <td><?= h($report->patient->official_email) ?></td>
                     <td><?= h($report->patient->phone) ?></td>
-                </tr>
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th><?= __('Puesto de trabajo') ?></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
                     <td><?= h($report->patient->job) ?></td>
                 </tr>
                 </tbody>
@@ -143,6 +129,9 @@
                 <tr>
                     <th><?= __('Patologia')?></th>
                     <th><?= __('Dictamen')?></th>
+                    <?php if($report->mode_id==4):?>
+                        <th><?=__('Motivo de Sol.')?></th>
+                    <?php endif;?>                           
                     <th><?= __('Duración') ?></th>
                     <th><?= __('Desde') ?></th>
                 </tr>
@@ -151,6 +140,9 @@
                 <tr>
                     <td><?= h($report->getPathology()) ?></td>
                     <td><?= $report->getNameStatus(); ?></td>
+                    <?php if($report->mode_id==4):?>
+                                <th><?= $report->getLicenceReason()?></th>
+                            <?php endif;?>
                     <td><?= h($report->recommendedDays) ?></td>
                     <td><?= (is_null($report->startLicense)) ? '-' : $report->startLicense->i18nFormat('dd/MM/yyyy'); ?></td>
                 </tr>
