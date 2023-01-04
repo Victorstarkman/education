@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Administration;
 
 use App\Controller\AppController;
+use Cake\ORM\Query;
 use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Routing\Router;
@@ -31,7 +32,13 @@ class PatientsController extends AppController
             ],
         ];
         $search = $this->request->getQueryParams();
+        $medical_center=$this->Authentication->getIdentity()->centermedical_id;
         $patients = $this->Patients->find();
+         $patients = $patients->matching('Reports', function (Query $q) {
+            return $q
+                ->where(['Reports.medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+        });
+
         if(!empty($search['cuil'])){
             $patients->where(['cuil'=> $search['cuil']]); 
         }
@@ -46,6 +53,7 @@ class PatientsController extends AppController
      */
     public function listWithResults()
     {
+
         $search = $this->request->getQueryParams();
         $this->paginate = [
             'contain' => [
@@ -53,6 +61,10 @@ class PatientsController extends AppController
             ],
         ];
         $reports = $this->Patients->Reports->find();
+        $medical_center=$this->Authentication->getIdentity()->centermedical_id;
+        if($medical_center!=0){
+            $reports->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+        }
         $searchByStatus = false;
         if (!empty($search)) {
             $patientsWhere = [];
@@ -131,8 +143,9 @@ class PatientsController extends AppController
         $getModes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->all()->combine('id','name');
         $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
+        $medical_center=$this->Authentication->getIdentity()->centermedical_id;
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','getModes','getMedicalCenter'));
+        $this->set(compact('reports', 'getLicenses', 'getStatuses', 'search', 'getAuditors', 'companies','getModes','getMedicalCenter','medical_center'));
     }
 
     /**
@@ -151,6 +164,10 @@ class PatientsController extends AppController
                 ],
             ];
             $reports = $this->Patients->Reports->find();
+            $medical_center=$this->Authentication->getIdentity()->centermedical_id;
+            if($medical_center!=0){
+                $reports->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
+            }
             $searchByStatus = false;
            if (!empty($search)) {
                 $patientsWhere = [];
@@ -220,10 +237,11 @@ class PatientsController extends AppController
         $reports = $this->paginate($reports, $settings);
         $getLicenses = $this->Patients->Reports->getLicenses();
         $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
+        $medical_center=$this->Authentication->getIdentity()->centermedical_id;
         $getmodes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->all()->combine('id','name');
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies','getMedicalCenter','getmodes')); 
+        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies','getMedicalCenter','getmodes','medical_center')); 
     }
 
     /**
@@ -623,8 +641,8 @@ class PatientsController extends AppController
         $companies = $this->Patients->Companies->getCompanies();
         $modes = $this->Patients->Reports->Modes->find()->all()->combine('id', 'name');
         $specialties = $this->Patients->Reports->Specialties->find()->all()->combine('id', 'name');
-
-        $this->set(compact('report', 'specialties', 'doctors', 'licenses', 'companies', 'modes', 'privateDoctors'));
+        $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
+        $this->set(compact('report', 'specialties', 'doctors', 'licenses', 'companies', 'modes', 'privateDoctors','getMedicalCenter'));
     }
 
     public function deleteReport($id = null)

@@ -21,6 +21,22 @@ class MedicalCenterSeed extends AbstractSeed
     public function run()
     {
         $data = [
+
+            [
+                'zone'=>null,
+                'district'=>'NO DEFINIDO'
+
+            ],
+            [
+                'zone'=>'2',
+                'district'=>'BAHIA BLANCA'
+
+            ],
+            [
+                'zone'=>'2',
+                'district'=>'BAHIA BLANCA'
+
+            ],
             [
                 'zone'=>'2',
                 'district'=>'BAHIA BLANCA'

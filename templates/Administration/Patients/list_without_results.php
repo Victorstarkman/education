@@ -18,23 +18,6 @@
             </div>
            
         </div><!-- fin de row -->
-<!-- 
-            <?php //echo $this->Form->create(null,['type' => 'file','url' => [
-                                                                        //'controller' => 'Patients',
-                                                                        //'action' => 'excelphp'
-                                                                   // ]] // )
-            ?>
-            <div class="col-6 custom-input-file ml-4 ">
-                <div class="form-group">
-                    <input type="file" class="form-control form-control-blue" name="import file">
-                </div>
-            </div>
-            <div class="col-6 ml-3  my-4">
-                <div class="mx-auto form-group ">
-                    <button type="submit" class="btn btn-outline-primary btn-block"><i class="mr-2 fas fa-save" aria-hidden="true"></i>Guardar excel</button>
-            </div>
-            </div>
-        <?php // echo $this->Form->end()?> -->
         <p class="title-results">Auditorías</p>
 
         <?= $this->Flash->render() ?>
@@ -61,6 +44,7 @@
                 ); ?>
             </div>
         </div>
+        <?php if($medical_center=== '0'):?>
          <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control('medical_center', [
@@ -71,6 +55,7 @@
                     'value' => $search['medicalCenter'] ?? '']); ?>
             </div>
         </div> 
+        <?php endif;?>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control(
