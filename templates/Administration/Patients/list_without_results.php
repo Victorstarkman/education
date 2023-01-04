@@ -44,7 +44,7 @@
                 ); ?>
             </div>
         </div>
-        <?php if($medical_center=== '0'):?>
+        <?php if($medical_center== 0):?>
          <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
                 <?= $this->Form->control('medical_center', [
