@@ -108,8 +108,13 @@ class Report extends Entity
     }
     public function getLicenceReason()
     {
-        $status = ReportsTable::LICENSE_REASON[$this->licence_reason]['name'];
-        return $status;
+        if(!is_null(ReportsTable::LICENSE_REASON[$this->licence_reason]['name'])){
+
+            $status = ReportsTable::LICENSE_REASON[$this->licence_reason]['name'];
+            return $status;
+        }else{
+            return null;
+        }
     }
 
     public function getNameLicense()
