@@ -209,7 +209,7 @@ class ReportsController extends AppController
                 throw new RecordNotFoundException('No se encontro el ID.');
             }
 
-            if ($report->doctor_id != $this->Authentication->getIdentity()->centermedical_id) {
+            if ($report->medicalCenter != $this->Authentication->getIdentity()->centermedical_id) {
                 throw new RecordNotFoundException('El doctor Auditor no corresponde.');
             }
 
