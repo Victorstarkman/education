@@ -14,6 +14,7 @@ class RequestServer
     public static $user_agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:107.0) Gecko/20100101 Firefox/107.0';
     protected $cookies = [];
     public $client;
+    private $isSleep;
 
     //Spider
     public function __construct()
@@ -32,6 +33,8 @@ class RequestServer
             'timeout' => 60
         ]);
 
+        $this->isSleep = getenv('SLEEP', true);
+
     }
     public function setcookie($cookie)
     {
@@ -49,7 +52,7 @@ class RequestServer
         return $this->cookies;
     }
 
-    public function request($url, $ref = null, $metodo = 'GET', $param = [], $isLogin = false)
+    public function request($url, $ref = null, $metodo = 'GET', $param = [], $sleep = true)
     {
         try {
             preg_match('@(http[s]?:\/\/)?(.*?)\/@is', $url, $match);
@@ -57,8 +60,6 @@ class RequestServer
 
             if (!is_null($ref)) {
                 $a_param = array_replace_recursive([
-                    'timeout' => 60,
-                    'connect_timeout' => 30,
                     'verify' => false,
                     'track_redirects' => true,
                     'headers' => [
@@ -70,8 +71,6 @@ class RequestServer
 
             } else {
                 $a_param = array_replace_recursive([
-                    'timeout' => 60,
-                    'connect_timeout' => 30,
                     'verify' => false,
                     'track_redirects' => true,
                     'headers' => [
@@ -84,9 +83,15 @@ class RequestServer
 
 
             try{
-                if(!$isLogin){
-                    $randoSleep = rand(1, 3);
-                    sleep($randoSleep);
+                if($this->isSleep == 'true'){
+                    //sleep de 1 a 3 minutos
+                    //$randoSleep = rand(60, 180);
+                    //set sleep 1 secundo
+                    $randoSleep = 1;
+                    echo "Sleeping for $randoSleep seconds... \n";
+                   sleep($randoSleep);
+                }else{
+                    echo "Sleeping is disabled... \n";
                 }
                 $res = $this->client->request($metodo, $url, $a_param);
             }catch (\Exception $e) {
@@ -109,7 +114,7 @@ class RequestServer
                 // return 1;
                 return "Error code: $code";
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             // return 2;
             return sprintf("Excecao: %d - %s, acessando %s\n", $e->getCode(), $e->getMessage(), $url);
         }

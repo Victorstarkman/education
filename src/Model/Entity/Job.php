@@ -73,28 +73,20 @@ class Job extends Entity
 		return $name;
 	}
 
-	function getPercentage() {
-		$value = $this->showProgressBar();
-		$percentage = 'Desconocido';
-		if ($value) {
-			$percentage = $value. '%';
-		} elseif ($this->status == 3) {
-			$percentage = '-';
-		}
-
-		return $percentage;
-	}
-
 	function showProgressBar() {
-		$show = false;
+		$show = [];
 		if (!empty($this->message)) {
 			$msg = json_decode($this->message, true);
 			if ($this->status !=3) {
 				switch ($this->name) {
 					case 'scrapperInit':
+						if ($msg['totalPages'] > 0) {
+							$show[]= number_format((float) $msg['percentage'], 2);
+						}
+						break;
 					case 'scrapperProcessor':
-						if ($msg['processedPage'] > 0 && $msg['totalPages'] > 0) {
-							$show = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2);
+						if ($msg['totalPages'] > 0) {
+							$show[] = number_format(($msg['processedPage']*100)/$msg['totalPages'], 2);
 						}
 						break;
 				}
@@ -102,5 +94,24 @@ class Job extends Entity
 		}
 
 		return $show;
+	}
+
+	function progressBar() {
+		$value = $this->showProgressBar();
+		$percentage = 'Desconocido';
+		if (!empty($value)) {
+			$percentage = '';
+			foreach ($value as $name => $per) {
+				$class = ($per < 100) ? 'progress-bar-striped progress-bar-animated' : '';
+				if (!is_int($name)) {
+					$percentage .= '<span style="text-align: left!important; font-size: 10px;">' . $name . '</span>';
+				}
+				$percentage .= '<div class="progress" style="margin-bottom: 4px;"><div class="progress-bar bg-success ' . $class .'" role="progressbar" aria-valuenow="' . $per.'" aria-valuemin="0" aria-valuemax="100" style="width:' . $per . '%;color: black;font-weight: bold;">' . $per . '%</div></div>';
+			}
+		} elseif ($this->status == 3) {
+			$percentage = '-';
+		}
+
+		return $percentage;
 	}
 }

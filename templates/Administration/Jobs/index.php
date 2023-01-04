@@ -33,14 +33,7 @@
                         <td><?= h($job->getName()) ?></td>
                         <td><?= h($job->getStatus()) ?></td>
                         <td>
-					        <?php if ($progressValue = $job->showProgressBar()) : ?>
-                                <div class="progress">
-							        <?php $class = ($progressValue < 100) ? 'progress-bar-striped progress-bar-animated' : ''; ?>
-                                    <div class="progress-bar bg-success <?= $class; ?>" role="progressbar" aria-valuenow="<?= $progressValue; ?>>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $progressValue; ?>%;color: black;font-weight: bold;"><?= $job->getPercentage() ?></div>
-                                </div>
-					        <?php else : ?>
-						        <?= $job->getPercentage() ?>
-					        <?php endif; ?>
+	                        <?= $job->progressBar(); ?>
                         </td>
                     </tr>
 		        <?php endforeach; ?>

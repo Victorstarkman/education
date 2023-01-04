@@ -1,0 +1,6 @@
+<?php
+ putenv('PATHFBOOT=/Service/File/');
+ putenv('PATHFLOG=/Service/');
+ putenv('SLEEP=true');
+ putenv('APP_VERSION=1.4.4');
+ putenv('REQUEST_ALL=true');
