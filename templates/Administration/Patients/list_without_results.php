@@ -127,7 +127,7 @@
                     <td><?= $report->askedDays; ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
                     <td><?= $report->mode->name; ?></td>
-                    <td><?= $report->medical_center->district; ?></td>
+                    <td><?= $report->medical_center->district!=null?$report->medical_center->district:'NO DEFINIDO' ?></td>
                     <td class="actions">
                         <?php if ($report->isWaitingResults()) :
                             echo $this->Html->link('Editar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);
