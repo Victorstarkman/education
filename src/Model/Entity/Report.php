@@ -90,6 +90,11 @@ class Report extends Entity
         'retirement'=> true,
         'reinstatement'=>true,
         'interdiction' => true,
+        'job_registration' => true,
+        'new_exam'=>true,
+        'eval_council'=>true,
+        'date_job_registration'=>true,
+        'date_new_exam'=>true
     ];
     public function getNameStatus()
     {

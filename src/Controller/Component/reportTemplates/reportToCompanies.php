@@ -21,7 +21,7 @@ declare(strict_types=1);
         top:287px;
     }
     .personFourthLine {
-        top:368px;
+        top:330px;
     }
 
     .licenseType {
@@ -65,25 +65,29 @@ declare(strict_types=1);
     }
 
     .resultFourthLine {
-        top: 815px;
+        top: 807px;
         margin-left: 66px;
         width: 663px;
         text-indent: 107px;
 
     }
-
-    .signature {
-        top: 880px;
-        left: 50px;
+    .resultFifthLine{
+        top:850px
     }
+    .resultSixLine{
+        top:890px
+    }
+
 </style>
+<?php //debug($dataToShow); die();?>
+
 <html>
 <head><title>Export</title></head>
 <body>
 <div>
     <img src="<?= WWW_ROOT;?>img/formulario_ambulatorio.jpg" style="max-width: 792px"/>
     <!-- PERSON -->
-    <div style="width: 200px;margin-left: 200px;" class="personFirstLine all">
+    <div style="width: 400px;margin-left: 200px;" class="personFirstLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->name . ' ' . $dataToShow->patient->lastname; ?></p>
     </div>
     <div style="width: 169px;margin-left: 80px;" class="personThirdLine all">
@@ -92,9 +96,19 @@ declare(strict_types=1);
     <div style="width: 150px;margin-left: 375px;" class="personThirdLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->phone;  ?></p>
     </div>
-    <div style="width: 266px;margin-left: 160px;" class="personFourthLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->patient->address;  ?></p>
+    <div style="width: 150px;margin-left: 610px;" class="personThirdLine all">
+        <p style="word-break: break-word;"><?= $dataToShow->medical_center->district;  ?></p>
     </div>
+
+    <?php  if ($dataToShow->patient->job!=='AUXILIAR'):  ?> 
+        <div  class="personFourthLine all">
+            <p style="margin-left:570px"><?= $dataToShow->textForPDF()?></p>
+        </div>
+    <?php else:?>
+        <div  class="personFourthLine all">
+            <p style="margin-left:282px"><?= $dataToShow->textForPDF()?></p>
+        </div>
+    <?php endif;?>
     <!-- END PERSON -->
     <!-- LICENSE TYPE -->
     <div style="width: 256px;" class="licenseType all">
@@ -125,9 +139,35 @@ declare(strict_types=1);
             <?php endif; ?>
         </p>
     </div>
-    <div class="resultFourthLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->observations; ?></p>
-    </div>
+    <?php if(!is_null($dataToShow->job_registration)) :?>
+        <div class="resultFourthLine all">
+            <span style='margin-left: 120px;'><?= $dataToShow->textForPDF(); ?></span>
+            <span style="margin-left: 30px;"><?= $dataToShow->date_job_registration->day;?></span>
+            <span style="margin-left: 15px;"><?= $dataToShow->date_job_registration->month;?></span>
+            <span style="margin-left: 12px;"><?= $dataToShow->date_job_registration->year;?></span>
+        </div>
+    <?php else: ?>
+        <div class="resultFourthLine all">
+            <span style='margin-left: 272px;'><?= $dataToShow->textForPDF(); ?></span>
+        </div>  
+    <?php endif;?>
+    <?php if(!is_null($dataToShow->new_exam)) :?>
+        <div class="resultFifthLine all">
+            <span style='margin-left: 205px;'><?= $dataToShow->textForPDF(); ?></span>
+            <span style="margin-left: 35px;"><?= $dataToShow->date_new_exam->day;?></span>
+            <span style="margin-left: 15px;"><?= $dataToShow->date_new_exam->month;?></span>
+            <span style="margin-left: 22px;"><?= $dataToShow->date_new_exam->year;?></span>
+        </div>
+    <?php else: ?>
+        <div class="resultFifthLine all">
+            <span style='margin-left: 378px;'><?= $dataToShow->textForPDF(); ?></span>
+        </div>  
+    <?php endif;?>
+    <?php if(!is_null($dataToShow->eval_council)):?>
+        <div class="resultSixLine all">
+        <span style='margin-left: 357px;'><?= $dataToShow->textForPDF(); ?></span>
+        </div>
+    <?php endif;?>
     <!-- END RESULT -->
     <!-- SIGNATURE -->
     <!-- END SIGNATURE -->

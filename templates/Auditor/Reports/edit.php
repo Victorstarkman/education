@@ -465,10 +465,39 @@
                         'class' => 'form-control form-control-blue m-0 col-12', 'type' => 'textarea']); ?>
                 </div>
             </div>
-            <div class="pt-0 col-lg-12 col-sm-12">
-                <div class="form-check form-switch ">
-                    <input class="form-check-input " type="checkbox" value="1" id="retirement" name="retirement">
-                    <label class="form-check-label" for="retirement">Jubilaci&oacute;n por Incapacidad</label>
+            <?php if($report->mode_id==4):?>
+                <div class="pt-0 col-lg-12 col-sm-12">
+                    <div class="form-check form-switch ">
+                        <input class="form-check-input " type="checkbox" value="1" id="retirement" name="retirement">
+                        <label class="form-check-label" for="retirement">Jubilaci&oacute;n por Incapacidad</label>
+                    </div>
+                </div>
+            <?php else:?>
+                <div class="pt-0 col-lg-12 col-sm-12">
+                    <div class="form-check form-switch ">
+                        <input class="form-check-input " type="checkbox" value="1" id="job_registration" name="job_registration">
+                        <label class="form-check-label ml-2" for="job_registration">Con Alta Laboral</label>
+                        <input class="form-check-input ml-2" type="checkbox" value="1" id="new_exam" name="new_exam">
+                        <label class="form-check-label ml-4" for="new_exam">Con Nuevo Ex&aacute;men</label>
+                        <input class="form-check-input ml-2" type="checkbox" value="1" id="eval_council" name="eval_council">
+                        <label class="form-check-label ml-4" for="eval_council">Se aconseja evaluaci&oacute;n por Junta M&eacute;dica</label>   
+                    </div>
+                </div>
+            <?php endif;?>
+            <div class="pt-0 col-lg-12 col-sm-12 mt-3 d-none date_job">
+                <div class="pt-0 col-lg-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="date_job_registration">Fecha de Alta Laboral</label>
+                        <input type="date" name="date_job_registration" id="date_job_registration" class='form-control form-control-blue'>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-0 col-lg-12 col-sm-12 mt-3 d-none date_new">
+                <div class="pt-0 col-lg-4 col-sm-12 " >
+                    <div class="form-group">
+                        <label for="date_new_exam">Fecha de Nuevo Ex&aacute;men</label>
+                        <input type="date" name="date_new_exam" id="date_new_exam" class='form-control form-control-blue'>
+                    </div>
                 </div>
             </div>
             <div class="col-12">
@@ -821,6 +850,11 @@ echo $this->Html->script('uploadFiles/uploadFile', ['block' => 'script']); ?>
         }
 
        })
-
+       $('#job_registration').click(function(){
+         $(this).prop('checked')?$('.date_job').removeClass('d-none'):$('.date_job').addClass('d-none');
+       })
+       $('#new_exam').click(function(){
+         $(this).prop('checked')?$('.date_new').removeClass('d-none'):$('.date_new').addClass('d-none');
+       })
     </script>
 <?php $this->end(); ?>
