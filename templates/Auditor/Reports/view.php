@@ -140,7 +140,11 @@
                 <tr>
                     <td><?= h($report->getPathology()) ?></td>
                     <?php if($report->mode_id==4):?>
-                        <th><?= $report->getLicenceReason()?></th>
+                        <?php if(!is_null($report->getLicenceReason())):?>
+                            <th><?= $report->getLicenceReason()?></th>
+                        <?php else:?>
+                            <th>NO DETERMINADO</th>
+                        <?php endif;?>
                     <?php endif;?>
                     <td><?= $report->getNameStatus(); ?></td>
                     <td><?= h($report->recommendedDays) ?></td>
