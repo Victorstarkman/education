@@ -22,27 +22,21 @@ class ModesSeed extends AbstractSeed
     {
         $data = [
             [
-                'name' => 'Auditoria Médica Ambulatoria',
+                'name' => 'Auditorías',
             ],
             [
-                'name' => 'Auditoria Médica Domiciliaria',
+                'name' => 'Visita Médica Domiciliaria',
             ],
             [
-                'name' => 'Atenciones Médicas Especializadas',
+                'name' => 'Juntas Especializadas',
             ],
             [
                 'name' => 'Juntas Médicas',
             ],
             [
-                'name' => 'Telemedicina Auditorias',
+                'name' => 'Auditorías Virtuales',
             ],
-            [
-                'name' => 'Telemedicina Juntas Médicas',
-            ],
-            [
-                'name' => 'Telemedicina Auditores Especializada',
-            ],
-
+            
         ];
 
         $table = $this->table('modes');
