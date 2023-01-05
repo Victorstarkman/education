@@ -106,6 +106,23 @@ class Page extends RepositoryBase
         return false;
     }
 
+    public function updateTerminoError(bool $status): bool
+    {
+        $this->setFromLogs('Logs_Pages');
+        $pages = [
+            'termino' => $status,
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        if ($this->updateColumn($pages)) {
+            //save on database juli
+            $this->saveOnDatabase();
+            return true;
+        }
+
+        return false;
+    }
+
     public function updateEnd(bool $status)
     {
 
@@ -115,6 +132,24 @@ class Page extends RepositoryBase
             'updated_at' => date('Y-m-d H:i:s'),
             'error' => false,
             'message' => '',
+        ];
+
+        if ($this->updateColumn($pages)) {
+            //save on database juli
+            $this->saveOnDatabase();
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateEndError(bool $status)
+    {
+
+        $this->setFromLogs('Logs_Pages');
+        $pages = [
+            'end' => $status,
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
 
         if ($this->updateColumn($pages)) {
