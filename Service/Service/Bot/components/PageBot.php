@@ -63,7 +63,10 @@ class PageBot
             $stop = true;
             $this->scrapingPages($token, $stop);
         } elseif ($this->isNewScraping && $stop) {
-            throw new \Exception('it was not possible to insert the pages in the database');
+            $msgError = 'it was not possible to insert the pages in the database';
+            $this->page->updateError($msgError);
+            $this->page->updateTerminoError(true);
+            throw new \Exception($msgError);
         }
 
         $this->startScaping();
@@ -91,9 +94,12 @@ class PageBot
         if (empty($data)) {
             $this->retry++;
             if ($this->retry >= $this->maxRetry) {
-                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
-                $this->Handlers->deletLogToken('scraping pageEmpty');
-                throw new \Exception('scraping pageEmpt');
+                $msgError = 'scraping pageEmpty';
+                $this->page->updateError($msgError);
+                $this->logFailure->prepareLog($msgError, __FILE__, __LINE__);
+                $this->Handlers->deletLogToken($msgError);
+                $this->page->updateTerminoError(true);
+                throw new \Exception($msgError);
             } else {
                 echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
                 sleep($this->retrySleep);
@@ -153,11 +159,16 @@ class PageBot
 
             $data = json_decode($this->requestPages($i, true), true)['content'] ?? [];
 
+            $msgError = "scraping pageEmpty";
             if (empty($data)) {
-                $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__, $data);
+                $this->logFailure->prepareLog($msgError, __FILE__, __LINE__, $data);
+                $this->page->updateError($msgError);
+                $this->page->updateTerminoError(true);
                 $this->retry++;
                 if ($this->retry >= $this->maxRetry) {
-                    $this->logFailure->prepareLog('scraping pageEmpty', __FILE__, __LINE__);
+                    $this->logFailure->prepareLog($msgError, __FILE__, __LINE__, $data);
+                    $this->page->updateError($msgError);
+                    $this->page->updateTerminoError(true);
                     $this->Handlers->deletLogToken('scraping pageEmpty');
                     throw new \Exception('pageEmpty');
                 } else {
