@@ -16,7 +16,7 @@
             <div class="pl-0 col-6">
                 <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/nuevo-agente', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12"><i class="mr-2 fas fa-info-circle" aria-hidden="true"></i>Nuevo Agente</a>
             </div>
-           
+
         </div><!-- fin de row -->
         <p class="title-results">Auditorías</p>
 
@@ -54,7 +54,7 @@
                     'class' => 'form-control form-control-blue m-0 col-12',
                     'value' => $search['medicalCenter'] ?? '']); ?>
             </div>
-        </div> 
+        </div>
         <?php endif;?>
         <div class="pt-0 col-lg-2 col-sm-12">
             <div class="form-group">
@@ -112,7 +112,7 @@
                     <td><?= $report->askedDays; ?></td>
                     <td><?= $report->created->format('d/m/Y'); ?></td>
                     <td><?= $report->mode->name; ?></td>
-                    <td><?= $report->medical_center->district!=null?$report->medical_center->district:'NO DEFINIDO' ?></td>
+                    <td><?= (!is_null($report->medical_center) && !is_null($report->medical_center->district)) ? $report->medical_center->district : 'NO DEFINIDO'; ?></td>
                     <td class="actions">
                         <?php if ($report->isWaitingResults()) :
                             echo $this->Html->link('Editar', $redirectPrefix . '/licencias/editar/' . $report->id, ['fullBase' => true]);

@@ -32,15 +32,19 @@ class PatientsController extends AppController
             ],
         ];
         $search = $this->request->getQueryParams();
-        $medical_center=$this->Authentication->getIdentity()->centermedical_id;
+        $medical_center = $this->Authentication->getIdentity()->centermedical_id;
         $patients = $this->Patients->find();
-         $patients = $patients->matching('Reports', function (Query $q) {
-            return $q
-                ->where(['Reports.medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
-        });
+		if (!is_null($medical_center)) {
+			$patients = $patients->matching('Reports', function (Query $q) use ($medical_center) {
+				return $q
+					->where(['Reports.medicalCenter IS NOT NULL'])
+					->where(['Reports.medicalCenter' => $medical_center]);
+			});
+		}
+
 
         if(!empty($search['cuil'])){
-            $patients->where(['cuil'=> $search['cuil']]); 
+            $patients->where(['cuil'=> $search['cuil']]);
         }
         $patients = $this->paginate($patients);
         $this->set(compact('patients'));
@@ -120,8 +124,8 @@ class PatientsController extends AppController
             }
             if(!empty($search['medical_center'])){
                 $reports->where(['Reports.medicalCenter' => $search['medical_center']]);
-                
-           } 
+
+           }
            if(!empty($search['modes'])){
                $reports->where(['Reports.mode_id' => $search['modes']]);
            }
@@ -174,7 +178,7 @@ class PatientsController extends AppController
                 $errorPatient = '';
                 if (!empty($search['cuil'])) {
                     $coincide = preg_match('/@/', $search['cuil']);
-    
+
                         if ($coincide > 0) {
                             $errorPatient = 'No se encontro persona con el email: ' . $search['cuil'];
                             $patientsWhere['email LIKE'] = '%' . $search['cuil'] . '%';
@@ -183,7 +187,7 @@ class PatientsController extends AppController
                             $patientsWhere['cuil'] = $search['cuil'];
                         }
                     }
-                } 
+                }
              if (!empty($search['company_id'])) {
                 if (empty($errorPatient)) {
                     $errorPatient = 'No se encontraron personas en la empresa indicada.';
@@ -191,7 +195,7 @@ class PatientsController extends AppController
                     $errorPatient .= ' en la empresa indicada';
                 }
                 $patientsWhere['company_id'] = $search['company_id'];
-            }  
+            }
 
             if (!empty($patientsWhere)) {
                 $patients = $this->Patients->find()->where($patientsWhere);
@@ -219,19 +223,19 @@ class PatientsController extends AppController
             }
             if(!empty($search['medical_center'])){
                  $reports->where(['Reports.medicalCenter' => $search['medical_center']]);
-                 
-            } 
+
+            }
             if(!empty($search['modes'])){
                 $reports->where(['Reports.mode_id' => $search['modes']]);
             }
         }
-       
+
         $reports->where(['status NOT IN' => $this->Patients->Reports->getStatusesOfDiagnosis()])->contain(['Modes','MedicalCenters','Patients']);
 
         $settings = [
             'order' => ['created' => 'desc'],
             'limit' => 10,
-            
+
         ];
 
         $reports = $this->paginate($reports, $settings);
@@ -241,7 +245,7 @@ class PatientsController extends AppController
         $getmodes = $this->Patients->Reports->Modes->find()->order(['name'=>'ASC'])->all()->combine('id','name');
         $getAuditors = $this->Patients->Reports->Users->getDoctors();
         $companies = $this->Patients->Companies->find()->all()->combine('id', 'name');
-        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies','getMedicalCenter','getmodes','medical_center')); 
+        $this->set(compact('reports', 'getLicenses', 'search', 'getAuditors', 'companies','getMedicalCenter','getmodes','medical_center'));
     }
 
     /**
@@ -259,7 +263,7 @@ class PatientsController extends AppController
                 'Companies'
             ],
         ]);
-       
+
         $this->set(compact('patient'));
     }
 
@@ -530,7 +534,8 @@ class PatientsController extends AppController
         $modes = $this->Patients->Reports->Modes->find()->all()->combine('id', 'name');
         $companies = $this->Patients->Companies->getCompanies();
         $specialties = $this->Patients->Reports->Specialties->find()->all()->combine('id', 'name');
-        $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies', 'modes', 'specialties'));
+	    $getMedicalCenter = $this->Patients->Reports->MedicalCenters->find()->order(['district'=>'ASC'])->all()->combine('id','district');
+        $this->set(compact('patient', 'doctors', 'licenses', 'type', 'companies', 'modes', 'specialties', 'getMedicalCenter'));
     }
 
     public function result($id)
@@ -549,7 +554,7 @@ class PatientsController extends AppController
                 'contain' => ['doctor', 'Patients' => ['Companies'],'MedicalCenters'],
             ]);
             /* debug($report);
-            die(); */  
+            die(); */
             if(($report->mode_id==4) && ($report->status == 4)){
                 if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
                     $this->Htmltopdf->createReport_juntas($report);

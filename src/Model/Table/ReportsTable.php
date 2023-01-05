@@ -51,16 +51,16 @@ class ReportsTable extends Table
         ],
     ];
     public const LICENSE_REASON = [
-        1 =>[ 
+        1 =>[
             'name' => 'Licencia',
         ],
-        2 =>[ 
+        2 =>[
             'name' => 'Cambio de funciones/Reasignacion de tareas',
         ],
-        3 =>[ 
+        3 =>[
             'name' => 'Razones de Profilaxis',
         ],
-        4 =>[ 
+        4 =>[
             'name' => 'Servicios provisorios por razones de enfermedad/Reubicacion laboral',
         ],
     ];
@@ -112,7 +112,7 @@ class ReportsTable extends Table
         ]);
         $this->belongsTo('MedicalCenters', [
             'foreignKey' => 'medicalCenter',
-            
+
         ]);
 	    $this->belongsTo('Privatedoctors', [
 		    'foreignKey' => 'privatedoctor_id',
@@ -149,11 +149,6 @@ class ReportsTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-
-        $validator
-            ->integer('doctor_id')
-            ->requirePresence('doctor_id', 'create')
-            ->notEmptyString('doctor_id');
 
         $validator
             ->integer('user_id')

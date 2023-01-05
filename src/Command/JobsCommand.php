@@ -349,7 +349,7 @@ class JobsCommand extends Command
 												[
 													'patient_id' => $patientID,
 													'medicalCenter' => $medicalCenterID,
-													'doctor_id' => 1,
+													'doctor_id' => null,
 													'user_id' => 1,
 													'startPathology' => (!empty($userFile['fechaInicio'])) ? new FrozenTime($userFile['fechaInicio']) : $today->format('Y-m-d'),
 													'comments' => $userFile['nota'],

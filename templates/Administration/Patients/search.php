@@ -159,11 +159,11 @@
     </div>
      <div class="pt-0 col-lg-12 col-sm-12">
         <div class="form-group">
-            <?= $this->Form->control('reports[0].doctor_id', ['label' => 'Auditor*',
-                'class' => 'form-control form-control-blue m-0 col-12 select2', 'options' => $doctors,
-                'empty' => 'Seleccione', 'required' => true]); ?>
+            <?= $this->Form->control('medicalCenter', ['label' => 'Distrito',
+	            'class' => 'form-control form-control-blue m-0 col-12', 'options' => $getMedicalCenter,
+	            'empty' => 'Seleccione', 'required' => true]); ?>
         </div>
-    </div> 
+    </div>
 </div>
 <div class="mx-auto form-group row col-lg-6 col-md-12">
     <div class="pl-0 col-12">

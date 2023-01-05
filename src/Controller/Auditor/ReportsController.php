@@ -32,7 +32,7 @@ class ReportsController extends AppController
             ],
         ];
         $reports = $this->Reports->find();
-       
+
         $searchByStatus = false;
         if (!empty($search)) {
             $patientsWhere = [];
@@ -180,7 +180,7 @@ class ReportsController extends AppController
 
                $reports ->where(['medicalCenter' => $this->Authentication->getIdentity()->centermedical_id]);
             }
-            
+
         $settings = [
             'order' => ['created' => 'desc'],
             'limit' => 10,
@@ -219,6 +219,7 @@ class ReportsController extends AppController
 
             if ($this->request->is(['patch', 'post', 'put'])) {
                 $data = $this->request->getData();
+				$data['doctor_id'] = $this->Authentication->getIdentity()->id;
                 $errors = '';
                 if (empty($data['status']) || in_array($data['status'], $this->Reports->getActiveStatuses())) {
                     $errors = 'El estado es incorrecto.';
@@ -302,7 +303,7 @@ class ReportsController extends AppController
 	        ->combine('id', function ($entity) {
             return $entity->name . ' (' . $entity->code . ')';
         });
-        
+
         $this->set(compact(
             'report',
             'getStatuses',
@@ -381,7 +382,7 @@ class ReportsController extends AppController
                     $this->Flash->error(__('El reporte no esta listo.'));
                 }
             }
-           
+
         } catch (\Exception $e) {
             $this->Flash->error($e->getMessage(), ['escape' => false]);
             if (stripos(get_class($e), 'RecordNotFoundException')) {
