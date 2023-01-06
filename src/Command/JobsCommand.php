@@ -606,7 +606,7 @@ class JobsCommand extends Command
 				case $this->statuses['running']:
 					$botData = json_decode($lastScrapingJob->message, true);
 					if (!$botData['error']) {
-						if ($botData['termino'] && $botData['end'] && $botData['termino'] >= 100) {
+						if ($botData['end'] && $botData['percentage'] >= 100) {
 							$this->updateJob('scrapperInit',['id' => $lastScrapingJob->id, 'status' => $this->statuses['finished']]);
 						} else {
 							if (!$lastScrapingJob->modified->wasWithinLast('10 minutes')) {
