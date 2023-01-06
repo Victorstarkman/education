@@ -3,7 +3,7 @@
 	]) ?>
 <div class="mx-auto mt-5 col-12">
 	<div class="col-12 title-section">
-		<h4>Manual del Usuario para la Gesti&oacute;n de Control de Ausentismo por Red Prestacional</h4>
+		<h4>Manual del Usuario para la Gesti&oacute;n  de Servicios de Educaci&oacute;n</h4>
 	</div>
 	<div class="results">
 		<div class="col-9 col-md-9">
@@ -11,9 +11,16 @@
 				<header>
 					<h2>General</h2>
 				</header>
-				<p>El objetivo del sistema es proveer un soporte de gesti&oacute;n y manejo de data para la realizaci&oacute;n de m&eacute;tricas inherentes al servicio de Control de Ausentismo.
-					El proceso consiste en recibir la informaci&oacute;n filiatoria de las n&oacute;minas de los empleados de las empresas a auditar, sus patolog&iacute;as y los d&iacute;as asignados. Red Prestacional asigna un Auditor a los casos. El auditor genera un diagn&oacute;stico y otorga o deniega la cantidad de d&iacute;as recomendados. El informe se env&iacute;a a los clientes que requirieron el control de ausentismo.
-					Los actores de este servicio son por tanto la Red Prestacional, El Auditor y el Cliente (a&uacute;n no instrumentado).
+				<p>El objetivo del sistema es proveer un soporte de gesti&oacute;n y manejo de data para los ex&aacute;menes de medicina laboral destinado a 
+					los agentes del sistema educativo de la provincia de Buenos Aires.<br>
+					El proceso incluye la recepci&oacute;n de datos filiatorios y de pedidos de servicios de los agentes en sus distintintas modalidades,
+					sea ex&aacute;menes ambulatorios presenciales, virtuales, domiciliarios y juntas m&eacute;dicas.<br>
+					El sistema asigna en forma
+					autom&aacute;tica o manual  las auditorias seg&uacute;n los centros m&eacute;dicos relevantes, permitiendo la gesti&oacute;n de la informaci&oacute;n
+					en los centros grandes a los administradores espec&iacute;ficos o en los centros pequeños por los mismos auditores.&nbsp;
+					Luego de finalizada la auditor&iacute;a el sistema genera la documentaci&oacute;n relevante con los campos completos y quedando preparado para la 
+					firma de los agentes y el auditor. <br>
+					Los actores de este servicio son  la administraci&oacute;n y El Auditor .
 				</p>
 			</article>
 			<div >
@@ -28,8 +35,9 @@
 						</div>
 						<div class="col-8">
 							<p class="admin_p">
-								La p&aacute;gina principal de la aplicaci&oacute;n se encuentra en el link <a href='https:\\dienstausentismo.com.ar\red'>https:\\dienstausentismo.com.ar\red</a>  para entrar en la plataforma utilizando el navegador de su preferencia. Para esto debe disponer de un mail registrado
+								La p&aacute;gina principal de la aplicaci&oacute;n se encuentra en el link <a href='https:\\dienstedu.com.ar\education'>https:\\dienstedu.com.ar\red</a>  para entrar en la plataforma utilizando el navegador de su preferencia. Para esto debe disponer de un mail registrado
 								por el administrador del sistema e introducirlo en el campo se&ntilde;alado por el &iacute;cono <?= $this->Html->image('icons/blue/email-blue.png',['alt'=>'mail'])?> para usuario y de una contraseña para introducirla en el campo se&ntilde;alado por el &iacute;cono <?= $this->Html->image('icons/blue/lockpad-blue.png',['alt'=>'candado'])?> .
+								Esto le otorgar&aacute; los permisos relevantes al usuario dependiendo del centro m&eacute;dico al que pertenezca y de su funci&oacute;n
 							</p>
 						</div>
 					</div>
@@ -39,25 +47,22 @@
 			<div >
 				<article id="red">
 					<header>
-						<h2>Red Prestacional</h2>
+						<h2>Administraci&oacute;n</h2>
 					</header>
 					<p>
-						Si el usuario corresponde a un administrador registrado de Red Prestacional se abre un men&uacute; con las siguientes funcionalidades
+						Si el usuario corresponde a un administrador registrado de Administraci&oacute;n se abrir&aacute; un men&uacute; con las siguientes funcionalidades
 					</p>
 					<div class="row">
 						<div class="col-4">
-							<?= $this->Html->image('manual/menured.jpg',['alt'=>'menu_red','class'=>'menu_centro_medico', 'style' => 'width:100%'])?>
+							<?= $this->Html->image('manual/menuadministracionedu.png',['alt'=>'menu_administracion','class'=>'menu_centro_medico', 'style' => 'width:100%'])?>
 							<p><small>Fig 2</small></p>
 						</div>
 						<div class="col-8">
 							<p>
 								<span>Lista de Auditor&iacute;as Realizadas:</span> Listado de personas auditadas.<br>
 								<span>Auditor&iacute;as Pendientes: </span> Listado de personas por auditar.<br>
-								<span>Listado de Agentes:  </span> Listado de todas las personas de la empresa y estado de reportes.<br>
-								<span>Nueva Auditor&iacute;a: </span> Entrada de pedido de auditor&iacute;a referido al listado de personas. En este se elige el auditor y el auditor recibir&aacute;en su casilla un mail que le advierte la entrada de un nuevo auditado<br>
-								<span>Nuevo Agente: </span> formulario de datos filiatorios de la persona.<br>
-								<span>Lista de empresas:  </span> Listado de empresas que envían personas a auditar.<br>
-								<span>Nueva empresa: </span> Alta de empresa.<br>
+								<span>Listado de Agentes:  </span> Listado de todas los agentes con sus reportes realizados y pendientes.<br>
+								<span>Procesamiento de Datos: </span> Generaci&oacute;n y procesamiento de la informaci&oacute;n.<br>
 
 							</p>
 						</div>
@@ -79,45 +84,14 @@
 						</div>
 						<div class="col-8">
 							<p>
-								<span>Auditor&iacute;s Pendientes: </span> : Listado de personas atribuidas al auditor.
+								<span>Auditor&iacute;as Pendientes: </span> : Listado de personas atribuidas al auditor.
 								En este se encuentra la entrada al formulario de diagn&oacute;stico el cual culmina con el resultado y firmado del Auditor. Para esto la primera vez que entra un nuevo auditor a la aplicación debe registrar una firma gr&aacute;fica que junto con su licencia rubricar&aacute;n la documentaci&oacute;n.<br>
-								<span>Lista de Auditor&iacute;as:  </span>Listado de todos los auditados. <br>
+								<span>Lista de Auditor&iacute;as:  </span>Listado de todos los auditados pendientes y realizados. <br>
 							</p>
 						</div>
 					</div>
 				</article>
 			</div>
-			<div >
-				<article id="firma">
-					<header>
-						<h2>Registro de Firma de  Auditor</h2>
-					</header>
-					<p>
-						La primera entrada del auditor le pedirá el sistema un registro de firma.
-					</p>
-					<div class="row">
-						<div class="col-12">
-							<?= $this->Html->image('manual/auditorFirma.jpg',['alt'=>'firma_auditor','class'=>'menu_centro_medico', 'style' => 'width:100%'])?>
-							<p><small>Fig 4</small></p>
-						</div>
-					</div>
-				</article>
-			</div>
-			<div >
-				<article id="documento">
-					<header>
-						<h2>Documento de Auditor&iacute;a</h2>
-					</header>
-					<p>
-						En Red Prestacional tendr&aacute; a disposici&oacute;n el documento de la auditor&iacute;a correspondiente al personal auditado
-					</p>
-					<div class="row">
-						<div class="col-12">
-							<?= $this->Html->image('manual/documento.jpg',['alt'=>'documento','class'=>'menu_centro_medico', 'style' => 'width:100%'])?>
-							<p><small>Fig 5</small></p>
-						</div>
-					</div>
-				</article>
 			</div>
 
 		</div>

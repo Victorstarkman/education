@@ -112,11 +112,14 @@ class SolicitudBot
         } elseif (empty($files)) {
             $this->retry++;
             if ($this->retry > $this->maxRetry) {
-                $this->Failure->prepareLog('No se encontro el archivo page: ' . $page, __FILE__, __LINE__);
-                $this->Handlers->deletLogToken('No se encontro el archivo page: ' . $page);
+                $msgError = 'No se encontro el archivo page: ' . $page;
+                $this->Failure->prepareLog($msgError, __FILE__, __LINE__);
+                $this->Handlers->deletLogToken($msgError);
                 $this->Files->deletePathAndFilies($page, $dataPageFile);
+                $this->page->updateError($msgError);
+                $this->page->updateEndError(true);
 
-                throw new \Exception('No se encontro el archivo page: ' . $page);
+                throw new \Exception($msgError);
             } else {
                 echo "\r\n retry " . $this->retry . " sleep " . $this->retrySleep . " retryMax " . $this->maxRetry . " " . __LINE__ . " \r\n";
                 sleep($this->retrySleep);
@@ -146,9 +149,12 @@ class SolicitudBot
                 echo "scrap path:{$idPathFile} \n";
                 $jsonFile = $this->requestDataSolictud($file['solicitudLicencia']['id'], true);
             } else {
-                $this->Failure->prepareLog('No se encontro la solicitud de licencia page: ' . $page, __FILE__, __LINE__, $file);
+                $msgError = 'No se encontro la solicitud de licencia page: ' . $page;
+                $this->Failure->prepareLog($msgError, __FILE__, __LINE__, $file);
                 $jsonFile = [];
-                throw new \Exception('No se encontro la solicitud de licencia page: ' . $page);
+                $this->page->updateError($msgError);
+                $this->page->updateEndError(true);
+                throw new \Exception($msgError);
             }
 
             if (!empty($jsonFile)) {
@@ -182,13 +188,16 @@ class SolicitudBot
                         "retry" => $this->retry,
                     ];
                     $hashError = md5(json_encode($logError));
-                    $this->Failure->prepareLog("HASHERROR:{$hashError} No se encontro la file.", __FILE__, __LINE__, $logError);
+                    $msgError = "HASHERROR:{$hashError} No se encontro la file.";
+                    $this->Failure->prepareLog( $msgError, __FILE__, __LINE__, $logError);
 
                     if ($this->retry >= $this->maxRetry) {
-                        $this->Handlers->deletLogToken("HASHERROR:{$hashError} No se encontro la file.");
-                        throw new \Exception("HASHERROR:{$hashError} No se encontro la file.");
+                        $this->Handlers->deletLogToken( $msgError);
+                        $this->page->updateError($msgError);
+                        $this->page->updateEndError(true);
+                        throw new \Exception( $msgError);
                     } else {
-                        echo "\r\n HASHERROR:{$hashError} No se encontro la file. \r\n";
+                        echo "\r\n {$msgError}. \r\n";
                         $this->page->updateRecordsSalteados();
                         sleep($this->retrySleep);
                         continue;
