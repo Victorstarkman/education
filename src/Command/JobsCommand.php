@@ -98,10 +98,10 @@ class JobsCommand extends Command
 	}
 
 	private function checkInitCommand() {
-		$lastId = (int) $this->jobFinished('scrapperInit');
-		if ($lastId > 0 && !$this->jobRunning('scrapperProcessor')) {
+		$botFinished = $this->checkBotStatus();
+		if ($botFinished['finished'] && !$this->jobRunning('scrapperProcessor')) {
 			$jobsTable = $this->fetchTable('Jobs');
-			$job = $jobsTable->get($lastId);
+			$job = $jobsTable->get($botFinished['id']);
 			$job->status = $this->statuses['completed'];
 			$jobsTable->save($job);
 			$this->saveOnTable('jobs', [
@@ -467,6 +467,13 @@ class JobsCommand extends Command
 				}
 				$jobTable->save($jobToUpdate);
 				break;
+			case 'scrapperInit':
+				$jobToUpdate = $jobTable->get($data['id']);
+				if ($data['status']) {
+					$jobToUpdate->status = $data['status'];
+				}
+				$jobTable->save($jobToUpdate);
+				break;
 		}
 	}
 
@@ -574,6 +581,68 @@ class JobsCommand extends Command
 
 	private function trim($string) {
 		return (!empty($string) && is_string($string)) ? trim($string) : $string;
+	}
+
+	private function  checkBotStatus() {
+		$botFinished = [
+			'finished' => false,
+			'id' => null,
+		];
+		$jobsTable = $this->fetchTable('Jobs');
+		$lastScrapingJob = $jobsTable
+			->find()
+			->where([
+				'name' => 'scrapperInit'
+			])
+			->order(['id' => 'desc'])
+			->first();
+
+		if ($lastScrapingJob) {
+			$botFinished['id'] = $lastScrapingJob->id;
+			switch ($lastScrapingJob->status) {
+				case $this->statuses['finished']:
+					$botFinished['finished'] = true;
+					break;
+				case $this->statuses['running']:
+					$botData = json_decode($lastScrapingJob->message, true);
+					if (!$botData['error']) {
+						if ($botData['termino'] && $botData['end'] && $botData['termino'] >= 100) {
+							$this->updateJob('scrapperInit',['id' => $lastScrapingJob->id, 'status' => $this->statuses['finished']]);
+						} else {
+							if (!$lastScrapingJob->modified->wasWithinLast('10 minutes')) {
+								$this->updateJob('scrapperInit',['id' => $lastScrapingJob->id, 'status' => $this->statuses['error']]);
+							}
+						}
+					} else {
+						// ERROR.
+						$this->updateJob('scrapperInit', ['id' => $lastScrapingJob->id, 'status' => $this->statuses['error']]);
+					}
+					break;
+				case  $this->statuses['error']:
+						$limitToStopBot = 3;
+						$checkLastThree = $jobsTable
+							->find()
+							->where([
+								'name' => 'scrapperInit',
+							])
+							->order(['id' => 'desc'])
+							->limit($limitToStopBot)
+							->toArray();
+						$errors = 0;
+						foreach ($checkLastThree as $lastThree) {
+							if ($lastThree->status == $this->statuses['error']) {
+								$errors++;
+							}
+						}
+
+						if ($errors <= $limitToStopBot) {
+							$this->initCommand();
+						}
+					break;
+			}
+		}
+
+		return $botFinished;
 	}
 
 }
