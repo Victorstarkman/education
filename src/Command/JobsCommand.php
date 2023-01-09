@@ -282,7 +282,7 @@ class JobsCommand extends Command
 													$privateDoctorID = $privateDoctorResponse['id'];
 												}
 
-												$specialityResponse = $this->searchOnTableOrCreate('specialties',
+												$specialityResponse = $this->searchOnTableOrCreate('Specialties',
 													['name' => $doctorData['especialidad']['especialidad']],
 													['name' => $doctorData['especialidad']['especialidad']]);
 
@@ -294,7 +294,7 @@ class JobsCommand extends Command
 
 											$reportTable = $this->fetchTable('Reports');
 											$status = $reportTable::ACTIVE;
-											$modeResponse = $this->searchOnTableOrCreate('modes',
+											$modeResponse = $this->searchOnTableOrCreate('Modes',
 												['name' => 'Auditorías'],
 												[]);
 											if (!$modeResponse['error']) {
@@ -317,7 +317,7 @@ class JobsCommand extends Command
 														$status = $reportTable::NRLL;
 														break;
 													CASE 'JUNTA':
-														$modeResponse = $this->searchOnTableOrCreate('modes',
+														$modeResponse = $this->searchOnTableOrCreate('Modes',
 															['name' => 'Juntas Médicas'],
 															[]);
 														if (!$modeResponse['error']) {
@@ -325,7 +325,7 @@ class JobsCommand extends Command
 														}
 														break;
 													CASE 'DOMICILIO':
-														$modeResponse = $this->searchOnTableOrCreate('modes',
+														$modeResponse = $this->searchOnTableOrCreate('Modes',
 															['name' => 'Visita Médica Domiciliaria'],
 															[]);
 														if (!$modeResponse['error']) {
@@ -342,7 +342,7 @@ class JobsCommand extends Command
 												// FALTA LOS FAMILIARES. Tambie nse puede sacar la direccion si es domicilio. EJ: 9497383
 											}
 
-											$reportResponse = $this->searchOnTableOrCreate('reports',
+											$reportResponse = $this->searchOnTableOrCreate('Reports',
 												[
 													'externalID' => $userFile['id']
 												],
