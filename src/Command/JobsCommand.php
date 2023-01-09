@@ -263,7 +263,7 @@ class JobsCommand extends Command
 											if (!empty($userFile['solicitudLicencia']['medicoParticular'])) {
 												$doctorData = $userFile['solicitudLicencia']['medicoParticular'];
 												$privateDoctorResponse = $this->searchOnTableOrCreate(
-													'privatedoctors' ,
+													'Privatedoctors' ,
 													[
 														'OR' => [
 															'license' => $doctorData['matriculaProvincial'],
@@ -410,7 +410,7 @@ class JobsCommand extends Command
 												}
 												$copy = copy($directoryFiles . DS . $file . DS . $file2 . DS . 'img' . DS . $imgFile, $path . DS . $imgFile);
 												if ($copy) {
-													$fileResponse = $this->searchOnTableOrCreate('files',
+													$fileResponse = $this->searchOnTableOrCreate('Files',
 														[
 															'report_id' => $reportID,
 															'name' => $imgFile,
@@ -453,7 +453,7 @@ class JobsCommand extends Command
 	}
 
 	private function updateJob($type, $data) {
-		$jobTable = $this->fetchTable('jobs');
+		$jobTable = $this->fetchTable('Jobs');
 		switch ($type) {
 			case 'scrapperProcessor':
 				$lastJob = $jobTable->find()->where(['name' => 'scrapperProcessor', 'status IN' => [1,0]])->order(['id' => 'DESC'])->first();
