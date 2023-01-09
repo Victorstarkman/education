@@ -369,14 +369,6 @@ class Page extends RepositoryBase
 
         if (!is_null($id)) {
             $extraSQL = '';
-            if ($json['termino'] && $json['end']) {
-                $extraSQL = ' , status=2';
-            }
-
-            if ($json['error']) {
-                $extraSQL = ' , status=3';
-            }
-
             $message = json_encode($json);
             $sql = "UPDATE jobs SET modified=CONVERT_TZ(NOW(),'SYSTEM','UTC'), message= '" . $message . "'" . $extraSQL . " WHERE id=" . $id . ";";
             $result = $mysqli->query($sql);

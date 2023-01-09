@@ -98,10 +98,10 @@ class JobsCommand extends Command
 	}
 
 	private function checkInitCommand() {
-		$lastId = (int) $this->jobFinished('scrapperInit');
-		if ($lastId > 0 && !$this->jobRunning('scrapperProcessor')) {
+		$botFinished = $this->checkBotStatus();
+		if ($botFinished['finished'] && !$this->jobRunning('scrapperProcessor')) {
 			$jobsTable = $this->fetchTable('Jobs');
-			$job = $jobsTable->get($lastId);
+			$job = $jobsTable->get($botFinished['id']);
 			$job->status = $this->statuses['completed'];
 			$jobsTable->save($job);
 			$this->saveOnTable('jobs', [
@@ -263,7 +263,7 @@ class JobsCommand extends Command
 											if (!empty($userFile['solicitudLicencia']['medicoParticular'])) {
 												$doctorData = $userFile['solicitudLicencia']['medicoParticular'];
 												$privateDoctorResponse = $this->searchOnTableOrCreate(
-													'privatedoctors' ,
+													'Privatedoctors' ,
 													[
 														'OR' => [
 															'license' => $doctorData['matriculaProvincial'],
@@ -282,7 +282,7 @@ class JobsCommand extends Command
 													$privateDoctorID = $privateDoctorResponse['id'];
 												}
 
-												$specialityResponse = $this->searchOnTableOrCreate('specialties',
+												$specialityResponse = $this->searchOnTableOrCreate('Specialties',
 													['name' => $doctorData['especialidad']['especialidad']],
 													['name' => $doctorData['especialidad']['especialidad']]);
 
@@ -294,7 +294,7 @@ class JobsCommand extends Command
 
 											$reportTable = $this->fetchTable('Reports');
 											$status = $reportTable::ACTIVE;
-											$modeResponse = $this->searchOnTableOrCreate('modes',
+											$modeResponse = $this->searchOnTableOrCreate('Modes',
 												['name' => 'Auditorías'],
 												[]);
 											if (!$modeResponse['error']) {
@@ -317,7 +317,7 @@ class JobsCommand extends Command
 														$status = $reportTable::NRLL;
 														break;
 													CASE 'JUNTA':
-														$modeResponse = $this->searchOnTableOrCreate('modes',
+														$modeResponse = $this->searchOnTableOrCreate('Modes',
 															['name' => 'Juntas Médicas'],
 															[]);
 														if (!$modeResponse['error']) {
@@ -325,7 +325,7 @@ class JobsCommand extends Command
 														}
 														break;
 													CASE 'DOMICILIO':
-														$modeResponse = $this->searchOnTableOrCreate('modes',
+														$modeResponse = $this->searchOnTableOrCreate('Modes',
 															['name' => 'Visita Médica Domiciliaria'],
 															[]);
 														if (!$modeResponse['error']) {
@@ -342,7 +342,7 @@ class JobsCommand extends Command
 												// FALTA LOS FAMILIARES. Tambie nse puede sacar la direccion si es domicilio. EJ: 9497383
 											}
 
-											$reportResponse = $this->searchOnTableOrCreate('reports',
+											$reportResponse = $this->searchOnTableOrCreate('Reports',
 												[
 													'externalID' => $userFile['id']
 												],
@@ -410,7 +410,7 @@ class JobsCommand extends Command
 												}
 												$copy = copy($directoryFiles . DS . $file . DS . $file2 . DS . 'img' . DS . $imgFile, $path . DS . $imgFile);
 												if ($copy) {
-													$fileResponse = $this->searchOnTableOrCreate('files',
+													$fileResponse = $this->searchOnTableOrCreate('Files',
 														[
 															'report_id' => $reportID,
 															'name' => $imgFile,
@@ -444,6 +444,7 @@ class JobsCommand extends Command
 					}
 				}
 			}
+			$data['actualPage']++;
 			$data['processedPage']++;
 			$this->updateJob('scrapperProcessor', $data);
 		}
@@ -453,7 +454,7 @@ class JobsCommand extends Command
 	}
 
 	private function updateJob($type, $data) {
-		$jobTable = $this->fetchTable('jobs');
+		$jobTable = $this->fetchTable('Jobs');
 		switch ($type) {
 			case 'scrapperProcessor':
 				$lastJob = $jobTable->find()->where(['name' => 'scrapperProcessor', 'status IN' => [1,0]])->order(['id' => 'DESC'])->first();
@@ -464,6 +465,13 @@ class JobsCommand extends Command
 				$jobToUpdate->message = json_encode($data);
 				if ($data['ended']) {
 					$jobToUpdate->status = $this->statuses['completed'];
+				}
+				$jobTable->save($jobToUpdate);
+				break;
+			case 'scrapperInit':
+				$jobToUpdate = $jobTable->get($data['id']);
+				if ($data['status']) {
+					$jobToUpdate->status = $data['status'];
 				}
 				$jobTable->save($jobToUpdate);
 				break;
@@ -574,6 +582,68 @@ class JobsCommand extends Command
 
 	private function trim($string) {
 		return (!empty($string) && is_string($string)) ? trim($string) : $string;
+	}
+
+	private function  checkBotStatus() {
+		$botFinished = [
+			'finished' => false,
+			'id' => null,
+		];
+		$jobsTable = $this->fetchTable('Jobs');
+		$lastScrapingJob = $jobsTable
+			->find()
+			->where([
+				'name' => 'scrapperInit'
+			])
+			->order(['id' => 'desc'])
+			->first();
+
+		if ($lastScrapingJob) {
+			$botFinished['id'] = $lastScrapingJob->id;
+			switch ($lastScrapingJob->status) {
+				case $this->statuses['finished']:
+					$botFinished['finished'] = true;
+					break;
+				case $this->statuses['running']:
+					$botData = json_decode($lastScrapingJob->message, true);
+					if (!$botData['error']) {
+						if ($botData['end'] && $botData['percentage'] >= 100) {
+							$this->updateJob('scrapperInit',['id' => $lastScrapingJob->id, 'status' => $this->statuses['finished']]);
+						} else {
+							if (!$lastScrapingJob->modified->wasWithinLast('10 minutes')) {
+								$this->updateJob('scrapperInit',['id' => $lastScrapingJob->id, 'status' => $this->statuses['error']]);
+							}
+						}
+					} else {
+						// ERROR.
+						$this->updateJob('scrapperInit', ['id' => $lastScrapingJob->id, 'status' => $this->statuses['error']]);
+					}
+					break;
+				case  $this->statuses['error']:
+						$limitToStopBot = 3;
+						$checkLastThree = $jobsTable
+							->find()
+							->where([
+								'name' => 'scrapperInit',
+							])
+							->order(['id' => 'desc'])
+							->limit($limitToStopBot)
+							->toArray();
+						$errors = 0;
+						foreach ($checkLastThree as $lastThree) {
+							if ($lastThree->status == $this->statuses['error']) {
+								$errors++;
+							}
+						}
+
+						if ($errors <= $limitToStopBot) {
+							$this->initCommand();
+						}
+					break;
+			}
+		}
+
+		return $botFinished;
 	}
 
 }
