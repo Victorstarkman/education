@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <ul class="sub-menu">
                             <li><a href="<?= $this->Url->build('/manual#general',['fullBase'=>true])?>" class="btn btn-link" >General</a></li>
-                            <li><a href="<?= $this->Url->build('/manual#red',['fullBase'=>true])?>" class="btn btn-link" >Red Prestacional</a></li>
+                            <li><a href="<?= $this->Url->build('/manual#red',['fullBase'=>true])?>" class="btn btn-link" >Administraci&oacute;n</a></li>
                             <li><a href="<?= $this->Url->build('/manual#medico',['fullBase'=>true])?>" class="btn btn-link" >M&eacute;dico Auditor</a></li>
                         </ul>
                     </div>
