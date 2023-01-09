@@ -35,7 +35,7 @@
 						</div>
 						<div class="col-8">
 							<p class="admin_p">
-								La p&aacute;gina principal de la aplicaci&oacute;n se encuentra en el link <a href='https:\\dienstedu.com.ar\education'>https:\\dienstedu.com.ar\red</a>  para entrar en la plataforma utilizando el navegador de su preferencia. Para esto debe disponer de un mail registrado
+								La p&aacute;gina principal de la aplicaci&oacute;n se encuentra en el link <a href='https:\\dienstedu.com.ar\education'>https:\\dienstedu.com.ar\education</a>  para entrar en la plataforma utilizando el navegador de su preferencia. Para esto debe disponer de un mail registrado
 								por el administrador del sistema e introducirlo en el campo se&ntilde;alado por el &iacute;cono <?= $this->Html->image('icons/blue/email-blue.png',['alt'=>'mail'])?> para usuario y de una contraseña para introducirla en el campo se&ntilde;alado por el &iacute;cono <?= $this->Html->image('icons/blue/lockpad-blue.png',['alt'=>'candado'])?> .
 								Esto le otorgar&aacute; los permisos relevantes al usuario dependiendo del centro m&eacute;dico al que pertenezca y de su funci&oacute;n
 							</p>
@@ -85,7 +85,7 @@
 						<div class="col-8">
 							<p>
 								<span>Auditor&iacute;as Pendientes: </span> : Listado de personas atribuidas al auditor.
-								En este se encuentra la entrada al formulario de diagn&oacute;stico el cual culmina con el resultado y firmado del Auditor. Para esto la primera vez que entra un nuevo auditor a la aplicación debe registrar una firma gr&aacute;fica que junto con su licencia rubricar&aacute;n la documentaci&oacute;n.<br>
+								En este se encuentra la entrada al formulario de diagn&oacute;stico el cual culmina con el resultado y firmado del Auditor. <br>
 								<span>Lista de Auditor&iacute;as:  </span>Listado de todos los auditados pendientes y realizados. <br>
 							</p>
 						</div>
