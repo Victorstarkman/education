@@ -62,7 +62,7 @@ class AppController extends Controller
             $redirectPrefix = !empty($group) ? $group['redirect'] : '';
 
             $userTable = $this->getTableLocator()->get('Users');
-            if ($user->group_id == $userTable->getNameGroup('Auditor')) {
+            /* if ($user->group_id == $userTable->getNameGroup('Auditor')) {
                 if (
                     is_null($user->signature)
                     && ($this->request->getParam('controller') != 'Users'
@@ -70,7 +70,7 @@ class AppController extends Controller
                 ) {
                     $this->redirect(['controller' => 'Users', 'action' => 'signature']);
                 }
-            }
+            } */
             $auth = $this->Authentication->getResult();
             if ($auth->isValid()) {
                 $actualPrefix = $this->request->getParam('prefix');
