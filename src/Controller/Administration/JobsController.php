@@ -52,15 +52,14 @@ class JobsController extends AppController
 
 			$jobEntity = $this->Jobs->newEmptyEntity();
 			$jobEntity = $this->Jobs->patchEntity($jobEntity, [
-				'name' => 'scrapperInit',
+				'name' => 'manualRequestScrap',
 				'status' => 1,
 				'user_id' => $connectedUser->id,
 			]);
 
 			if ($this->Jobs->save($jobEntity)) {
 				$data['running'] = true;
-				$data['msg'] = 'Se inicio el proceso de datos.';
-				exec("cd ..;php Service/Service/Bot/Bot.php");
+				$data['msg'] = 'El proceso esta a punto de iniciar.';
 			} else {
 				$data['error'] = true;
 				$data['msg'] = 'Hubo un problema al iniciar el proceso de datos.';

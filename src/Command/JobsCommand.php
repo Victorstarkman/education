@@ -96,8 +96,25 @@ class JobsCommand extends Command
 
 		exec("cd ..;php Service/Service/Bot/Bot.php");
 	}
+	private function checkManualRequest() {
+		$jobsTable = $this->fetchTable('Jobs');
+		$newRequest = $jobsTable
+			->find()
+			->where([
+				'name' => 'manualRequestScrap',
+				'status' => $this->statuses['running'],
+			])
+			->order(['id' => 'desc'])
+			->first();
+
+		if ($newRequest) {
+			$this->updateJob('manualRequestScrap', ['id' => $newRequest->id, 'status' => $this->statuses['completed']]);
+			$this->initCommand();
+		}
+	}
 
 	private function checkInitCommand() {
+		$this->checkManualRequest();
 		$botFinished = $this->checkBotStatus();
 		if ($botFinished['finished'] && !$this->jobRunning('scrapperProcessor')) {
 			$jobsTable = $this->fetchTable('Jobs');
@@ -469,6 +486,7 @@ class JobsCommand extends Command
 				$jobTable->save($jobToUpdate);
 				break;
 			case 'scrapperInit':
+			case 'manualRequestScrap':
 				$jobToUpdate = $jobTable->get($data['id']);
 				if ($data['status']) {
 					$jobToUpdate->status = $data['status'];

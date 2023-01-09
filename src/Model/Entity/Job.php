@@ -48,6 +48,9 @@ class Job extends Entity
 			case 'scrapperProcessor':
 				$name = 'Guardando datos en base de datos.';
 				break;
+			case 'manualRequestScrap':
+				$name = 'Procesamiento de datos pedido manualmente.';
+				break;
 		}
 
 		return $name;
