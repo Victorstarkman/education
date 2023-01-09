@@ -444,6 +444,7 @@ class JobsCommand extends Command
 					}
 				}
 			}
+			$data['actualPage']++;
 			$data['processedPage']++;
 			$this->updateJob('scrapperProcessor', $data);
 		}

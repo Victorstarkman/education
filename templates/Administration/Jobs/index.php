@@ -13,6 +13,14 @@
 
 		</div>
 		<p class="title-results">Procesamiento de Datos</p>
+        <div class="col-4 offset-8 mb-3 pr-0">
+            <button type="submit" id="procesar-datos" class="btn btn-outline-primary col-12"
+                <i class="fa fa-play"></i> Procesar datos
+            </button>
+        </div>
+        <div class="alert col-lg-12 mensajeProcesando" role="alert"  style="display: none;">
+            <div class="message"></div>
+        </div>
 		<?= $this->Flash->render() ?>
         <div class="show-results">
 	        <?php $actualTime = new \Cake\I18n\FrozenTime(null,  'America/Argentina/Buenos_Aires'); ?>
@@ -62,9 +70,69 @@ $redirect = !empty($group) ? $group['redirect'] : ''; ?>
                 $('.show-results').html(response)
             }
         });
+        $.ajax({
+            type: "GET",
+            url: '<?= $this->Url->build($redirect . 'jobs/checkProcess/', ['fullBase' => true]); ?>',
+            dataType: "json",
+            success: function (response) {
+                let data = response.data,
+                    text = '',
+                    buttonStatus = true;
+
+                if (data.running) {
+                    text = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Procesando';
+                } else {
+                    text = '<i class="fa fa-play"></i> Procesar datos';
+                    buttonStatus = false;
+                }
+
+                $("#procesar-datos")
+                    .html(text)
+                    .attr('disabled', buttonStatus);
+            }
+        });
     }
 
     setInterval(reload, 5000);
+
+    $("#procesar-datos").on('click', function () {
+        $.ajax({
+            type: "GET",
+            url: '<?= $this->Url->build($redirect . 'jobs/run/', ['fullBase' => true]); ?>',
+            dataType: "json",
+            success: function (response) {
+                let data = response.data,
+                    text = '',
+                    buttonStatus = true,
+                    addClass = '',
+                    removeClass = '';
+                if (!data.error) {
+                    addClass = 'alert-success';
+                    removeClass = 'alert-danger';
+                    if (data.running) {
+                        text = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Procesando';
+                    } else {
+                        text = '<i class="fa fa-play"></i> Procesar datos';
+                        buttonStatus = false;
+                    }
+                } else {
+                    text = '<i class="fa fa-play"></i> Procesar datos';
+                    buttonStatus = false;
+                    addClass = 'alert-danger';
+                    removeClass = 'alert-success';
+
+                }
+
+                $("#procesar-datos")
+                    .html(text)
+                    .attr('disabled', buttonStatus);
+                $('.mensajeProcesando .message').html(data.msg);
+                $('.mensajeProcesando').removeClass(removeClass).addClass(addClass).show();
+
+
+            }
+        });
+    });
 </script>
 <?php $this->end(); ?>
 

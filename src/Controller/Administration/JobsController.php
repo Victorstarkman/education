@@ -29,4 +29,68 @@ class JobsController extends AppController
 		$jobs = $this->paginate($getJobs);
 		$this->set(compact('jobs'));
 	}
+
+	public function run() {
+		$data = [
+			'running' => false,
+			'error' => false,
+			'msg' => '',
+		];
+		$lastJob = $this->Jobs
+			->find()
+			->where([
+				'status IN' => [1, 2],
+			])
+			->order(['id' => 'desc'])
+			->first();
+
+		if ($lastJob) {
+			$data['running'] = true;
+			$data['msg'] = 'Ya hay un proceso corriendo.';
+		} else {
+			$connectedUser = $this->Authentication->getIdentity();
+
+			$jobEntity = $this->Jobs->newEmptyEntity();
+			$jobEntity = $this->Jobs->patchEntity($jobEntity, [
+				'name' => 'scrapperInit',
+				'status' => 1,
+				'user_id' => $connectedUser->id,
+			]);
+
+			if ($this->Jobs->save($jobEntity)) {
+				$data['running'] = true;
+				$data['msg'] = 'Se inicio el proceso de datos.';
+				exec("cd ..;php Service/Service/Bot/Bot.php");
+			} else {
+				$data['error'] = true;
+				$data['msg'] = 'Hubo un problema al iniciar el proceso de datos.';
+			}
+
+		}
+
+		$this->viewBuilder()->setClassName('Json');
+		$this->set(compact('data'));
+		$this->viewBuilder()->setOption('serialize', ['data']);
+	}
+
+	public function checkProcess() {
+		$data = [
+			'running' => false,
+		];
+		$lastJob = $this->Jobs
+			->find()
+			->where([
+				'status IN' => [1, 2],
+			])
+			->order(['id' => 'desc'])
+			->first();
+
+		if ($lastJob) {
+			$data['running'] = true;
+		}
+
+		$this->viewBuilder()->setClassName('Json');
+		$this->set(compact('data'));
+		$this->viewBuilder()->setOption('serialize', ['data']);
+	}
 }
