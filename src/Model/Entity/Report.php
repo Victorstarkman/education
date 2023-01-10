@@ -94,7 +94,8 @@ class Report extends Entity
         'new_exam'=>true,
         'eval_council'=>true,
         'date_job_registration'=>true,
-        'date_new_exam'=>true
+        'date_new_exam'=>true,
+         
     ];
     public function getNameStatus()
     {

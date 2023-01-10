@@ -386,11 +386,13 @@
                         <input class="form-check-input reason" type="radio" value=1 id="licence" name="licence_reason" checked>
                         <label class="form-check-label " for="licence">Licencia</label>
                         <input class="form-check-input reason ml-4" type="radio" value=2 id="change" name="licence_reason">
-                        <label class="form-check-label" for="change">Cambio de funciones/Reasignaci&oacute;n de tareas </label>
-                        <input class="form-check-input ml-2 reason" type="radio" value=3 id="profilaxis" name="licence_reason">
-                        <label class="form-check-label" for="profilaxi">Razones de Profilaxis</label>
-                        <input class="form-check-input ml-2 reason" type="radio" value=4 id="health" name="licence_reason">
-                        <label class="form-check-label" for="health">Servicios Provisorios por Razones de Enfermedad/Reubicaci&oacute;n laboral</label>
+                        <label class="form-check-label ml-3" for="change">Readecuaci&oacute;n de Tareas</label>
+                        <input class="form-check-input ml-4 reason" type="radio" value=3 id="profilaxis" name="licence_reason">
+                        <label class="form-check-label  ml-3" for="profilaxi">Razones de Profilaxis</label>
+                        <input class="form-check-input ml-4 reason" type="radio" value=4 id="health" name="licence_reason">
+                        <label class="form-check-label  ml-3" for="health">Servicios Provisorios por Razones de Enfermedad/Reubicaci&oacute;n laboral</label>
+                        <input class="form-check-input ml-2 reason" type="radio" value=5 id="pregnant" name="licence_reason">
+                        <label class="form-check-label" for="pregnant">Trastornos del Embarazo</label>
                     </div>
                 </div>
             <?php endif;?>

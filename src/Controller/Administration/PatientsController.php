@@ -553,10 +553,13 @@ class PatientsController extends AppController
 
             $this->loadComponent('Htmltopdf');
             $report = $this->Patients->Reports->get($id, [
-                'contain' => ['doctor', 'Patients' => ['Companies'],'MedicalCenters'],
+                'contain' => [ 'doctor', 
+                            'Patients' => ['Companies'],
+                            'MedicalCenters',  
+                            ],
             ]);
-            /* debug($report);
-            die(); */
+           /*  debug($report);
+            die();  */
             if(($report->mode_id==4) && ($report->status == 4)){
                 if (!in_array($report->status, $this->Patients->Reports->getActiveStatuses())) {
                     $this->Htmltopdf->createReport_juntas($report);

@@ -8,7 +8,9 @@ declare(strict_types=1);
         font-weight: bold;
         word-break: break-all;
     }
-
+    .modeFirstLine {
+        top: 145px;
+    }
     .personFirstLine {
         top: 210px;
     }
@@ -18,155 +20,131 @@ declare(strict_types=1);
     }
 
     .personThirdLine {
-        top:287px;
+        top:277px;
     }
     .personFourthLine {
-        top:330px;
+        top:315px;
     }
 
     .licenseType {
-        top: 580px;
+        top: 515px;
     }
 
-    .licenseType .type-1 {
-        margin-left: 107px;
-    }
-    .licenseType .type-2 {
-        margin-left: 455px;
-    }
-    .licenseType .type-3 {
-        margin-left: 688px;
-    }
 
     .resultsFirstLine {
-        top: 678px
-    }
-
-    .status-<?= \App\Model\Table\ReportsTable::NRLL; ?> {
-        margin-left: 145px;
-    }
-
-    .status-<?= \App\Model\Table\ReportsTable::DENIED; ?> {
-        margin-left: 416px;
-    }
-
-    .status-<?= \App\Model\Table\ReportsTable::GRANTED; ?> {
-        margin-left: 688px;
+        top: 585px
     }
 
     .resultsSecondLine {
-        top: 720px;
-        margin-left: 200px;
+        top: 620px;
+        margin-left:130px;
         width: 450px;
     }
 
     .resultThirdLine {
-        top: 755px;
+        top: 650px;
     }
 
     .resultFourthLine {
-        top: 807px;
-        margin-left: 66px;
-        width: 663px;
-        text-indent: 107px;
-
+        top: 685px;
+       
     }
     .resultFifthLine{
-        top:850px
+        top:735px
     }
     .resultSixLine{
-        top:890px
+        top:750px
     }
 
 </style>
-<?php //debug($dataToShow); die();?>
+<?php  //debug($dataToShow); die();?>
 
 <html>
 <head><title>Export</title></head>
 <body>
 <div>
-    <img src="<?= WWW_ROOT;?>img/formulario_ambulatorio.jpg" style="max-width: 792px"/>
+    <img src="<?= WWW_ROOT;?>img/form_licencia.jpg" style="max-width: 792px"/>
     <!-- PERSON -->
+    <div  class="modeFirstLine all"> <!-- 1 auditoria 2 visita domic 3 especializadas 4 juntas 5 virtuales -->
+        <?php if($dataToShow->mode_id == 1):?>
+            <p style="margin-left:128px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->mode_id== 5):?>
+            <p style="margin-left:295px"><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->mode_id== 3):?>
+            <p style="margin-left:463px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->mode_id== 2):?>
+            <p style="margin-left:630px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php endif;?>
+    </div>
     <div style="width: 400px;margin-left: 200px;" class="personFirstLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->name . ' ' . $dataToShow->patient->lastname; ?></p>
     </div>
     <div style="width: 169px;margin-left: 80px;" class="personThirdLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->cuil;  ?></p>
     </div>
-    <div style="width: 150px;margin-left: 375px;" class="personThirdLine all">
+    <div style="width: 150px;margin-left: 405px;" class="personThirdLine all">
         <p style="word-break: break-word;"><?= $dataToShow->patient->phone;  ?></p>
     </div>
-    <div style="width: 150px;margin-left: 610px;" class="personThirdLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->medical_center->district;  ?></p>
-    </div>
-
-    <?php  if ($dataToShow->patient->job!=='AUXILIAR'):  ?> 
+    <?php  if ($dataToShow->patient->job !=="Auxiliar"):  ?> 
         <div  class="personFourthLine all">
-            <p style="margin-left:570px"><?= $dataToShow->textForPDF()?></p>
+            <p style="margin-left:110px"><?= $dataToShow->textForPDF()?></p>
         </div>
     <?php else:?>
         <div  class="personFourthLine all">
-            <p style="margin-left:282px"><?= $dataToShow->textForPDF()?></p>
+            <p style="margin-left:362px"><?= $dataToShow->textForPDF()?></p>
         </div>
     <?php endif;?>
     <!-- END PERSON -->
     <!-- LICENSE TYPE -->
     <div style="width: 256px;" class="licenseType all">
-        <p style="word-break: break-word;" class="type-<?= $dataToShow->type; ?>"><?= $dataToShow->textForPDF(); ?></p>
+        <?php if($dataToShow->type== 1):?>
+            <p style="margin-left:110px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->type== 3):?>
+            <p style="margin-left:360px"><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->type== 2):?>
+            <p style="margin-left:630px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php endif;?>
     </div>
     <!-- END LICENSE TYPE -->
     <!-- RESULT -->
     <div style="width: 256px;" class="resultsFirstLine all">
-        <p style="word-break: break-word;" class="status-<?= $dataToShow->status; ?>">X</p>
+        <?php if($dataToShow->status== 4):?>
+            <p style="margin-left:128px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->status== 2):?>
+            <p style="margin-left:360px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php elseif($dataToShow->status== 3):?>
+            <p style="margin-left:630px" ><?= $dataToShow->textForPDF(); ?></p>
+        <?php endif;?>
     </div>
     <div class="resultsSecondLine all">
-        <p style="word-break: break-word;"><?= $dataToShow->getPathologyCode(); ?></p>
+        <p class='Specialties' style="word-break: break-word"><?= $dataToShow->getSpeciality(); ?></p>
     </div>
     <div class="resultThirdLine all" style="width: 262px; margin-left: 180px;">
-        <p style="word-break: break-word;"><?= $dataToShow->recommendedDays; ?></p>
+        <p style="word-break: break-word;"><?= $dataToShow->getPathologyCode(); ?></p>
     </div>
-    <div class="resultThirdLine all">
-        <p style="word-break: break-word;">
-            <?php
-            if (is_null($dataToShow->startLicense)) : ?>
-                <span style="margin-left:440px;">-</span>
-                <span style="margin-left: 28px;">-</span>
-                <span style="margin-left: 20px;">-</span>
-            <?php else : ?>
-            <span style="margin-left: 440px;"><?= $dataToShow->startLicense->day;?></span>
-            <span style="margin-left: 15px;"><?= $dataToShow->startLicense->month;?></span>
-            <span style="margin-left: 12px;"><?= $dataToShow->startLicense->year;?></span>
-            <?php endif; ?>
+    <div class="resultFourthLine all">
+        <p style='margin-left:110px'><?= $dataToShow->recommendedDays?>
+        <?php if(!isset($dataToShow->startLicense)):?>
+            <span style='margin-left:250px'>-</span>
+            <span style='margin-left:20px'>-</span>
+            <span style='margin-left:30px'>-</span>
+        <?php else:?>
+            <span style='margin-left:270px'><?= $dataToShow->startLicense->day;?></span>
+            <span style='margin-left:20px'><?= $dataToShow->startLicense->month;?></span>
+            <span style='margin-left:30px'><?= $dataToShow->startLicense->year;?></span>
+        <?php endif;?>
         </p>
+           
     </div>
-    <?php if(!is_null($dataToShow->job_registration)) :?>
-        <div class="resultFourthLine all">
-            <span style='margin-left: 120px;'><?= $dataToShow->textForPDF(); ?></span>
-            <span style="margin-left: 30px;"><?= $dataToShow->date_job_registration->day;?></span>
-            <span style="margin-left: 15px;"><?= $dataToShow->date_job_registration->month;?></span>
-            <span style="margin-left: 12px;"><?= $dataToShow->date_job_registration->year;?></span>
-        </div>
-    <?php else: ?>
-        <div class="resultFourthLine all">
-            <span style='margin-left: 272px;'><?= $dataToShow->textForPDF(); ?></span>
-        </div>  
-    <?php endif;?>
-    <?php if(!is_null($dataToShow->new_exam)) :?>
-        <div class="resultFifthLine all">
-            <span style='margin-left: 205px;'><?= $dataToShow->textForPDF(); ?></span>
-            <span style="margin-left: 35px;"><?= $dataToShow->date_new_exam->day;?></span>
-            <span style="margin-left: 15px;"><?= $dataToShow->date_new_exam->month;?></span>
-            <span style="margin-left: 22px;"><?= $dataToShow->date_new_exam->year;?></span>
-        </div>
-    <?php else: ?>
-        <div class="resultFifthLine all">
-            <span style='margin-left: 378px;'><?= $dataToShow->textForPDF(); ?></span>
-        </div>  
-    <?php endif;?>
     <?php if(!is_null($dataToShow->eval_council)):?>
-        <div class="resultSixLine all">
-        <span style='margin-left: 357px;'><?= $dataToShow->textForPDF(); ?></span>
+        <div class="resultFifthLine all">
+        <span style='margin-left: 310px;'><?= $dataToShow->textForPDF(); ?></span>
         </div>
+    <?php endif;?>
+    <?php if(isset($dataToShow->observations)) :?>
+        <p class='resultSixLine all' style='word-break: break-word; width:750px; margin-left:100px'>
+            <?= $dataToShow->observations?>
+        </p>
     <?php endif;?>
     <!-- END RESULT -->
     <!-- SIGNATURE -->
@@ -174,3 +152,5 @@ declare(strict_types=1);
 </div>
 </body>
 </html>
+<?php
+            

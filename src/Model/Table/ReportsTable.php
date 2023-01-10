@@ -55,7 +55,7 @@ class ReportsTable extends Table
             'name' => 'Licencia',
         ],
         2 =>[
-            'name' => 'Cambio de funciones/Reasignacion de tareas',
+            'name' => 'Readecuacion de Tareas',
         ],
         3 =>[
             'name' => 'Razones de Profilaxis',
@@ -63,6 +63,9 @@ class ReportsTable extends Table
         4 =>[
             'name' => 'Servicios provisorios por razones de enfermedad/Reubicacion laboral',
         ],
+        5 => [
+            'name' => 'Trastornos del Embarazo'
+        ]
     ];
     public const ACTIVE = 1;
     public const NRLL = 2;
