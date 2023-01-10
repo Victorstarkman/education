@@ -9,6 +9,8 @@ use Cake\Datasource\Exception\RecordNotFoundException;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Routing\Router;
 use PhpOffice\PhpSpreadsheet\{Spreadsheet,IOFactory};
+use Cake\I18n\FrozenTime;
+
 
 /**
  * Patients Controller
@@ -743,8 +745,8 @@ class PatientsController extends AppController
 				$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($inputFileNamePath);
 				$data= $spreadsheet->getActiveSheet()->toArray();
                 $patients=$this->fetchTable('Patients');
-              /*  debug(count($data));
-                exit();  */
+            /*    debug(count($data));
+                exit();  */ 
                 for($i=1;$i<count($data);$i++){
                     if(isset( $data[$i][2])){
                         $medical_id=$data[$i][0];
@@ -779,4 +781,130 @@ class PatientsController extends AppController
             }
         }
 	}//fin de funcion*
+    public function downloadExcel(){
+        $patients = $this->Patients->find() ->contain([
+            'Reports'=> ['Modes','MedicalCenters','Privatedoctors','Cie10','Specialties'],
+   
+        ] );
+        $licenses = $this->Patients->Reports->getLicenses();
+        $statuses = $this->Patients->Reports->getAllStatuses();
+        $patientsList = $patients->all()->toArray();
+        $numList = $patients->all()->count();
+           /* debug ($patientsList[10]['reports']);
+        die();    */ 
+       if ($numList!=0){
+        $fila=2;
+        $spreadsheet = new Spreadsheet();
+        $activeSheet= $spreadsheet->getActiveSheet();
+        $styleArray=[
+            'font'=>['bold'=>true],
+            'alignment'=>[
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER],
+            'borders' => [
+                      'outline' => [
+                        'borderStyle'=> \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN
+                      ]      
+                ]    
+            ];
+        $styleArrayTable= [
+            'alignment'=>[
+                'horizontal' => \PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER,
+            
+                'vertical' =>\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER ]
+        ];
+         //-----------------------titulos----------------------------------------
+         $activeSheet->getStyle('A1:R1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+         ->getStartColor()->setARGB('FF00aa99'); 
+         $activeSheet->getStyle('A1:R1')->applyFromArray($styleArray);
+         $activeSheet->getColumnDimension('A')->setWidth(7);
+         $activeSheet->setCellValue('A1','#');
+         $activeSheet->getColumnDimension('B')->setWidth(28);
+         $activeSheet->setCellValue('B1','NOMBRE COMPLETO');
+         $activeSheet->getColumnDimension('C')->setWidth(20);
+         $activeSheet->setCellValue('C1','CUIL');
+         $activeSheet->getColumnDimension('D')->setWidth(15);
+         $activeSheet->setCellValue('D1','PUESTO');
+         $activeSheet->getColumnDimension('E')->setWidth(20);
+         $activeSheet->setCellValue('E1','ASIGNACION');
+         $activeSheet->getColumnDimension('F')->setWidth(30);
+         $activeSheet->setCellValue('F1','ESTADO');
+         $activeSheet->getColumnDimension('G')->setWidth(35);
+         $activeSheet->setCellValue('G1','ESPECIALIDAD');
+         $activeSheet->getColumnDimension('H')->setWidth(15);
+         $activeSheet->setCellValue('H1','FECHA DE CREACION');
+         $activeSheet->getColumnDimension('I')->setWidth(15);
+         $activeSheet->setCellValue('I1','ESTADO');
+         $activeSheet->getColumnDimension('J')->setWidth(15);
+         $activeSheet->setCellValue('J1','FECHA INICIO LICENCIA');
+         $activeSheet->getColumnDimension('K')->setWidth(10);
+         $activeSheet->setCellValue('K1','DIAS PEDIDOS');
+         $activeSheet->getColumnDimension('L')->setWidth(25);
+         $activeSheet->setCellValue('L1','TIPO DE LICENCIA');
+         $activeSheet->getColumnDimension('M')->setWidth(20);
+         $activeSheet->setCellValue('M1','DIAS OTORGADOS');
+         $activeSheet->getColumnDimension('N')->setWidth(45);
+         $activeSheet->setCellValue('N1','DICTAMEN');
+         $activeSheet->getColumnDimension('O')->setWidth(25);
+         $activeSheet->setCellValue('O1','NUMERO CIE10');
+         $activeSheet->getColumnDimension('P')->setWidth(25);
+         $activeSheet->setCellValue('P1','FECHA AUDITORIA');
+         $activeSheet->getColumnDimension('Q')->setWidth(25);
+         $activeSheet->setCellValue('Q1','DOCTOR PRIVADO');
+         $activeSheet->getColumnDimension('R')->setWidth(10);
+         $activeSheet->setCellValue('R1','REPORTES');
+
+          //---------------------------------------------Fin de encabezado------------------------
+        for($i=0;$i<$numList;$i++){
+             if(!empty($patientsList[$i]['reports'] )){ 
+                $count_reports= count($patientsList[$i]['reports']);
+                for($j=0;$j<$count_reports;$j++){
+                    $activeSheet->setCellValue('A'.$fila,$patientsList[$i]['id']);
+                    $activeSheet->setCellValue('B'.$fila,$patientsList[$i]['name'].$patientsList[$i]['lastname']);
+                    $activeSheet->setCellValue('C'.$fila,$patientsList[$i]['cuil']);
+                    $activeSheet->setCellValue('D'.$fila,$patientsList[$i]['job']);
+                    $cantidad_reportes= count($patientsList[$i]['reports'])-1;
+                    $activeSheet->setCellValue('E'.$fila,$patientsList[$i]['reports'][$j]['medical_center']->district);
+                    $state = $patientsList[$i]['reports'][$j]['mode']->name;
+                    $activeSheet ->setCellValue('F'.$fila,$state);
+                    isset($patientsList[$i]['reports'][$j]['specialty']->name)?$activeSheet->setCellValue('G'.$fila,$patientsList[$i]['reports'][$j]['specialty']->name):$activeSheet->setCellValue('F'.$fila,'');
+                    $created= $patientsList[$i]['created'];
+                    $activeSheet->setCellValue('H'.$fila,$created->i18nFormat('dd-MM-YYY'));
+                    $status=$patientsList[$i]['reports'][$j]['status'];
+                    $activeSheet->setCellValue('I'.$fila,$statuses[$status]);
+                    $frozenDate= $patientsList[$i]['reports'][$j]['startLicense'];
+                    $startLicense=isset($frozenDate)?$frozenDate->i18nFormat('dd-MM-YYY'):'No Registrado';
+                    $activeSheet->setCellValue('J'.$fila,$startLicense);
+                    $activeSheet->setCellValue('K'.$fila,$patientsList[$i]['reports'][$j]['askedDays']);
+                    $type= $patientsList[$i]['reports'][$j]['type'];
+                    $activeSheet->setCellValue('L'.$fila,$licenses[$type]);
+                    $activeSheet->setCellValue('M'.$fila,isset($patientsList[$i]['reports'][$j]['recommendedDays'])?$patientsList[$i]['reports'][$j]['recommendedDays']:'No Registrado');
+                    $dictamen=isset($patientsList[$i]['reports'][$j]['cie10'])?$patientsList[$i]['reports'][$j]['cie10']->name:'No especificado';
+                    $activeSheet->setCellValue('N'.$fila,$dictamen);
+                    $activeSheet->setCellValue('O'.$fila,isset($patientsList[$i]['reports'][$j]['cie10']->code)?$patientsList[$i]['reports'][$j]['cie10']->code:'No especificado');
+                    $created= isset($patientsList[$i]['report'][$j]['created'])?$patientsList[$i]['report'][$j]['created']->i18nFormat('dd-MM-YYY'):'No Registrado';
+                    $activeSheet->setCellValue('P'.$fila,$created);
+                    $activeSheet->setCellValue('Q'.$fila,$patientsList[$i]['reports'][$j]['privatedoctor']->name.' '.$patientsList[$i]['reports'][$j]['privatedoctor']->lastname);
+                    $frozenDateCreated= $patientsList[$i]['reports'][$j]['created'];
+                    //debug($frozenDateCreated);
+                    $activeSheet->setCellValue('R'.$fila,$cantidad_reportes+1);
+                    $fila++;        
+                }//fin de for count_reports
+            } //fin de if dentro de report
+        }//fin de for
+       }//fin de if
+        //die();
+        $activeSheet->getStyle('A2:R'.$fila)->applyFromArray($styleArrayTable);
+        //die();
+        $now=FrozenTime::parse('now');
+        $now= $now->i18nFormat('dd-MM-Y');
+
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment;filename=Educacion.xlsx');
+		header('Cache-Control: max-age=0');
+		$writer =IOFactory::createWriter($spreadsheet, 'Xlsx');
+		$writer->save('php://output');
+       
+       exit;
+       
+    }//fin de function
 }

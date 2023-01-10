@@ -79,7 +79,10 @@
                 ); ?>
             </div>
         </div>
-        <div class="col-6 mb-3">
+        <div class="pl-0 col-lg-2 col-sm-12 mt-4">
+                <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/reporte-excel', ['fullBase' => true]); ?>" class="btn btn-outline-primary col-12 mt-2"><i class="mr-2 fas fa-file-excel" aria-hidden="true"></i>Reporte Excel</a>
+        </div>
+        <div class="col-6 mb-3 ">
             <a href="<?= $this->Url->build($this->Identity->get('groupIdentity')['redirect'] . '/', ['fullBase' => true]); ?>" class="btn btn-outline-secondary col-12">Reiniciar</a>
         </div>
         <div class="col-6 mb-3">
